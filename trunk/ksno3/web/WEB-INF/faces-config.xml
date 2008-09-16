@@ -26,9 +26,14 @@
         <managed-bean-name>Main_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.Main</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Current_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.Current</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
         </managed-property>
-    </managed-bean>
+    </managed-bean>    
 </faces-config>
