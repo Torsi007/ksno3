@@ -7,13 +7,24 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
 
+   <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>PersonDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+   <managed-bean>
+        <managed-bean-name>CoverReferenceDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.CoverReferenceDaoImpl</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>    
+   <managed-bean>
+        <managed-bean-name>ArticleDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.ArticleDaoImpl</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>      
   
-
+   <!-- ******** Service *************************************************** -->
    <managed-bean>
         <managed-bean-name>PersonService</managed-bean-name>
         <managed-bean-class>ksno.service.PersonServiceImpl</managed-bean-class>
@@ -23,6 +34,26 @@
             <value>#{PersonDao}</value>
         </managed-property>        
     </managed-bean> 
+   <managed-bean>
+        <managed-bean-name>CoverReferenceService</managed-bean-name>
+        <managed-bean-class>ksno.service.CoverReferenceServiceImpl</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>coverReferenceDao</property-name>
+            <value>#{CoverReferenceDao}</value>
+        </managed-property>        
+    </managed-bean> 
+   <managed-bean>
+        <managed-bean-name>ArticleService</managed-bean-name>
+        <managed-bean-class>ksno.service.ArticleServiceImpl</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleDao</property-name>
+            <value>#{ArticleDao}</value>
+        </managed-property>        
+    </managed-bean>    
+    
+   <!-- ******** UI ******************************************************* -->    
     <managed-bean>
         <managed-bean-name>Main_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.Main</managed-bean-class>
@@ -33,9 +64,22 @@
         <managed-bean-class>ksno.ui.jsf.backing.Current</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>personService</property-name>
-            <value>#{PersonService}</value>
+            <property-name>coverReferenceService</property-name>
+            <value>#{CoverReferenceService}</value>
         </managed-property>
     </managed-bean> 
+    <managed-bean>
+        <managed-bean-name>Article_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ViewArticle</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>id</property-name>
+            <value>#{param.id}</value>
+        </managed-property>        
+    </managed-bean>    
 
 </faces-config>

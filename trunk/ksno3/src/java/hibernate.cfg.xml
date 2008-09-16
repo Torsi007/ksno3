@@ -9,6 +9,8 @@
     <property name="hibernate.connection.password">Haukel1seter</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.show_sql">true</property>
-    <mapping class="ksno.model.Person" package="model" resource="ksno/model/Person.hbm.xml"/>
+    <mapping resource="ksno/model/Person.hbm.xml"/>
+    <mapping resource="ksno/model/CoverReference.hbm.xml"/>
+    <mapping resource="ksno/model/Article.hbm.xml"/>    
   </session-factory>
 </hibernate-configuration>
