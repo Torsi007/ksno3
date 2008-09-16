@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ksno3"/>
+
+<Context path="/ksno3">
+    <Realm className="org.apache.catalina.realm.JDBCRealm" debug="99"
+      driverName="com.mysql.jdbc.Driver"
+   connectionURL="jdbc:mysql://localhost/ksno?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false&amp;user=web_admin&amp;password=Haukel1seter"
+       userTable="person" userNameCol="user_name" userCredCol="user_pass"
+   userRoleTable="user_roles" roleNameCol="role"/>
+</Context>

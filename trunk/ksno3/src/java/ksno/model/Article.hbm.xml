@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Article" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="ARTICLE">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <property column="NAME" name="name" type="string"/>
+    <property column="CREATED_DATE" name="createdDate" type="date"/>
+    <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
+    <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true"/>
+    <set name="sections">
+      <key column="ARTICLE_ID"/>
+      <one-to-many class="Section"/>
+    </set>
+  </class>
+</hibernate-mapping>
