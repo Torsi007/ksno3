@@ -10,9 +10,10 @@
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
     <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true"/>
+    <!--
     <set name="sections">
       <key column="ARTICLE_ID"/>
       <one-to-many class="Section"/>
-    </set>
+    </set>-->
   </class>
 </hibernate-mapping>

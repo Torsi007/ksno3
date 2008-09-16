@@ -2,6 +2,7 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
+        <Node id="secureA/CreateArticle.jsp" x="650" y="150" zoom="true"/>
         <Node id="prototype/main.html" x="400" y="150" zoom="true"/>
         <Node id="Current.jsp" x="150" y="300" zoom="true"/>
         <Node id="Main.jsp" x="150" y="150" zoom="true"/>

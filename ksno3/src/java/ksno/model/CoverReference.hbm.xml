@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="CoverReference" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="COVER_REFERENCE">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <property column="HEADING" name="heading" type="string"/>
+    <property column="BODY" name="body" type="string"/>
+    <many-to-one cascade="save-update" class="Article" column="ARTICLE_ID" name="article"/>
+  </class>
+</hibernate-mapping>

@@ -23,10 +23,15 @@
     <body class="current" >
         <f:view>
             <h:form>
-                <h:dataTable cellpadding="0" cellspacing="0" value="#{Current_Backing.persons}" var="person">
-                    <h:column><h:outputText value="#{person.firstName}"/></h:column>
+                <h:dataTable cellpadding="0" cellspacing="0" value="#{Current_Backing.coverReferences}" var="row">
+                    <h:column>
+                        <h:outputLink value="#{Current_Backing.articleUrl}">
+                            <f:param name="id" value="#{row.article.id}"/>
+                            <h:outputText value="#{row.heading}"/>
+                        </h:outputLink>
+                    </h:column>                        
                 </h:dataTable>    
- </h:form> 
+            </h:form> 
             <table cellpadding="0" cellspacing="0" xmlns:fo="http://www.w3.org/1999/XSL/Format">
                 <tr class="active" onclick="setThisContent('article_sesongstart2007.jsp')" onmouseout="setBackgroundColor('transparent')" onmouseover="setBackgroundColor('#666666')">
                     <td>			
