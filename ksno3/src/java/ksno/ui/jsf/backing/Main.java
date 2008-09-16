@@ -5,30 +5,12 @@
 
 package ksno.ui.jsf.backing;
 
-import java.util.List;
-import ksno.service.PersonService;
+
 
 /**
  *
  * @author halsnehauge
  */
 public class Main {
-    List persons;
-    PersonService personService;
 
-    public PersonService getPersonService() {
-        return personService;
-    }
-
-    public void setPersonService(PersonService personService) {
-        this.personService = personService;
-    }
-
-    public List getPersons() {
-        return personService.getPersons();
-    }
-
-    public void setPersons(List persons) {
-        this.persons = persons;
-    }
 }
