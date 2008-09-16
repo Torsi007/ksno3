@@ -12,6 +12,7 @@
         <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+  
 
    <managed-bean>
         <managed-bean-name>PersonService</managed-bean-name>
@@ -35,5 +36,6 @@
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
         </managed-property>
-    </managed-bean>    
+    </managed-bean> 
+
 </faces-config>
