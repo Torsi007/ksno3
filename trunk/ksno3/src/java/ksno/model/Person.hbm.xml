@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Person" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="PERSON">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <property column="FIRST_NAME" name="firstName" type="string"/>
+    <property column="LAST_NAME" name="lastName" type="string"/>
+    <property column="USER_NAME" name="userName" type="string"/>
+    <property column="USER_PASS" name="passWord" type="string"/>
+  </class>
+</hibernate-mapping>
