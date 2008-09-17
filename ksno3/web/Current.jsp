@@ -9,6 +9,7 @@
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
@@ -23,6 +24,18 @@
     <body class="current" >
         <f:view>
             <h:form>
+                <table>
+                <t:dataList value="#{Current_Backing.coverReferences}" var="bcr">
+                    <tr>
+                        <td>
+                        <h:outputLink value="#{Current_Backing.articleUrl}">
+                            <f:param name="id" value="#{bcr.article.id}"/>
+                            <h:outputText value="#{bcr.heading}"/>
+                        </h:outputLink>  
+                    </td>                  
+                        </tr>
+                </t:dataList>
+            </table>
                 <h:dataTable cellpadding="0" cellspacing="0" value="#{Current_Backing.coverReferences}" var="row">
                     <h:column>
                         <h:outputLink value="#{Current_Backing.articleUrl}">
