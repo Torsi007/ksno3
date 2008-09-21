@@ -12,5 +12,6 @@
     <mapping resource="ksno/model/Person.hbm.xml"/>
     <mapping resource="ksno/model/CoverReference.hbm.xml"/>
     <mapping resource="ksno/model/Article.hbm.xml"/>    
+    <mapping resource="ksno/model/Section.hbm.xml"/>        
   </session-factory>
 </hibernate-configuration>
