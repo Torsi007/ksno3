@@ -24,29 +24,31 @@
     <body class="current" >
         <f:view>
             <h:form>
-                <table>
-                <t:dataList value="#{Current_Backing.coverReferences}" var="bcr">
-                    <tr>
-                        <td>
-                        <h:outputLink value="#{Current_Backing.articleUrl}">
-                            <f:param name="id" value="#{bcr.article.id}"/>
-                            <h:outputText value="#{bcr.heading}"/>
-                        </h:outputLink>  
-                    </td>                  
+                <table cellpadding="0" cellspacing="0" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+                    <t:dataList value="#{Current_Backing.coverReferences}" var="bcr">
+                        <tr>
+                            <td>
+                                <h:outputLink value="#{Current_Backing.articleUrl}" styleClass="active" onmouseout="setBackgroundColor('transparent')" onmouseover="setBackgroundColor('#666666')">
+                                    <f:param name="id" value="#{bcr.article.id}"/>
+                                    <h1>
+                                        <h:outputText value="#{bcr.heading}"/>    
+                                    </h1>
+                                    <p>
+                                        <b><h:outputText value="#{bcr.article.createdDate}"/></b>
+                                        <h:outputText value="#{bcr.body}"/>    
+                                    </p>
+                                    
+                                </h:outputLink> 
+                            </td>
+                            <td>
+                                <img src="images/action/120x80/halne.jpg"/>
+                            </td>                            
                         </tr>
-                </t:dataList>
-            </table>
-                <h:dataTable cellpadding="0" cellspacing="0" value="#{Current_Backing.coverReferences}" var="row">
-                    <h:column>
-                        <h:outputLink value="#{Current_Backing.articleUrl}">
-                            <f:param name="id" value="#{row.article.id}"/>
-                            <h:outputText value="#{row.heading}"/>
-                        </h:outputLink>
-                    </h:column>                        
-                </h:dataTable>    
+                    </t:dataList>
+                </table>
             </h:form> 
             <table cellpadding="0" cellspacing="0" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-                <tr class="active" onclick="setThisContent('article_sesongstart2007.jsp')" onmouseout="setBackgroundColor('transparent')" onmouseover="setBackgroundColor('#666666')">
+                <tr >
                     <td>			
                         <h1>Vinterkurs</h1>			
                         <p>
