@@ -24,7 +24,8 @@ public class ViewArticle {
     }
     
     public Article getArticle() {
-        return articleService.getArticle(id);
+        Article returnArticle = articleService.getArticle(id);
+        return returnArticle;
     }
 
     public ArticleService getArticleService() {
