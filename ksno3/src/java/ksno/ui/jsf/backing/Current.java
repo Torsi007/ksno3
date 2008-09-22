@@ -18,7 +18,7 @@ public class Current {
     String articleUrl;
 
     public String getArticleUrl() {
-        return "faces/Article.jsp";
+        return "Article.jsp";
     }
 
     public void setArticleUrl(String articleUrl) {

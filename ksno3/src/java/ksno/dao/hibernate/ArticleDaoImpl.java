@@ -22,9 +22,13 @@ public class ArticleDaoImpl implements ArticleDao {
         Query q = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        q=session.createQuery("from Article a where id = :aid");
+        q=session.createQuery("from Article a where a.id = :aid");
         q.setParameter("aid",id);
         return (Article)q.list().get(0);
+    }
+    
+    public boolean newArticle(String name){
+        return false;
     }
 
 }
