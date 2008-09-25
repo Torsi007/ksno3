@@ -25,20 +25,7 @@
     <body class="article" >
         <f:view>
             <h:form>
-                <t:dataList value="#{Article_Backing.article.sections}" var="section">
-                    <div>
-                        <h1><h:outputText value="#{section.heading}"/></h1>
-                        <p>
-                            <div class="imageContainer">
-                                <img alt="Hardangervidda 2004" src="images/action/hardangervidda.jpg" style="display:block"/>
-                            </div>
-                        </p>
-                        <p>
-                            <h:outputText value="#{section.body}"/>            
-                        </p>
-                    </div>
-                </t:dataList>
-                
+                <h:outputText value="#{Article_Backing.article.name}"/>
             </h:form> 
         </f:view>        
     </body>
