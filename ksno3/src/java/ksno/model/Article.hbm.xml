@@ -7,12 +7,13 @@
     </id>
     <version column="VERSION" name="version"/>
     <property column="NAME" name="name" type="string"/>
+    <property column="BODY" name="body" type="string"/>    
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
     <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true"/>
-    <set name="sections">
+    <set name="images">
       <key column="ARTICLE_ID"/>
-      <one-to-many class="Section"/>
+      <one-to-many class="Image"/>
     </set>
   </class>
 </hibernate-mapping>

@@ -12,5 +12,5 @@ import ksno.model.Article;
  */
 public interface ArticleDao {
       public Article getArticle(final Integer id);
-      public boolean newArticle(String name);
+      public Integer newArticle(Article article);
 }

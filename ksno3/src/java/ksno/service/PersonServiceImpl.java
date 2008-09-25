@@ -32,6 +32,10 @@ public class PersonServiceImpl implements PersonService {
         return person;
     }
     
+    public Person getPerson(String userName){
+        return personDao.getPerson(userName);
+    }
+    
     public List getPersons(){
         return personDao.getPersons();
         

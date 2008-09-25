@@ -12,4 +12,5 @@ import ksno.model.Article;
  */
 public interface ArticleService {
     public Article getArticle(int id);
+    public Integer newArticle(Article article);
 }

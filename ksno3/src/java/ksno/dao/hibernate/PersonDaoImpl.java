@@ -34,5 +34,14 @@ public class PersonDaoImpl implements PersonDao {
         
         return q.list();
     }
+    
+    public Person getPerson(String userId){
+        Query q = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        q=session.createQuery("from Person p where p.userName = :pun");
+        q.setParameter("pun",userId);
+        return (Person)q.list().get(0);
+    }
 
 }

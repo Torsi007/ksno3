@@ -7,6 +7,7 @@ package ksno.service;
 
 
 
+import java.util.Date;
 import ksno.dao.ArticleDao;
 import ksno.model.Article;
 
@@ -28,6 +29,14 @@ public class ArticleServiceImpl implements ArticleService {
 
     public Article getArticle(int id) {
         return articleDao.getArticle(id);
+    }
+
+    public Integer newArticle(Article article) {
+        if(article.getCreatedDate() == null){
+            article.setCreatedDate(new Date());
+            article.setLastUpdatedDate(article.getCreatedDate());
+        }
+        return articleDao.newArticle(article);
     }
 
 }

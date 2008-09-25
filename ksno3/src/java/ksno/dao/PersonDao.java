@@ -6,6 +6,7 @@
 package ksno.dao;
 
 import java.util.List;
+import ksno.model.Person;
 
 /**
  *
@@ -16,5 +17,7 @@ public interface PersonDao {
     
 
       public List getPersons();
+      
+      public Person getPerson(String userName);
     
 }
