@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="ksno.model">
-  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Section" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="SECTION">
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Image" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="IMAGE">
     <id column="ID" name="id">
       <generator class="increment"/>
     </id>
     <version column="VERSION" name="version"/>
-    <property column="HEADING" name="heading" type="string"/>
-    <property column="BODY" name="body" type="string"/>
-    <property column="ORDER" name="order" type="integer"/>
+    <property column="NAME" name="name" type="string"/>
+    <many-to-one class="Person" column="PERSON_ID" name="owner" not-null="true"/>
     <many-to-one class="Article" column="ARTICLE_ID" name="article" not-null="true"/>
   </class>
 </hibernate-mapping>

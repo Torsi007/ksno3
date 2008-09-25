@@ -11,7 +11,7 @@
     <property name="hibernate.show_sql">true</property>
     <mapping resource="ksno/model/Person.hbm.xml"/>
     <mapping resource="ksno/model/CoverReference.hbm.xml"/>
-    <mapping resource="ksno/model/Article.hbm.xml"/>    
-    <mapping resource="ksno/model/Section.hbm.xml"/>        
+    <mapping resource="ksno/model/Article.hbm.xml"/>
+    <mapping class="" file="" jar="" package="" resource="ksno/model/Image.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

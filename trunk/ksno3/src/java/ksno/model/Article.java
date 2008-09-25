@@ -18,11 +18,20 @@ public class Article implements Serializable {
     private int id;
     private int version;
     private String name;
+    private String body;
     private Date createdDate;
     private Date lastUpdatedDate;
-    private Set sections = new HashSet();
+    private Set images = new HashSet();
     private Person author;
 
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+    
     public Person getAuthor() {
         return author;
     }
@@ -47,12 +56,12 @@ public class Article implements Serializable {
         this.version = version;
     }    
     
-    public Set getSections() {
-        return sections;
+    public Set getImages() {
+        return images;
     }
 
-    public void setSections(Set sections) {
-        this.sections = sections;
+    public void setImages(Set images) {
+        this.images = images;
     }
 
     public int getId() {
@@ -79,14 +88,14 @@ public class Article implements Serializable {
         this.name = name;
     }
     
-    public void addSection(Section section){
-        if(section == null){
-            throw new IllegalArgumentException("Section to be added is null");
+    public void addImage(Image image){
+        if(image == null){
+            throw new IllegalArgumentException("Image to be added is null");
         }
-        if(section.getArticle() != null){
-            section.getArticle().getSections().remove(section);
+        if(image.getArticle() != null){
+            image.getArticle().getImages().remove(image);
         }
-        section.setArticle(this);
-        sections.add(section);
+        image.setArticle(this);
+        images.add(image);
     }
 }

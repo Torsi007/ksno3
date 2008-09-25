@@ -27,8 +27,13 @@ public class ArticleDaoImpl implements ArticleDao {
         return (Article)q.list().get(0);
     }
     
-    public boolean newArticle(String name){
-        return false;
+    public Integer newArticle(Article article){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Integer i = (Integer)session.save(article);
+        session.getTransaction().commit();
+        return i;
+        
     }
 
 }
