@@ -19,11 +19,16 @@
     <body>
         <f:view>
             <h:form enctype="multipart/form-data">
-                <t:inputText id="id" value="#{CreateArticle_Backing.article.id}"/>                
-                <t:inputFileUpload id="fileupload" value="#{AddArticleImages_Backing.upFile}" size="20" /><p/>
-                <h:commandButton value="Load the file" action="#{AddArticleImages_Backing.upload}" />
-                <t:outputText binding="#{AddArticleImages_Backing.upLoadResult}" style="color:green;font-weight:bold"/>                
-                <h:commandButton value="Gå videre" action="gotoUpdateArticle" />                                                                
+                <table>
+                    <tr><td><t:inputFileUpload id="imgUpload1" value="#{AdminArticle_Backing.upImg1}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg1Result}"/></td></tr>
+                    <tr><td><t:inputFileUpload id="imgUpload2" value="#{AdminArticle_Backing.upImg2}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg2Result}"/></td></tr>
+                    <tr><td><t:inputFileUpload id="imgUpload3" value="#{AdminArticle_Backing.upImg3}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg3Result}"/></td></tr>
+                    <tr><td><t:inputFileUpload id="imgUpload4" value="#{AdminArticle_Backing.upImg4}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg4Result}"/></td></tr>
+                    <tr><td><t:inputFileUpload id="imgUpload5" value="#{AdminArticle_Backing.upImg5}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg5Result}"/></td></tr>
+                    <tr><td><t:inputFileUpload id="imgUpload6" value="#{AdminArticle_Backing.upImg6}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg6Result}"/></td></tr>                
+                    <tr><td colspan="2"><h:commandButton value="Load the files" action="#{AdminArticle_Backing.uploadImages}" /></td></tr>
+                    <tr><td colspan="2"><h:commandButton value="Gå videre" action="#{AdminArticle_Backing.saveArticle}"/></td></tr>
+                </table>                
             </h:form>        
         </f:view>
     </body>

@@ -15,26 +15,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create article</title>
-        <script src="../tinymce/jscripts/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+        <script src="../resources/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
         <script type="text/javascript">
             tinyMCE.init({
-                mode : "textareas",
-                theme : "simple",
-                width : "640",
-                height : "480",
-                    plugins : "preview, emotions, iespell, print, fullscreen, zoom, advhr, directionality, searchreplace, insertdatetime,  anchor, newdocument, separator,  cut, copy, paste,  forecolor, backcolor, charmap, visualaid",
-                    theme_advanced_buttons3_add : "preview, emotions, iespell, print, fullscreen, zoom, advhr, ltr,rtl, search,replace,insertdate,inserttime, anchor, newdocument, separator,  cut, copy, paste, forecolor, backcolor, charmap, visualaid",
-                    plugin_preview_width : "500",
-                    plugin_preview_height : "600",
-                    fullscreen_settings : {
-                        theme_advanced_path_location : "top"
-                     },
-                    extended_valid_elements : "hr[class|width|size|noshade]",
-                    plugin_insertdate_dateFormat : "%Y-%m-%d",
-                    plugin_insertdate_timeFormat : "%H:%M:%S"
-                
-            });
-        </script>        
+		// General options
+		mode : "textareas",
+		theme : "advanced",
+		plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+		// Theme options
+		theme_advanced_buttons1 : "bold,formatselect,|,sub,sup,|,charmap,|,fullscreen",
+		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+		theme_advanced_buttons3 : "",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true,
+
+		// Example content CSS (should be your site CSS)
+		content_css : "css/content.css",
+
+		// Drop lists for link/image/media/template dialogs
+		external_link_list_url : "lists/link_list.js",
+		external_image_list_url : "lists/image_list.js",
+
+		// Replace values for the template plugin
+		template_replace_values : {
+			username : "Some User",
+			staffid : "991234"
+		}
+	});
+    </script>       
     </head>
     <body>
         <f:view>
@@ -43,11 +54,17 @@
                 <p>Gratulerer, du er nå klar til å legge inn tekst og bilder</p>
                 <p>Feltet nedenfor er en forholdsvis rik editor, skriv in og formatter etter eget ønske.</p>                
                 <p>Tilgjengelige bilder vises i tabellen under...</p>                
-                <t:inputTextarea binding="#{UpdateArticle_Backing.body}" id="myTextArea" rows="10" cols="50" style="width: 100%"/>
-                <t:dataList value="#{UpdateArticle_Backing.article.images}" var="img">
-                    <t:graphicImage url="#{img.name}" height="80"/>
-                </t:dataList>
+                <t:inputTextarea binding="#{AdminArticle_Backing.body}" id="myTextArea" rows="20" cols="80" style="width: 100%"/>
+                <p>Tilgjengelige bilder vises i tabellen under, lim inn url fra nadre kolonne</p>                
+                <table>
+                    <t:dataList value="#{AdminArticle_Backing.article.images}" var="img">
+                        <tr><td><t:graphicImage url="#{img.name}" height="80"/></td><td><t:outputText value="#{img.name}"/></td></tr>
+                    </t:dataList>                    
+                </table>
+                <h:commandButton value="Fullfør" action="#{AdminArticle_Backing.addArticleBody}" />                                                                
             </h:form>        
         </f:view>
     </body>
 </html>
+
+

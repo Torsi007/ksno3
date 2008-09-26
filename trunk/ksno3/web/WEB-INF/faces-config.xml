@@ -19,11 +19,6 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
    <managed-bean>
-        <managed-bean-name>CoverReferenceDao</managed-bean-name>
-        <managed-bean-class>ksno.dao.hibernate.CoverReferenceDaoImpl</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>    
-   <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ArticleDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
@@ -41,15 +36,6 @@
         <managed-property>
             <property-name>personDao</property-name>
             <value>#{PersonDao}</value>
-        </managed-property>        
-    </managed-bean> 
-   <managed-bean>
-        <managed-bean-name>CoverReferenceService</managed-bean-name>
-        <managed-bean-class>ksno.service.CoverReferenceServiceImpl</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-        <managed-property>
-            <property-name>coverReferenceDao</property-name>
-            <value>#{CoverReferenceDao}</value>
         </managed-property>        
     </managed-bean> 
    <managed-bean>
@@ -81,8 +67,8 @@
         <managed-bean-class>ksno.ui.jsf.backing.Current</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>coverReferenceService</property-name>
-            <value>#{CoverReferenceService}</value>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
         </managed-property>
     </managed-bean> 
     <managed-bean>
@@ -99,22 +85,9 @@
         </managed-property>        
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>CreateArticle_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.CreateArticle</managed-bean-class>
+        <managed-bean-name>AdminArticle_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.AdminArticle</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
-        <managed-property>
-            <property-name>articleService</property-name>
-            <value>#{ArticleService}</value>
-        </managed-property>
-        <managed-property>
-            <property-name>personService</property-name>
-            <value>#{PersonService}</value>
-        </managed-property>
-    </managed-bean>  
-    <managed-bean>
-        <managed-bean-name>AddArticleImages_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.AddArticleImages</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
@@ -126,21 +99,13 @@
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>        
-    </managed-bean> 
-    <managed-bean>
-        <managed-bean-name>UpdateArticle_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.UpdateArticle</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>articleService</property-name>
-            <value>#{ArticleService}</value>
-        </managed-property>
-    </managed-bean>    
+        </managed-property>         
+    </managed-bean>  
+    <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
         <from-view-id>/secureA/CreateArticle.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{CreateArticle_Backing.createArticle}</from-action>
+            <from-action>#{AdminArticle_Backing.createArticle}</from-action>
             <from-outcome>go</from-outcome>
             <to-view-id>/secureA/AddArticleImages.jsp</to-view-id>
         </navigation-case>            
@@ -148,8 +113,18 @@
     <navigation-rule>
         <from-view-id>/secureA/AddArticleImages.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>gotoUpdateArticle</from-outcome>
+            <from-action>#{AdminArticle_Backing.saveArticle}</from-action>            
+            <from-outcome>go</from-outcome>
             <to-view-id>/secureA/UpdateArticle.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/secureA/UpdateArticle.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{AdminArticle_Backing.addArticleBody}</from-action>            
+            <from-outcome>go</from-outcome>
+            <to-view-id>/Main.jsp</to-view-id>
+            <redirect/>
         </navigation-case>            
     </navigation-rule>    
     <managed-bean>
