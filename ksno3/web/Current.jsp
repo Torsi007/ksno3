@@ -25,19 +25,18 @@
         <f:view>
             <h:form>
                 <table cellpadding="0" cellspacing="0" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-                    <t:dataList value="#{Current_Backing.coverReferences}" var="bcr">
+                    <t:dataList value="#{Current_Backing.articles}" var="article">
                         <tr>
                             <td>
                                 <h:outputLink value="#{Current_Backing.articleUrl}" styleClass="active" onmouseout="setBackgroundColor('transparent')" onmouseover="setBackgroundColor('#666666')">
-                                    <f:param name="id" value="#{bcr.article.id}"/>
+                                    <f:param name="id" value="#{article.id}"/>
                                     <h1>
-                                        <h:outputText value="#{bcr.heading}"/>    
+                                        <h:outputText value="#{article.name}"/>    
                                     </h1>
                                     <p>
-                                        <b><h:outputText value="#{bcr.article.createdDate}"/></b>
-                                        <h:outputText value="#{bcr.body}"/>    
+                                        <b><h:outputText value="#{article.createdDate}"/></b>
+                                        <h:outputText value="#{article.intro}"/>    
                                     </p>
-                                    
                                 </h:outputLink> 
                             </td>
                             <td>

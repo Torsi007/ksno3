@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>        
         <title>Kitesurfing.no</title>
     </head>
-    <body style="background-image : url(images/components/backgrounds/header.jpg);" onLoad="align()" onresize="align()">
+    <body style="background-image : url(resources/img/components/backgrounds/header.jpg);" onLoad="align()" onresize="align()">
         <f:view>
             <table cellspacing="0" cellpadding="0" class="fullstretch outer" >        
                 <tr><td colspan="100" style="height: 67"/></tr>
@@ -28,10 +28,10 @@
                         <style>.loginLink {cursor:hand;}</style> 
                         <table cellspacing="0" cellpadding="0" class="menu" id="menu">   
                             <tr style="height: 1">        
-                                <td><img src="images/components/backgrounds/menu_top.gif"/></td>    
+                                <td><img src="resources/img/components/backgrounds/menu_top.gif"/></td>    
                             </tr>    
                             <tr>		
-                                <td class="menu" style="background-image: url(images/components/backgrounds/menu_stretch.gif);">			
+                                <td class="menu" style="background-image: url(resources/img/components/backgrounds/menu_stretch.gif);">			
                                     <table cellpadding="0" cellspacing="0" class="mainMenuElements" xmlns:fo="http://www.w3.org/1999/XSL/Format">
                                         <tr><td id="menu1" name="menu1" onclick="changeMainMenu('1','../current.jsp')">:: Aktuelt</td></tr>
                                         <tr><td id="menu2" name="menu2" onclick="changeMainMenu('2','../about_us.jsp')">:: Om Oss</td></tr>
@@ -45,16 +45,16 @@
                                 </td>    
                             </tr>    
                             <tr style="height:1;" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-                                <td class="sponsor" style="background-image: url(images/components/backgrounds/menu_stretch.gif)">Sponsorer:
-                                    <img id="sponsor" onclick="window.open('http://www.urge.no')" src="images/logos/150x50/urge.gif"/>
+                                <td class="sponsor" style="background-image: url(resources/img/components/backgrounds/menu_stretch.gif)">Sponsorer:
+                                    <img id="sponsor" onclick="window.open('http://www.urge.no')" src="resources/img/logos/150x50/urge.gif"/>
                                     <script type="text/javascript">
                                         var sponsorSlides = new slideProjector(document.getElementById("sponsor"),'sponsorSlides.run()'); 
-                                        sponsorSlides.loadPictures('images/logos/150x50/urge.gif','images/logos/150x50/neilpryde.gif','images/logos/150x50/goya.gif','images/logos/150x50/cabrinha.gif');sponsorSlides.loadLinks('http://www.urge.no','http://www.neilpryde.com','http://www.goya.no','http://www.cabrinhakites.com'); sponsorSlides.run();
+                                        sponsorSlides.loadPictures('resources/img/logos/150x50/urge.gif','resources/img/logos/150x50/neilpryde.gif','resources/img/logos/150x50/goya.gif','resources/img/logos/150x50/cabrinha.gif');sponsorSlides.loadLinks('http://www.urge.no','http://www.neilpryde.com','http://www.goya.no','http://www.cabrinhakites.com'); sponsorSlides.run();
                                     </script>
                                 </td>
                             </tr>     
-                            <tr><td class="empty" style="background-image: url(images/components/backgrounds/menu_stretch.gif)"></td></tr>    
-                            <tr><td style="height: 1"><img src="images/components/backgrounds/menu_bottom.gif"/></td>    
+                            <tr><td class="empty" style="background-image: url(resources/img/components/backgrounds/menu_stretch.gif)"></td></tr>    
+                            <tr><td style="height: 1"><img src="resources/img/components/backgrounds/menu_bottom.gif"/></td>    
                             </tr>
                         </table>
                         <input type="hidden" name="menuId" id="menuId" value="1"/>
@@ -94,7 +94,7 @@
                                     <table cellspacing="0" cellpadding="0">	
                                         <tr class="languageLink">		
                                             <td onclick="setLanguage('EN')">
-                                                <img src="images/components/icons/EN_flag.gif"/>
+                                                <img src="resources/img/components/icons/EN_flag.gif"/>
                                             </td>
                                             <td onclick="setLanguage('EN')">&nbsp;English</td>	
                                         </tr>		
@@ -105,7 +105,7 @@
                                         <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a>            
                                     </span>        
                                 </td>        
-                                <td align="right"><img style="display: inline" src="images/logos/ksno_small.gif"/></td>    
+                                <td align="right"><img style="display: inline" src="resources/img/logos/ksno_small.gif"/></td>    
                             </tr>
                         </table> 
                     </td>        

@@ -14,22 +14,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create article</title>
+        <title>Ny article</title>
     </head>
     <body>
         <f:view>
             <h:form>
                 <h1>Ny artikkel</h1>
-                <p>Du er i ferd med å lage en ny artikkel</p>
-                <p>Før du begyner med teksten må du legge inn noe metadata. Dette er nødvendig for at det skal gå lett å adminstrere artikkelen.</p>                
+                <p>Du er i ferd med å opprette en ny artikkel</p>
                 <table>
                     <tr>
                         <td>Navn</td>
                         <td>
-                            <t:inputText required="true" binding="#{CreateArticle_Backing.name}"/>                        
+                            <t:inputText id="it1" required="true" binding="#{AdminArticle_Backing.name}"/>                        
                         </td>
-                        <td>Navnet vil dukke opp på forsiden og som hovedoverskrift for artikkelen</td>
+                        <td/>
                     </tr>
+                    <tr>
+                        <td>Intro text (vil dukke opp på forsiden)</td>
+                        <td>
+                            <t:inputText required="true" binding="#{AdminArticle_Backing.intro}"/>                        
+                        </td>
+                        <td/>
+                    </tr>                    
                    <tr>
                         <td>Eskstra forfattere</td>
                         <td>
@@ -45,7 +51,7 @@
                         <td>Du vil automatisk bli satt opp som en av forfatterene</td>
                     </tr>                                        
                 </table>
-                <h:commandButton value="Gå videre" action="#{CreateArticle_Backing.createArticle}" />                                                
+                <h:commandButton value="Gå videre" action="#{AdminArticle_Backing.createArticle}" />                                                
             </h:form>        
         </f:view>
     </body>
