@@ -4,6 +4,7 @@
  */
 package ksno.service;
 
+import java.util.List;
 import ksno.model.Article;
 
 /**
@@ -13,4 +14,6 @@ import ksno.model.Article;
 public interface ArticleService {
     public Article getArticle(int id);
     public Integer newArticle(Article article);
+    public void updateArticle(Article article);
+    public List getArticles();
 }

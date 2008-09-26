@@ -6,6 +6,7 @@
 package ksno.dao.hibernate;
 
 
+import java.util.List;
 import ksno.dao.ArticleDao;
 import ksno.model.Article;
 import ksno.util.HibernateUtil;
@@ -34,6 +35,21 @@ public class ArticleDaoImpl implements ArticleDao {
         session.getTransaction().commit();
         return i;
         
+    }
+
+    public void updateArticle(Article article) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.merge(article);
+        session.getTransaction().commit();
+    }
+
+    public List getArticles() {
+        Query q = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        q=session.createQuery("from Article");
+        return q.list();
     }
 
 }

@@ -19,10 +19,19 @@ public class Article implements Serializable {
     private int version;
     private String name;
     private String body;
+    private String intro;    
     private Date createdDate;
     private Date lastUpdatedDate;
     private Set images = new HashSet();
     private Person author;
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
 
     public String getBody() {
         return body;
