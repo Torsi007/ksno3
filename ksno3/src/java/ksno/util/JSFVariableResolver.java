@@ -20,5 +20,12 @@ public class JSFVariableResolver {
         returnVal = (String) application.evaluateExpressionGet(fc, ELexpression, String.class);            
         return returnVal;
     }
+    
+    public static Object getBeanValue(FacesContext fc, String ELexpression, Class clazz) throws Exception{
+        Object returnVal;
+        Application application = fc.getApplication();
+        returnVal = (Object) application.evaluateExpressionGet(fc, ELexpression, clazz);          
+        return returnVal;
+    }
 
 }

@@ -8,6 +8,7 @@ package ksno.service;
 
 
 import java.util.Date;
+import java.util.List;
 import ksno.dao.ArticleDao;
 import ksno.model.Article;
 
@@ -38,5 +39,13 @@ public class ArticleServiceImpl implements ArticleService {
         }
         return articleDao.newArticle(article);
     }
+
+    public void updateArticle(Article article) {
+        articleDao.updateArticle(article);
+    }
+    
+    public List getArticles() {
+        return articleDao.getArticles();
+    }    
 
 }

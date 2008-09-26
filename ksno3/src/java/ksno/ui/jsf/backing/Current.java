@@ -6,38 +6,28 @@
 package ksno.ui.jsf.backing;
 
 import java.util.List;
-import ksno.service.CoverReferenceService;
+import ksno.service.ArticleService;
 
 /**
  *
  * @author halsnehauge
  */
 public class Current {
-    List coverReferences;
-    CoverReferenceService coverReferenceService;
-    String articleUrl;
+    ArticleService articleService;
 
     public String getArticleUrl() {
         return "Article.jsp";
     }
 
-    public void setArticleUrl(String articleUrl) {
-        this.articleUrl = articleUrl;
+    public ArticleService getArticleService() {
+        return articleService;
     }
 
-    public CoverReferenceService getCoverReferenceService() {
-        return coverReferenceService;
+    public void setArticleService(ArticleService articleService) {
+        this.articleService = articleService;
     }
 
-    public void setCoverReferenceService(CoverReferenceService coverReferenceService) {
-        this.coverReferenceService = coverReferenceService;
-    }
-
-    public List getCoverReferences() {
-        return coverReferenceService.getCoverReferences();
-    }
-
-    public void setCoverReferences(List coverReferences) {
-        this.coverReferences = coverReferences;
+    public List getArticles() {
+        return articleService.getArticles();
     }
 }
