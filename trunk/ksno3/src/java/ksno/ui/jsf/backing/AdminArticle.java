@@ -338,7 +338,8 @@ public class AdminArticle {
     public String addArticleBody(){
         String returnString = "go";
         Article article = getArticle();
-        article.setBody(body.getValue().toString());
+        String bdy = body.getValue().toString();
+        article.setBody(bdy.replaceAll("\"", "'"));
         try{
             articleService.updateArticle(article);
         }catch (Exception ex){
