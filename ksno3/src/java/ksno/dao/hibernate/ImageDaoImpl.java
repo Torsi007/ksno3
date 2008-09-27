@@ -13,10 +13,10 @@ import org.hibernate.Session;
  * @author halsnehauge
  */
 public class ImageDaoImpl implements ImageDao {
-    public Integer newImage(Image image){
+    public Long newImage(Image image){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Integer i = (Integer)session.save(image);
+        Long i = (Long)session.save(image);
         session.getTransaction().commit();
         return i;
         

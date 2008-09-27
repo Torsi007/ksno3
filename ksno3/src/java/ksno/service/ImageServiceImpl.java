@@ -24,7 +24,7 @@ public class ImageServiceImpl implements ImageService {
     
    private ImageDao imageDao;
 
-    public Integer newImage(Image image) {
+    public Long newImage(Image image) {
         return imageDao.newImage(image);
     }
 

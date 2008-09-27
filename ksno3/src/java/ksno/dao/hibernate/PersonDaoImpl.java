@@ -24,8 +24,6 @@ public class PersonDaoImpl implements PersonDao {
     
     public List getPersons() {
         List persons = new LinkedList();
-        /*persons.add(new Person("Tor","Hauge","TH","TH"));
-        persons.add(new Person("Morten","Aas","MA","MA"));  */
         Query q = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();

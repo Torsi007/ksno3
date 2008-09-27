@@ -28,11 +28,11 @@ public class ArticleServiceImpl implements ArticleService {
     
    private ArticleDao articleDao;
 
-    public Article getArticle(int id) {
+    public Article getArticle(Long id) {
         return articleDao.getArticle(id);
     }
 
-    public Integer newArticle(Article article) {
+    public Long newArticle(Article article) {
         if(article.getCreatedDate() == null){
             article.setCreatedDate(new Date());
             article.setLastUpdatedDate(article.getCreatedDate());

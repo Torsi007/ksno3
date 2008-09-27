@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Tor-Erik
  */
 public class Image implements Serializable {
-    private int id;
+    private Long id;
     private int version;    
     private String name;
     private Person owner;
@@ -26,11 +26,11 @@ public class Image implements Serializable {
         this.article = article;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,4 +57,26 @@ public class Image implements Serializable {
     public void setVersion(int version) {
         this.version = version;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Image other = (Image) obj;
+        if (this.name != other.name && (this.name == null || !this.name.equals(other.name))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + (this.name != null ? this.name.hashCode() : 0);
+        return hash;
+    }    
 }

@@ -34,7 +34,7 @@ public class AdminArticle {
     PersonService personService;
     ImageService imageService;
     private HtmlInputText name;
-    private HtmlInputText intro;    
+    private HtmlInputTextarea intro;    
     private HtmlInputTextarea body;
     private HtmlOutputText upLoadImg1Result;    
     private HtmlOutputText upLoadImg2Result;    
@@ -42,28 +42,45 @@ public class AdminArticle {
     private HtmlOutputText upLoadImg4Result;    
     private HtmlOutputText upLoadImg5Result;
     private HtmlOutputText upLoadImg6Result;    
+    private UploadedFile upImgAvatar;            
     private UploadedFile upImg1;    
     private UploadedFile upImg2;    
     private UploadedFile upImg3;    
     private UploadedFile upImg4;    
     private UploadedFile upImg5;    
     private UploadedFile upImg6;        
-    private int articleId = -1;
-    
+    private Long articleId;
+    private String avatarUrl;
 
-    public HtmlInputText getIntro() {
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public UploadedFile getUpImgAvatar() {
+        return upImgAvatar;
+    }
+
+    public void setUpImgAvatar(UploadedFile upImgAvatar) {
+        this.upImgAvatar = upImgAvatar;
+    }
+    
+    public HtmlInputTextarea getIntro() {
         return intro;
     }
 
-    public void setIntro(HtmlInputText intro) {
+    public void setIntro(HtmlInputTextarea intro) {
         this.intro = intro;
     }
 
-    public int getArticleId() {
+    public Long getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(int articleId) {
+    public void setArticleId(Long articleId) {
         this.articleId = articleId;
     }
 
@@ -211,15 +228,20 @@ public class AdminArticle {
         this.name = name;
     }
     
-    public String createArticle(){
+    public String createArticle() throws Exception{
         Article article = new Article();
         article.setName(name.getValue().toString());
         article.setIntro(intro.getValue().toString());
         Person currentUser = personService.getPerson("Tor-Erik");
         article.setAuthor(currentUser);
-        Integer i = articleService.newArticle(article);
-        if(i != null){
-            articleId = i.intValue();
+        String imgName = uploadImage(upImgAvatar, null);
+        Image image = new Image();
+        image.setOwner(currentUser);
+        image.setName(JSFVariableResolver.getStringValue(FacesContext.getCurrentInstance(), "#{prop.image_context_path}") + imgName);
+        image.setArticle(article);
+        setAvatarUrl(image.getName());
+        articleId = articleService.newArticle(article);
+        if(articleId != null){
             return "go";
         }else{
             return "nogo";
@@ -271,7 +293,9 @@ public class AdminArticle {
             fos.close();        
             strReturn = uniqueFileName;
         }catch (Exception ioe) {
-            result.setValue("File uploaded failed. " + ioe.getMessage());
+            if(result != null){
+                result.setValue("File uploaded failed. " + ioe.getMessage());
+            }
         }
         return strReturn;
     }
@@ -295,7 +319,7 @@ public class AdminArticle {
             image.setOwner(currentUser);
             image.setName(JSFVariableResolver.getStringValue(FacesContext.getCurrentInstance(), "#{prop.image_context_path}") + imgName);
             image.setArticle(getArticle());
-            imageService.newImage(image);
+            Long l = imageService.newImage(image);
         }catch(Exception e){
             result.setValue("Unable to store image metdata in database. The image is stored on server but you will not be able to access it. Please contact administrator. " + e.getMessage());
         }
@@ -314,7 +338,7 @@ public class AdminArticle {
     public String addArticleBody(){
         String returnString = "go";
         Article article = getArticle();
-        article.setBody((body.getValue().toString()));
+        article.setBody(body.getValue().toString());
         try{
             articleService.updateArticle(article);
         }catch (Exception ex){

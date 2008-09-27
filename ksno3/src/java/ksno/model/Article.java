@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Tor-Erik
  */
 public class Article implements Serializable {
-    private int id;
+    private Long id;
     private int version;
     private String name;
     private String body;
@@ -25,6 +25,14 @@ public class Article implements Serializable {
     private Set images = new HashSet();
     private Person author;
 
+    public Long getId() {
+        return id;
+    }
+
+    private void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getIntro() {
         return intro;
     }
@@ -73,14 +81,6 @@ public class Article implements Serializable {
         this.images = images;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Date getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -106,5 +106,31 @@ public class Article implements Serializable {
         }
         image.setArticle(this);
         images.add(image);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Article other = (Article) obj;
+        if (this.name != other.name && (this.name == null || !this.name.equals(other.name))) {
+            return false;
+        }
+        if (this.createdDate != other.createdDate && (this.createdDate == null || !this.createdDate.equals(other.createdDate))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + (this.name != null ? this.name.hashCode() : 0);
+        hash = 17 * hash + (this.createdDate != null ? this.createdDate.hashCode() : 0);
+        return hash;
     }
 }
