@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Tor-Erik
  */
 public class Person implements Serializable {
-    private int id;
+    private Long id;
     private int version;
     String lastName;
     String firstName;
@@ -68,11 +68,11 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int studentId) {
+    public void setId(Long studentId) {
         this.id = studentId;
     }
     

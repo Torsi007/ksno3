@@ -11,8 +11,8 @@
     <property column="INTRO" name="intro" type="string"/>    
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
-    <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true"/>
-    <set name="images">
+    <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true" cascade="none"/>
+    <set name="images" table="IMAGE" cascade="save-update" inverse="true">
       <key column="ARTICLE_ID"/>
       <one-to-many class="Image"/>
     </set>

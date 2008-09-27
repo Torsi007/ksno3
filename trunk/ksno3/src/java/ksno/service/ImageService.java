@@ -12,6 +12,6 @@ import ksno.model.Image;
  * @author halsnehauge
  */
 public interface ImageService {
-        public Integer newImage(Image image);
+        public Long newImage(Image image);
 
 }

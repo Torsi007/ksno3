@@ -19,21 +19,19 @@ import org.hibernate.Session;
  */
 public class ArticleDaoImpl implements ArticleDao {
 
-    public Article getArticle(Integer id) {
-        Query q = null;
+    public Article getArticle(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        q=session.createQuery("from Article a where a.id = :aid");
-        q.setParameter("aid",id);
-        return (Article)q.list().get(0);
+        Article article = (Article)session.get(Article.class,id);
+        return article;
     }
     
-    public Integer newArticle(Article article){
+    public Long newArticle(Article article){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Integer i = (Integer)session.save(article);
+        Long l = (Long)session.save(article);
         session.getTransaction().commit();
-        return i;
+        return l;
         
     }
 
@@ -48,7 +46,7 @@ public class ArticleDaoImpl implements ArticleDao {
         Query q = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        q=session.createQuery("from Article");
+        q=session.createQuery("from Article a order by a.createdDate desc");
         return q.list();
     }
 

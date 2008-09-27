@@ -12,8 +12,8 @@ import ksno.model.Article;
  * @author Tor-Erik
  */
 public interface ArticleService {
-    public Article getArticle(int id);
-    public Integer newArticle(Article article);
+    public Article getArticle(Long id);
+    public Long newArticle(Article article);
     public void updateArticle(Article article);
     public List getArticles();
 }
