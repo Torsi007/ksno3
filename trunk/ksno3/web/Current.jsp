@@ -35,7 +35,7 @@
                                     </h1>
                                     <p>
                                         <b><h:outputText value="#{article.createdDate}"/></b>
-                                        <h:outputText value="#{article.intro}"/>    
+                                        <h:outputText value="#{article.intro}" escape="false"/>    
                                     </p>
                                 </h:outputLink> 
                             </td>

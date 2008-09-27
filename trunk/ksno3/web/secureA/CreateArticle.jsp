@@ -15,6 +15,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ny article</title>
+        <script src="../resources/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            tinyMCE.init({
+		// General options
+		mode : "textareas",
+		theme : "advanced",
+		plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+		// Theme options
+		theme_advanced_buttons1 : "bold,formatselect,|,sub,sup,|,charmap,|,fullscreen",
+		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+		theme_advanced_buttons3 : "",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true,
+
+		// Example content CSS (should be your site CSS)
+		content_css : "css/content.css",
+
+		// Drop lists for link/image/media/template dialogs
+		external_link_list_url : "lists/link_list.js",
+		external_image_list_url : "lists/image_list.js",
+
+		// Replace values for the template plugin
+		template_replace_values : {
+			username : "Some User",
+			staffid : "991234"
+		}
+	});
+    </script>               
     </head>
     <body>
         <f:view>
@@ -30,14 +61,17 @@
                         <td/>
                     </tr>
                     <tr>
-                        <td>Intro text (vil dukke opp på forsiden)</td>
-                        <td>
-                            <t:inputText required="true" binding="#{AdminArticle_Backing.intro}"/>                        
+                        <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <t:inputTextarea required="true" binding="#{AdminArticle_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
-                        <td/>
                     </tr>                    
+                    <tr>
+                        <td colspan="3"><t:inputFileUpload id="imgAvatar" value="#{AdminArticle_Backing.upImgAvatar}" size="20" /></td>
                    <tr>
-                        <td>Eskstra forfattere</td>
+                        <td>Ekstra forfattere</td>
                         <td>
                             Trenger en dropdown liste her for å kunne velge en eller flere forfattere                        
                         </td>

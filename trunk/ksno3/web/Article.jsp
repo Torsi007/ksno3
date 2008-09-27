@@ -25,9 +25,12 @@
     <body class="article" >
         <f:view>
             <h:form>
-                <h:outputText value="#{Article_Backing.article.name}"/>
+                <div>
+                    <h1><h:outputText value="#{Article_Backing.article.name}"/></h1>
+                    <f:verbatim><h:outputText escape="false" value="#{Article_Backing.article.body}"/></f:verbatim>
+                </div>
             </h:form> 
-        </f:view>        
+        </f:view>  
     </body>
 </html>	
 

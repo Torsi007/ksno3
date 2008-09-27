@@ -49,7 +49,7 @@ table.outer{}
 
                         
 	body.current h1{	font-size : 18; color:orange; font-weight:bolder; margin: 0}
-	body.current p{	margin: 0}
+	body.current p{	margin: 0; display:inline}
 		body.current p b{	font-size : 11;}
 	body.current img{height: 80; width:120; margin: 5 0 5 5; border:1 solid black}
 	body.current table tr td a {height:100%; width:100%; text-decoration: none}
@@ -72,14 +72,12 @@ table.outer{}
 
 	body.article{vertical-align:top}
 	body.article div{font-size : 12; color:white margin: 0; vertical-align:top}
-	body.article div.imageContainer img{margin: 3 5 0 0; vertical-align:top; border:1 solid black}
-	body.article div.imageContainer {margin: 0 0 3 0;}	
+	body.article img{margin: 3 5 3 0; vertical-align:top; border:1 solid black}
 	body.article div h1{color:orange; margin:3 0 ; font-size:18 }
 	body.article div h2{color:orange; margin:3 0 ; font-size:16 }
 	body.article div h3{color:orange; margin:3 0 ; font-size:14 }
 	body.article div p{margin: 2 0;}
 	body.article a{	color:white}
-	body.article div.imageContainer{display:inline; width:1; height:1; white-space:nowrap;}
 	body.article div.imageContainer span{ text-indent:1 ; }
 
 	div.links h1{font-size : 18; color:orange; font-weight:bolder; margin: 0}
