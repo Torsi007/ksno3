@@ -5,9 +5,11 @@
 
 package ksno.util;
 
+import java.util.Map;
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import ksno.model.Article;
 
 /**
  *
@@ -29,8 +31,12 @@ public class JSFVariableResolver {
         return returnVal;
     }
     
-    public static HttpServletRequest getHttpServletRequest(){
+    public static HttpServletRequest getRequest(){
         return (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    }
+
+    public static Map<String,Object> getSessionMap() {
+        return FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     }
 
 }

@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 import ksno.model.Article;
 import ksno.model.Image;
@@ -24,6 +25,7 @@ import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
+
 
 /**
  *
@@ -52,6 +54,15 @@ public class AdminArticle {
     private UploadedFile upImg6;        
     private Long articleId;
     private boolean renderAddArticleImagesContinue;
+    private UIData data;
+
+    public UIData getData() {
+        return data;
+    }
+
+    public void setData(UIData data) {
+        this.data = data;
+    }
 
     public boolean isRenderAddArticleImagesContinue() {
         return renderAddArticleImagesContinue;
@@ -240,7 +251,7 @@ public class AdminArticle {
         Article article = new Article();
         article.setName(name.getValue().toString());
         article.setIntro(intro.getValue().toString());
-        String userName = JSFVariableResolver.getHttpServletRequest().getUserPrincipal().getName();
+        String userName = JSFVariableResolver.getRequest().getUserPrincipal().getName();
         Person currentUser = personService.getPerson(userName);
         article.setAuthor(currentUser);
         articleId = articleService.newArticle(article);
@@ -250,7 +261,8 @@ public class AdminArticle {
         }else{
             return "nogo";
         }
-    }    
+    }   
+    
 
     public String uploadImages() throws IOException {
         boolean allImagesSucceded = true;
@@ -406,6 +418,12 @@ public class AdminArticle {
         getUpLoadImg4Result().setValue(null);
         getUpLoadImg5Result().setValue(null);
         getUpLoadImg6Result().setValue(null);        
+        return "go";
+    }
+    
+    public String selectEditArticle(){
+        Article selectedArticle = (Article) this.getData().getRowData();
+        JSFVariableResolver.getSessionMap().put("editArticle", selectedArticle);
         return "go";
     }
 }
