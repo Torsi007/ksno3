@@ -7,6 +7,7 @@ package ksno.util;
 
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -26,6 +27,10 @@ public class JSFVariableResolver {
         Application application = fc.getApplication();
         returnVal = (Object) application.evaluateExpressionGet(fc, ELexpression, clazz);          
         return returnVal;
+    }
+    
+    public static HttpServletRequest getHttpServletRequest(){
+        return (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
 }

@@ -9,6 +9,7 @@
     <property column="NAME" name="name" type="string"/>
     <property column="BODY" name="body" type="string"/>
     <property column="INTRO" name="intro" type="string"/>    
+    <property column="AVATAR_URL" name="avatarUrl" type="string"/>        
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
     <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true" cascade="none"/>
