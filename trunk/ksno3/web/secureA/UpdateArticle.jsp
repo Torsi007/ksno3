@@ -55,7 +55,7 @@
                 <p>Feltet nedenfor er en forholdsvis rik editor, skriv in og formatter etter eget ønske.</p>                
                 <p>Tilgjengelige bilder vises i tabellen under...</p>                
                 <t:inputTextarea binding="#{AdminArticle_Backing.body}" id="myTextArea" rows="20" cols="80" style="width: 100%"/>
-                <t:inputText binding="#{AdminArticle_Backing.avatarUrl}"/>
+                Link til forside bilde (bildet må være 120x80 px): <t:inputText binding="#{AdminArticle_Backing.avatarUrl}"/>
                 <p>Tilgjengelige bilder vises i tabellen under, lim inn url fra nadre kolonne</p>                
                 <table>
                     <t:dataList value="#{AdminArticle_Backing.article.images}" var="img">
