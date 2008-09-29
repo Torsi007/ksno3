@@ -40,7 +40,8 @@
                                         <tr><td id="menu5" name="menu5" onclick="changeMainMenu('5','../links.jsp')">:: Linker</td></tr>
                                         <tr><td id="menu6" name="menu6" onclick="changeMainMenu('6','../video.jsp')">:: Video</td></tr>
                                         <tr><td id="menu7" name="menu7" onclick="changeMainMenu('7','../pictures.jsp')">:: Bilder</td></tr>
-                                        <tr><td id="menu8" name="menu8"><a href="faces/secureA/CreateArticle.jsp">::Create Article</a></td></tr>                                        
+                                        <tr><td id="menu8" name="menu8"><a href="faces/secureA/AdminArticles.jsp">::Create Article</a></td></tr>                                        
+                                        <tr><td id="menu8" name="menu8"><a href="faces/Login.jsp">::Log in</a></td></tr>                                                                                
                                     </table> 		
                                 </td>    
                             </tr>    

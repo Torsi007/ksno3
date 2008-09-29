@@ -103,29 +103,59 @@
     </managed-bean>  
     <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
+        <from-view-id>/secureA/AdminArticles.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>CreateArticle</from-outcome>
+            <to-view-id>/secureA/CreateArticle.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>    
+    <navigation-rule>
         <from-view-id>/secureA/CreateArticle.jsp</from-view-id>
         <navigation-case>
             <from-action>#{AdminArticle_Backing.createArticle}</from-action>
             <from-outcome>go</from-outcome>
             <to-view-id>/secureA/AddArticleImages.jsp</to-view-id>
         </navigation-case>            
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureA/AdminArticles.jsp</to-view-id>
+        </navigation-case>                    
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/AddArticleImages.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{AdminArticle_Backing.saveArticle}</from-action>            
+            <from-action>#{AdminArticle_Backing.uploadImages}</from-action>            
             <from-outcome>go</from-outcome>
             <to-view-id>/secureA/UpdateArticle.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>     
+        <navigation-case>
+            <from-outcome>go</from-outcome>
+            <to-view-id>/secureA/UpdateArticle.jsp</to-view-id>
+        </navigation-case>     
+        <navigation-case>
+            <from-outcome>nogo</from-outcome>
+            <to-view-id>/secureA/AdminArticles.jsp</to-view-id>
+        </navigation-case>     
     </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureA/UpdateArticle.jsp</from-view-id>
         <navigation-case>
             <from-action>#{AdminArticle_Backing.addArticleBody}</from-action>            
             <from-outcome>go</from-outcome>
-            <to-view-id>/Main.jsp</to-view-id>
+            <to-view-id>/secureA/AdminArticles.jsp</to-view-id>
             <redirect/>
         </navigation-case>            
+        <navigation-case>
+            <from-action>#{AdminArticle_Backing.clearAndGotoImages}</from-action>            
+            <from-outcome>go</from-outcome>
+            <to-view-id>/secureA/AddArticleImages.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>                    
+        <navigation-case>
+            <from-outcome>modify</from-outcome>
+            <to-view-id>/secureA/CreateArticle.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>         
     </navigation-rule>    
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
