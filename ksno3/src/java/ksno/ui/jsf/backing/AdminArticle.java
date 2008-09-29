@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
@@ -34,6 +35,7 @@ public class AdminArticle {
     PersonService personService;
     ImageService imageService;
     private HtmlInputText name;
+    private HtmlInputText avatarUrl;    
     private HtmlInputTextarea intro;    
     private HtmlInputTextarea body;
     private HtmlOutputText upLoadImg1Result;    
@@ -41,8 +43,7 @@ public class AdminArticle {
     private HtmlOutputText upLoadImg3Result;    
     private HtmlOutputText upLoadImg4Result;    
     private HtmlOutputText upLoadImg5Result;
-    private HtmlOutputText upLoadImg6Result;    
-    private UploadedFile upImgAvatar;            
+    private HtmlOutputText upLoadImg6Result;
     private UploadedFile upImg1;    
     private UploadedFile upImg2;    
     private UploadedFile upImg3;    
@@ -50,24 +51,31 @@ public class AdminArticle {
     private UploadedFile upImg5;    
     private UploadedFile upImg6;        
     private Long articleId;
-    private String avatarUrl;
+    private boolean renderAddArticleImagesContinue;
 
-    public String getAvatarUrl() {
+    public boolean isRenderAddArticleImagesContinue() {
+        return renderAddArticleImagesContinue;
+    }
+
+    public void setRenderAddArticleImagesContinue(boolean renderAddArticleImagesContinue) {
+        this.renderAddArticleImagesContinue = renderAddArticleImagesContinue;
+    }
+
+
+    
+    public List getArticles(){
+        return articleService.getArticles();
+    }
+
+    public HtmlInputText getAvatarUrl() {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
+    public void setAvatarUrl(HtmlInputText avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
 
-    public UploadedFile getUpImgAvatar() {
-        return upImgAvatar;
-    }
-
-    public void setUpImgAvatar(UploadedFile upImgAvatar) {
-        this.upImgAvatar = upImgAvatar;
-    }
-    
+  
     public HtmlInputTextarea getIntro() {
         return intro;
     }
@@ -232,15 +240,11 @@ public class AdminArticle {
         Article article = new Article();
         article.setName(name.getValue().toString());
         article.setIntro(intro.getValue().toString());
-        Person currentUser = personService.getPerson("Tor-Erik");
+        String userName = JSFVariableResolver.getHttpServletRequest().getUserPrincipal().getName();
+        Person currentUser = personService.getPerson(userName);
         article.setAuthor(currentUser);
-        String imgName = uploadImage(upImgAvatar, null);
-        Image image = new Image();
-        image.setOwner(currentUser);
-        image.setName(JSFVariableResolver.getStringValue(FacesContext.getCurrentInstance(), "#{prop.image_context_path}") + imgName);
-        image.setArticle(article);
-        setAvatarUrl(image.getName());
         articleId = articleService.newArticle(article);
+        setRenderAddArticleImagesContinue(false);
         if(articleId != null){
             return "go";
         }else{
@@ -249,16 +253,51 @@ public class AdminArticle {
     }    
 
     public String uploadImages() throws IOException {
-        uploadAndPersistImage(upImg1, upLoadImg1Result);
-        uploadAndPersistImage(upImg2, upLoadImg2Result);
-        uploadAndPersistImage(upImg3, upLoadImg3Result);
-        uploadAndPersistImage(upImg4, upLoadImg4Result);
-        uploadAndPersistImage(upImg5, upLoadImg5Result);
-        uploadAndPersistImage(upImg6, upLoadImg6Result);            
-        return "ok";
+        boolean allImagesSucceded = true;
+        if(upImg1 != null){
+            if(!(uploadAndPersistImage(upImg1, upLoadImg1Result))&& allImagesSucceded) {
+                allImagesSucceded = false;
+            }
+        }
+        if(upImg2 != null){
+            if(!(uploadAndPersistImage(upImg2, upLoadImg2Result))&& allImagesSucceded) {
+                allImagesSucceded = false;
+            }
+        }
+        if(upImg3 != null){
+            if(!(uploadAndPersistImage(upImg3, upLoadImg3Result)) && allImagesSucceded) {
+                allImagesSucceded = false;
+            }
+        }
+        if(upImg4 != null){
+            if(!(uploadAndPersistImage(upImg4, upLoadImg4Result))&& allImagesSucceded) {
+                allImagesSucceded = false;
+            }
+        }
+        if(upImg5 != null){
+            if(!(uploadAndPersistImage(upImg5, upLoadImg5Result))&& allImagesSucceded) {
+                allImagesSucceded = false;
+            }
+
+        }
+        if(upImg6 != null){
+            if(!(uploadAndPersistImage(upImg6, upLoadImg6Result))&& allImagesSucceded) {
+                allImagesSucceded = false;
+            }
+
+        }
+        
+        if(allImagesSucceded){
+            return "go";
+        }else{
+            setRenderAddArticleImagesContinue(true);                    
+            return "stay";
+        }
+        
     } 
     
-    private void uploadAndPersistImage(UploadedFile upImg1, HtmlOutputText upLoadImgResult) {
+    private boolean uploadAndPersistImage(UploadedFile upImg1, HtmlOutputText upLoadImgResult) {
+        boolean success = true;
         String imgName = uploadImage(upImg1, upLoadImgResult);
         if(imgName != null){
             String fileName = imgName;
@@ -268,8 +307,11 @@ public class AdminArticle {
                 Logger.getLogger(AdminArticle.class.getName()).log(Level.SEVERE, null, ex);
             }
             upLoadImgResult.setValue("File uploaded succesfull, fila awailable at: " + fileName);
-            persistImage(imgName, upLoadImgResult);
+            success = persistImage(imgName, upLoadImgResult);
+        }else{
+            success = false;
         }
+        return success;
     }   
     
     private String uploadImage(UploadedFile file, HtmlOutputText result){
@@ -277,14 +319,14 @@ public class AdminArticle {
         try{
             InputStream stream = file.getInputStream();
             String fromFullFileName = file.getName();
-            if(upImg1.getContentType().indexOf("jpeg") == -1){
+            if(file.getContentType().indexOf("jpeg") == -1){
                 throw new Exception("Uppload failed, only jpeg images are allowed, this file attempted uploaded was of type " + upImg1.getContentType());
             }
             String toPath = JSFVariableResolver.getStringValue(FacesContext.getCurrentInstance(),"#{prop.image_repo}");
             String fileName = fromFullFileName.substring(fromFullFileName.lastIndexOf("\\")+1);
             String uniqueFileName = getUniqueFileName(toPath, fileName, "");  
             String toFullFileName = toPath + uniqueFileName;
-            long size = upImg1.getSize();
+            long size = file.getSize();
             byte[] buffer = new byte[(int) size];
             stream.read(buffer, 0, (int) size);
             stream.close();
@@ -312,7 +354,8 @@ public class AdminArticle {
         }
     }    
 
-    private void persistImage(String imgName, HtmlOutputText result) {
+    private boolean persistImage(String imgName, HtmlOutputText result) {
+        boolean success = true;
         try{
             Image image = new Image();
             Person currentUser = personService.getPerson("Tor-Erik");
@@ -321,8 +364,10 @@ public class AdminArticle {
             image.setArticle(getArticle());
             Long l = imageService.newImage(image);
         }catch(Exception e){
+            success = false;
             result.setValue("Unable to store image metdata in database. The image is stored on server but you will not be able to access it. Please contact administrator. " + e.getMessage());
         }
+        return success;
     }    
     
     public String saveArticle(){
@@ -340,6 +385,11 @@ public class AdminArticle {
         Article article = getArticle();
         String bdy = body.getValue().toString();
         article.setBody(bdy.replaceAll("\"", "'"));
+        article.setAvatarUrl(avatarUrl.getValue().toString());
+        if(article.getAvatarUrl() == null || "".equals(article.getAvatarUrl())){
+            article.setAvatarUrl("/resources/img/logos/ksno.gif");
+        }
+        setRenderAddArticleImagesContinue(false);
         try{
             articleService.updateArticle(article);
         }catch (Exception ex){
@@ -347,5 +397,15 @@ public class AdminArticle {
             returnString = "nogo";
         }
         return returnString;
-    }    
+    } 
+    
+    public String clearAndGotoImages(){
+        getUpLoadImg1Result().setValue(null);
+        getUpLoadImg2Result().setValue(null);
+        getUpLoadImg3Result().setValue(null);
+        getUpLoadImg4Result().setValue(null);
+        getUpLoadImg5Result().setValue(null);
+        getUpLoadImg6Result().setValue(null);        
+        return "go";
+    }
 }

@@ -30,4 +30,13 @@ public class Current {
     public List getArticles() {
         return articleService.getArticles();
     }
+    
+    public boolean isHaveArticles(){
+        List result = articleService.getArticles();
+        if(result != null && !result.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

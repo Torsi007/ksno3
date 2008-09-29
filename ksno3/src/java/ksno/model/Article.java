@@ -19,11 +19,20 @@ public class Article implements Serializable {
     private int version;
     private String name;
     private String body;
-    private String intro;    
+    private String intro; 
+    private String avatarUrl;
     private Date createdDate;
     private Date lastUpdatedDate;
     private Set images = new HashSet();
     private Person author;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 
     public Long getId() {
         return id;
