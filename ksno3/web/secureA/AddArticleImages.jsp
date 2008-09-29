@@ -26,9 +26,11 @@
                     <tr><td><t:inputFileUpload id="imgUpload4" value="#{AdminArticle_Backing.upImg4}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg4Result}"/></td></tr>
                     <tr><td><t:inputFileUpload id="imgUpload5" value="#{AdminArticle_Backing.upImg5}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg5Result}"/></td></tr>
                     <tr><td><t:inputFileUpload id="imgUpload6" value="#{AdminArticle_Backing.upImg6}" size="20" /></td><td><t:outputText binding="#{AdminArticle_Backing.upLoadImg6Result}"/></td></tr>                
-                    <tr><td colspan="2"><h:commandButton value="Load the files" action="#{AdminArticle_Backing.uploadImages}" /></td></tr>
-                    <tr><td colspan="2"><h:commandButton value="Gå videre" action="#{AdminArticle_Backing.saveArticle}"/></td></tr>
-                </table>                
+                    <tr><td colspan="2"><h:commandButton value="Fortsett" action="#{AdminArticle_Backing.uploadImages}" /></td></tr>
+                    <tr><td colspan="2"><h:outputText rendered="#{AdminArticle_Backing.renderAddArticleImagesContinue}" value="Noen av filene ble ikke lastet (se meldinger over), Trykk 'Gå videre' om du vil ignorere dette, eller forsøk en gang til."/></td></tr>                    
+                    <tr><td colspan="2"><h:commandButton value="Gå videre" rendered="#{AdminArticle_Backing.renderAddArticleImagesContinue}" action="go"/></td></tr>
+                    <tr><td colspan="2"><h:commandButton value="Avbryt" rendered="#{AdminArticle_Backing.renderAddArticleImagesContinue}" action="nogo"/></td></tr>                    
+                </table>
             </h:form>        
         </f:view>
     </body>

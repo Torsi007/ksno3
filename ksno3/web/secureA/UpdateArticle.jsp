@@ -55,12 +55,15 @@
                 <p>Feltet nedenfor er en forholdsvis rik editor, skriv in og formatter etter eget ønske.</p>                
                 <p>Tilgjengelige bilder vises i tabellen under...</p>                
                 <t:inputTextarea binding="#{AdminArticle_Backing.body}" id="myTextArea" rows="20" cols="80" style="width: 100%"/>
+                <t:inputText binding="#{AdminArticle_Backing.avatarUrl}"/>
                 <p>Tilgjengelige bilder vises i tabellen under, lim inn url fra nadre kolonne</p>                
                 <table>
                     <t:dataList value="#{AdminArticle_Backing.article.images}" var="img">
                         <tr><td><t:graphicImage url="#{img.name}" height="80"/></td><td><t:outputText value="#{img.name}"/></td></tr>
                     </t:dataList>                    
                 </table>
+                <h:commandButton value="Legg til flere bilder" action="#{AdminArticle_Backing.clearAndGotoImages}" />
+                <h:commandButton value="Endre intro" action="Modify" />                
                 <h:commandButton value="Fullfør" action="#{AdminArticle_Backing.addArticleBody}" />                                                                
             </h:form>        
         </f:view>

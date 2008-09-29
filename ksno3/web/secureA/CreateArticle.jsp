@@ -68,8 +68,6 @@
                             <t:inputTextarea required="true" binding="#{AdminArticle_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
                     </tr>                    
-                    <tr>
-                        <td colspan="3"><t:inputFileUpload id="imgAvatar" value="#{AdminArticle_Backing.upImgAvatar}" size="20" /></td>
                    <tr>
                         <td>Ekstra forfattere</td>
                         <td>
@@ -86,6 +84,7 @@
                     </tr>                                        
                 </table>
                 <h:commandButton value="Gå videre" action="#{AdminArticle_Backing.createArticle}" />                                                
+                <h:commandButton value="Avbryt" action="Cancel" />                                                                
             </h:form>        
         </f:view>
     </body>
