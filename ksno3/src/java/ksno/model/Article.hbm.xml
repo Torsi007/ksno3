@@ -8,12 +8,12 @@
     <version column="VERSION" name="version"/>
     <property column="NAME" name="name" type="string"/>
     <property column="BODY" name="body" type="string"/>
-    <property column="INTRO" name="intro" type="string"/>    
-    <property column="AVATAR_URL" name="avatarUrl" type="string"/>        
+    <property column="INTRO" name="intro" type="string"/>
+    <property column="AVATAR_URL" name="avatarUrl" type="string"/>
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
-    <many-to-one class="Person" column="AUTHOR_ID" name="author" not-null="true" cascade="none"/>
-    <set name="images" table="IMAGE" cascade="save-update" inverse="true">
+    <many-to-one cascade="none" class="Person" column="AUTHOR_ID" name="author" not-null="true"/>
+    <set cascade="save-update" inverse="true" name="images" table="IMAGE">
       <key column="ARTICLE_ID"/>
       <one-to-many class="Image"/>
     </set>
