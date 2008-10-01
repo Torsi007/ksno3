@@ -49,14 +49,14 @@
     </head>
     <body>
         <f:view>
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <h1>Ny artikkel</h1>
                 <p>Du er i ferd med å opprette en ny artikkel</p>
                 <table>
                     <tr>
                         <td>Navn</td>
                         <td>
-                            <t:inputText id="it1" required="true" binding="#{AdminArticle_Backing.name}"/>                        
+                            <t:inputText id="it1" required="true" binding="#{ArticleCreate_Backing.name}" />                        
                         </td>
                         <td/>
                     </tr>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <t:inputTextarea required="true" binding="#{AdminArticle_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
+                            <t:inputTextarea required="true" binding="#{ArticleCreate_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
                     </tr>                    
                    <tr>
@@ -81,9 +81,14 @@
                             Trenger noen checkboxer her for å kunne sette kategorier, eks Utsyr : Reise : Sport info : Teknikk osv...                        
                         </td>
                         <td>Du vil automatisk bli satt opp som en av forfatterene</td>
-                    </tr>                                        
+                    </tr>
+                    <tr>
+                        <td>Forsidebilde (120x80px)</td>                        
+                        <td><t:inputFileUpload id="avatarUpload1" required="true" value="#{ArticleCreate_Backing.upAvatar}" size="20" /></td>
+                        <td><t:outputText binding="#{ArticleCreate_Backing.upAvatarResult}"/></td>
+                    </tr>
                 </table>
-                <h:commandButton value="Gå videre" action="#{AdminArticle_Backing.createArticle}" />                                                
+                <h:commandButton value="Gå videre" action="#{ArticleCreate_Backing.createArticle}" />                                                
                 <h:commandButton value="Avbryt" action="Cancel" />                                                                
             </h:form>        
         </f:view>

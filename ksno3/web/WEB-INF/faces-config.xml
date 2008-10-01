@@ -85,9 +85,18 @@
         </managed-property>        
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>AdminArticle_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.AdminArticle</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-name>ArticlesMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticlesMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+    </managed-bean>  
+    <managed-bean>
+        <managed-bean-name>ArticleCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticleCreate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
@@ -95,68 +104,74 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
+        </managed-property>        
+    </managed-bean>      
+    <managed-bean>
+        <managed-bean-name>ArticleImagesUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticleImagesUpdate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
         </managed-property>
         <managed-property>
-            <property-name>imageService</property-name>
-            <value>#{ImageService}</value>
-        </managed-property>         
-    </managed-bean>  
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>        
+    </managed-bean>     
+    <managed-bean>
+        <managed-bean-name>ArticleUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticleUpdate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+    </managed-bean>     
     <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
-        <from-view-id>/secureA/AdminArticles.jsp</from-view-id>
+        <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>CreateArticle</from-outcome>
-            <to-view-id>/secureA/CreateArticle.jsp</to-view-id>
+            <from-outcome>articleCreate</from-outcome>
+            <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule>    
-    <navigation-rule>
-        <from-view-id>/secureA/CreateArticle.jsp</from-view-id>
-        <navigation-case>
-            <from-action>#{AdminArticle_Backing.createArticle}</from-action>
-            <from-outcome>go</from-outcome>
-            <to-view-id>/secureA/AddArticleImages.jsp</to-view-id>
-        </navigation-case>            
-        <navigation-case>
-            <from-outcome>Cancel</from-outcome>
-            <to-view-id>/secureA/AdminArticles.jsp</to-view-id>
-        </navigation-case>                    
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/secureA/AddArticleImages.jsp</from-view-id>
+        <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{AdminArticle_Backing.uploadImages}</from-action>            
-            <from-outcome>go</from-outcome>
-            <to-view-id>/secureA/UpdateArticle.jsp</to-view-id>
-        </navigation-case>     
-        <navigation-case>
-            <from-outcome>go</from-outcome>
-            <to-view-id>/secureA/UpdateArticle.jsp</to-view-id>
-        </navigation-case>     
-        <navigation-case>
-            <from-outcome>nogo</from-outcome>
-            <to-view-id>/secureA/AdminArticles.jsp</to-view-id>
-        </navigation-case>     
+            <from-outcome>articleImagesUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
+        </navigation-case>            
     </navigation-rule>    
     <navigation-rule>
-        <from-view-id>/secureA/UpdateArticle.jsp</from-view-id>
+        <from-view-id>/secureA/ArticleImagesUpdate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{AdminArticle_Backing.addArticleBody}</from-action>            
-            <from-outcome>go</from-outcome>
-            <to-view-id>/secureA/AdminArticles.jsp</to-view-id>
-            <redirect/>
+            <from-outcome>articleUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
         </navigation-case>            
-        <navigation-case>
-            <from-action>#{AdminArticle_Backing.clearAndGotoImages}</from-action>            
-            <from-outcome>go</from-outcome>
-            <to-view-id>/secureA/AddArticleImages.jsp</to-view-id>
-            <redirect/>
-        </navigation-case>                    
-        <navigation-case>
-            <from-outcome>modify</from-outcome>
-            <to-view-id>/secureA/CreateArticle.jsp</to-view-id>
-            <redirect/>
-        </navigation-case>         
     </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>articleImagesUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>      
+    <navigation-rule>
+        <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>articleCreate</from-outcome>
+            <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>          
+    <navigation-rule>
+        <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>articlesMaintain</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule> 
+
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
         <managed-bean-class>ksno3.SessionBean1</managed-bean-class>
