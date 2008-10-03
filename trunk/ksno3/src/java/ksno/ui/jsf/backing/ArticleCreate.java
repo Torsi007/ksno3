@@ -111,7 +111,20 @@ public class ArticleCreate {
         return returnVal;
     }   
     
-  
+    public String createIntro(){
+        String returnVal = "articlesMaintain";
+        try{
+            this.createArticle();
+            JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanArticleModify);
+            
+        }catch(Exception e){
+            Logger.getLogger(ArticleCreate.class.getName()).log(Level.SEVERE,"Unable to create article", e);
+            returnVal = "no";
+        }
+        return returnVal;
+    }   
+
+    
     
         
     

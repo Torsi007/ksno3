@@ -223,6 +223,11 @@ public class ArticleImagesUpdate {
         }
         return returnString;
     }
+    
+    public String cancel(){
+        JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanArticleModify);
+        return "cancel";
+    }
   
 
 }

@@ -38,7 +38,12 @@ public class ArticleDaoImpl implements ArticleDao {
     public void updateArticle(Article article) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        session.saveOrUpdate(article);
+        try{
+            session.saveOrUpdate(article);
+        }catch(Exception e){
+            session.merge(article);
+        }
+        
         session.getTransaction().commit();
     }
 
