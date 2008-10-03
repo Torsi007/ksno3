@@ -62,7 +62,7 @@
                     </t:dataList>                    
                 </table>
                 <h:commandButton value="Legg til flere bilder" action="articleImagesUpdate" />
-                <h:commandButton value="Endre intro" action="articleCreate" />                
+                <h:commandButton value="Endre intro" action="articleMasterUpdate" />                
                 <h:commandButton value="Fullfør" action="#{ArticleUpdate_Backing.saveArticle}" />                                                                
             </h:form>        
         </f:view>

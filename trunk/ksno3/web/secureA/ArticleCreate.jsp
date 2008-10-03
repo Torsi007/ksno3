@@ -89,6 +89,7 @@
                     </tr>
                 </table>
                 <h:commandButton value="Gå videre" action="#{ArticleCreate_Backing.createArticle}" />                                                
+                <h:commandButton value="Lagre og avslutt" action="#{ArticleCreate_Backing.createIntro}" />                                                                
                 <h:commandButton value="Avbryt" action="Cancel" />                                                                
             </h:form>        
         </f:view>
