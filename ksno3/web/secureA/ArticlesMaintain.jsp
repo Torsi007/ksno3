@@ -27,7 +27,7 @@
     <body>
         <f:view>
             <h:form>
-                <h:dataTable id="dt1" value="#{ArticlesMaintain_Backing.articles}" var="item" first="0" width="100%">
+                <h:dataTable id="dt1" value="#{ArticlesMaintain_Backing.articles}" binding="#{ArticlesMaintain_Backing.data}" var="item" first="0" width="100%">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Name" />

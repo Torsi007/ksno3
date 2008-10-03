@@ -128,27 +128,66 @@
             <value>#{ArticleService}</value>
         </managed-property>
     </managed-bean>     
+    <managed-bean>
+        <managed-bean-name>ArticleMasterUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticleMasterUpdate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+    </managed-bean>         
     <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
         <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>articleCreate</from-outcome>
             <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
+        </navigation-case>    
+        <navigation-case>
+            <from-action>#{ArticlesMaintain_Backing.selectEditArticle}</from-action>
+            <from-outcome>articleMasterUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{ArticleMasterUpdate_Backing.updateArticle}</from-action>
+            <from-outcome>articleUpd</from-outcome>
+            <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
         </navigation-case>            
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
         <navigation-case>
+            <from-action>#{ArticleCreate_Backing.createArticle}</from-action>                        
             <from-outcome>articleImagesUpdate</from-outcome>
             <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
         </navigation-case>            
+        <navigation-case>
+            <from-action>#{ArticleCreate_Backing.createIntro}</from-action>            
+            <from-outcome>articlesMaintain</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>         
     </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureA/ArticleImagesUpdate.jsp</from-view-id>
         <navigation-case>
+            <from-action>#{ArticleImagesUpdate_Backing.cancel}</from-action>                                    
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-action>#{ArticleImagesUpdate_Backing.update}</from-action>                        
             <from-outcome>articleUpdate</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
         </navigation-case>            
+        <navigation-case>
+            <from-action>#{ArticleImagesUpdate_Backing.uploadImages}</from-action>                        
+            <from-outcome>articleUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
+        </navigation-case>                    
     </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
@@ -160,13 +199,14 @@
     <navigation-rule>
         <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>articleCreate</from-outcome>
-            <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
+            <from-outcome>articleMasterUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
         </navigation-case>            
     </navigation-rule>          
     <navigation-rule>
         <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
+            <from-action>#{ArticleUpdate_Backing.saveArticle}</from-action>                                    
             <from-outcome>articlesMaintain</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
         </navigation-case>            
