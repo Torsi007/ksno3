@@ -42,6 +42,7 @@ public class ArticleUpdate {
             String bdy = body.getValue().toString();
             article.setBody(bdy.replaceAll("\"", "'"));
             articleService.updateArticle(article);        
+            JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanArticleModify);            
         }catch(Exception ex){
             returnvalue = "nogo";
         }

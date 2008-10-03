@@ -7,7 +7,9 @@ package ksno.ui.jsf.backing;
 
 import java.util.List;
 import javax.faces.component.UIData;
+import ksno.model.Article;
 import ksno.service.ArticleService;
+import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 
 /**
@@ -45,6 +47,12 @@ public class ArticlesMaintain {
     
     public List getArticles(){
         return articleService.getArticles();
+    }
+    
+    public String selectEditArticle(){
+       Article articleModify = (Article)this.getData().getRowData();
+       JSFUtil.getSessionMap().put(JSFUtil.sessionBeanArticleModify, articleModify);
+        return "articleMasterUpdate";
     }
     
     
