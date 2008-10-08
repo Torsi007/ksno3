@@ -13,7 +13,7 @@ import org.hibernate.cfg.*;
  * @author halsnehauge
  */
 public class HibernateUtil {
-    
+    //Hva skjer?
     private static final SessionFactory sessionFactory;
     static{
         try{
