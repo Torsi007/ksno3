@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class discriminator-value="E" name="Event" table="EVENT">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <discriminator column="EVENT_TYPE" type="string"/>
+    <version column="VERSION" name="version"/>
+    <property column="START_DATE" name="startDate" type="date"/>
+    <property column="END_DATE" name="endDate" type="date"/>
+    <property column="COMMENT" name="comment" type="string"/>
+    <subclass discriminator-value="BC" name="BeginnerCourse">
+      <property column="MAX_SIZE" name="maxSize" type="integer"/>
+    </subclass>
+  </class>
+</hibernate-mapping>
