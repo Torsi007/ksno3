@@ -10,6 +10,7 @@
     <property column="START_DATE" name="startDate" type="date"/>
     <property column="END_DATE" name="endDate" type="date"/>
     <property column="COMMENT" name="comment" type="string"/>
+    <property column="LOCATION" name="location" type="string"/>    
     <subclass discriminator-value="BC" name="BeginnerCourse">
       <property column="MAX_SIZE" name="maxSize" type="integer"/>
     </subclass>

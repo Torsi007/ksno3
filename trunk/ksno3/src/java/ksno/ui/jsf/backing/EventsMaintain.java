@@ -7,24 +7,24 @@ package ksno.ui.jsf.backing;
 
 import java.util.List;
 import javax.faces.component.UIData;
-import ksno.service.CourseService;
+import ksno.service.EventService;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 
 /**
  *
  * @author halsnehauge
  */
-public class CoursesMaintain {
-    CourseService courseService;
+public class EventsMaintain {
+    EventService eventService;
     private HtmlInputText name;
     private UIData data;
 
-    public CourseService getCourseService() {
-        return courseService;
+    public EventService getEventService() {
+        return eventService;
     }
 
-    public void setCourseService(CourseService courseService) {
-        this.courseService = courseService;
+    public void setEventService(EventService eventService) {
+        this.eventService = eventService;
     }
 
     public UIData getData() {
@@ -43,8 +43,8 @@ public class CoursesMaintain {
         this.name = name;
     }
     
-    public List getCourses(){
-        return courseService.getCourses();
+    public List getEvents(){
+        return eventService.getEvents();
     }
 
 }
