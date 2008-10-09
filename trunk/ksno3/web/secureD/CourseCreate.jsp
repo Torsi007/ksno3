@@ -25,7 +25,7 @@
                     <tr>
                         <td>Start Dato</td>
                         <td>
-                            <t:inputText required="true" binding="#{CourseCreate_Backing.startDate}">   
+                            <t:inputText required="true" binding="#{BeginnerCourseCreate_Backing.startDate}">   
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </t:inputText>
                         </td>
@@ -34,7 +34,7 @@
                     <tr>
                         <td>Slutt Dato</td>
                         <td>
-                            <t:inputText required="true" binding="#{CourseCreate_Backing.endDate}">   
+                            <t:inputText required="true" binding="#{BeginnerCourseCreate_Backing.endDate}">   
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </t:inputText>
                         </td>
@@ -43,19 +43,19 @@
                     <tr>
                         <td>Kommentar</td>
                         <td>
-                            <t:inputText id="it1" binding="#{CourseCreate_Backing.comment}" />                        
+                            <t:inputText id="it1" binding="#{BeginnerCourseCreate_Backing.comment}" />                        
                         </td>
                         <td/>
                     </tr> 
                     <tr>
                         <td>Ant plasser</td>
                         <td>
-                            <t:inputText id="it2" required="true" binding="#{CourseCreate_Backing.maxSize}" />                        
+                            <t:inputText id="it2" required="true" binding="#{BeginnerCourseCreate_Backing.maxSize}" />                        
                         </td>
                         <td/>
                     </tr>                     
                 </table>
-                <h:commandButton value="Lagre og avslutt" action="#{CourseCreate_Backing.createCourse}" />                                                                
+                <h:commandButton value="Lagre og avslutt" action="#{BeginnerCourseCreate_Backing.createCourse}" />                                                                
                 <h:commandButton value="Avbryt" action="Cancel" />                                                                
             </h:form>        
         </f:view>
