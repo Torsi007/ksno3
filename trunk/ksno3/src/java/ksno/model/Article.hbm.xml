@@ -13,7 +13,7 @@
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
     <many-to-one cascade="none" class="Person" column="AUTHOR_ID" name="author" not-null="true"/>
-    <set cascade="save-update" inverse="true" name="images" table="IMAGE" lazy="false">
+    <set cascade="save-update" inverse="true" lazy="false" name="images" table="IMAGE">
       <key column="ARTICLE_ID"/>
       <one-to-many class="Image"/>
     </set>
