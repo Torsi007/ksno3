@@ -9,26 +9,26 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ksno.model.BeginnerCourse;
-import ksno.service.CourseService;
+import ksno.service.EventService;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 
 /**
  *
  * @author halsnehauge
  */
-public class CourseCreate {
+public class BeginnerCourseCreate {
     private HtmlInputText startDate;
     private HtmlInputText endDate;    
     private HtmlInputText comment;
     private HtmlInputText maxSize;
-    private CourseService courseService;
+    private EventService eventService;
 
-    public CourseService getCourseService() {
-        return courseService;
+    public EventService getCourseService() {
+        return eventService;
     }
 
-    public void setCourseService(CourseService courseService) {
-        this.courseService = courseService;
+    public void setEventService(EventService eventService) {
+        this.eventService = eventService;
     }
 
     public HtmlInputText getComment() {
@@ -71,9 +71,10 @@ public class CourseCreate {
             course.setEndDate((Date)endDate.getValue());            
             course.setComment(comment.getValue().toString());                        
             course.setMaxSize(Integer.parseInt(maxSize.getValue().toString()));                                    
-            courseService.newCourse(course);
+            course.setLocation("Haukeli");
+            eventService.newEvent(course);
         }catch(Exception e){
-            Logger.getLogger(CourseCreate.class.getName()).log(Level.SEVERE,"Unable to create article", e);
+            Logger.getLogger(BeginnerCourseCreate.class.getName()).log(Level.SEVERE,"Unable to create article", e);
             returnVal = "no";
         }
         return returnVal;

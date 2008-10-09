@@ -10,7 +10,7 @@ public class Event {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1B29D68D-CC29-B4DC-9877-B3A8F8FA4D2A]
     // </editor-fold> 
-    private int id;
+    private long id;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D5594D09-8401-5BBE-DFC0-88C993FAC6B9]
@@ -31,6 +31,16 @@ public class Event {
     // #[regen=yes,id=DCE.9BE10A03-ABC2-E968-2893-6D3D71F91F52]
     // </editor-fold> 
     private String comment;
+    
+    private String location;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.47AFC16E-17CC-A5DD-661F-183C4AEF4F73]
@@ -69,14 +79,14 @@ public class Event {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.09C584B1-B1FD-091C-A98A-BF354E691FB8]
     // </editor-fold> 
-    public int getId () {
+    public long getId () {
         return id;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B2AF8A77-92E4-0895-6D93-3E82AE1D2FFA]
     // </editor-fold> 
-    public void setId (int val) {
+    public void setId (long val) {
         this.id = val;
     }
 
