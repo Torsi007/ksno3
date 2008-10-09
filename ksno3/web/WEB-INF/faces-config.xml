@@ -19,8 +19,8 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>      
    <managed-bean>
-        <managed-bean-name>CourseDao</managed-bean-name>
-        <managed-bean-class>ksno.dao.hibernate.CourseDaoImpl</managed-bean-class>
+        <managed-bean-name>EventDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.EventDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>          
    <managed-bean>
@@ -44,12 +44,12 @@
         </managed-property>        
     </managed-bean>    
    <managed-bean>
-        <managed-bean-name>CourseService</managed-bean-name>
-        <managed-bean-class>ksno.service.CourseServiceImpl</managed-bean-class>
+        <managed-bean-name>EventService</managed-bean-name>
+        <managed-bean-class>ksno.service.EventServiceImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
         <managed-property>
-            <property-name>courseDao</property-name>
-            <value>#{CourseDao}</value>
+            <property-name>eventDao</property-name>
+            <value>#{EventDao}</value>
         </managed-property>        
     </managed-bean>        
    <managed-bean>
@@ -152,21 +152,21 @@
         </managed-property>
     </managed-bean>   
     <managed-bean>
-        <managed-bean-name>CoursesMaintain_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.CoursesMaintain</managed-bean-class>
+        <managed-bean-name>EventsMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.EventsMaintain</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>courseService</property-name>
-            <value>#{CourseService}</value>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
         </managed-property>
     </managed-bean>   
     <managed-bean>
-        <managed-bean-name>CourseCreate_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.CourseCreate</managed-bean-class>
+        <managed-bean-name>BeginnerCourseCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.BeginnerCourseCreate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>courseService</property-name>
-            <value>#{CourseService}</value>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
         </managed-property>
     </managed-bean>    
     <!-- ******** Navigation ******************************************************* -->    
@@ -176,16 +176,13 @@
             <from-outcome>articlesMaintain</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule>   
-    <navigation-rule>
-        <from-view-id>/secureA/AdminMain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>coursesMaintain</from-outcome>
-            <to-view-id>/secureD/CoursesMaintain.jsp</to-view-id>
-        </navigation-case>            
-    </navigation-rule> 
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>          
+    </navigation-rule>   
     <navigation-rule>
-        <from-view-id>/secureD/CoursesMaintain.jsp</from-view-id>
+        <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>courseCreate</from-outcome>
             <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
