@@ -14,30 +14,26 @@
     </application>
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
-        <managed-bean-name>PersonDao</managed-bean-name>
-        <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>
-   <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ArticleDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>      
    <managed-bean>
+        <managed-bean-name>CourseDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.CourseDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>          
+   <managed-bean>
         <managed-bean-name>ImageDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ImageDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>   
-   <!-- ******** Service *************************************************** -->
    <managed-bean>
-        <managed-bean-name>PersonService</managed-bean-name>
-        <managed-bean-class>ksno.service.PersonServiceImpl</managed-bean-class>
+        <managed-bean-name>PersonDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-        <managed-property>
-            <property-name>personDao</property-name>
-            <value>#{PersonDao}</value>
-        </managed-property>        
-    </managed-bean> 
+    </managed-bean>    
+   <!-- ******** Service *************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleService</managed-bean-name>
         <managed-bean-class>ksno.service.ArticleServiceImpl</managed-bean-class>
@@ -48,6 +44,15 @@
         </managed-property>        
     </managed-bean>    
    <managed-bean>
+        <managed-bean-name>CourseService</managed-bean-name>
+        <managed-bean-class>ksno.service.CourseServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>courseDao</property-name>
+            <value>#{CourseDao}</value>
+        </managed-property>        
+    </managed-bean>        
+   <managed-bean>
         <managed-bean-name>ImageService</managed-bean-name>
         <managed-bean-class>ksno.service.ImageServiceImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
@@ -56,6 +61,15 @@
             <value>#{ImageDao}</value>
         </managed-property>        
     </managed-bean>       
+   <managed-bean>
+        <managed-bean-name>PersonService</managed-bean-name>
+        <managed-bean-class>ksno.service.PersonServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>personDao</property-name>
+            <value>#{PersonDao}</value>
+        </managed-property>        
+    </managed-bean>     
    <!-- ******** UI ******************************************************* -->    
     <managed-bean>
         <managed-bean-name>Main_Backing</managed-bean-name>
@@ -136,8 +150,47 @@
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
         </managed-property>
-    </managed-bean>         
+    </managed-bean>   
+    <managed-bean>
+        <managed-bean-name>CoursesMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CoursesMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>courseService</property-name>
+            <value>#{CourseService}</value>
+        </managed-property>
+    </managed-bean>   
+    <managed-bean>
+        <managed-bean-name>CourseCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CourseCreate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>courseService</property-name>
+            <value>#{CourseService}</value>
+        </managed-property>
+    </managed-bean>    
     <!-- ******** Navigation ******************************************************* -->    
+    <navigation-rule>
+        <from-view-id>/secureA/AdminMain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>articlesMaintain</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>   
+    <navigation-rule>
+        <from-view-id>/secureA/AdminMain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>coursesMaintain</from-outcome>
+            <to-view-id>/secureD/CoursesMaintain.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/secureD/CoursesMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>courseCreate</from-outcome>
+            <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
+        </navigation-case>    
+    </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
         <navigation-case>

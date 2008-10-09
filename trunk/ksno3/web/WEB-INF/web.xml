@@ -62,24 +62,47 @@
         <welcome-file>faces/Main.jsp</welcome-file>
     </welcome-file-list>
     <security-constraint>
-        <display-name>Example Security Constraint</display-name>
+        <display-name>A realm</display-name>
         <web-resource-collection>
-            <web-resource-name>Protected Area</web-resource-name>
+            <web-resource-name>A realm</web-resource-name>
 	 <!-- Define the context-relative URL(s) to be protected -->
+            <description/>
             <url-pattern>/faces/secureA/*</url-pattern>
 	 <!-- If you list http methods, only those methods are protected -->
-            <http-method>DELETE</http-method>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>PUT</http-method>
+            <http-method>GET</http-method><http-method>PUT</http-method><http-method>POST</http-method><http-method>DELETE</http-method>
+            
+            
+            
         </web-resource-collection>
         <auth-constraint>
          <!-- Anyone with one of the listed roles may access this area -->
-            <role-name>test</role-name>
-        </auth-constraint>
+            <role-name>authuser</role-name>
+            <role-name>admin</role-name>
+            <role-name>internal</role-name>
+            </auth-constraint>
     </security-constraint>
 
     <!-- Default login configuration uses form-based authentication -->
+    <security-constraint>
+        <display-name>D realm</display-name>
+        <web-resource-collection>
+            <web-resource-name>D realm</web-resource-name>
+            <description/>
+            <url-pattern>/faces/secureD/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>internal</role-name>
+            <role-name>admin</role-name>
+            </auth-constraint>
+        </security-constraint>
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>Example Form-Based Authentication Area</realm-name>
@@ -90,6 +113,11 @@
         <role-name>admin</role-name>
     </security-role>
     <security-role>
-        <role-name>test</role-name>
+        <description/>
+        <role-name>internal</role-name>
     </security-role>
-</web-app>
+    <security-role>
+        <description/>
+        <role-name>authuser</role-name>
+    </security-role>
+    </web-app>

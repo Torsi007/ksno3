@@ -27,33 +27,33 @@
     <body>
         <f:view>
             <h:form>
-                <h:dataTable id="dt1" value="#{AdminArticle_Backing.articles}" var="item" first="0" width="100%">
+                <h:dataTable id="dt1" value="#{CoursesMaintain_Backing.courses}" binding="#{CoursesMaintain_Backing.data}" var="item" first="0" width="100%">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Name" />
+                            <h:outputText value="Start dato" />
                         </f:facet> 
-                        <h:outputText value="#{item.name}"></h:outputText>
+                        <h:outputText value="#{item.startDate}"></h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Created date" />
+                            <h:outputText value="Slutt dato" />
                         </f:facet> 
-                        <h:outputText value="#{item.createdDate}"></h:outputText>
+                        <h:outputText value="#{item.endDate}"></h:outputText>
                     </h:column>                    
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Author" />
+                            <h:outputText value="Kommentar" />
                         </f:facet> 
-                        <h:outputText value="#{item.author.firstName} #{item.author.lastName}"></h:outputText>
+                        <h:outputText value="#{item.comment}"></h:outputText>
                     </h:column>                                        
                     <h:column>
-                        <h:commandLink action="#{AdminArticle_Backing.selectEditArticle}">
-                            <h:outputText value="Modify"/>
-                        </h:commandLink>
-                    </h:column>                                                            
-                </h:dataTable>                
-                <h:commandButton value="Lag ny artikkel" action="CreateArticle" /> 
-                <input type="button" value="Tilbake til hovedsiden" onclick="toStartPage()"/>
+                        <f:facet name="header">
+                            <h:outputText value="Ant plasser" />
+                        </f:facet> 
+                        <h:outputText value="#{item.maxSize}"></h:outputText>
+                    </h:column>                                        
+                </h:dataTable>  
+                <h:commandButton value="Opprett nytt kurs" action="courseCreate"/>   
             </h:form>        
         </f:view>
     </body>
