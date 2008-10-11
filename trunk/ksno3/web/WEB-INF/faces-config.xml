@@ -182,12 +182,20 @@
         </navigation-case>          
     </navigation-rule>   
     <navigation-rule>
+        <from-view-id>/secureD/CourseCreate.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>            
+            <from-outcome>eventsMaintain</from-outcome>
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>    
+    </navigation-rule>    
+    <navigation-rule>
         <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>courseCreate</from-outcome>
             <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
         </navigation-case>    
-    </navigation-rule>    
+    </navigation-rule>     
     <navigation-rule>
         <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
         <navigation-case>

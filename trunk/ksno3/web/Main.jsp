@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>        
         <title>Kitesurfing.no</title>
     </head>
-    <body style="background-image : url(resources/img/components/backgrounds/header.jpg);" onLoad="align()" onresize="align()">
+    <body style="background-image : url(resources/img/components/backgrounds/header.jpg);" >
         <f:view>
             <table cellspacing="0" cellpadding="0" class="fullstretch outer" >        
                 <tr><td colspan="100" style="height: 67"/></tr>
@@ -33,14 +33,11 @@
                             <tr>		
                                 <td class="menu" style="background-image: url(resources/img/components/backgrounds/menu_stretch.gif);">			
                                     <table cellpadding="0" cellspacing="0" class="mainMenuElements" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-                                        <tr><td id="menu1" name="menu1" onclick="changeMainMenu('1','../Current.jsp')">:: Aktuelt</td></tr>
-                                        <tr><td id="menu2" name="menu2" onclick="changeMainMenu('2','../about_us.jsp')">:: Om Oss</td></tr>
-                                        <tr><td id="menu3" name="menu3" onclick="changeMainMenu('3','../courses_west.jsp')">:: Kurs - Jæren<input id="anchors3" name="anchors3" type="hidden" value="&lt;a href='../courses_west.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='../courses_west.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='../courses_west.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='../courses_west.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='../courses_west.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='../courses_west.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='../courses_west.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='../courses_west.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='../courses_west.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='../signup.jsp' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
-                                        <tr><td id="menu4" name="menu4" onclick="changeMainMenu('4','../courses_winter.jsp')">:: Kurs - Haukeli<input id="anchors4" name="anchors4" type="hidden" value="&lt;a href='../courses_winter.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='../courses_winter.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='../courses_winter.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='../courses_winter.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='../courses_winter.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='../courses_winter.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='../courses_winter.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='../courses_winter.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='../courses_winter.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='../signup_winter.jsp' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
-                                        <tr><td id="menu5" name="menu5" onclick="changeMainMenu('5','../links.jsp')">:: Linker</td></tr>
-                                        <tr><td id="menu6" name="menu6" onclick="changeMainMenu('6','../video.jsp')">:: Video</td></tr>
-                                        <tr><td id="menu7" name="menu7" onclick="changeMainMenu('7','../pictures.jsp')">:: Bilder</td></tr>
-                                        <tr><td id="menu8" name="menu8"><a href="faces/secureA/AdminMain.jsp">:: Log in</a></td></tr>                                                                                
+                                        <tr><td id="menu1" name="menu1" onclick="changeMainMenu('1')"><a href="faces/Current.jsp" target="contentFrame">:: Aktuelt</a></td></tr>
+                                        <tr><td id="menu2" name="menu2" onclick="changeMainMenu('2')"><a href="about_us.jsp" target="contentFrame">:: Om Oss</a></td></tr>
+                                        <tr><td id="menu3" name="menu3" onclick="changeMainMenu('3')"><a href="courses_west.jsp" target="contentFrame">:: Kurs - Jæren</a><input id="anchors3" name="anchors3" type="hidden" value="&lt;a href='courses_west.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='courses_west.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='courses_west.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='courses_west.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='courses_west.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='courses_west.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='courses_west.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='courses_west.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='courses_west.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='signup_summer.jsp' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
+                                        <tr><td id="menu4" name="menu4" onclick="changeMainMenu('4')"><a href="courses_winter.jsp" target="contentFrame">:: Kurs - Haukeli</a><input id="anchors4" name="anchors4" type="hidden" value="&lt;a href='courses_winter.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='courses_winter.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='courses_winter.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='courses_winter.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='courses_winter.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='courses_winter.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='courses_winter.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='courses_winter.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='courses_winter.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='SignUp.jsp' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
+                                        <tr><td id="menu5" name="menu5"><a href="faces/secureA/AdminMain.jsp">:: Log in</a></td></tr>                                                                                
                                     </table> 		
                                 </td>    
                             </tr>    
@@ -59,13 +56,11 @@
                         </table>
                         <input type="hidden" name="menuId" id="menuId" value="1"/>
                         <input type="hidden" name="subMenuId" id="subMenuId" value="0"/>            
+                        <input type="hidden" name="contentPage" id="contentPage" value="/current.jsp"/>                                    
                     </td>			
                     <td class="contentContainer" >				
                         <table class="fullstretch" cellspacing="0" cellpadding="0" >					
                             <tr>						
-                                <td style="width:1">							
-                                    <iframe class="imageCollection" id="imageCollection" src="../imageBorder.jsp?imageBorder=current" scrolling="no"  frameborder="0"></iframe>						
-                                </td>						
                                 <td>							
                                     <table  cellspacing="0" cellpadding="0" id="contentTable"  class="fullstretch">								
                                         <tr>									
