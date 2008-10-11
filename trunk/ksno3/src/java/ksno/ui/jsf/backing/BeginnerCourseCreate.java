@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import ksno.model.BeginnerCourse;
 import ksno.service.EventService;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -21,6 +22,15 @@ public class BeginnerCourseCreate {
     private HtmlInputText endDate;    
     private HtmlInputText comment;
     private HtmlInputText maxSize;
+    private HtmlSelectOneMenu location;
+
+    public HtmlSelectOneMenu getLocation() {
+        return location;
+    }
+
+    public void setLocation(HtmlSelectOneMenu location) {
+        this.location = location;
+    }
     private EventService eventService;
 
     public EventService getCourseService() {
@@ -64,14 +74,14 @@ public class BeginnerCourseCreate {
     }
     
     public String createCourse(){
-        String returnVal = "coursesMaintain";
+        String returnVal = "eventsMaintain";
         try{
             BeginnerCourse course = new BeginnerCourse();
             course.setStartDate((Date)startDate.getValue());
             course.setEndDate((Date)endDate.getValue());            
             course.setComment(comment.getValue().toString());                        
             course.setMaxSize(Integer.parseInt(maxSize.getValue().toString()));                                    
-            course.setLocation("Haukeli");
+            course.setLocation(location.getValue().toString());
             eventService.newEvent(course);
         }catch(Exception e){
             Logger.getLogger(BeginnerCourseCreate.class.getName()).log(Level.SEVERE,"Unable to create article", e);
