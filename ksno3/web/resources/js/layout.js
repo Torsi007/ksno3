@@ -44,36 +44,6 @@ slideProjector.prototype.run = function(){
 	}
 }
 
-function align()
-{
-	if((navigator.userAgent.indexOf("Opera 6")!=-1)||(navigator.userAgent.indexOf("Opera/6")!=-1))
-		opAlign()
-	else
-	{
-		if(navigator.appName.toLowerCase() ==  'netscape')
-			nnAlign()
- 		if(navigator.appName.toLowerCase() ==  'microsoft internet explorer')
-			ieAlign()
-	}
-}
-
-function nnAlign(){
-	if(window.innerWidth < 550)
-		document.getElementById('imageCollection').style.display = 'none';
-	else
-		document.getElementById('imageCollection').style.display = '';
-}
-
-function ieAlign(){
-	if(parseInt(document.body.clientWidth) < 550)
-		document.getElementById('imageCollection').style.display = 'none';
-	else
-		document.getElementById('imageCollection').style.display = 'block';
-}
-
-function opAlign(){
-}
-
 function expandCollapse(e){
 	var currentRow = event.srcElement.parentElement.parentElement;
 	var contentCell = currentRow.cells.length - 2

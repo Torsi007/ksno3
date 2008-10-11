@@ -44,18 +44,7 @@ function setThisContent(url) {
 
 function changeMainMenu(id, url) {
 	var oldId = document.getElementById("menuId").value;
-	var pre;
-	if(oldId.length > 1){
-		pre = 'subMenuElement';
-	}
-	else{
-		pre = 'menu'
-	}
 
-	var oldLinkId = pre +  oldId;
-	var currentLinkId = 'menu' +  id;
-	document.getElementById(oldLinkId).style.fontStyle = 'normal';
-	document.getElementById(currentLinkId).style.fontStyle = 'italic';
 	var temp = url.substring(3,url.length);
 	var imageBorder = temp.substring(0,temp.length - 4);
 	document.getElementById("imageBorder").value = imageBorder;
@@ -74,65 +63,13 @@ function changeMainMenu(id, url) {
 	document.getElementById("menuId").value = id;
 	document.all.actionForm.menuId.value = id;
 	setAnchors(id);
-	l = '../imageBorder.jsp?imageBorder=' + imageBorder;
-
-	document.getElementById("imageCollection").src = l;
 
 	if(id=='5'){
-		if(document.all.actionForm.language.value=='NO'){
-			document.getElementById("contentHeading").innerHTML = "<div class='links'><h1>Linker</h1><p>Nedenfor følger et utvalg kite linker.</p><p>Send oss en mail om du har en link du mener bør legges til</p><a href='mailto:info@kitesurfing.no' style='color:orange; font-size:10'>info@kitesurfing.no</a><hr/></div>";
-		}
-		if(document.all.actionForm.language.value=='EN'){
-			document.getElementById("contentHeading").innerHTML = "<div class='links'><h1>Links</h1><p>Beneath you will find a selection of kite links.</p><p>If you want to add one of your own, please send us a mail</p><a href='mailto:info@kitesurfing.no' style='color:orange; font-size:10'>info@kitesurfing.no</a><hr/></div>";
-		}
-	}
-
-	if(id=='6'){
-		if(document.all.actionForm.language.value=='NO'){
-			document.getElementById("contentHeading").innerHTML = "<div class='videoHeading'><table cellpadding='0' cellspacing='0'><tr><td><h1>Video</h1>Nedenfor følger et utvalg kite videoer.<br>Send oss en mail om du har en video du mener bør legges til <a style='font-size:11' href='mailto:info@kitesurfing.no' style='color:orange'>info@kitesurfing.no</a></td><td><img onclick=openWindow(375,430,'../videoinfo.jsp') src='../images/components/icons/info.jpg'/></td><td><p>Les mer om avspilling, nedlasting av media spillere osv her!</p></td></tr></table><table cellpadding='0' cellspacing='0' class='heading'><tr><td style='width:100%'>Tittel:</td><td style='width:60' nowrap='true'>Dato:</td><td style='width:60' nowrap='true'>Stor:</td><td style='width:84' nowrap='true'>Liten:</td></tr></table><hr/></div>";
-		}
-		if(document.all.actionForm.language.value=='EN'){
-			document.getElementById("contentHeading").innerHTML = "<div class='videoHeading'><table cellpadding='0' cellspacing='0'><tr><td><h1>Video</h1>Below you will find a selection of kite videoes.<br>Please e-mail us if you know about a video you think we should add <a style='font-size:11' href='mailto:info@kitesurfing.no' style='color:orange'>info@kitesurfing.no</a></td><td><img onclick=openWindow(375,430,'../videoinfo.jsp') src='../images/components/icons/info.jpg'/></td><td><p>For more info on how to play the files, media players etc...!</p></td></tr></table><table cellpadding='0' cellspacing='0' class='heading'><tr><td style='width:100%'>Title:</td><td style='width:60' nowrap='true'>Date:</td><td style='width:60' nowrap='true'>Big:</td><td style='width:84' nowrap='true'>Small:</td></tr></table><hr/></div>";
-		}
-	}
-
-	if(id=='7'){
-		if(document.all.actionForm.language.value=='NO'){
-			document.getElementById("contentHeading").innerHTML = "<div class='videoHeading'><table cellpadding='0' cellspacing='0'><tr><td><h1>Bilder</h1>Nedenfor følger et utvalg bilder fra ulike situasjoner.<br>Send oss en mail om du har et bilde du mener bør legges til <a style='font-size:11' href='mailto:info@kitesurfing.no' style='color:orange'>info@kitesurfing.no</a></td><td></tr></table><hr/></div>";
-		}
-		if(document.all.actionForm.language.value=='EN'){
-			document.getElementById("contentHeading").innerHTML = "<div class='videoHeading'><table cellpadding='0' cellspacing='0'><tr><td><h1>Pictures</h1>Below are pictures from different situations at Jæren.<br>Send us an email if you want us to add a picture here. <a style='font-size:11' href='mailto:info@kitesurfing.no' style='color:orange'>info@kitesurfing.no</a></td><td></tr></table><hr/></div>";
-		}
+        	document.getElementById("contentHeading").innerHTML = "<div class='links'><h1>Linker</h1><p>Nedenfor fï¿½lger et utvalg kite linker.</p><p>Send oss en mail om du har en link du mener bï¿½r legges til</p><a href='mailto:info@kitesurfing.no' style='color:orange; font-size:10'>info@kitesurfing.no</a><hr/></div>";
 	}
 
 }
 
-function changeSubMenu(id, url) {
-	var oldId = document.getElementById("menuId").value;
-	var pre;
-	if(oldId.length > 1){
-		pre = 'subMenuElement';
-	}
-	else{
-		pre = 'menu'
-	}
-
-	var oldLinkId = pre +  oldId;
-	var currentLinkId = 'subMenuElement' +  id;
-	document.getElementById(oldLinkId).style.fontStyle = 'normal';
-	document.getElementById(currentLinkId).style.fontStyle = 'italic';
-	document.getElementById("menuId").value = id;
-	var temp = url.substring(3,url.length);
-	document.getElementById("contentPage").value = temp;
-	var imageBorder = temp.substring(0,temp.length - 4);
-	document.getElementById("imageBorder").value = imageBorder;
-	document.getElementById("subMenuId").value = id;
-	l = '../imageBorder.jsp?imageBorder=' + imageBorder;
-	document.getElementById("imageCollection").src = l;
-	//change content
-	setContent(url);
-	setAnchors(id);
-}
 
 function setAnchors(id) {
 	if (id.length == 1){ //temporary fix. does not support more than one level in menu

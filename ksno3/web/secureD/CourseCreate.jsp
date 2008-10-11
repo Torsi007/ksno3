@@ -53,7 +53,18 @@
                             <t:inputText id="it2" required="true" binding="#{BeginnerCourseCreate_Backing.maxSize}" />                        
                         </td>
                         <td/>
-                    </tr>                     
+                    </tr>  
+                    <tr>
+                        <td>Lokasjon</td>
+                        <td>
+                            <t:selectOneMenu required="true" binding="#{BeginnerCourseCreate_Backing.location}" >
+                                <f:selectItem itemLabel="Haukeli" itemValue="Haukeli"/>
+                                <f:selectItem itemLabel="Jæren" itemValue="Jæren"/>                                
+                            </t:selectOneMenu>    
+                        </td>
+                        <td/>
+                    </tr>  
+                    
                 </table>
                 <h:commandButton value="Lagre og avslutt" action="#{BeginnerCourseCreate_Backing.createCourse}" />                                                                
                 <h:commandButton value="Avbryt" action="Cancel" />                                                                
