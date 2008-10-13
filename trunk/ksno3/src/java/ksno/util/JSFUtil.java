@@ -8,10 +8,14 @@ package ksno.util;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import ksno.model.LabelValuePair;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
@@ -43,6 +47,15 @@ public class JSFUtil {
 
     public static Map<String,Object> getSessionMap() {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+    }
+
+    public static SelectItem[] toSelectItemArray(List events) {
+        SelectItem[] selectItems = new SelectItem[events.size()];
+        for(int i = 0; i< events.size(); i++){
+            LabelValuePair kvp = (LabelValuePair)events.get(i);
+            selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+        }
+        return selectItems;
     }
     
     public static String uploadImage(UploadedFile file, HtmlOutputText result){

@@ -5,7 +5,7 @@ import java.util.Date;
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.254E3AF7-857C-4BC5-588C-36B4ED1C5698]
 // </editor-fold> 
-public class Event {
+public class Event implements LabelValuePair {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1B29D68D-CC29-B4DC-9877-B3A8F8FA4D2A]
@@ -116,6 +116,14 @@ public class Event {
     // </editor-fold> 
     public void setVersion (int val) {
         this.version = val;
+    }
+
+    public String getLabel() {
+        return startDate.toString() + " - " + endDate.toString();
+    }
+
+    public String getValue() {
+        return Long.toString(id);
     }
 
 }
