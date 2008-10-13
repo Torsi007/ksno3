@@ -169,6 +169,15 @@
             <value>#{EventService}</value>
         </managed-property>
     </managed-bean>    
+    <managed-bean>
+        <managed-bean-name>SignUp_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SignUp</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+    </managed-bean>      
     <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
