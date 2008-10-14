@@ -13,5 +13,6 @@
     <mapping resource="ksno/model/Article.hbm.xml"/>
     <mapping class="" file="" jar="" package="" resource="ksno/model/Image.hbm.xml"/>
     <mapping resource="ksno/model/Event.hbm.xml"/>
+    <mapping resource="ksno/model/Participation.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -15,4 +15,5 @@ import ksno.model.Event;
 public interface EventDao {
       public Long newEvent(Event event);
       public List getEvents();
+      public Event getEvent(Long id);      
 }

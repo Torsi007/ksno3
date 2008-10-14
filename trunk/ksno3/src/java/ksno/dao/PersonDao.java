@@ -13,11 +13,11 @@ import ksno.model.Person;
  * @author Tor-Erik
  */
 public interface PersonDao {
-    
-    
 
       public List getPersons();
       
       public Person getPerson(String userName);
+      
+      public Long newPerson(Person person);
     
 }

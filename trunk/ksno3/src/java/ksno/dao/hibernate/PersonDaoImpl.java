@@ -41,5 +41,14 @@ public class PersonDaoImpl implements PersonDao {
         q.setParameter("pun",userId);
         return (Person)q.list().get(0);
     }
+    
+    public Long newPerson(Person person){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Long l = (Long)session.save(person);
+        session.getTransaction().commit();
+        return l;
+        
+    }    
 
 }

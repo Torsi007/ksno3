@@ -40,5 +40,9 @@ public class PersonServiceImpl implements PersonService {
         return personDao.getPersons();
         
     }
+    
+    public Long newPerson(Person person){
+        return personDao.newPerson(person);
+    }
 
 }

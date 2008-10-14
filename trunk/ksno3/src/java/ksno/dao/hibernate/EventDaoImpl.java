@@ -33,5 +33,12 @@ public class EventDaoImpl implements EventDao {
         q=session.createQuery("from Event e order by e.startDate desc");
         return q.list();
     }
+
+    public Event getEvent(Long id) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Event event = (Event)session.get(Event.class,id);
+        return event;
+    }
     
 }

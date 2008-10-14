@@ -3,6 +3,8 @@ package ksno.model;
 import java.util.Date; 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+import java.util.HashSet;
+import java.util.Set;
 // #[regen=yes,id=DCE.254E3AF7-857C-4BC5-588C-36B4ED1C5698]
 // </editor-fold> 
 public class Event implements LabelValuePair {
@@ -10,7 +12,7 @@ public class Event implements LabelValuePair {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1B29D68D-CC29-B4DC-9877-B3A8F8FA4D2A]
     // </editor-fold> 
-    private long id;
+    private Long id;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D5594D09-8401-5BBE-DFC0-88C993FAC6B9]
@@ -33,6 +35,27 @@ public class Event implements LabelValuePair {
     private String comment;
     
     private String location;
+    
+    private Set participations = new HashSet();
+
+    public Set getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(Set participations) {
+        this.participations = participations;
+    }
+    
+    public void addParticipation(Participation participation){
+        if(participation == null){
+            throw new IllegalArgumentException("Participation to be added is null");
+        }
+        if(participation.getEvent() != null){
+            participation.getEvent().getParticipations().remove(participation);
+        }
+        participation.setEvent(this);
+        participations.add(participation);
+    }    
 
     public String getLocation() {
         return location;
@@ -79,14 +102,14 @@ public class Event implements LabelValuePair {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.09C584B1-B1FD-091C-A98A-BF354E691FB8]
     // </editor-fold> 
-    public long getId () {
+    public Long getId () {
         return id;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B2AF8A77-92E4-0895-6D93-3E82AE1D2FFA]
     // </editor-fold> 
-    public void setId (long val) {
+    public void setId (Long val) {
         this.id = val;
     }
 

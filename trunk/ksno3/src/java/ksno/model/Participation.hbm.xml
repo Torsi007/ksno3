@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Participation" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="PARTICIPATION">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <many-to-one cascade="save-update,persist" class="Person" column="PARTICIPANT_ID" name="participant"/>    
+    <many-to-one cascade="save-update,persist" class="Event" column="EVENT_ID" name="event"/>        
+    <property column="SHOE_SIZE" name="shoeSize" type="integer"/>
+    <property column="HELMET_SIZE" name="helmetSize" type="string"/>
+    <property column="WETSUIT_SIZE" name="wetSuitSize" type="string"/>
+    <property column="PRICE" name="price" type="integer"/>
+    <property column="CREATED_DATE" name="createdDate" type="date"/>    
+  </class>
+</hibernate-mapping>
