@@ -6,6 +6,9 @@
 package ksno.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -19,10 +22,31 @@ public class Person implements Serializable {
     private int phone;
     private Long id;
     private int version;
+    private Date dateOfBirth;
     String lastName;
     String firstName;
     String userName;
     String passWord;
+    private Set participations = new HashSet();
+
+    public Set getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(Set participations) {
+        this.participations = participations;
+    }    
+    
+    public void addParticipation(Participation participation){
+        if(participation == null){
+            throw new IllegalArgumentException("Participation to be added is null");
+        }
+        if(participation.getParticipant() != null){
+            participation.getParticipant().getParticipations().remove(participation);
+        }
+        participation.setParticipant(this);
+        participations.add(participation);
+    }
 
     public Person(){};
 
@@ -31,6 +55,14 @@ public class Person implements Serializable {
         this.firstName = firstName;
         this.userName = userName;
         this.passWord = passWord;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
     
     public String getPassWord() {
@@ -75,6 +107,44 @@ public class Person implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person other = (Person) obj;
+        if (this.dateOfBirth != other.dateOfBirth && (this.dateOfBirth == null || !this.dateOfBirth.equals(other.dateOfBirth))) {
+            return false;
+        }
+        if (this.lastName != other.lastName && (this.lastName == null || !this.lastName.equals(other.lastName))) {
+            return false;
+        }
+        if (this.firstName != other.firstName && (this.firstName == null || !this.firstName.equals(other.firstName))) {
+            return false;
+        }
+        if (this.userName != other.userName && (this.userName == null || !this.userName.equals(other.userName))) {
+            return false;
+        }
+        if (this.passWord != other.passWord && (this.passWord == null || !this.passWord.equals(other.passWord))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + (this.dateOfBirth != null ? this.dateOfBirth.hashCode() : 0);
+        hash = 97 * hash + (this.lastName != null ? this.lastName.hashCode() : 0);
+        hash = 97 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
+        hash = 97 * hash + (this.userName != null ? this.userName.hashCode() : 0);
+        hash = 97 * hash + (this.passWord != null ? this.passWord.hashCode() : 0);
+        return hash;
     }
 
     public void setId(Long studentId) {

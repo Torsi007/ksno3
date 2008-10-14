@@ -1,5 +1,7 @@
 package ksno.model;
 
+import java.util.Date;
+
 
 
 public class Participation {
@@ -12,6 +14,53 @@ public class Participation {
     private String helmetSize;
     private String wetSuitSize;
     private int price;
+    private Date createdDate;
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Participation other = (Participation) obj;
+        if (this.shoeSize != other.shoeSize) {
+            return false;
+        }
+        if (this.helmetSize != other.helmetSize && (this.helmetSize == null || !this.helmetSize.equals(other.helmetSize))) {
+            return false;
+        }
+        if (this.wetSuitSize != other.wetSuitSize && (this.wetSuitSize == null || !this.wetSuitSize.equals(other.wetSuitSize))) {
+            return false;
+        }
+        if (this.price != other.price) {
+            return false;
+        }
+        if (this.createdDate != other.createdDate && (this.createdDate == null || !this.createdDate.equals(other.createdDate))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + this.shoeSize;
+        hash = 83 * hash + (this.helmetSize != null ? this.helmetSize.hashCode() : 0);
+        hash = 83 * hash + (this.wetSuitSize != null ? this.wetSuitSize.hashCode() : 0);
+        hash = 83 * hash + this.price;
+        hash = 83 * hash + (this.createdDate != null ? this.createdDate.hashCode() : 0);
+        return hash;
+    }
 
     public Long getId() {
         return id;

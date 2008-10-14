@@ -32,6 +32,10 @@ public class EventServiceImpl implements EventService {
     public Long newEvent(Event event) {
         return eventDao.newEvent(event);
     }
+    
+    public Event getEvent(Long id) {
+        return eventDao.getEvent(id);
+    }    
 
         
 
