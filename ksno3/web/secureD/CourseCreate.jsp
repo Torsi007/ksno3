@@ -18,7 +18,7 @@
     </head>
     <body>
         <f:view>
-            <h:form enctype="multipart/form-data">
+            <h:form>
                 <h1>Nytt kurs</h1>
                 <p>Du er i ferd med å opprette et nytt kurs</p>
                 <table>
