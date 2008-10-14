@@ -6,6 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
+
 
 
 <html>
@@ -64,108 +68,104 @@
         
     </head>
     <body class="signup">
-        <form name="signupForm" id="signupForm" method="post" action="insertstudent.jsp">
-            <table>	
-                <tr>		
-                    <td>Fornavn</td>		
-                    <td colspan="2">
-                        <input type="text" name="firstName" id="firstName"/>
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Etternavn</td>		
-                    <td colspan="2">
-                        <input type="text" name="lastName" id="lastName"/>
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Adresse</td>		
-                    <td colspan="2">
-                        <input type="text" name="address" id="address" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Telefon</td>		
-                    <td colspan="2">
-                        <input type="text" name="phone" id="phone" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Mobil</td>		
-                    <td colspan="2">
-                        <input type="text" name="mobile" id="mobile" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Email</td>		
-                    <td colspan="2">
-                        <input type="text" name="email" id="email" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td colspan="3">
-                        <input type="hidden" name="height" id="height" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Vekt</td>		
-                    <td colspan="2">
-                        <input type="text" name="weight" id="weight" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td colspan="3">
-                        <input type="hidden" name="shoesize" id="shoesize" />
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Kursdato</td>		
-                    <td colspan="2">			
-                        <select name="courseId" id="courseId">
-                            <option value="84"  >						02.01.2009					</option>										
-                            <!--					<option value="84"  >						01.02.2009					</option>					-->														
-                            <option value="85"  >						16.01.2009					</option>										
-                            <!--					<option value="85"  >						01.16.2009					</option>					-->														
-                            <option value="86"  >						06.02.2009					</option>										
-                            <!--					<option value="86"  >						02.06.2009					</option>					-->														
-                            <option value="87"  >						20.02.2009					</option>										
-                            <!--					<option value="87"  >						02.20.2009					</option>					-->														
-                            <option value="88"  >						06.03.2009					</option>										
-                            <!--					<option value="88"  >						03.06.2009					</option>					-->														
-                            <option value="89"  >						20.03.2009					</option>										
-                        <!--					<option value="89"  >						03.20.2009					</option>					-->							</select>		
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Kurstype</td>		
-                    <td colspan="2">			
-                        <select name="courseType" id="courseType">				
-                            <option>2-dagers kurs</option>				
-                            <option>Introduksjonskurs</option>			
-                        </select>		
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td>Jeg ønsker info om kurs på</td>		
-                    <td>			
-                        <select name="language" id="language">				
-                            <option value="NO" selected>Norsk</option>				
-                            <option value="EN" >Engelsk</option>			
-                        </select>		
-                    </td>		
-                    <td>
-                        <input style="width: 96" type="button" onclick="signup()" value="Submit"/>
-                    </td>	
-                </tr>	
-                <tr>		
-                    <td colspan="3">			
-                        <select name="wetty" id="wetty" style="width:50;display:none">				
-                            <option>Ja</option>				
-                            <option>Nei</option>			
-                        </select>		
-                    </td>	
-                </tr>
-            </table>
-        </form>
+        <f:view>
+            <h:form>
+                <table>	
+                    <tr>		
+                        <td>Email</td>		
+                        <td colspan="2">
+                            <t:inputText required="true" binding="#{SignUp_Backing.email}"/>
+                        </td>	
+                    </tr>	
+                    <tr>		
+                        <td>Passord</td>		
+                        <td colspan="2">
+                            <t:inputSecret required="true" binding="#{SignUp_Backing.password}"/>
+                        </td>	
+                    </tr>	                    
+                    <tr>		
+                        <td>Fornavn</td>		
+                        <td colspan="2">
+                            <t:inputText required="true" binding="#{SignUp_Backing.firstName}"/>
+                        </td>	
+                    </tr>	
+                    <tr>		
+                        <td>Etternavn</td>		
+                        <td colspan="2">
+                            <t:inputText required="true" binding="#{SignUp_Backing.lastName}"/>
+                        </td>	
+                    </tr>	
+                    <tr>		
+                        <td>Telefon</td>		
+                        <td colspan="2">
+                            <t:inputText required="true" binding="#{SignUp_Backing.phone}"/>
+                        </td>	
+                    </tr>
+                    <tr>		
+                        <td>Fødselsdato (yyyy-MM-dd)</td>		
+                        <td colspan="2">
+                            <t:inputText required="true"  binding="#{SignUp_Backing.dob}" >                  
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </t:inputText>
+                        </td>	
+                    </tr>
+                    <tr>		
+                        <td>Våtdrakt størrelse</td>		                    
+                        <td colspan="2">
+                            <t:selectOneMenu required="true" binding="#{SignUp_Backing.wetSuitSize}" >
+                                <f:selectItem itemLabel="XXL" itemValue="XXL"/>
+                                <f:selectItem itemLabel="XL" itemValue="XL"/>
+                                <f:selectItem itemLabel="L" itemValue="L"/>
+                                <f:selectItem itemLabel="M" itemValue="M"/>
+                                <f:selectItem itemLabel="S" itemValue="S"/>
+                                <f:selectItem itemLabel="XS" itemValue="XS"/>
+                            </t:selectOneMenu>  
+                        </td>	
+                    </tr>	
+                    <tr>		
+                        <td>Sko størrelse</td>		                    
+                        <td colspan="2">
+                            <t:selectOneMenu required="true" binding="#{SignUp_Backing.shoeSize}" >
+                                <f:selectItem itemLabel="45" itemValue="45"/>
+                                <f:selectItem itemLabel="44" itemValue="44"/>
+                                <f:selectItem itemLabel="43" itemValue="43"/>
+                                <f:selectItem itemLabel="42" itemValue="42"/>
+                                <f:selectItem itemLabel="41" itemValue="41"/>
+                                <f:selectItem itemLabel="40" itemValue="40"/>
+                                <f:selectItem itemLabel="39" itemValue="39"/>                                
+                                <f:selectItem itemLabel="38" itemValue="38"/>
+                                <f:selectItem itemLabel="37" itemValue="37"/>
+                                <f:selectItem itemLabel="36" itemValue="36"/>
+                                <f:selectItem itemLabel="35" itemValue="35"/>                                
+                            </t:selectOneMenu>  
+                        </td>	
+                    </tr>	
+                    <tr>		
+                    <tr>		
+                        <td>Hjelm størrelse</td>		                    
+                        <td colspan="2">
+                            <t:selectOneMenu required="true" binding="#{SignUp_Backing.helmetSize}" >
+                                <f:selectItem itemLabel="XXL" itemValue="XXL"/>
+                                <f:selectItem itemLabel="XL" itemValue="XL"/>
+                                <f:selectItem itemLabel="L" itemValue="L"/>
+                                <f:selectItem itemLabel="M" itemValue="M"/>
+                                <f:selectItem itemLabel="S" itemValue="S"/>
+                                <f:selectItem itemLabel="XS" itemValue="XS"/>
+                            </t:selectOneMenu>  
+                        </td>	
+                    </tr>                    
+                    <tr>		
+                        <td>Kursdato</td>		
+                        <td colspan="2">			
+                            <t:selectOneMenu required="true" value="#{SignUp_Backing.courseId}" >
+                                <f:selectItems value="#{SignUp_Backing.coursesSelectItems}"/>
+                            </t:selectOneMenu>  
+                        </td>	
+                    </tr>	
+                </table>  
+                <h:commandButton value="Meld meg på!" action="#{SignUp_Backing.signOn}" />                                                                
+                <h:commandButton value="Avbryt" action="Cancel" />
+            </h:form> 
+        </f:view>       
     </body>
 </html>

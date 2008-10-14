@@ -33,6 +33,11 @@
         <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>    
+   <managed-bean>
+        <managed-bean-name>ParticipationDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.ParticipationDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>    
    <!-- ******** Service *************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleService</managed-bean-name>
@@ -69,7 +74,16 @@
             <property-name>personDao</property-name>
             <value>#{PersonDao}</value>
         </managed-property>        
-    </managed-bean>     
+    </managed-bean>    
+   <managed-bean>
+        <managed-bean-name>ParticipationService</managed-bean-name>
+        <managed-bean-class>ksno.service.ParticipationServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>participationDao</property-name>
+            <value>#{ParticipationDao}</value>
+        </managed-property>        
+    </managed-bean>      
    <!-- ******** UI ******************************************************* -->    
     <managed-bean>
         <managed-bean-name>Main_Backing</managed-bean-name>
@@ -177,6 +191,14 @@
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>      
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
+        </managed-property>          
     </managed-bean>      
     <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
