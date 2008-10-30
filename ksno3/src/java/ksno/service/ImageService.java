@@ -5,7 +5,10 @@
 
 package ksno.service;
 
+import java.io.InputStream;
+import java.util.HashMap;
 import ksno.model.Image;
+import ksno.util.ImageSize;
 
 /**
  *
@@ -13,5 +16,6 @@ import ksno.model.Image;
  */
 public interface ImageService {
         public Long newImage(Image image);
+        public HashMap<ImageSize,String> uploadImage(InputStream stream, String userName) throws Exception;
 
 }
