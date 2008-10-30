@@ -5,6 +5,25 @@
         <param-value>client</param-value>
     </context-param>
  
+    <context-param>
+        <description>Used to identify application for picasaWeb</description>
+        <param-name>applicationName</param-name>
+        <param-value>kitesurfingHauge-kitesurfingNo-1</param-value>
+    </context-param>
+    <context-param>
+        <description>User name picasaWeb</description>
+        <param-name>picasaWeb.userName</param-name>
+        <param-value>info@kitesurfing.no</param-value>
+    </context-param>
+    <context-param>
+        <description>Picasa Web password</description>
+        <param-name>picasaWeb.passWord</param-name>
+        <param-value>ksno4732</param-value>
+    </context-param>
+    <context-param>
+        <param-name>picasaWeb.baseUrl</param-name>
+        <param-value>http://picasaweb.google.com/data/feed/api/user/kitesurfing.no</param-value>
+    </context-param>
     <filter>
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
