@@ -9,6 +9,7 @@ import java.util.List;
 import javax.faces.component.UIData;
 import ksno.model.Article;
 import ksno.service.ArticleService;
+import ksno.service.ImageService;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 
@@ -17,7 +18,16 @@ import org.apache.myfaces.component.html.ext.HtmlInputText;
  * @author halsnehauge
  */
 public class ArticlesMaintain {
-    ArticleService articleService;
+    private ArticleService articleService;
+    private ImageService imageService;
+
+    public ImageService getImageService() {
+        return imageService;
+    }
+
+    public void setImageService(ImageService imageService) {
+        this.imageService = imageService;
+    }
     private HtmlInputText name;
     private UIData data;
 
@@ -50,9 +60,15 @@ public class ArticlesMaintain {
     }
     
     public String selectEditArticle(){
+        
        Article articleModify = (Article)this.getData().getRowData();
        JSFUtil.getSessionMap().put(JSFUtil.sessionBeanArticleModify, articleModify);
         return "articleMasterUpdate";
+    }
+    
+    
+    public String picasaTest(){    
+        return "test";
     }
     
     

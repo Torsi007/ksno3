@@ -5,17 +5,16 @@
 
 package ksno.ui.jsf.backing;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ksno.model.Article;
 import ksno.model.Image;
 import ksno.model.Person;
 import ksno.service.ArticleService;
+import ksno.service.ImageService;
 import ksno.service.PersonService;
+import ksno.util.ImageSize;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
@@ -33,6 +32,16 @@ public class ArticleCreate {
     private UploadedFile upAvatar;
     ArticleService articleService;
     PersonService personService;
+    ImageService imageService;
+
+    public ImageService getImageService() {
+        return imageService;
+    }
+
+    public void setImageService(ImageService imageService) {
+        this.imageService = imageService;
+    }
+    
 
     public UploadedFile getUpAvatar() {
         return upAvatar;
@@ -91,13 +100,14 @@ public class ArticleCreate {
             String userName = JSFUtil.getRequest().getUserPrincipal().getName();
             Person currentUser = personService.getPerson(userName);
             article.setAuthor(currentUser);
-            
-            String imgName = JSFUtil.uploadImage(upAvatar,upAvatarResult);
+
+            HashMap<ImageSize,String> imageSize = imageService.uploadImage(upAvatar.getInputStream(), userName);
             Image image = new Image();
             image.setOwner(currentUser);
-            image.setName(imgName);
+            image.setName(imageSize.get(ImageSize.MAX));
+            
 
-            article.setAvatarUrl(imgName);
+            article.setAvatarUrl(imageSize.get(ImageSize.MIN));
             
             article.addImage(image);
             

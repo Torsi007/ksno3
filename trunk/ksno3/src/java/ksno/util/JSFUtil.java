@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.faces.application.Application;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import ksno.model.LabelValuePair;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
@@ -39,6 +41,10 @@ public class JSFUtil {
         Application application = fc.getApplication();
         returnVal = (Object) application.evaluateExpressionGet(fc, ELexpression, clazz);          
         return returnVal;
+    }
+    
+    public static ExternalContext getServletContext(){
+        return FacesContext.getCurrentInstance().getExternalContext();
     }
     
     public static HttpServletRequest getRequest(){

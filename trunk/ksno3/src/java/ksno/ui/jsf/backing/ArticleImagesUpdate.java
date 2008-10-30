@@ -5,13 +5,23 @@
 
 package ksno.ui.jsf.backing;
 
+import com.google.gdata.client.photos.PicasawebService;
+import com.google.gdata.data.photos.AlbumEntry;
+import com.google.gdata.util.ServiceException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ksno.model.Article;
 import ksno.model.Image;
 import ksno.model.Person;
 import ksno.service.ArticleService;
+import ksno.service.ImageService;
 import ksno.service.PersonService;
+import ksno.util.ImageSize;
 import ksno.util.JSFUtil;
+import ksno.util.PicasawebClient;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
@@ -36,6 +46,15 @@ public class ArticleImagesUpdate {
     private UploadedFile upImg5;    
     private UploadedFile upImg6;        
     private boolean renderContinuePanel;
+    ImageService imageService;
+
+    public ImageService getImageService() {
+        return imageService;
+    }
+
+    public void setImageService(ImageService imageService) {
+        this.imageService = imageService;
+    }    
 
     public PersonService getPersonService() {
         return personService;
@@ -168,6 +187,9 @@ public class ArticleImagesUpdate {
     
     public String uploadImages() throws IOException {
         int numberOfFailedUploads = 0;
+        
+
+        
         Article article = (Article)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanArticleModify);
         numberOfFailedUploads += uploadCreateAndAddImgToArticle(article,upImg1, upLoadImg1Result);
         numberOfFailedUploads += uploadCreateAndAddImgToArticle(article,upImg2, upLoadImg2Result);
@@ -200,8 +222,16 @@ public class ArticleImagesUpdate {
     }    
     
     private Image uploadAndCreateImage(UploadedFile upImg, HtmlOutputText upLoadImgResult) {
-        Image image = new Image();        
-        String imgName = JSFUtil.uploadImage(upImg, upLoadImgResult);
+        Image image = new Image(); 
+        String userName = JSFUtil.getRequest().getUserPrincipal().getName();
+        HashMap<ImageSize, String> imageSize = new HashMap<ImageSize, String>();
+        try {
+            imageSize = imageService.uploadImage(upImg.getInputStream(), userName);
+        } catch (Exception ex) {
+            upLoadImgResult.setValue("File uploaded failed. " + ex.getMessage());
+            Logger.getLogger(ArticleImagesUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String imgName = imageSize.get(ImageSize.MAX);
         if(imgName != null){
             Person currentUser = personService.getPerson(JSFUtil.getRequest().getUserPrincipal().getName());
             image.setOwner(currentUser);
