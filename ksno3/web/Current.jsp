@@ -40,7 +40,7 @@
                                 </h:outputLink> 
                             </td>
                             <td>
-                                <t:graphicImage url="#{article.avatarUrl}" height="80"/>
+                                <t:graphicImage url="#{article.avatarUrl}"/>
                             </td>                            
                         </tr>
                     </t:dataList>

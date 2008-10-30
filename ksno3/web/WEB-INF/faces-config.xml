@@ -120,6 +120,10 @@
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>        
     </managed-bean>  
     <managed-bean>
         <managed-bean-name>ArticleCreate_Backing</managed-bean-name>
@@ -132,7 +136,11 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>        
+        </managed-property>  
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>              
     </managed-bean>      
     <managed-bean>
         <managed-bean-name>ArticleImagesUpdate_Backing</managed-bean-name>
@@ -145,7 +153,11 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>        
+        </managed-property>  
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>         
     </managed-bean>     
     <managed-bean>
         <managed-bean-name>ArticleUpdate_Backing</managed-bean-name>
@@ -237,7 +249,12 @@
             <from-action>#{ArticlesMaintain_Backing.selectEditArticle}</from-action>
             <from-outcome>articleMasterUpdate</from-outcome>
             <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{ArticlesMaintain_Backing.picasaTest}</from-action>
+            <from-outcome>test</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>         
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
