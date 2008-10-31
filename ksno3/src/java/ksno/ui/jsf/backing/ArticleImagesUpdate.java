@@ -5,12 +5,8 @@
 
 package ksno.ui.jsf.backing;
 
-import com.google.gdata.client.photos.PicasawebService;
-import com.google.gdata.data.photos.AlbumEntry;
-import com.google.gdata.util.ServiceException;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ksno.model.Article;
@@ -21,7 +17,6 @@ import ksno.service.ImageService;
 import ksno.service.PersonService;
 import ksno.util.ImageSize;
 import ksno.util.JSFUtil;
-import ksno.util.PicasawebClient;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 

@@ -29,10 +29,24 @@ public class ArticleCreate {
     private HtmlInputText name;
     private HtmlInputTextarea intro; 
     private HtmlOutputText upAvatarResult;
+    private HtmlOutputText errorMsg;   
     private UploadedFile upAvatar;
     ArticleService articleService;
     PersonService personService;
     ImageService imageService;
+
+    public HtmlOutputText getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(HtmlOutputText errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+    
+      
+  private Logger getLogService(){
+      return Logger.getLogger(ArticleCreate.class.getName());
+  }
 
     public ImageService getImageService() {
         return imageService;
@@ -115,7 +129,8 @@ public class ArticleCreate {
             JSFUtil.getSessionMap().put(JSFUtil.sessionBeanArticleModify, article);
             
         }catch(Exception e){
-            Logger.getLogger(ArticleCreate.class.getName()).log(Level.SEVERE,"Unable to create article", e);
+            getLogService().log(Level.SEVERE,"Unable to create article", e);
+            errorMsg.setValue("Artikkelen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
             returnVal = "no";
         }
         return returnVal;
@@ -128,7 +143,8 @@ public class ArticleCreate {
             JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanArticleModify);
             
         }catch(Exception e){
-            Logger.getLogger(ArticleCreate.class.getName()).log(Level.SEVERE,"Unable to create article", e);
+            getLogService().log(Level.SEVERE,"Unable to create article", e);
+            errorMsg.setValue("Artikkelen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
             returnVal = "no";
         }
         return returnVal;
