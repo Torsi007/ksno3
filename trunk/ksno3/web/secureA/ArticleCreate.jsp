@@ -15,6 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ny article</title>
+        <script src="../resources/js/logic.js" type="text/javascript"></script>
         <script src="../resources/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
         <script type="text/javascript">
             tinyMCE.init({
@@ -25,7 +26,7 @@
 
 		// Theme options
 		theme_advanced_buttons1 : "bold,formatselect,|,sub,sup,|,charmap,|,fullscreen",
-		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview",
+		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,blockquote,|,undo,redo,|,link,unlink,cleanup,help,code,|,insertdate,inserttime,preview",
 		theme_advanced_buttons3 : "",
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
@@ -45,18 +46,21 @@
 			staffid : "991234"
 		}
 	});
+        
+
     </script>               
     </head>
     <body>
         <f:view>
-            <h:form enctype="multipart/form-data">
+            <h:form enctype="multipart/form-data" onsubmit="return validate()">
                 <h1>Ny artikkel</h1>
                 <p>Du er i ferd med å opprette en ny artikkel</p>
                 <table>
                     <tr>
                         <td>Navn</td>
-                        <td>
-                            <t:inputText id="it1" required="true" binding="#{ArticleCreate_Backing.name}" />                        
+                        <td required="true">
+                            <t:inputText label="test" id="it1" required="true" binding="#{ArticleCreate_Backing.name}">
+                            </t:inputText>
                         </td>
                         <td/>
                     </tr>
@@ -64,8 +68,8 @@
                         <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
                     </tr>
                     <tr>
-                        <td colspan="3">
-                            <t:inputTextarea required="true" binding="#{ArticleCreate_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
+                        <td colspan="3" required="true">
+                            <t:inputTextarea required="true"  binding="#{ArticleCreate_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
                     </tr>                    
                    <tr>
@@ -83,10 +87,13 @@
                         <td>Du vil automatisk bli satt opp som en av forfatterene</td>
                     </tr>
                     <tr>
-                        <td>Forsidebilde (120x80px)</td>                        
-                        <td><t:inputFileUpload id="avatarUpload1" required="true" value="#{ArticleCreate_Backing.upAvatar}" size="20" /></td>
+                        <td>Forsidebilde (minimum vidde 144px)</td>                        
+                        <td required="true"><t:inputFileUpload id="avatarUpload1" required="true" value="#{ArticleCreate_Backing.upAvatar}" size="20" /></td>
                         <td><t:outputText binding="#{ArticleCreate_Backing.upAvatarResult}"/></td>
                     </tr>
+                    <tr>
+                        <td colspan="3" style="color:red; font-weight: bolder"><t:outputText binding="#{ArticleCreate_Backing.errorMsg}"/></td>                        
+                    </tr>                    
                 </table>
                 <h:commandButton value="Gå videre" action="#{ArticleCreate_Backing.createArticle}" />                                                
                 <h:commandButton value="Lagre og avslutt" action="#{ArticleCreate_Backing.createIntro}" />                                                                
