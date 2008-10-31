@@ -118,3 +118,38 @@ ksnoImgageBorder.prototype.update = function(){
 	}
 }
 
+function validate(){
+    var formElement = event.srcElement;
+    var missingRequired = validateRequiredElements(formElement, "input");
+    if(!missingRequired){
+      missingRequired = validateRequiredElements(formElement, "textarea");    
+    }else{
+        validateRequiredElements(formElement, "textarea");    
+    }
+    if(missingRequired){
+        alert("Elementene merket gult er obligatoriske.");    
+    }
+    return !missingRequired;
+}
+
+
+
+function validateRequiredElements(form, tagName){
+    var missingRequired = false;
+    var formElements = form.getElementsByTagName(tagName);
+    for(var i = 0; i<formElements.length; i++){
+        var formElement = formElements[i];
+        if(formElement.type != "hidden" && formElement.type != "submit"){          
+          if((formElement.required ||formElement.parentElement.required) && (formElement.value == undefined || formElement.value == "")){
+              formElement.style.background = "yellow";                    
+              missingRequired = true;
+          }else{
+              formElement.style.background = "transparent";                    
+          }            
+        }
+    }  
+    return missingRequired;
+}
+
+
+
