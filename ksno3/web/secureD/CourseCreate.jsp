@@ -15,31 +15,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Nytt kurs</title>
+        <script src="../resources/js/logic.js" type="text/javascript"></script>
     </head>
     <body>
         <f:view>
-            <h:form>
+            <h:form onsubmit="return validate()">
                 <h1>Nytt kurs</h1>
                 <p>Du er i ferd med å opprette et nytt kurs</p>
                 <table>
                     <tr>
                         <td>Start Dato</td>
-                        <td>
-                            <t:inputText required="true" binding="#{BeginnerCourseCreate_Backing.startDate}">   
+                        <td required="true">
+                            <t:inputText binding="#{BeginnerCourseCreate_Backing.startDate}">   
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </t:inputText>
                         </td>
-                        <td/>
+                        <td>Format: yyyy-MM-dd</td>
                     </tr>
                     <tr>
                         <td>Slutt Dato</td>
-                        <td>
-                            <t:inputText required="true" binding="#{BeginnerCourseCreate_Backing.endDate}">   
+                        <td required="true">
+                            <t:inputText binding="#{BeginnerCourseCreate_Backing.endDate}">   
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </t:inputText>
                         </td>
-                        <td/>
-                    </tr>                    
+                        <td>Format: yyyy-MM-dd</td>
+                    </tr>  
+                  
                     <tr>
                         <td>Kommentar</td>
                         <td>
@@ -49,15 +51,35 @@
                     </tr> 
                     <tr>
                         <td>Ant plasser</td>
-                        <td>
-                            <t:inputText id="it2" required="true" binding="#{BeginnerCourseCreate_Backing.maxSize}" />                        
+                        <td required="true">
+                            <t:inputText id="it2" binding="#{BeginnerCourseCreate_Backing.maxSize}" />                        
                         </td>
                         <td/>
                     </tr>  
                     <tr>
+                        <td>Åpent kurs</td>
+                        <td>                    
+                            <t:selectBooleanCheckbox binding="#{BeginnerCourseCreate_Backing.open}"/>
+                        </td>
+                        <td/>   
+                    </tr> 
+                    
+                     <tr>
+                        <td>Ansvarlig</td>
+                        <td>
+                            
+                            <t:selectOneMenu value="#{BeginnerCourseCreate_Backing.responsibleId}" >
+                                <f:selectItems value="#{BeginnerCourseCreate_Backing.instructorSelectItems}"/>
+                            </t:selectOneMenu> 
+
+                        </td>
+                        <td/>
+                    </tr>    
+                    
+                    <tr>
                         <td>Lokasjon</td>
                         <td>
-                            <t:selectOneMenu required="true" binding="#{BeginnerCourseCreate_Backing.location}" >
+                            <t:selectOneMenu binding="#{BeginnerCourseCreate_Backing.location}" >
                                 <f:selectItem itemLabel="Haukeli" itemValue="Haukeli"/>
                                 <f:selectItem itemLabel="Jæren" itemValue="Jæren"/>                                
                             </t:selectOneMenu>    
@@ -67,8 +89,11 @@
                     
                 </table>
                 <h:commandButton value="Lagre og avslutt" action="#{BeginnerCourseCreate_Backing.createCourse}" />                                                                
-                <h:commandButton value="Avbryt" action="Cancel" />                                                                
-            </h:form>        
+                <t:outputText binding="#{BeginnerCourseCreate_Backing.errorMsg}"/>
+            </h:form>  
+            <h:form>
+                  <h:commandButton immediate="true" value="Avbryt" action="cancel" /> 
+            </h:form>
         </f:view>
     </body>
 </html>

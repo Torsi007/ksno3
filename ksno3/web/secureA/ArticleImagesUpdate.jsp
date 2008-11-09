@@ -15,12 +15,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create article</title>
+        <script type="text/javascript">
+            function render(){
+                var rh = document.getElementById("form:renderHidden");
+                var hp = document.getElementById("hiddenPanel");
+                if(rh.value == "true"){
+                    hp.style.display = "block";
+                    
+                }else{
+                    hp.style.display = "none";
+                }
+                
+            }
+        </script>
     </head>
-    <body>
+    <body onload="render()">
         <f:view>
-            <h:form enctype="multipart/form-data">
+            <h:form enctype="multipart/form-data" id="form">
                 <h1>Legg til bilder</h1>
-                <span>Bildene vil bli tilgjengelig for deg som artikkelforfatter, og du kan linke de til artikkelen på neste side</span>
                 <table>
                     <tr><td><t:inputFileUpload value="#{ArticleImagesUpdate_Backing.upImg1}" size="20" /></td><td><t:outputText binding="#{ArticleImagesUpdate_Backing.upLoadImg1Result}"/></td></tr>
                     <tr><td><t:inputFileUpload value="#{ArticleImagesUpdate_Backing.upImg2}" size="20" /></td><td><t:outputText binding="#{ArticleImagesUpdate_Backing.upLoadImg2Result}"/></td></tr>
@@ -31,10 +43,11 @@
                     <tr><td><h:commandButton value="Last opp bilder" action="#{ArticleImagesUpdate_Backing.uploadImages}" /></td><td>Trykk også på knappen om du ønsker å gå videre uten å laste opp bilder</td></tr>
                     <tr><td colspan="2"><h:commandButton value="Avbryt" action="#{ArticleImagesUpdate_Backing.cancel}"/></td></tr>
                 </table>
-                <h:panelGroup rendered="#{ArticleImagesUpdate_Backing.renderContinuePanel}">
+                <t:inputHidden value="false" binding="#{ArticleImagesUpdate_Backing.renderHidden}" id="renderHidden"/>
+                <div id="hiddenPanel" style="display:none">
                     <t:outputText binding="#{ArticleImagesUpdate_Backing.uploadFailedText}"/>                    
-                    <h:commandButton value="Gå videre" action="#{ArticleImagesUpdate_Backing.update}"/>
-                </h:panelGroup>                    
+                    <h:commandButton value="Fortsett" action="#{ArticleImagesUpdate_Backing.saveArticle}"/>
+                </div>  
             </h:form>        
         </f:view>
     </body>

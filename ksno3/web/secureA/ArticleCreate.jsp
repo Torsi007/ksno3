@@ -45,14 +45,26 @@
 			username : "Some User",
 			staffid : "991234"
 		}
+                
 	});
         
+        
+        function validate_local(){
+            var textarea = tinyMCE.get(event.srcElement.id + ':myTextArea'); 
+            if ( (textarea.getContent()=="") || (textarea.getContent()==null) ) {
+                    alert("Felt kan ikke være tomt");
+                    textarea.focus();
+                    return false; 
+            }else{
+                return validate();
+            }             
+        }
 
     </script>               
     </head>
     <body>
         <f:view>
-            <h:form enctype="multipart/form-data" onsubmit="return validate()">
+            <h:form enctype="multipart/form-data" onsubmit="return validate_local()">
                 <h1>Ny artikkel</h1>
                 <p>Du er i ferd med å opprette en ny artikkel</p>
                 <table>
@@ -68,8 +80,8 @@
                         <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
                     </tr>
                     <tr>
-                        <td colspan="3" required="true">
-                            <t:inputTextarea required="true"  binding="#{ArticleCreate_Backing.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
+                        <td colspan="3">
+                            <t:inputTextarea required="true"  binding="#{ArticleCreate_Backing.intro}"  id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
                     </tr>                    
                    <tr>
@@ -84,10 +96,10 @@
                         <td>
                             Trenger noen checkboxer her for å kunne sette kategorier, eks Utsyr : Reise : Sport info : Teknikk osv...                        
                         </td>
-                        <td>Du vil automatisk bli satt opp som en av forfatterene</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Forsidebilde (minimum vidde 144px)</td>                        
+                        <td nowrap>Forsidebilde (minimum vidde 144px)</td>                        
                         <td required="true"><t:inputFileUpload id="avatarUpload1" required="true" value="#{ArticleCreate_Backing.upAvatar}" size="20" /></td>
                         <td><t:outputText binding="#{ArticleCreate_Backing.upAvatarResult}"/></td>
                     </tr>
@@ -96,8 +108,10 @@
                     </tr>                    
                 </table>
                 <h:commandButton value="Gå videre" action="#{ArticleCreate_Backing.createArticle}" />                                                
-                <h:commandButton value="Lagre og avslutt" action="#{ArticleCreate_Backing.createIntro}" />                                                                
-                <h:commandButton value="Avbryt" action="Cancel" />                                                                
+                <h:commandButton value="Lagre og avslutt" action="#{ArticleCreate_Backing.createIntro}" />   
+            </h:form>
+            <h:form>
+                <h:commandButton value="Avbryt" action="Cancel" immediate="true" />                                                                
             </h:form>        
         </f:view>
     </body>

@@ -20,7 +20,7 @@
         <f:view>
             <h:form enctype="multipart/form-data">
                 <h2>Welcom to the page administration</h2>
-                <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Maintain article</t:commandLink>
+                <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Maintain articles</t:commandLink>
                 <br/>
                 <t:commandLink enabledOnUserRole="admin,internal" action="coursesMaintain">Maintain courses</t:commandLink>                
             </h:form>        

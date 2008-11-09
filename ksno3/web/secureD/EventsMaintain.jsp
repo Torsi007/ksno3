@@ -39,22 +39,62 @@
                             <h:outputText value="Slutt dato" />
                         </f:facet> 
                         <h:outputText value="#{item.endDate}"></h:outputText>
-                    </h:column>                    
+                    </h:column>   
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Navn" />
+                        </f:facet> 
+                        <h:outputText value="#{item.name}"></h:outputText>
+                    </h:column>    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ansvarlig" />
+                        </f:facet> 
+                        <h:outputText value="#{item.responsible.firstName}"></h:outputText>
+                    </h:column>                      
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Kommentar" />
                         </f:facet> 
                         <h:outputText value="#{item.comment}"></h:outputText>
-                    </h:column>                                        
+                    </h:column>      
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Lokasjon" />
+                        </f:facet> 
+                        <h:outputText value="#{item.location}"></h:outputText>
+                    </h:column>                       
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Ant plasser" />
                         </f:facet> 
                         <h:outputText value="#{item.maxSize}"></h:outputText>
-                    </h:column>                                        
+                    </h:column>       
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Åpent" />
+                        </f:facet> 
+                        <h:selectBooleanCheckbox readonly="true" value="#{item.open}"/>
+                    </h:column> 
+                    <%-- 
+                     <h:column>
+                        <h:commandLink action="#{EventsMaintain_Backing.eventEdit}">
+                            <h:outputText value="Endre"/>
+                        </h:commandLink>
+                    </h:column>  
+                    --%>
+                     <h:column>
+                        <h:commandLink action="#{EventsMaintain_Backing.eventDelete}">
+                            <h:outputText value="Slett"/>
+                        </h:commandLink>
+                    </h:column>                    
                 </h:dataTable>  
                 <h:commandButton value="Opprett nytt kurs" action="courseCreate"/>   
-            </h:form>        
+                <t:outputText styleClass="errorMsg" binding="#{EventsMaintain_Backing.errorMsg}"/>                
+            </h:form>    
+            <h:form>
+                  <h:commandButton immediate="true" value="Avbryt" action="cancel" /> 
+            </h:form>             
         </f:view>
     </body>
 </html>
