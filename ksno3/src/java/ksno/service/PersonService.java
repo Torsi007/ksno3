@@ -5,6 +5,7 @@
 package ksno.service;
 
 import java.util.List;
+import ksno.model.Instructor;
 import ksno.model.Person;
 
 /**
@@ -12,7 +13,10 @@ import ksno.model.Person;
  * @author Tor-Erik
  */
 public interface PersonService {
-    public Person getPerson(int id);
+
+    public List getInstructors();
+    public Instructor getInstructor(Long id);
+    public Person getPerson(Long id);
     public Person getPerson(String userName);    
     public List getPersons();
     public Long newPerson(Person person);

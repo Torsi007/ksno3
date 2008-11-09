@@ -15,5 +15,7 @@ public interface ArticleService {
     public Article getArticle(Long id);
     public Long newArticle(Article article);
     public void updateArticle(Article article);
+    public void deleteArticle(Article article);
     public List getArticles();
+    public List getVisibleArticles();
 }

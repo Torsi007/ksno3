@@ -106,7 +106,7 @@ public class ArticleCreate {
     }
     
     public String createArticle(){
-        String returnVal = "articleImagesUpdate";
+        String returnVal = "success";
         try{
             Article article = new Article();
             article.setName(name.getValue().toString());
@@ -137,11 +137,12 @@ public class ArticleCreate {
     }   
     
     public String createIntro(){
-        String returnVal = "articlesMaintain";
+        String returnVal = "success";
         try{
-            this.createArticle();
-            JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanArticleModify);
-            
+            returnVal = this.createArticle();
+            if(!"no".equals(returnVal)){
+                JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanArticleModify);
+            }
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create article", e);
             errorMsg.setValue("Artikkelen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());

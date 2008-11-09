@@ -5,6 +5,7 @@
 
 package ksno.dao;
 
+import java.util.Date;
 import java.util.List;
 import ksno.model.BeginnerCourse;
 
@@ -17,4 +18,5 @@ public interface CourseDao {
       public Long newCourse(BeginnerCourse course);
       //public void updateArticle(Article article);
       public List getCourses();
+      public List getCourses(Date fromDate, Date toDate, String location);
 }

@@ -18,7 +18,11 @@
       <one-to-many class="Participation"/>
     </set>
     <subclass discriminator-value="I" name="Instructor">
-      <property column="ACC_NUMBER" name="accountNumber" type="integer"/>
+        <property column="ACC_NUMBER" name="accountNumber" type="integer"/>
+        <set cascade="save-update" inverse="true" name="events" table="EVENT">
+          <key column="RESPONSIBLE_ID"/>
+          <one-to-many class="Event"/>
+        </set>   
     </subclass>
   </class>
 </hibernate-mapping>

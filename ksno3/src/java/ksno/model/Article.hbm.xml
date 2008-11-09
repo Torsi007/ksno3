@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="ksno.model">
-  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Article" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="ARTICLE">
+  <class name="Article" optimistic-lock="version" polymorphism="implicit" table="ARTICLE">
     <id column="ID" name="id">
       <generator class="increment"/>
     </id>
@@ -10,6 +10,7 @@
     <property column="BODY" name="body" type="string"/>
     <property column="INTRO" name="intro" type="string"/>
     <property column="AVATAR_URL" name="avatarUrl" type="string"/>
+    <property column="VISIBLE" name="visible" type="boolean"/>
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
     <many-to-one cascade="none" class="Person" column="AUTHOR_ID" name="author" not-null="true"/>

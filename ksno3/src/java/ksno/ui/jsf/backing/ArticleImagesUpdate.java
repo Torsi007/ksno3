@@ -17,6 +17,7 @@ import ksno.service.ImageService;
 import ksno.service.PersonService;
 import ksno.util.ImageSize;
 import ksno.util.JSFUtil;
+import org.apache.myfaces.component.html.ext.HtmlInputHidden;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
@@ -34,13 +35,22 @@ public class ArticleImagesUpdate {
     private HtmlOutputText upLoadImg4Result;    
     private HtmlOutputText upLoadImg5Result;
     private HtmlOutputText upLoadImg6Result;
+    private HtmlInputHidden renderHidden;
+
+    public HtmlInputHidden getRenderHidden() {
+        return renderHidden;
+    }
+
+    public void setRenderHidden(HtmlInputHidden renderHidden) {
+        this.renderHidden = renderHidden;
+    }
+            
     private UploadedFile upImg1;    
     private UploadedFile upImg2;    
     private UploadedFile upImg3;    
     private UploadedFile upImg4;    
     private UploadedFile upImg5;    
     private UploadedFile upImg6;        
-    private boolean renderContinuePanel;
     ImageService imageService;
 
     public ImageService getImageService() {
@@ -65,14 +75,6 @@ public class ArticleImagesUpdate {
 
     public void setArticleService(ArticleService articleService) {
         this.articleService = articleService;
-    }
-
-    public boolean isRenderContinuePanel() {
-        return renderContinuePanel;
-    }
-
-    public void setRenderContinuePanel(boolean renderContinuePanel) {
-        this.renderContinuePanel = renderContinuePanel;
     }
 
     public HtmlOutputText getUploadFailedText() {
@@ -194,10 +196,11 @@ public class ArticleImagesUpdate {
         numberOfFailedUploads += uploadCreateAndAddImgToArticle(article,upImg6, upLoadImg6Result);        
         if(numberOfFailedUploads == 0){
             articleService.updateArticle(article);
+            renderHidden.setValue("false");
             return "articleUpdate";
         }else{
-            setRenderContinuePanel(true);
-            uploadFailedText.setValue(Integer.toString(numberOfFailedUploads) + " failed to load (se meldinger over), Trykk 'Gå videre' om du vil ignorere dette, eller forsøk en gang til.");
+            renderHidden.setValue("true");
+            uploadFailedText.setValue(Integer.toString(numberOfFailedUploads) + " ble ikke lastet opp (se meldinger over), Trykk 'Gå videre' om du vil ignorere dette, eller forsøk en gang til.");
             return "stay";
         }
         
@@ -238,7 +241,7 @@ public class ArticleImagesUpdate {
     }
     
     public String saveArticle(){
-        String returnString = "articlesMaintain";
+        String returnString = "articleUpdate";
         try{
             Article article = (Article)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanArticleModify);
             articleService.updateArticle(article);

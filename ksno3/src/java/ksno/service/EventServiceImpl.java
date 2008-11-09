@@ -5,6 +5,8 @@
 
 package ksno.service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import ksno.dao.EventDao;
 import ksno.model.Event;
@@ -35,7 +37,22 @@ public class EventServiceImpl implements EventService {
     
     public Event getEvent(Long id) {
         return eventDao.getEvent(id);
-    }    
+    }
+
+    public List getBeginnerCourses() {
+        return eventDao.getBeginnerCourses();
+    }
+
+    public List getUpcommingWinterBeginnerCourses() {
+        Calendar oneYearAhead = Calendar.getInstance();
+        oneYearAhead.add(Calendar.YEAR, 1);
+        Date d = new Date(oneYearAhead.getTimeInMillis());
+        return eventDao.getBeginnerCourses(new Date(),d, "Haukeli"); 
+    }
+
+    public void deleteEvent(Event event) {
+        eventDao.deleteEvent(event);
+    }
 
         
 

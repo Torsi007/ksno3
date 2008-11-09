@@ -39,7 +39,7 @@ public class Current {
     }
 
     public List getArticles() {
-        return articleService.getArticles();
+        return articleService.getVisibleArticles();
     }
     
     public boolean isHaveArticles(){

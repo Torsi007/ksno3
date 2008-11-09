@@ -14,7 +14,7 @@ import java.util.Set;
  *
  * @author Tor-Erik
  */
-public class Person implements Serializable {
+public class Person implements Serializable, LabelValuePair {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.96906DA5-CEA1-70A3-8CE9-23D089AC1DF3]
@@ -170,6 +170,12 @@ public class Person implements Serializable {
     public void setPhone (int val) {
         this.phone = val;
     }
-    
 
-}
+    public String getLabel() {
+        return getFirstName() + " " + getLastName();
+    }
+
+    public String getValue() {
+         return Long.toString(id);
+    }
+ }

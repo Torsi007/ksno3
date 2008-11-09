@@ -5,6 +5,7 @@
 
 package ksno.dao.hibernate;
 
+import java.util.Date;
 import java.util.List;
 import ksno.dao.EventDao;
 import ksno.model.Event;
@@ -25,6 +26,13 @@ public class EventDaoImpl implements EventDao {
         session.getTransaction().commit();
         return new Long(-1);
     }
+    
+    public void deleteEvent(Event event) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.delete(event);
+        session.getTransaction().commit();
+    }      
 
     public List getEvents() {
         Query q = null;
@@ -40,5 +48,24 @@ public class EventDaoImpl implements EventDao {
         Event event = (Event)session.get(Event.class,id);
         return event;
     }
+    
+    public List getBeginnerCourses() {
+        Query q = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        q=session.createQuery("from BeginnerCourse bc order by bc.startDate desc");
+        return q.list();
+    }
+    
+    public List getBeginnerCourses(Date fromDate, Date toDate, String location) {
+        Query q = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        q=session.createQuery("from BeginnerCourse bc where bc.location = :loc and bc.startDate between :sd and :ed order by bc.startDate desc");
+        q.setParameter("sd",fromDate);
+        q.setParameter("ed",toDate);
+        q.setParameter("loc",location);        
+        return q.list();
+    }        
     
 }
