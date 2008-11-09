@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : SignUp
     Created on : 07.okt.2008, 20:01:44
@@ -15,8 +16,78 @@
 <html>
     <head>
         <title>JSP Page</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>            
-        <script> 	
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/> 
+        <style type="text/css">
+            #examplecontainer {height:20px; width:300px;  position:relative}
+            #show1up { position:absolute; left:0px; top:0px; clear:both}
+            #cal2Container { display:none; position:absolute; left:5px; top:0px; z-index:1}
+        </style>        
+        <link rel="stylesheet" type="text/css" href="resources/js/yui/build/fonts/fonts-min.css" />
+        <link rel="stylesheet" type="text/css" href="resources/js/yui/build/calendar/assets/skins/sam/calendar.css" />
+        <script type="text/javascript" src="resources/js/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+        <script type="text/javascript" src="resources/js/yui/build/calendar/calendar-min.js"></script>
+        <script type="text/javascript">
+            YAHOO.namespace("ksno.signup.calendar");
+
+            YAHOO.ksno.signup.calendar.init = function() {
+                
+                function handleSelect(type,args,obj) {
+                    var dates = args[0];
+                    var date = dates[0];
+                    var year = date[0], month = date[1], day = date[2];
+                    
+                    if(month < 10){month = "0" + month};
+                    if(day < 10){day = "0" + day};
+
+                    var txtDate1 = document.getElementById("signup:dob");
+                    txtDate1.value = year + "-" + month + "-" + day;
+                    obj.hide();
+                }   
+
+
+  var navConfig = {
+        strings : {
+            month: "Choose Month",
+            year: "Enter Year",
+            submit: "OK",
+            cancel: "Cancel",
+            invalidYear: "Please enter a valid year"
+        },
+        monthFormat: YAHOO.widget.Calendar.SHORT,
+        initialFocus: "year"
+  };
+
+
+
+
+
+                YAHOO.ksno.signup.calendar.cal2 = new YAHOO.widget.Calendar("cal2","cal2Container", {navigator:navConfig} );
+                YAHOO.ksno.signup.calendar.cal2.selectEvent.subscribe(handleSelect, YAHOO.ksno.signup.calendar.cal2, true);
+                YAHOO.ksno.signup.calendar.cal2.render();
+
+                YAHOO.util.Event.addListener("show1up", "click", YAHOO.ksno.signup.calendar.cal2.show, YAHOO.ksno.signup.calendar.cal2, true);
+            }
+            YAHOO.util.Event.onDOMReady(YAHOO.ksno.signup.calendar.init);
+
+
+
+           
+
+
+            function validate(){
+                alert(event.srcElement.id);
+                /*id = src.id;
+               lastColon = id.lastIndexOf(':');
+               if (lastColon == -1) {
+                 basePath = "";
+               } else {
+                    basePath = id.substring(0, lastColon + 1);*/
+                
+                return false;
+               
+                
+            }            
+            
             function signup() 
             {
                 if ( validateInput() ) {
@@ -67,9 +138,9 @@
         </script>
         
     </head>
-    <body class="signup">
+    <body class="signup  yui-skin-sam">
         <f:view>
-            <h:form>
+            <h:form id="signup" onsubmit="return validate()">
                 <table>	
                     <tr>		
                         <td>Email</td>		
@@ -103,11 +174,18 @@
                     </tr>
                     <tr>		
                         <td>Fødselsdato (yyyy-MM-dd)</td>		
-                        <td colspan="2">
-                            <t:inputText required="true"  binding="#{SignUp_Backing.dob}" >                  
+                        <td>
+                            <t:inputText id="dob" required="true"  binding="#{SignUp_Backing.dob}" >                  
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </t:inputText>
                         </td>	
+                        <td>
+                            <div id="examplecontainer">
+                                <img src="../resources/img/components/icons/EN_flag.gif" id="show1up"/>
+                              
+                                <div id="cal2Container"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>		
                         <td>Våtdrakt størrelse</td>		                    

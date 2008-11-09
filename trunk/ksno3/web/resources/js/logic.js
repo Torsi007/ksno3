@@ -37,9 +37,6 @@ function setContent(url) {
 
 function setThisContent(url) {
 	location = url;
-	var temp = url.substring(0,url.length - 4)
-	l = '../imageBorder.jsp?imageBorder=' + temp;
-	window.parent.document.getElementById("imageCollection").src = l;
 }
 
 function changeMainMenu(id) {
@@ -121,18 +118,16 @@ ksnoImgageBorder.prototype.update = function(){
 function validate(){
     var formElement = event.srcElement;
     var missingRequired = validateRequiredElements(formElement, "input");
-    if(!missingRequired){
+    /*if(!missingRequired){
       missingRequired = validateRequiredElements(formElement, "textarea");    
     }else{
         validateRequiredElements(formElement, "textarea");    
-    }
+    }*/
     if(missingRequired){
         alert("Elementene merket gult er obligatoriske.");    
     }
     return !missingRequired;
 }
-
-
 
 function validateRequiredElements(form, tagName){
     var missingRequired = false;
@@ -149,6 +144,24 @@ function validateRequiredElements(form, tagName){
         }
     }  
     return missingRequired;
+}
+
+function getBaseId(srcElem){
+
+      alert(event.srcElement.id);
+      debugger;
+     /*id = src.id;
+     lastColon = id.lastIndexOf(':');
+     if (lastColon == -1) {
+       basePath = "";
+     } else {
+          basePath = id.substring(0, lastColon + 1);*/
+
+      return false;
+               
+                
+    
+    
 }
 
 

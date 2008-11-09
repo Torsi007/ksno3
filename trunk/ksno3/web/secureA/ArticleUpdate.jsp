@@ -54,16 +54,17 @@
                 <p>Gratulerer, du er nå klar til å legge inn tekst og bilder</p>
                 <p>Feltet nedenfor er en forholdsvis rik editor, skriv in og formatter etter eget ønske.</p>                
                 <p>Tilgjengelige bilder vises i tabellen under...</p>                
-                <t:inputTextarea binding="#{ArticleUpdate_Backing.body}" id="myTextArea" rows="20" cols="80" style="width: 100%"/>
+                <t:inputTextarea binding="#{ArticleUpdate_Backing.body}" value="#{ArticleModify.body}" id="myTextArea" rows="20" cols="80" style="width: 100%"/>
                 <p>Tilgjengelige bilder vises i tabellen under, lim inn url fra nadre kolonne</p>                
                 <table>
                     <t:dataList value="#{ArticleModify.images}" var="img">
                         <tr><td><t:graphicImage url="#{img.name}" height="80"/></td><td>..<t:outputText value="#{img.name}"/></td></tr>
                     </t:dataList>                    
                 </table>
-                <h:commandButton value="Legg til flere bilder" action="articleImagesUpdate" />
-                <h:commandButton value="Endre intro" action="articleMasterUpdate" />                
-                <h:commandButton value="Fullfør" action="#{ArticleUpdate_Backing.saveArticle}" />                                                                
+                <h:commandButton value="Legg til flere bilder" action="#{ArticleUpdate_Backing.goToArticleImagesUpdate}"/>
+                <h:commandButton value="Endre intro" action="#{ArticleUpdate_Backing.goToArticleMasterUpdate}"/>                
+                <h:commandButton value="Fullfør" action="#{ArticleUpdate_Backing.saveArticle}" />   
+                <t:outputText binding="#{ArticleUpdate_Backing.errorMsg}"/>
             </h:form>        
         </f:view>
     </body>

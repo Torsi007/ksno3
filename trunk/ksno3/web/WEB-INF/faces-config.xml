@@ -12,6 +12,9 @@
             <var>prop</var>
         </resource-bundle>            
     </application>
+    <lifecycle>
+        <phase-listener>ksno.util.KSNOPhaseListener</phase-listener>
+    </lifecycle>
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
@@ -22,7 +25,7 @@
         <managed-bean-name>EventDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.EventDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>          
+    </managed-bean>   
    <managed-bean>
         <managed-bean-name>ImageDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ImageDaoImpl</managed-bean-class>
@@ -56,7 +59,7 @@
             <property-name>eventDao</property-name>
             <value>#{EventDao}</value>
         </managed-property>        
-    </managed-bean>        
+    </managed-bean>   
    <managed-bean>
         <managed-bean-name>ImageService</managed-bean-name>
         <managed-bean-class>ksno.service.ImageServiceImpl</managed-bean-class>
@@ -176,6 +179,10 @@
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>        
     </managed-bean>   
     <managed-bean>
         <managed-bean-name>EventsMaintain_Backing</managed-bean-name>
@@ -194,6 +201,10 @@
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>        
     </managed-bean>    
     <managed-bean>
         <managed-bean-name>SignUp_Backing</managed-bean-name>
@@ -211,7 +222,16 @@
             <property-name>participationService</property-name>
             <value>#{ParticipationService}</value>
         </managed-property>          
-    </managed-bean>      
+    </managed-bean>     
+    <managed-bean>
+        <managed-bean-name>CoursesWinter_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CoursesWinter</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+    </managed-bean>    
     <!-- ******** Navigation ******************************************************* -->    
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
@@ -230,14 +250,22 @@
             <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>            
             <from-outcome>eventsMaintain</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>         
     </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>courseCreate</from-outcome>
             <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>         
     </navigation-rule>     
     <navigation-rule>
         <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
@@ -250,11 +278,6 @@
             <from-outcome>articleMasterUpdate</from-outcome>
             <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
         </navigation-case> 
-        <navigation-case>
-            <from-action>#{ArticlesMaintain_Backing.picasaTest}</from-action>
-            <from-outcome>test</from-outcome>
-            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>         
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
@@ -262,20 +285,33 @@
             <from-action>#{ArticleMasterUpdate_Backing.updateArticle}</from-action>
             <from-outcome>articleUpd</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>    
+        <navigation-case>
+            <from-action>#{ArticleMasterUpdate_Backing.updateIntro}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>           
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
         <navigation-case>
             <from-action>#{ArticleCreate_Backing.createArticle}</from-action>                        
-            <from-outcome>articleImagesUpdate</from-outcome>
+            <from-outcome>success</from-outcome>
             <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
         </navigation-case>            
         <navigation-case>
             <from-action>#{ArticleCreate_Backing.createIntro}</from-action>            
-            <from-outcome>articlesMaintain</from-outcome>
+            <from-outcome>success</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>         
+        </navigation-case>    
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>            
     </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureA/ArticleImagesUpdate.jsp</from-view-id>
@@ -285,7 +321,7 @@
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
         </navigation-case>        
         <navigation-case>
-            <from-action>#{ArticleImagesUpdate_Backing.update}</from-action>                        
+            <from-action>#{ArticleImagesUpdate_Backing.saveArticle}</from-action>                        
             <from-outcome>articleUpdate</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
         </navigation-case>            
@@ -298,19 +334,15 @@
     <navigation-rule>
         <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
+            <from-action>#{ArticleUpdate_Backing.goToArticleImagesUpdate}</from-action>               
             <from-outcome>articleImagesUpdate</from-outcome>
             <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule>      
-    <navigation-rule>
-        <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
+            <from-action>#{ArticleUpdate_Backing.goToArticleMasterUpdate}</from-action>             
             <from-outcome>articleMasterUpdate</from-outcome>
             <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule>          
-    <navigation-rule>
-        <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
             <from-action>#{ArticleUpdate_Backing.saveArticle}</from-action>                                    
             <from-outcome>articlesMaintain</from-outcome>
