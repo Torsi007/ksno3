@@ -6,6 +6,7 @@
 package ksno.dao;
 
 import java.util.List;
+import ksno.model.Instructor;
 import ksno.model.Person;
 
 /**
@@ -15,9 +16,10 @@ import ksno.model.Person;
 public interface PersonDao {
 
       public List getPersons();
+      public List getInstructors();
       
       public Person getPerson(String userName);
-      
+      public Instructor getInstructor(Long id);
       public Long newPerson(Person person);
     
 }

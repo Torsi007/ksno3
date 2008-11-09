@@ -44,8 +44,16 @@ public class ArticleServiceImpl implements ArticleService {
         articleDao.updateArticle(article);
     }
     
+    public void deleteArticle(Article article) {
+        articleDao.deleteArticle(article);
+    }
+    
     public List getArticles() {
         return articleDao.getArticles();
-    }    
+    }  
+    
+    public List getVisibleArticles() {
+        return articleDao.getVisibleArticles();
+    }
 
 }

@@ -25,6 +25,15 @@ public class Article implements Serializable {
     private Date lastUpdatedDate;
     private Set images = new HashSet();
     private Person author;
+    private boolean visible;
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public String getAvatarUrl() {
         return avatarUrl;

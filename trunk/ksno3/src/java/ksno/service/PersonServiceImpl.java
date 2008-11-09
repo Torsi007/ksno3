@@ -8,6 +8,7 @@ package ksno.service;
 
 import java.util.List;
 import ksno.dao.PersonDao;
+import ksno.model.Instructor;
 import ksno.model.Person;
 
 /**
@@ -26,7 +27,7 @@ public class PersonServiceImpl implements PersonService {
     
    private PersonDao personDao;
 
-    public Person getPerson(int id) {
+    public Person getPerson(Long id) {
 //        Person person = personDao.getPerson(id);
         Person person = new Person();
         return person;
@@ -43,6 +44,14 @@ public class PersonServiceImpl implements PersonService {
     
     public Long newPerson(Person person){
         return personDao.newPerson(person);
+    }
+
+    public List getInstructors() {
+        return personDao.getInstructors();
+    }
+
+    public Instructor getInstructor(Long id) {
+        return personDao.getInstructor(id);
     }
 
 }

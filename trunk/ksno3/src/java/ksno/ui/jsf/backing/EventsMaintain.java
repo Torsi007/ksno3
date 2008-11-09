@@ -5,8 +5,13 @@
 
 package ksno.ui.jsf.backing;
 
+
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.component.UIData;
+import javax.faces.component.html.HtmlOutputText;
+import ksno.model.Event;
 import ksno.service.EventService;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 
@@ -18,6 +23,19 @@ public class EventsMaintain {
     EventService eventService;
     private HtmlInputText name;
     private UIData data;
+    private HtmlOutputText errorMsg;
+
+    public HtmlOutputText getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(HtmlOutputText errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+    
+    private Logger getLogService(){
+      return Logger.getLogger(ArticlesMaintain.class.getName());
+    }    
 
     public EventService getEventService() {
         return eventService;
@@ -46,5 +64,19 @@ public class EventsMaintain {
     public List getEvents(){
         return eventService.getEvents();
     }
+    
+   public String eventDelete(){
+       String returnVal = "sucess";
+        try{
+           Event event = (Event)this.getData().getRowData();
+           eventService.deleteEvent(event);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to delete event", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }       
+
+       return returnVal;
+    }    
 
 }

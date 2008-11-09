@@ -5,6 +5,7 @@
 
 package ksno.dao;
 
+import java.util.Date;
 import java.util.List;
 import ksno.model.Event;
 
@@ -14,6 +15,10 @@ import ksno.model.Event;
  */
 public interface EventDao {
       public Long newEvent(Event event);
+      public void deleteEvent(Event event);
       public List getEvents();
-      public Event getEvent(Long id);      
+      public Event getEvent(Long id);   
+      
+      public List getBeginnerCourses();
+      public List getBeginnerCourses(Date fromDate, Date toDate, String location);
 }

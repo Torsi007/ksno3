@@ -68,12 +68,14 @@ import javax.faces.context.ExternalContext;
     String id = "";
     HashMap<ImageSize,String> returnImageMap = new HashMap<ImageSize,String>();
     AlbumEntry entry = getAlbumByTitle(userName);
+    
     if(entry == null){
         entry = new AlbumEntry();
         entry.setName(userName);
         entry.setTitle(new PlainTextConstruct(userName));
         try{
-            insertAlbum(entry);
+            AlbumEntry temp = insertAlbum(entry);
+            entry = temp;
         }catch(IOException ioex) {
             getLogService().log(Level.SEVERE, "An error occured on attempt to insert the album", ioex);
             throw ioex;

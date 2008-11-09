@@ -1,51 +1,159 @@
 package ksno.model;
 
 import java.util.Date; 
-
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 import java.util.HashSet;
 import java.util.Set;
-// #[regen=yes,id=DCE.254E3AF7-857C-4BC5-588C-36B4ED1C5698]
-// </editor-fold> 
+
 public class Event implements LabelValuePair {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.1B29D68D-CC29-B4DC-9877-B3A8F8FA4D2A]
-    // </editor-fold> 
-    private Long id;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.D5594D09-8401-5BBE-DFC0-88C993FAC6B9]
-    // </editor-fold> 
-    private int version;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.780EBB8A-8C16-D5B8-61B3-7A6C7741E542]
-    // </editor-fold> 
-    private Date startDate;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.E54B1F64-648C-A12B-8746-25D3DA768554]
-    // </editor-fold> 
-    private Date endDate;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.9BE10A03-ABC2-E968-2893-6D3D71F91F52]
-    // </editor-fold> 
-    private String comment;
-    
-    private String location;
-    
+    protected Long id;
+    protected int version;
+    protected Date startDate;
+    protected Date endDate;
+    protected String comment;
+    protected String location;
+    protected String name;
+    private boolean open;
+    private Instructor responsible;
     private Set participations = new HashSet();
 
+    // <editor-fold  desc=" Getters and Setters "> 
+    public Instructor getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(Instructor responsible) {
+        this.responsible = responsible;
+    }
+    
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }    
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public Set getParticipations() {
         return participations;
     }
 
     public void setParticipations(Set participations) {
         this.participations = participations;
-    }
+    } 
     
+    public String getComment () {
+        return comment;
+    }
+
+
+    public void setComment (String val) {
+        this.comment = val;
+    }
+
+
+    public Date getEndDate () {
+        return endDate;
+    }
+
+
+    public void setEndDate (Date val) {
+        this.endDate = val;
+    }
+
+
+    public Long getId () {
+        return id;
+    }
+
+
+    public void setId (Long val) {
+        this.id = val;
+    }
+
+    public Date getStartDate () {
+        return startDate;
+    }
+
+
+    public void setStartDate (Date val) {
+        this.startDate = val;
+    }
+
+
+    public int getVersion () {
+        return version;
+    }
+
+
+    public void setVersion (int val) {
+        this.version = val;
+    }
+
+
+    // </editor-fold>    
+    
+    // <editor-fold  desc=" Equals and HashCode ">     
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Event other = (Event) obj;
+        if (this.startDate != other.startDate && (this.startDate == null || !this.startDate.equals(other.startDate))) {
+            return false;
+        }
+        if (this.endDate != other.endDate && (this.endDate == null || !this.endDate.equals(other.endDate))) {
+            return false;
+        }
+        if (this.comment != other.comment && (this.comment == null || !this.comment.equals(other.comment))) {
+            return false;
+        }
+        if (this.location != other.location && (this.location == null || !this.location.equals(other.location))) {
+            return false;
+        }
+        if (this.name != other.name && (this.name == null || !this.name.equals(other.name))) {
+            return false;
+        }
+        if (this.open != other.open) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + (this.startDate != null ? this.startDate.hashCode() : 0);
+        hash = 71 * hash + (this.endDate != null ? this.endDate.hashCode() : 0);
+        hash = 71 * hash + (this.comment != null ? this.comment.hashCode() : 0);
+        hash = 71 * hash + (this.location != null ? this.location.hashCode() : 0);
+        hash = 71 * hash + (this.name != null ? this.name.hashCode() : 0);
+        hash = 71 * hash + (this.open ? 1 : 0);
+        return hash;
+    }   
+   // </editor-fold>    
+     
     public void addParticipation(Participation participation){
         if(participation == null){
             throw new IllegalArgumentException("Participation to be added is null");
@@ -57,89 +165,11 @@ public class Event implements LabelValuePair {
         participations.add(participation);
     }    
 
-    public String getLocation() {
-        return location;
-    }
+    // <editor-fold defaultstate="collapsed" desc=" Constructors "> 
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.47AFC16E-17CC-A5DD-661F-183C4AEF4F73]
-    // </editor-fold> 
     public Event () {
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.A881047D-7B49-034D-7F3E-901FA381DCBB]
     // </editor-fold> 
-    public String getComment () {
-        return comment;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.254A8D47-E036-07C7-1801-B10FCB95B718]
-    // </editor-fold> 
-    public void setComment (String val) {
-        this.comment = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.E5592D8D-41DE-050F-C4A6-3819AF5C2F1C]
-    // </editor-fold> 
-    public Date getEndDate () {
-        return endDate;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B09E92F5-816D-DD23-43CA-C70BB3B50ABE]
-    // </editor-fold> 
-    public void setEndDate (Date val) {
-        this.endDate = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.09C584B1-B1FD-091C-A98A-BF354E691FB8]
-    // </editor-fold> 
-    public Long getId () {
-        return id;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B2AF8A77-92E4-0895-6D93-3E82AE1D2FFA]
-    // </editor-fold> 
-    public void setId (Long val) {
-        this.id = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B4548EE9-FC40-176B-94F0-539EE88F7459]
-    // </editor-fold> 
-    public Date getStartDate () {
-        return startDate;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B8E7BD7F-1C03-8F43-4444-8A14D936FAB0]
-    // </editor-fold> 
-    public void setStartDate (Date val) {
-        this.startDate = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.3BF1BF4C-C77D-63A2-A888-9F0A557299CC]
-    // </editor-fold> 
-    public int getVersion () {
-        return version;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.135ED2EC-D05C-06C8-478A-F00BE9BE6B5B]
-    // </editor-fold> 
-    public void setVersion (int val) {
-        this.version = val;
-    }
 
     public String getLabel() {
         return startDate.toString() + " - " + endDate.toString();

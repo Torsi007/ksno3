@@ -6,7 +6,10 @@
 package ksno.ui.jsf.backing;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.component.UIData;
+import javax.faces.component.html.HtmlOutputText;
 import ksno.model.Article;
 import ksno.service.ArticleService;
 import ksno.service.ImageService;
@@ -20,6 +23,19 @@ import org.apache.myfaces.component.html.ext.HtmlInputText;
 public class ArticlesMaintain {
     private ArticleService articleService;
     private ImageService imageService;
+    private HtmlOutputText errorMsg;
+
+    public HtmlOutputText getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(HtmlOutputText errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+    
+    private Logger getLogService(){
+      return Logger.getLogger(ArticlesMaintain.class.getName());
+    }
 
     public ImageService getImageService() {
         return imageService;
@@ -60,16 +76,47 @@ public class ArticlesMaintain {
     }
     
     public String selectEditArticle(){
+        String returnVal = "articleMasterUpdate";
+        try{
+            Article articleModify = (Article)this.getData().getRowData();
+            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanArticleModify, articleModify);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to select article", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }
+       return returnVal;
+    }
+    
+   public String articleDelete(){
+       String returnVal = "sucess";
+        try{
+           Article article = (Article)this.getData().getRowData();
+           articleService.deleteArticle(article);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to delete article", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }       
+
+       return returnVal;
+    }
+    
+    public String articlesUpdate(){ 
         
-       Article articleModify = (Article)this.getData().getRowData();
-       JSFUtil.getSessionMap().put(JSFUtil.sessionBeanArticleModify, articleModify);
-        return "articleMasterUpdate";
+       String returnVal = "sucess";
+        try{
+            List articles = (List)getData().getValue();
+            for(int i = 0; i< articles.size(); i++){
+                Article article = (Article)articles.get(i);
+                articleService.updateArticle(article); 
+            }
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to update articles", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }       
+       return returnVal;        
     }
-    
-    
-    public String picasaTest(){    
-        return "test";
-    }
-    
-    
+   
 }

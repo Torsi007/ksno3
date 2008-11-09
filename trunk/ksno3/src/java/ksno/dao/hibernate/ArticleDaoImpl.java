@@ -42,10 +42,19 @@ public class ArticleDaoImpl implements ArticleDao {
             session.saveOrUpdate(article);
         }catch(Exception e){
             session.merge(article);
+        }finally{
+            session.getTransaction().commit();        
         }
         
-        session.getTransaction().commit();
+
     }
+    
+    public void deleteArticle(Article article) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.delete(article);
+        session.getTransaction().commit();
+    }    
 
     public List getArticles() {
         Query q = null;
@@ -54,5 +63,14 @@ public class ArticleDaoImpl implements ArticleDao {
         q=session.createQuery("from Article a order by a.createdDate desc");
         return q.list();
     }
+    
+
+    public List getVisibleArticles() {
+        Query q = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        q=session.createQuery("from Article a where a.visible = '1' order by a.createdDate desc");
+        return q.list();
+    }    
 
 }
