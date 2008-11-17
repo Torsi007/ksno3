@@ -23,45 +23,64 @@ public class PersonDaoImpl implements PersonDao {
 
     public List getInstructors() {
         Query q = null;
+        List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
+ 
         q=session.createQuery("from Instructor");
-        return q.list();
+        returnVal =  q.list();
+
+        return returnVal;        
+
     }
     
     public List getPersons() {
         Query q = null;
+        List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
+
         q=session.createQuery("from Person");
-        
-        
-        return q.list();
+        returnVal =  q.list();
+
+        return returnVal;  
     }
     
     public Person getPerson(String userId){
+        
         Query q = null;
+        List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
+
         q=session.createQuery("from Person p where p.userName = :pun");
-        q.setParameter("pun",userId);
-        return (Person)q.list().get(0);
+        q.setParameter("pun",userId);            
+        returnVal =  q.list();
+
+        return (Person)returnVal.get(0);          
+
     }
     
     public Instructor getInstructor(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         Instructor instructor = (Instructor)session.get(Instructor.class,id);
-        return instructor;
+        return instructor;        
+
     }
     
     public Long newPerson(Person person){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Long l = (Long)session.save(person);
-        session.getTransaction().commit();
+        Long l;
+        try{
+            l = (Long)session.save(person);
+        }finally{
+            session.getTransaction().commit();
+            session.close();          
+        }
         return l;
-        
+
     }    
 
 }
