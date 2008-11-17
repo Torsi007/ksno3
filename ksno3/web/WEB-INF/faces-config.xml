@@ -207,8 +207,8 @@
         </managed-property>        
     </managed-bean>    
     <managed-bean>
-        <managed-bean-name>SignUp_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.SignUp</managed-bean-class>
+        <managed-bean-name>SignUpWinter_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SignUpWinter</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>eventService</property-name>
@@ -221,6 +221,36 @@
         <managed-property>
             <property-name>participationService</property-name>
             <value>#{ParticipationService}</value>
+        </managed-property> 
+    </managed-bean>  
+    <managed-bean>
+        <managed-bean-name>SignUpSummer_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SignUpSummer</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>      
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
+        </managed-property> 
+    </managed-bean>      
+    <managed-bean>
+        <managed-bean-name>SignUpConfirmed_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SignUpConfirmed</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>  
+        <managed-property>
+            <property-name>id</property-name>
+            <value>#{param.id}</value>
         </managed-property>          
     </managed-bean>     
     <managed-bean>
@@ -232,7 +262,17 @@
             <value>#{EventService}</value>
         </managed-property>
     </managed-bean>    
-    <!-- ******** Navigation ******************************************************* -->    
+    <managed-bean>
+        <managed-bean-name>CoursesSummer_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CoursesSummer</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+    </managed-bean>      
+    <!-- ******** Navigation ******************************************************* -->   
+ 
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
         <navigation-case>
@@ -242,8 +282,9 @@
         <navigation-case>
             <from-outcome>coursesMaintain</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>          
-    </navigation-rule>   
+        </navigation-case>       
+        
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/secureD/CourseCreate.jsp</from-view-id>
         <navigation-case>
@@ -278,6 +319,10 @@
             <from-outcome>articleMasterUpdate</from-outcome>
             <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
         </navigation-case> 
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>        
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
@@ -349,7 +394,22 @@
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
         </navigation-case>            
     </navigation-rule> 
-
+    <navigation-rule>
+        <from-view-id>/SignUpWinter.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{SignUpWinter_Backing.signOn}</from-action>               
+            <from-outcome>SignUpConfirmed</from-outcome>
+            <to-view-id>/signUpConfirmed.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/SignUpSummer.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{SignUpSummer_Backing.signOn}</from-action>               
+            <from-outcome>SignUpConfirmed</from-outcome>
+            <to-view-id>/signUpConfirmed.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>     
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
         <managed-bean-class>ksno3.SessionBean1</managed-bean-class>

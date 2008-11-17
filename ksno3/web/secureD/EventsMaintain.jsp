@@ -74,7 +74,7 @@
                         <f:facet name="header">
                             <h:outputText value="Åpent" />
                         </f:facet> 
-                        <h:selectBooleanCheckbox readonly="true" value="#{item.open}"/>
+                        <h:selectBooleanCheckbox value="#{item.open}"/>
                     </h:column> 
                     <%-- 
                      <h:column>
@@ -90,7 +90,8 @@
                     </h:column>                    
                 </h:dataTable>  
                 <h:commandButton value="Opprett nytt kurs" action="courseCreate"/>   
-                <t:outputText styleClass="errorMsg" binding="#{EventsMaintain_Backing.errorMsg}"/>                
+                <t:outputText styleClass="errorMsg" binding="#{EventsMaintain_Backing.errorMsg}"/>    
+                <h:commandButton value="Lagre" action="#{EventsMaintain_Backing.eventsUpdate}"/>                
             </h:form>    
             <h:form>
                   <h:commandButton immediate="true" value="Avbryt" action="cancel" /> 

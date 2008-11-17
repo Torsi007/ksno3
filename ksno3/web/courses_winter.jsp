@@ -145,7 +145,7 @@
                         <text>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</text>
                     </p>	
                     <a name="when"/>		
-                    <h1>Kursdatoer---</h1>		
+                    <h1>Kursdatoer</h1>		
                     <p>Foreløpige kursdatoer:</p>		
                     <ul type="square">	
                         <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
@@ -153,14 +153,15 @@
                                 <span>
                                     <h:outputLabel value="#{course.startDate} - #{course.endDate}"/>
                                     &nbsp;
-                                    <h:outputLink value="faces/SignUp.jsp}">
-                                        <f:param name="id" value="#{course.id}"/>
-                                        <h:outputLabel value="#{course.name}"/>
+                                    <h:outputLink value="SignUpWinter.jsp" rendered="#{course.open != '1'}">
+                                        <f:param name="id" value="#{course.id}"/>                                                                           
+                                        <h:outputText value="#{course.name}"/>
                                     </h:outputLink>
+                                    <h:outputText rendered="#{course.open == '1'}" value="#{course.name}"/>
                                     &nbsp;
-                                    <h:outputLink value="faces/StudentsOnCourse.jsp}" target="_blank">
+                                    <h:outputLink value="signUpConfirmed.jsp" rendered="#{course.open != '1'}">
                                         <f:param name="id" value="#{course.id}"/>
-                                        <h:outputLabel value="deltagere"/>
+                                        <h:outputText value="deltagere"/>
                                     </h:outputLink>
                                 </span>                                
                             </li>

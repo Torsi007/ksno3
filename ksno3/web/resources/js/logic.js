@@ -12,6 +12,7 @@ function findElement(elem,tag){
 	}
 }
 
+
 function openWindow(width,height,url,resize, scroll){
 	var rs = 'no'
 	var scroll = 'no'
@@ -116,35 +117,236 @@ ksnoImgageBorder.prototype.update = function(){
 }
 
 function validate(){
+
     var formElement = event.srcElement;
-    var missingRequired = validateRequiredElements(formElement, "input");
-    /*if(!missingRequired){
-      missingRequired = validateRequiredElements(formElement, "textarea");    
+    var validated = validateRequiredElements(formElement, "input");
+    if(validated){
+      validated = validateRequiredElements(formElement, "select");    
     }else{
-        validateRequiredElements(formElement, "textarea");    
-    }*/
-    if(missingRequired){
-        alert("Elementene merket gult er obligatoriske.");    
+        validateRequiredElements(formElement, "select");    
     }
-    return !missingRequired;
+    if(!validated){
+        alert("De merkede elementene er obligatoriske."); 
+        return  validated;
+    }
+    
+    validated = validateFormatFields(formElement);
+    
+ 
+    
+    return validated;
+}
+
+function validateFormatFields(form){
+    var hasCorrectFormat = true;
+    var formElements = form.getElementsByTagName("input");
+    for(var i = 0; i<formElements.length; i++){
+        var formElement = formElements[i];
+
+        if(formElement.type != "hidden" && formElement.type != "submit"){          
+          if(hasFormat(formElement, "email")){
+              if(!validateEmail(formElement)){
+                  return false;
+                  
+              }                   
+          }  
+          if(hasFormat(formElement, "phone")){
+              if(!validatePhone(formElement)){
+                  return false;
+                  
+              }                   
+          }
+        }            
+    }
+    return hasCorrectFormat;
+}
+
+function validatePhone(elem){
+    var str = elem.value;
+    if(str != undefined && str != ""){
+        
+        if(!checkInternationalPhone(str)){
+          elem.style.background = "orange";
+           elem.focus();     
+           alert("Ugyldig telefonnummer. Det må være på format ########. Mellomrom er tillat, og man kan også ha retningsnummer på format +##");
+           return false;
+        }
+
+        
+    }
+              elem.style.background = "white";
+              return true;
+    
+}
+
+function isRequired(field){
+    
+    return field.required ||field.parentElement.required;
 }
 
 function validateRequiredElements(form, tagName){
-    var missingRequired = false;
+    var allRequired = true;
     var formElements = form.getElementsByTagName(tagName);
     for(var i = 0; i<formElements.length; i++){
         var formElement = formElements[i];
-        if(formElement.type != "hidden" && formElement.type != "submit"){          
-          if((formElement.required ||formElement.parentElement.required) && (formElement.value == undefined || formElement.value == "")){
-              formElement.style.background = "yellow";                    
-              missingRequired = true;
-          }else{
-              formElement.style.background = "transparent";                    
+        if(tagName.toLowerCase() == "select"){
+            if(isRequired(formElement) && (formElement.value == undefined || formElement.value == "" || formElement.value == "empty" || formElement.value == "Empty")){
+                formElement.style.background = "orange";                    
+                allRequired = false;                
+            }else{
+               formElement.style.background = "white";                
+            }
+        }else{
+          if(formElement.type != "hidden" && formElement.type != "submit"){          
+            if(isRequired(formElement) && (formElement.value == undefined || formElement.value == "")){
+                formElement.style.background = "orange";                    
+                allRequired = false;
+            }else{
+                formElement.style.background = "white";                    
+            }            
           }            
         }
+
     }  
-    return missingRequired;
+    return allRequired;
 }
+
+function hasFormat(field, format){
+    var fieldFormat = (field.format != undefined)?field.format:field.parentElement.format;
+    var returnVal =false;
+    if(fieldFormat != undefined){
+        fieldFormat = fieldFormat.toLowerCase();
+        returnVal = fieldFormat.indexOf(format.toLowerCase()) > -1
+        
+    }
+    return returnVal;
+}
+
+// Declaring required variables
+var digits = "0123456789";
+// non-digit characters which are allowed in phone numbers
+var phoneNumberDelimiters = " ";
+// characters which are allowed in international phone numbers
+// (a leading + is OK)
+var validWorldPhoneChars = phoneNumberDelimiters + "+";
+// Minimum no of digits in an international phone no.
+var minDigitsInIPhoneNumber = 8;
+
+function isInteger(s)
+{   var i;
+    for (i = 0; i < s.length; i++)
+    {   
+        // Check that current character is number.
+        var c = s.charAt(i);
+        if (((c < "0") || (c > "9"))) return false;
+    }
+    // All characters are numbers.
+    return true;
+}
+function trim(s)
+{   var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not a whitespace, append to returnString.
+    for (i = 0; i < s.length; i++)
+    {   
+        // Check that current character isn't whitespace.
+        var c = s.charAt(i);
+        if (c != " ") returnString += c;
+    }
+    return returnString;
+}
+function stripCharsInBag(s, bag)
+{   var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not in bag, append to returnString.
+    for (i = 0; i < s.length; i++)
+    {   
+        // Check that current character isn't whitespace.
+        var c = s.charAt(i);
+        if (bag.indexOf(c) == -1) returnString += c;
+    }
+    return returnString;
+}
+
+function checkInternationalPhone(strPhone){
+strPhone=trim(strPhone)
+if(strPhone.indexOf("+")>1) return false
+s=stripCharsInBag(strPhone,validWorldPhoneChars);
+return (isInteger(s) && s.length >= minDigitsInIPhoneNumber);
+}
+
+
+
+
+
+
+function validateEmail(elem) {
+    var str = elem.value;
+    if(str != undefined && str != ""){
+        var at="@"
+        var dot="."
+        var lat=str.indexOf(at)
+        var lstr=str.length
+        var ldot=str.indexOf(dot)
+        if (str.indexOf(at)==-1){
+           alert("Invalid E-mail, it must contain the @ character");
+           elem.style.background = "orange";
+           elem.focus();
+           return false
+        }
+
+        if (str.indexOf(at)==0 || str.indexOf(at)==lstr){
+           alert("Invalid E-mail");
+                      elem.style.background = "orange";
+           elem.focus();
+           return false
+        }
+
+        if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+            alert("Invalid E-mail");
+                       elem.style.background = "orange";
+           elem.focus();
+            return false
+        }
+
+         if (str.indexOf(at,(lat+1))!=-1){
+            alert("Invalid E-mail");
+                       elem.style.background = "orange";
+           elem.focus();
+            return false
+         }
+
+         if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+            alert("Invalid E-mail");
+                       elem.style.background = "orange";
+           elem.focus();
+            return false
+         }
+
+         if (str.indexOf(dot,(lat+2))==-1){
+            alert("Invalid E-mail");
+                       elem.style.background = "orange";
+           elem.focus();
+            return false
+         }
+
+         if (str.indexOf(" ")!=-1){
+            alert("Invalid E-mail");
+                       elem.style.background = "orange";
+           elem.focus();
+            return false
+         }
+
+      
+    }
+           elem.style.background = "white";
+
+         return true 					
+	}
+
+
 
 function getBaseId(srcElem){
 
