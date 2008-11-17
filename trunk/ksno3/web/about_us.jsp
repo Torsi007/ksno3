@@ -18,20 +18,19 @@
             <p>Kitesurfing.no er 3 smidige gutter, Martin, Tom og Tor-Erik. Alle durkdrevne fjell og vannsports utøvere, som har fått øynene opp for de fantastiske mulighetene kites, eller drager gir både på land og vann.</p>
             <p>Vi vil gjerne hjelpe deg å komme i gang med å fly drage, kitesurfing.no bruker derfor mesteparten av sine ressurser på kurs virksomhet.
                 <div class="imageContainer">
-                    <img alt="" src="resources\img\riders\tom\120x\portrait.jpg" style="display:block"/>
+                    <img alt="" src="http://lh4.ggpht.com/_lkZPRU-HBNM/SR8uuBVQfeI/AAAAAAAAAK8/pQghDMdRyzI/portrait3.jpg" style="display:block"/>
                     <span>Tom Stensrød</span>
                 </div>
                 <div class="imageContainer">
-                    <img alt="" src="resources\img\riders\martin\120x\portrait.jpg" style="display:block"/>
+                    <img alt="" src="http://lh3.ggpht.com/_lkZPRU-HBNM/SR8tozKIajI/AAAAAAAAAKc/e6yteCJiQoI/portrait.jpg" style="display:block"/>
                     <span>Martin Salem</span>
                 </div>
                 <div class="imageContainer">
-                    <img alt="" src="resources\img\riders\tor-erik\120x\portrait.jpg" style="display:block"/>
+                    <img alt="" src="http://lh5.ggpht.com/_lkZPRU-HBNM/SR8ta81iXEI/AAAAAAAAAJ8/TKtvHqpWZRQ/portrait2.jpg" style="display:block"/>
                     <span>Tor-Erik Hauge</span>
                 </div>							
             </p>			
-            <p>Kitesurfing er en ung sport i eksplosiv vekst. Kitesurfing.no har operert som kurs leverandør siden 2001, og er en av de mest erfarne kurs tilbyderene i Norge. Det viktigste for oss er fornøyde kunder, og vi strekker oss	så langt som mulig for at du som kunde skal få så mye som mulig ut av våre kurs opplegg. Les mer om våre kurs	
-                <a href="courses_west.jsp">her.</a>
+            <p>Kitesurfing er en ung sport i eksplosiv vekst. Kitesurfing.no har operert som kurs leverandør siden 2001, og er en av de mest erfarne kurs tilbyderene i Norge. Det viktigste for oss er fornøyde kunder, og vi strekker oss	så langt som mulig for at du som kunde skal få så mye som mulig ut av våre kurs opplegg.
             </p>					
         </div>
     </body> 

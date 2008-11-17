@@ -20,7 +20,7 @@
     </head>
     <body style="background-image : url(resources/img/components/backgrounds/header.jpg);" >
         <f:view>
-            <table cellspacing="0" cellpadding="0" class="fullstretch outer" >        
+            <table cellspacing="0" cellpadding="0" class="fullstretch outer">        
                 <tr><td colspan="100" style="height: 67"/></tr>
                 <tr style="height: 1"><td colspan="100" class="heading"  style="text-indent: 160">Instruction and Training</td></tr>		
                 <tr cellspacing="0" cellpadding="0">	
@@ -35,9 +35,9 @@
                                     <table cellpadding="0" cellspacing="0" class="mainMenuElements" xmlns:fo="http://www.w3.org/1999/XSL/Format">
                                         <tr><td id="menu1" name="menu1" onclick="changeMainMenu('1')"><a href="faces/Current.jsp" target="contentFrame">:: Aktuelt</a></td></tr>
                                         <tr><td id="menu2" name="menu2" onclick="changeMainMenu('2')"><a href="about_us.jsp" target="contentFrame">:: Om Oss</a></td></tr>
-                                        <tr><td id="menu3" name="menu3" onclick="changeMainMenu('3')"><a href="courses_west.jsp" target="contentFrame">:: Kurs - Jæren</a><input id="anchors3" name="anchors3" type="hidden" value="&lt;a href='courses_west.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='courses_west.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='courses_west.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='courses_west.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='courses_west.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='courses_west.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='courses_west.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='courses_west.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='courses_west.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='signup_summer.jsp' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
-                                        <tr><td id="menu4" name="menu4" onclick="changeMainMenu('4')"><a href="faces/courses_winter.jsp" target="contentFrame">:: Kurs - Haukeli</a><input id="anchors4" name="anchors4" type="hidden" value="&lt;a href='faces/courses_winter.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='faces/SignUp.jsp' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
-                                        <tr><td id="menu5" name="menu5"><a href="faces/secureA/AdminMain.jsp">:: Log in</a></td></tr>                                                                                
+                                        <tr><td id="menu3" name="menu3" onclick="changeMainMenu('3')"><a href="faces/courses_west.jsp" target="contentFrame">:: Kurs - Jæren</a><input id="anchors3" name="anchors3" type="hidden" value="&lt;a href='faces/courses_west.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='faces/courses_west.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='faces/courses_west.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='faces/courses_west.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='faces/courses_west.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='faces/courses_west.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='faces/courses_west.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='faces/courses_west.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='faces/courses_west.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='faces/SignUpSummer.jsp?id=-1' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
+                                        <tr><td id="menu4" name="menu4" onclick="changeMainMenu('4')"><a href="faces/courses_winter.jsp" target="contentFrame">:: Kurs - Haukeli</a><input id="anchors4" name="anchors4" type="hidden" value="&lt;a href='faces/courses_winter.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='faces/SignUpWinter.jsp?id=-1' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
+                                        <tr><td id="menu5" name="menu5"><a href="faces/secureA/AdminMain.jsp" target="_blank">:: Log in</a></td></tr>                                                                                
                                     </table> 		
                                 </td>    
                             </tr>    
@@ -50,7 +50,7 @@
                                     </script>
                                 </td>
                             </tr>     
-                            <tr><td class="empty" style="background-image: url(resources/img/components/backgrounds/menu_stretch.gif)"></td></tr>    
+                            <tr><td class="empty" valign="bottom" style="background-image: url(resources/img/components/backgrounds/menu_stretch.gif)"><script src="http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/translatemypage.xml&up_source_language=no&w=160&h=60&title=&border=&output=js"></script></td></tr>    
                             <tr><td style="height: 1"><img src="resources/img/components/backgrounds/menu_bottom.gif"/></td>    
                             </tr>
                         </table>
@@ -80,31 +80,20 @@
                             </tr>				
                         </table>			
                     </td>		
-                </tr>        
-                <tr style="height: 50;">            
+                </tr>    
+                <tr style="height: 10;">            
                     <td colspan="100">                       
                         <table cellspacing="0" cellpadding="0" class="footer" width="100%">	
                             <tr>        
-                                <td class="" style="height: 1;">
-                                    <table cellspacing="0" cellpadding="0">	
-                                        <tr class="languageLink">		
-                                            <td onclick="setLanguage('EN')">
-                                                <img src="resources/img/components/icons/EN_flag.gif"/>
-                                            </td>
-                                            <td onclick="setLanguage('EN')">&nbsp;English</td>	
-                                        </tr>		
-                                    </table> 
-                                </td>        
                                 <td align="center">            
                                     <span >Ta gjerne kontakt med oss!&nbsp;&nbspTelefon:&nbsp;47753527 / 41191592&nbsp;&nbspE-post:&nbsp;
                                         <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a>            
                                     </span>        
                                 </td>        
-                                <td align="right"><img style="display: inline" src="resources/img/logos/ksno_small.gif"/></td>    
                             </tr>
                         </table> 
                     </td>        
-                </tr>    
+                </tr>   
             </table> 
         </f:view>
     </body>
