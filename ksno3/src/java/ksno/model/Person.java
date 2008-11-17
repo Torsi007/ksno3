@@ -22,7 +22,6 @@ public class Person implements Serializable, LabelValuePair {
     private int phone;
     private Long id;
     private int version;
-    private Date dateOfBirth;
     String lastName;
     String firstName;
     String userName;
@@ -57,14 +56,6 @@ public class Person implements Serializable, LabelValuePair {
         this.passWord = passWord;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-    
     public String getPassWord() {
         return passWord;
     }
@@ -118,9 +109,6 @@ public class Person implements Serializable, LabelValuePair {
             return false;
         }
         final Person other = (Person) obj;
-        if (this.dateOfBirth != other.dateOfBirth && (this.dateOfBirth == null || !this.dateOfBirth.equals(other.dateOfBirth))) {
-            return false;
-        }
         if (this.lastName != other.lastName && (this.lastName == null || !this.lastName.equals(other.lastName))) {
             return false;
         }
@@ -139,7 +127,6 @@ public class Person implements Serializable, LabelValuePair {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (this.dateOfBirth != null ? this.dateOfBirth.hashCode() : 0);
         hash = 97 * hash + (this.lastName != null ? this.lastName.hashCode() : 0);
         hash = 97 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
         hash = 97 * hash + (this.userName != null ? this.userName.hashCode() : 0);

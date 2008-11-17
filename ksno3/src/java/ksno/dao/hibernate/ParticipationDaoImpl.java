@@ -21,21 +21,21 @@ public class ParticipationDaoImpl implements ParticipationDao {
     
     public Participation getParticipation(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Participation participation = (Participation)session.get(Participation.class,id);
-        session.getTransaction().commit();
+        //session.getTransaction().commit();
         return participation;        
     }
     
     public Long newParticipation(Participation participation){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-        session.beginTransaction();
+        //session.beginTransaction();
         Long l;
         try{
             l = (Long)session.save(participation);
         }finally{
-            session.getTransaction().commit();
+            //session.getTransaction().commit();
             //session.close();          
         }
         return l;        
@@ -45,13 +45,13 @@ public class ParticipationDaoImpl implements ParticipationDao {
 
     public void updateParticipation(Participation participation) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         try{
             session.saveOrUpdate(participation);
         }catch(Exception e){
             session.merge(participation);
         }finally{
-            session.getTransaction().commit(); 
+            //session.getTransaction().commit(); 
             //session.close();
         }        
     }
@@ -60,7 +60,7 @@ public class ParticipationDaoImpl implements ParticipationDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
         q=session.createQuery("from Participation p order by p.createdDate desc");
         returnVal =  q.list();

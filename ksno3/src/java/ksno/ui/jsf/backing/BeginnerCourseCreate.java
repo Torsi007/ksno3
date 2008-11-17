@@ -89,7 +89,7 @@ public class BeginnerCourseCreate {
     }
     
     private Logger getLogService(){
-      return Logger.getLogger(ArticleCreate.class.getName());
+      return Logger.getLogger(BeginnerCourseCreate.class.getName());
     }
 
 

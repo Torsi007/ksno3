@@ -13,8 +13,17 @@ public class Participation {
     private int shoeSize;
     private String helmetSize;
     private String wetSuitSize;
-    private int price;
+    private int price;   
     private Date createdDate;
+    private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public Date getCreatedDate() {
         return createdDate;
@@ -33,6 +42,9 @@ public class Participation {
             return false;
         }
         final Participation other = (Participation) obj;
+        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
+            return false;
+        }
         if (this.shoeSize != other.shoeSize) {
             return false;
         }
@@ -45,7 +57,7 @@ public class Participation {
         if (this.price != other.price) {
             return false;
         }
-        if (this.createdDate != other.createdDate && (this.createdDate == null || !this.createdDate.equals(other.createdDate))) {
+        if (this.comment != other.comment && (this.comment == null || !this.comment.equals(other.comment))) {
             return false;
         }
         return true;
@@ -53,14 +65,16 @@ public class Participation {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + this.shoeSize;
-        hash = 83 * hash + (this.helmetSize != null ? this.helmetSize.hashCode() : 0);
-        hash = 83 * hash + (this.wetSuitSize != null ? this.wetSuitSize.hashCode() : 0);
-        hash = 83 * hash + this.price;
-        hash = 83 * hash + (this.createdDate != null ? this.createdDate.hashCode() : 0);
+        int hash = 7;
+        hash = 23 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 23 * hash + this.shoeSize;
+        hash = 23 * hash + (this.helmetSize != null ? this.helmetSize.hashCode() : 0);
+        hash = 23 * hash + (this.wetSuitSize != null ? this.wetSuitSize.hashCode() : 0);
+        hash = 23 * hash + (this.comment != null ? this.comment.hashCode() : 0);
         return hash;
     }
+
+
 
     public Long getId() {
         return id;

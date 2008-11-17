@@ -77,6 +77,23 @@ public class EventsMaintain {
         }       
 
        return returnVal;
-    }    
+    }   
+   
+    public String eventsUpdate(){ 
+        
+       String returnVal = "sucess";
+        try{
+            List articles = (List)getData().getValue();
+            for(int i = 0; i< articles.size(); i++){
+                Event event = (Event)articles.get(i);
+                eventService.updateEvent(event);
+            }
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to update articles", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }       
+       return returnVal;        
+    }   
 
 }
