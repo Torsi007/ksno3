@@ -22,19 +22,19 @@ public class ArticleDaoImpl implements ArticleDao {
 
     public Article getArticle(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Article article = (Article)session.get(Article.class,id);
         return article;
     }
     
     public Long newArticle(Article article){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Long l;
         try{
             l = (Long)session.save(article);
         }finally{
-            session.getTransaction().commit();
+            //session.getTransaction().commit();
             //session.close();          
         }
         return l;
@@ -43,13 +43,13 @@ public class ArticleDaoImpl implements ArticleDao {
 
     public void updateArticle(Article article) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         try{
             session.saveOrUpdate(article);
         }catch(Exception e){
             session.merge(article);
         }finally{
-            session.getTransaction().commit(); 
+            //session.getTransaction().commit(); 
             //session.close();
         }
         
@@ -58,11 +58,11 @@ public class ArticleDaoImpl implements ArticleDao {
     
     public void deleteArticle(Article article) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         try{
             session.delete(article);
         }finally{
-            session.getTransaction().commit();
+            //session.getTransaction().commit();
             //session.close();
         }
 
@@ -72,19 +72,25 @@ public class ArticleDaoImpl implements ArticleDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         q=session.createQuery("from Article a order by a.createdDate desc");
         returnVal =  q.list();
         return returnVal;        
     }
     
     public List getVisibleArticles() {
+
         Query q = null;
         List returnVal = null;
+                try{
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         q=session.createQuery("from Article a where a.visible = '1' order by a.createdDate desc");
-        returnVal =  q.list();
+        returnVal =  q.list();}
+        catch(Exception ex){
+           String s = ex.getMessage(); 
+            
+        }
 
         return returnVal;
     }    

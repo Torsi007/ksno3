@@ -72,7 +72,13 @@ public class ArticlesMaintain {
     }
     
     public List getArticles(){
-        return articleService.getArticles();
+        List l = null;
+        try{
+            l = articleService.getArticles();
+        }catch(Exception e){
+            int i = 0;
+        }
+        return l;
     }
     
     public String selectEditArticle(){

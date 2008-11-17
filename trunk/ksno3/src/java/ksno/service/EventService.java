@@ -15,8 +15,13 @@ import ksno.model.Event;
 public interface EventService {
     public List getEvents();
     public Long newEvent(Event event);  
-    public void deleteEvent(Event event);    
+    public void deleteEvent(Event event); 
+    public void updateEvent(Event event);
     public Event getEvent(Long id); 
     public List getBeginnerCourses();
-    public List getUpcommingWinterBeginnerCourses();    
+    public List getOpenUpcommingWinterBeginnerCourses();  
+    public List getOpenUpcommingSummerBeginnerCourses();   
+    public List getUpcommingWinterBeginnerCourses();  
+    public List getUpcommingSummerBeginnerCourses();      
+    
 }

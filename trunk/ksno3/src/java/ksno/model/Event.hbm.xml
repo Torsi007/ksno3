@@ -11,13 +11,14 @@
     <property column="END_DATE" name="endDate" type="date"/>
     <property column="COMMENT" name="comment" type="string"/>
     <property column="LOCATION" name="location" type="string"/>
-    <property column="NAME" name="name" type="string"/>    
-    <property column="OPEN" name="open" type="boolean"/>    
+    <property column="NAME" name="name" type="string"/>
+    <property column="OPEN" name="open" type="boolean"/>
+    <!-- Lasy to false to make SignUpConfirm work properly-->
     <set cascade="save-update" inverse="true" lazy="false" name="participations" table="PARTICIPATION">
       <key column="EVENT_ID"/>
       <one-to-many class="Participation"/>
     </set>
-    <many-to-one cascade="none" class="Instructor" column="RESPONSIBLE_ID" name="responsible"/>    
+    <many-to-one cascade="none" class="Instructor" column="RESPONSIBLE_ID" name="responsible"/>
     <subclass discriminator-value="BC" name="BeginnerCourse">
       <property column="MAX_SIZE" name="maxSize" type="integer"/>
     </subclass>

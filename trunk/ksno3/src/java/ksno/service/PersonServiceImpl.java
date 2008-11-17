@@ -43,6 +43,10 @@ public class PersonServiceImpl implements PersonService {
     }
     
     public Long newPerson(Person person){
+        if(person.getPassWord() == null){
+            person.setPassWord("1234");
+        }
+
         return personDao.newPerson(person);
     }
 

@@ -25,7 +25,7 @@ public class PersonDaoImpl implements PersonDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
  
         q=session.createQuery("from Instructor");
         returnVal =  q.list();
@@ -38,7 +38,7 @@ public class PersonDaoImpl implements PersonDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
         q=session.createQuery("from Person");
         returnVal =  q.list();
@@ -51,7 +51,7 @@ public class PersonDaoImpl implements PersonDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
         q=session.createQuery("from Person p where p.userName = :pun");
         q.setParameter("pun",userId);            
@@ -63,7 +63,7 @@ public class PersonDaoImpl implements PersonDao {
     
     public Instructor getInstructor(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Instructor instructor = (Instructor)session.get(Instructor.class,id);
         return instructor;        
 
@@ -71,13 +71,12 @@ public class PersonDaoImpl implements PersonDao {
     
     public Long newPerson(Person person){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Long l;
         try{
             l = (Long)session.save(person);
         }finally{
-            session.getTransaction().commit();
-            session.close();          
+            //session.getTransaction().commit();
         }
         return l;
 

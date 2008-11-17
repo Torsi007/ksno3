@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Instructor extends Person implements LabelValuePair{
 
-    private int accountNumber;
+    private String accountNumber;
     public Set events = new HashSet();
 
     public Set getEvents() {
@@ -21,11 +21,11 @@ public class Instructor extends Person implements LabelValuePair{
     public Instructor () {
     }
 
-    public int getAccountNumber () {
+    public String getAccountNumber () {
         return accountNumber;
     }
 
-    public void setAccountNumber (int val) {
+    public void setAccountNumber (String val) {
         this.accountNumber = val;
     }
     

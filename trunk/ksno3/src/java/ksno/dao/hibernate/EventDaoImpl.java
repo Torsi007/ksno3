@@ -21,12 +21,12 @@ public class EventDaoImpl implements EventDao {
 
     public Long newEvent(Event event) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Long l;
         try{
             l = (Long)session.save(event);
         }finally{
-            session.getTransaction().commit();
+            //session.getTransaction().commit();
             //session.close();          
         }
         return l;
@@ -34,24 +34,24 @@ public class EventDaoImpl implements EventDao {
     
     public void deleteEvent(Event event) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         try{
             session.delete(event);
         }finally{
-            session.getTransaction().commit();
+            //session.getTransaction().commit();
             //session.close();
         }        
     }      
     
     public void updateEvent(Event event) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         try{
             session.saveOrUpdate(event);
         }catch(Exception e){
             session.merge(event);
         }finally{
-            session.getTransaction().commit(); 
+            //session.getTransaction().commit(); 
             //session.close();
         }
         
@@ -62,7 +62,7 @@ public class EventDaoImpl implements EventDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
         q=session.createQuery("from Event e order by e.startDate desc");
         returnVal =  q.list();
@@ -73,7 +73,7 @@ public class EventDaoImpl implements EventDao {
 
     public Event getEvent(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
         Event event = (Event)session.get(Event.class,id);
         return event;        
     }
@@ -82,7 +82,7 @@ public class EventDaoImpl implements EventDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
         q=session.createQuery("from BeginnerCourse bc where  bc.open = '1' order by bc.startDate desc");
         returnVal =  q.list();
@@ -96,7 +96,7 @@ public class EventDaoImpl implements EventDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
         q=session.createQuery("from BeginnerCourse bc where bc.open = '1' and bc.location = :loc and bc.startDate between :sd and :ed order by bc.startDate desc");
         q.setParameter("sd",fromDate);
@@ -112,9 +112,9 @@ public class EventDaoImpl implements EventDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
-        q=session.createQuery("from BeginnerCourse bc where order by bc.startDate desc");
+        q=session.createQuery("from BeginnerCourse bc where order by bc.startDate asc");
         returnVal =  q.list();
 
         return returnVal;         
@@ -126,9 +126,9 @@ public class EventDaoImpl implements EventDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+        //session.beginTransaction();
 
-        q=session.createQuery("from BeginnerCourse bc where bc.location = :loc and bc.startDate between :sd and :ed order by bc.startDate desc");
+        q=session.createQuery("from BeginnerCourse bc where bc.location = :loc and bc.startDate between :sd and :ed order by bc.startDate asc");
         q.setParameter("sd",fromDate);
         q.setParameter("ed",toDate);
         q.setParameter("loc",location);
