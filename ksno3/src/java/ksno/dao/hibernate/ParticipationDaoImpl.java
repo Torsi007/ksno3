@@ -23,15 +23,23 @@ public class ParticipationDaoImpl implements ParticipationDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         Participation participation = (Participation)session.get(Participation.class,id);
-        return participation;
+        session.getTransaction().commit();
+        return participation;        
     }
     
     public Long newParticipation(Participation participation){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
         session.beginTransaction();
-        Long l = (Long)session.save(participation);
-        session.getTransaction().commit();
-        return l;
+        Long l;
+        try{
+            l = (Long)session.save(participation);
+        }finally{
+            session.getTransaction().commit();
+            //session.close();          
+        }
+        return l;        
+        
         
     }
 
@@ -42,16 +50,23 @@ public class ParticipationDaoImpl implements ParticipationDao {
             session.saveOrUpdate(participation);
         }catch(Exception e){
             session.merge(participation);
-        }
-        
-        session.getTransaction().commit();
+        }finally{
+            session.getTransaction().commit(); 
+            //session.close();
+        }        
     }
 
     public List getParticipations() {
         Query q = null;
+        List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
+
         q=session.createQuery("from Participation p order by p.createdDate desc");
-        return q.list();
+        returnVal =  q.list();
+
+        return returnVal;        
+        
+
     }
 }

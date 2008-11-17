@@ -16,9 +16,14 @@ public class ImageDaoImpl implements ImageDao {
     public Long newImage(Image image){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Long i = (Long)session.save(image);
-        session.getTransaction().commit();
-        return i;
+        Long l;
+        try{
+            l = (Long)session.save(image);
+        }finally{
+            session.getTransaction().commit();
+            //session.close();          
+        }
+        return l;        
         
     }
 }
