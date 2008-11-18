@@ -45,7 +45,7 @@ public class ArticleMasterUpdate {
     }    
     
   private Logger getLogService(){
-      return Logger.getLogger(ArticleCreate.class.getName());
+      return Logger.getLogger(ArticleMasterUpdate.class.getName());
   }
 
     public ArticleService getArticleService() {
@@ -93,7 +93,7 @@ public class ArticleMasterUpdate {
         return returnVal;
     }   
     
-        public String updateIntro(){
+    public String updateIntro(){
         String returnVal = "success";
         try{
             returnVal = this.updateArticle();
