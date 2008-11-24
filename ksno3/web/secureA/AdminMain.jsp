@@ -22,7 +22,9 @@
                 <h2>Welcom to the page administration</h2>
                 <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Maintain articles</t:commandLink>
                 <br/>
-                <t:commandLink enabledOnUserRole="admin,internal" action="coursesMaintain">Maintain courses</t:commandLink>                
+                <t:commandLink enabledOnUserRole="admin,internal" action="eventsMaintain">Maintain events</t:commandLink>                
+                <br/>
+                <t:commandLink enabledOnUserRole="admin,internal" action="textsMaintain">Maintain texts</t:commandLink>                
             </h:form>        
         </f:view>
         

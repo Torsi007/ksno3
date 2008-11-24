@@ -163,6 +163,12 @@
                                         <f:param name="id" value="#{course.id}"/>
                                         <h:outputText value="deltagere"/>
                                     </h:outputLink>
+                                    <%--
+                                    &nbsp;
+                                    <h:outputLink value="SignUpWinter.jsp" rendered="#{course.open != '1'}">
+                                        <f:param name="id" value="#{course.id}"/>                                                                           
+                                        <h:outputText value="#{course.maxSize - course.numberOfParticipants}"/>
+                                    </h:outputLink>  --%>                                  
                                 </span>                                
                             </li>
                         </t:dataList>                       

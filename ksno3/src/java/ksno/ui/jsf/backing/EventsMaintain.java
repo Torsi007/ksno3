@@ -13,6 +13,7 @@ import javax.faces.component.UIData;
 import javax.faces.component.html.HtmlOutputText;
 import ksno.model.Event;
 import ksno.service.EventService;
+import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 
 /**
@@ -34,7 +35,7 @@ public class EventsMaintain {
     }
     
     private Logger getLogService(){
-      return Logger.getLogger(ArticlesMaintain.class.getName());
+      return Logger.getLogger(this.getClass().getName());
     }    
 
     public EventService getEventService() {
@@ -94,6 +95,21 @@ public class EventsMaintain {
             returnVal = "no";
         }       
        return returnVal;        
-    }   
+    }  
+    
+    public String eventUpdate(){ 
+        
+        String returnVal = "success";
+        try{
+            Event eventModify = (Event)this.getData().getRowData();
+            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanEventModify, eventModify);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to select event", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }
+       return returnVal;        
+      
+    }     
 
 }

@@ -30,16 +30,41 @@
                             courseSelector.selectedIndex = i;
                             break;
                         }
-
-                    }                   
+                    } 
                 }
-
+                coursesChangeHandler();
              
             }
             
             function goBack(){
                window.location = 'courses_winter.jsp#when';
             }
+            
+            function coursesChangeHandler(){
+                var domElemSelect = document.getElementById("signup:courses");
+                var selectedValue = domElemSelect.options[domElemSelect.selectedIndex].value;
+                var strAwailableSeats = document.getElementById("signup:courseFreeSeats").value;
+                if(strAwailableSeats != undefined){
+                    var courseAvailableSeatsEntries = strAwailableSeats.split("~");
+                    for(var i = 0; i<courseAvailableSeatsEntries.length; i++){
+                        var courseAvailableSeatsEntry = courseAvailableSeatsEntries[i];
+                        var courseId = courseAvailableSeatsEntry.split(":")[0];
+                        if(courseId == selectedValue){
+                            var awailSeats = courseAvailableSeatsEntry.split(":")[1];
+                            if(parseInt(awailSeats)> 0){
+                                document.getElementById("awailSeatsInfo").innerHTML  = awailSeats + "Ledige plasser";    
+                            }else{
+                                document.getElementById("awailSeatsInfo").innerHTML  = "Dette kurset er fullt. Om du ønsker kan du sette deg på reservelisten (fortsett påmeldingen), vi vil da kontakte deg om noen skulle melde seg av. Et annet alternativ er å velge et annet kurs.";
+                            }
+                            
+                            break;
+                        }
+                    }
+                    
+                }
+                
+            }
+                            
             
         </script>
        
@@ -91,11 +116,17 @@
                     <tr>		
                         <td colspan="2">
                             <span style="display:block; margin-top:8">Kursdato</span>
-                            <t:selectOneMenu id="courses" style="width:200" binding="#{SignUpWinter_Backing.coursesSelect}">
+                            <t:selectOneMenu id="courses" style="width:200" binding="#{SignUpWinter_Backing.coursesSelect}" onchange="coursesChangeHandler()">
                                 <f:selectItems value="#{SignUpWinter_Backing.coursesSelectItems}"/>
                             </t:selectOneMenu>  
+                            <t:inputHidden id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/>
                         </td>	
                     </tr>
+                    <tr>		
+                        <td required="true" colspan="2">
+                            <span style="width:200" id="awailSeatsInfo"/>
+                        </td>	
+                    </tr>                    
                     <tr style="display:none">		
                         <td colspan="2" valign="bottom">
                             <h:commandButton id="sbm" style="width:98" value="Meld meg på!" action="#{SignUpWinter_Backing.signOn}" />

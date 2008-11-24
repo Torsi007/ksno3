@@ -148,9 +148,12 @@
                                     &nbsp;
                                     <h:outputLink value="signUpConfirmed.jsp" rendered="#{course.open != '1'}">
                                         <f:param name="id" value="#{course.id}"/>
-                                        <h:outputText value="deltagere"/>
+                                        <h:outputText value="#{course.maxSize - course.numberOfParticipants}"/>&nbsp;
+                                        <h:outputText value="plasser ledig"/>
                                     </h:outputLink>
-                                </span>                                
+                                </span> 
+                                
+                                
                             </li>
                         </t:dataList> 					
                     </ul>                    

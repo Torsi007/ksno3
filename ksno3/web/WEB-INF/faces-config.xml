@@ -15,6 +15,21 @@
     <lifecycle>
         <phase-listener>ksno.util.KSNOPhaseListener</phase-listener>
     </lifecycle>
+    <managed-bean>
+        <managed-bean-name>SessionBean1</managed-bean-name>
+        <managed-bean-class>ksno3.SessionBean1</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ApplicationBean1</managed-bean-name>
+        <managed-bean-class>ksno3.ApplicationBean1</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>RequestBean1</managed-bean-name>
+        <managed-bean-class>ksno3.RequestBean1</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>    
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
@@ -32,15 +47,20 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>   
    <managed-bean>
-        <managed-bean-name>PersonDao</managed-bean-name>
-        <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
-        <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>    
-   <managed-bean>
         <managed-bean-name>ParticipationDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ParticipationDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>    
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>PersonDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>      
+   <managed-bean>
+        <managed-bean-name>TextDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.TextDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean> 
    <!-- ******** Service *************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleService</managed-bean-name>
@@ -70,6 +90,15 @@
         </managed-property>        
     </managed-bean>       
    <managed-bean>
+        <managed-bean-name>ParticipationService</managed-bean-name>
+        <managed-bean-class>ksno.service.ParticipationServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>participationDao</property-name>
+            <value>#{ParticipationDao}</value>
+        </managed-property>        
+    </managed-bean>    
+   <managed-bean>
         <managed-bean-name>PersonService</managed-bean-name>
         <managed-bean-class>ksno.service.PersonServiceImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
@@ -79,32 +108,18 @@
         </managed-property>        
     </managed-bean>    
    <managed-bean>
-        <managed-bean-name>ParticipationService</managed-bean-name>
-        <managed-bean-class>ksno.service.ParticipationServiceImpl</managed-bean-class>
+        <managed-bean-name>TextService</managed-bean-name>
+        <managed-bean-class>ksno.service.TextServiceImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
         <managed-property>
-            <property-name>participationDao</property-name>
-            <value>#{ParticipationDao}</value>
+            <property-name>textDao</property-name>
+            <value>#{TextDao}</value>
         </managed-property>        
-    </managed-bean>      
-   <!-- ******** UI ******************************************************* -->    
-    <managed-bean>
-        <managed-bean-name>Main_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.Main</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>Current_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.Current</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>articleService</property-name>
-            <value>#{ArticleService}</value>
-        </managed-property>
-    </managed-bean> 
+    </managed-bean>   
+   <!-- ******** UI ******************************************************* -->  
     <managed-bean>
         <managed-bean-name>Article_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.ViewArticle</managed-bean-class>
+        <managed-bean-class>ksno.ui.jsf.backing.Article</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>articleService</property-name>
@@ -114,20 +129,7 @@
             <property-name>id</property-name>
             <value>#{param.id}</value>
         </managed-property>        
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>ArticlesMaintain_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.ArticlesMaintain</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>articleService</property-name>
-            <value>#{ArticleService}</value>
-        </managed-property>
-        <managed-property>
-            <property-name>imageService</property-name>
-            <value>#{ImageService}</value>
-        </managed-property>        
-    </managed-bean>  
+    </managed-bean>   
     <managed-bean>
         <managed-bean-name>ArticleCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleCreate</managed-bean-class>
@@ -144,7 +146,7 @@
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
         </managed-property>              
-    </managed-bean>      
+    </managed-bean>         
     <managed-bean>
         <managed-bean-name>ArticleImagesUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleImagesUpdate</managed-bean-class>
@@ -161,16 +163,7 @@
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
         </managed-property>         
-    </managed-bean>     
-    <managed-bean>
-        <managed-bean-name>ArticleUpdate_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.ArticleUpdate</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-        <managed-property>
-            <property-name>articleService</property-name>
-            <value>#{ArticleService}</value>
-        </managed-property>
-    </managed-bean>     
+    </managed-bean>         
     <managed-bean>
         <managed-bean-name>ArticleMasterUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleMasterUpdate</managed-bean-class>
@@ -185,14 +178,27 @@
         </managed-property>        
     </managed-bean>   
     <managed-bean>
-        <managed-bean-name>EventsMaintain_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.EventsMaintain</managed-bean-class>
+        <managed-bean-name>ArticleUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticleUpdate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>eventService</property-name>
-            <value>#{EventService}</value>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
         </managed-property>
-    </managed-bean>   
+    </managed-bean>        
+    <managed-bean>
+        <managed-bean-name>ArticlesMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticlesMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>        
+    </managed-bean>      
     <managed-bean>
         <managed-bean-name>BeginnerCourseCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.BeginnerCourseCreate</managed-bean-class>
@@ -205,24 +211,70 @@
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
         </managed-property>        
-    </managed-bean>    
+    </managed-bean>     
     <managed-bean>
-        <managed-bean-name>SignUpWinter_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.SignUpWinter</managed-bean-class>
+        <managed-bean-name>CoursesSummer_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CoursesSummer</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
+    </managed-bean> 
+    <managed-bean>
+        <managed-bean-name>CoursesWinter_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CoursesWinter</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>personService</property-name>
-            <value>#{PersonService}</value>
-        </managed-property>      
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+    </managed-bean>        
+    <managed-bean>
+        <managed-bean-name>Current_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.Current</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>participationService</property-name>
-            <value>#{ParticipationService}</value>
-        </managed-property> 
-    </managed-bean>  
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+    </managed-bean> 
+    <managed-bean>
+        <managed-bean-name>EventUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.EventUpdate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+    </managed-bean>      
+    <managed-bean>
+        <managed-bean-name>EventsMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.EventsMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+    </managed-bean>   
+    <managed-bean>
+        <managed-bean-name>Main_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.Main</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>SignUpConfirmed_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SignUpConfirmed</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>  
+        <managed-property>
+            <property-name>id</property-name>
+            <value>#{param.id}</value>
+        </managed-property>          
+    </managed-bean>     
     <managed-bean>
         <managed-bean-name>SignUpSummer_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.SignUpSummer</managed-bean-class>
@@ -241,38 +293,58 @@
         </managed-property> 
     </managed-bean>      
     <managed-bean>
-        <managed-bean-name>SignUpConfirmed_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.SignUpConfirmed</managed-bean-class>
+        <managed-bean-name>SignUpWinter_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SignUpWinter</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>      
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
+        </managed-property> 
+        <managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>        
+    </managed-bean>   
+    <managed-bean>
+        <managed-bean-name>TextCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.TextCreate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
         </managed-property>  
         <managed-property>
-            <property-name>id</property-name>
-            <value>#{param.id}</value>
-        </managed-property>          
-    </managed-bean>     
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>         
+    </managed-bean>  
     <managed-bean>
-        <managed-bean-name>CoursesWinter_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.CoursesWinter</managed-bean-class>
+        <managed-bean-name>TextUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.TextUpdate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>eventService</property-name>
-            <value>#{EventService}</value>
-        </managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>        
     </managed-bean>    
     <managed-bean>
-        <managed-bean-name>CoursesSummer_Backing</managed-bean-name>
-        <managed-bean-class>ksno.ui.jsf.backing.CoursesSummer</managed-bean-class>
+        <managed-bean-name>TextsMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.TextsMaintain</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
-            <property-name>eventService</property-name>
-            <value>#{EventService}</value>
-        </managed-property>
-    </managed-bean>      
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>        
+    </managed-bean>        
     <!-- ******** Navigation ******************************************************* -->   
- 
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
         <navigation-case>
@@ -280,67 +352,14 @@
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
         </navigation-case>            
         <navigation-case>
-            <from-outcome>coursesMaintain</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>       
-        
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>/secureD/CourseCreate.jsp</from-view-id>
-        <navigation-case>
-            <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>            
             <from-outcome>eventsMaintain</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>       
         <navigation-case>
-            <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>         
-    </navigation-rule>    
-    <navigation-rule>
-        <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>courseCreate</from-outcome>
-            <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>         
-    </navigation-rule>     
-    <navigation-rule>
-        <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>articleCreate</from-outcome>
-            <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
-        </navigation-case>    
-        <navigation-case>
-            <from-action>#{ArticlesMaintain_Backing.selectEditArticle}</from-action>
-            <from-outcome>articleMasterUpdate</from-outcome>
-            <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
-        </navigation-case> 
-        <navigation-case>
-            <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
-        <navigation-case>
-            <from-action>#{ArticleMasterUpdate_Backing.updateArticle}</from-action>
-            <from-outcome>articleUpd</from-outcome>
-            <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
-        </navigation-case>    
-        <navigation-case>
-            <from-action>#{ArticleMasterUpdate_Backing.updateIntro}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case> 
-        <navigation-case>
-            <from-outcome>Cancel</from-outcome>
-            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>           
-    </navigation-rule>
+            <from-outcome>textsMaintain</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>          
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
         <navigation-case>
@@ -375,7 +394,24 @@
             <from-outcome>articleUpdate</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
         </navigation-case>                    
-    </navigation-rule>    
+    </navigation-rule>   
+    <navigation-rule>
+        <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{ArticleMasterUpdate_Backing.updateArticle}</from-action>
+            <from-outcome>articleUpd</from-outcome>
+            <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
+        </navigation-case>    
+        <navigation-case>
+            <from-action>#{ArticleMasterUpdate_Backing.updateIntro}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
+        </navigation-case>           
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
@@ -395,13 +431,101 @@
         </navigation-case>            
     </navigation-rule> 
     <navigation-rule>
-        <from-view-id>/SignUpWinter.jsp</from-view-id>
+        <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{SignUpWinter_Backing.signOn}</from-action>               
-            <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>/signUpConfirmed.jsp</to-view-id>
-        </navigation-case>            
+            <from-outcome>articleCreate</from-outcome>
+            <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
+        </navigation-case>    
+        <navigation-case>
+            <from-action>#{ArticlesMaintain_Backing.selectEditArticle}</from-action>
+            <from-outcome>articleMasterUpdate</from-outcome>
+            <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/CourseCreate.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>            
+            <from-outcome>eventsMaintain</from-outcome>
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>         
+    </navigation-rule>  
+    <navigation-rule>
+        <from-view-id>/secureD/EventUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{EventUpdate_Backing.updateEvent}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>     
+    <navigation-rule>
+        <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>courseCreate</from-outcome>
+            <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{EventsMaintain_Backing.eventUpdate}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+        </navigation-case>        
     </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/secureD/TextCreate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{TextCreate_Backing.createText}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/TextUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{TextUpdate_Backing.update}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/secureD/TextsMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-outcome>textCreate</from-outcome>
+            <to-view-id>/secureD/TextCreate.jsp</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TextUpdate.jsp</to-view-id>
+        </navigation-case>          
+    </navigation-rule>     
     <navigation-rule>
         <from-view-id>/SignUpSummer.jsp</from-view-id>
         <navigation-case>
@@ -409,20 +533,12 @@
             <from-outcome>SignUpConfirmed</from-outcome>
             <to-view-id>/signUpConfirmed.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule>     
-    <managed-bean>
-        <managed-bean-name>SessionBean1</managed-bean-name>
-        <managed-bean-class>ksno3.SessionBean1</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>ApplicationBean1</managed-bean-name>
-        <managed-bean-class>ksno3.ApplicationBean1</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>RequestBean1</managed-bean-name>
-        <managed-bean-class>ksno3.RequestBean1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+    </navigation-rule>     <navigation-rule>
+        <from-view-id>/SignUpWinter.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{SignUpWinter_Backing.signOn}</from-action>               
+            <from-outcome>SignUpConfirmed</from-outcome>
+            <to-view-id>/signUpConfirmed.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule> 
 </faces-config>

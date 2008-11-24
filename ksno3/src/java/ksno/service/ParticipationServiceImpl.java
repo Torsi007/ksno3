@@ -5,6 +5,8 @@
 
 package ksno.service;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import ksno.dao.ParticipationDao;
@@ -31,7 +33,8 @@ public class ParticipationServiceImpl implements ParticipationService {
 
     public Long newParticipation(Participation participation) {
         if(participation.getCreatedDate() == null){
-            participation.setCreatedDate(new Date());
+            Calendar now = Calendar.getInstance();
+            participation.setCreatedDate(new Timestamp(now.getTimeInMillis()));
         }
         return participationDao.newParticipation(participation);
     }

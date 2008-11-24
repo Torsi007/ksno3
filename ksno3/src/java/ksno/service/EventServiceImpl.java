@@ -7,8 +7,10 @@ package ksno.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import ksno.dao.EventDao;
+import ksno.model.BeginnerCourse;
 import ksno.model.Event;
 
 /**
@@ -48,6 +50,25 @@ public class EventServiceImpl implements EventService {
         oneYearAhead.add(Calendar.YEAR, 1);
         Date d = new Date(oneYearAhead.getTimeInMillis());
         return eventDao.getOpenBeginnerCourses(new Date(),d, "Haukeli"); 
+    }
+    
+    public String getAwailableSeatsOnOpenUpcommingWinterBeginnerCourses(){
+        String returnval = "";
+        List courses = getOpenUpcommingWinterBeginnerCourses();
+        Iterator courseIterator = courses.iterator();
+        while(courseIterator.hasNext()){
+            BeginnerCourse course = (BeginnerCourse)courseIterator.next();
+            int numberOfParticipants = 0;
+            if(course.getParticipations() != null){
+                numberOfParticipants = course.getParticipations().size();    
+            }
+            int awailSeats = course.getMaxSize() - numberOfParticipants;
+            returnval += course.getId().toString() + ":" + Integer.toString(awailSeats);
+            if(courseIterator.hasNext()){
+                returnval += "~";
+            }
+        }
+        return returnval;
     }
     
     public List getUpcommingWinterBeginnerCourses() {

@@ -76,13 +76,11 @@
                         </f:facet> 
                         <h:selectBooleanCheckbox value="#{item.open}"/>
                     </h:column> 
-                    <%-- 
                      <h:column>
-                        <h:commandLink action="#{EventsMaintain_Backing.eventEdit}">
+                        <h:commandLink action="#{EventsMaintain_Backing.eventUpdate}">
                             <h:outputText value="Endre"/>
                         </h:commandLink>
                     </h:column>  
-                    --%>
                      <h:column>
                         <h:commandLink action="#{EventsMaintain_Backing.eventDelete}">
                             <h:outputText value="Slett"/>
