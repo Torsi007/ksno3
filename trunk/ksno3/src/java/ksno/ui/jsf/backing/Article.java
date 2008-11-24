@@ -5,14 +5,13 @@
 
 package ksno.ui.jsf.backing;
 
-import ksno.model.Article;
 import ksno.service.ArticleService;
 
 /**
  *
  * @author halsnehauge
  */
-public class ViewArticle {
+public class Article {
     Long id;
 
     public Long getId() {
@@ -23,8 +22,8 @@ public class ViewArticle {
         this.id = id;
     }
     
-    public Article getArticle() {
-        Article returnArticle = articleService.getArticle(id);
+    public ksno.model.Article getArticle() {
+        ksno.model.Article returnArticle = articleService.getArticle(id);
         return returnArticle;
     }
 

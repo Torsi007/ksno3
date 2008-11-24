@@ -5,6 +5,7 @@
 
 package ksno.ui.jsf.backing;
 
+import java.util.HashMap;
 import java.util.List;
 
 import java.util.logging.Level;
@@ -13,10 +14,13 @@ import javax.faces.model.SelectItem;
 import ksno.model.Event;
 import ksno.model.Participation;
 import ksno.model.Person;
+import ksno.model.Text;
 import ksno.service.EventService;
 import ksno.service.ParticipationService;
 import ksno.service.PersonService;
+import ksno.service.TextService;
 import ksno.util.JSFUtil;
+import ksno.util.SendMail;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
@@ -38,10 +42,19 @@ public class SignUpWinter {
     private long courseId;
     private EventService eventService;
     private PersonService personService;
+    private TextService textService;
     private ParticipationService participationService;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
 
+    public TextService getTextService() {
+        return textService;
+    }
+
+    public void setTextService(TextService textService) {
+        this.textService = textService;
+    }    
+    
     public HtmlInputTextarea getComment() {
         return comment;
     }
@@ -161,15 +174,19 @@ public class SignUpWinter {
     }
     
     public SelectItem[] getCoursesSelectItems() {
-        
         List events = eventService.getOpenUpcommingWinterBeginnerCourses();
         return JSFUtil.toSelectItemArray(events);
     }
+
+    public String getCourseAwailableSeats() {
+        return eventService.getAwailableSeatsOnOpenUpcommingWinterBeginnerCourses();
+    }    
     
     public String signOn(){
         
         String returnVal = "SignUpConfirmed";
         try{
+         
             Person person = null;
             try{
                 person = personService.getPerson(email.getValue().toString());
@@ -200,10 +217,22 @@ public class SignUpWinter {
             }
             setWinterValues(participation);
 
-
             participationService.newParticipation(participation);
-            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanSignedOnEvent, event.getId());
-
+            
+            try{
+                Text text = textService.getText("SignOnConfirmed");
+                String subject = text.getSubject();
+                HashMap<String, String> hm = new HashMap<String, String>();
+                hm.put("course", event.getStartDate().toString());
+                hm.put("name", person.getFirstName());
+                String message = text.getBody(hm);           
+                SendMail sendMail = new SendMail(person.getUserName(), subject, message);
+                sendMail.send(); 
+                JSFUtil.getSessionMap().put(JSFUtil.sessionBeanSignedOnEvent, event.getId());                
+            }catch(Exception e){
+                getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
+                returnVal = "no";                
+            }
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to sign on participant", e);
             errorMsg.setValue("Påmeldingen feilet, vennligst forsøk på nytt. Om det fortsatt ikke fungerer, ta kontakt med oss på email eller telefon (kontakt info nederst på siden)");            

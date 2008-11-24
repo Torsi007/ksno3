@@ -4,7 +4,6 @@
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
         <param-value>client</param-value>
     </context-param>
- 
     <context-param>
         <description>Used to identify application for picasaWeb</description>
         <param-name>applicationName</param-name>
@@ -62,7 +61,6 @@
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
     </filter-mapping>
-
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -88,17 +86,17 @@
             <description/>
             <url-pattern>/faces/secureA/*</url-pattern>
 	 <!-- If you list http methods, only those methods are protected -->
-            <http-method>GET</http-method><http-method>PUT</http-method><http-method>POST</http-method><http-method>DELETE</http-method>
-            
-            
-            
+            <http-method>GET</http-method>
+            <http-method>PUT</http-method>
+            <http-method>POST</http-method>
+            <http-method>DELETE</http-method>
         </web-resource-collection>
         <auth-constraint>
          <!-- Anyone with one of the listed roles may access this area -->
             <role-name>authuser</role-name>
             <role-name>admin</role-name>
             <role-name>internal</role-name>
-            </auth-constraint>
+        </auth-constraint>
     </security-constraint>
 
     <!-- Default login configuration uses form-based authentication -->
@@ -120,8 +118,8 @@
             <description/>
             <role-name>internal</role-name>
             <role-name>admin</role-name>
-            </auth-constraint>
-        </security-constraint>
+        </auth-constraint>
+    </security-constraint>
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>Example Form-Based Authentication Area</realm-name>
@@ -139,4 +137,15 @@
         <description/>
         <role-name>authuser</role-name>
     </security-role>
+    <resource-ref>
+        <description>Resource reference to a factory for javax.mail.Session
+            instances that may be used for sending electronic mail
+            messages, preconfigured to connect to the appropriate
+            SMTP server.
+        </description>
+        <res-ref-name>mail/Session</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
     </web-app>

@@ -14,6 +14,7 @@
     <property column="WETSUIT_SIZE" name="wetSuitSize" type="string"/>
     <property column="COMMENT" name="comment" type="string"/>
     <property column="PRICE" name="price" type="integer"/>
+    <property column="ON_WAIT_LIST" name="onWaitList" type="boolean"/>    
     <property column="CREATED_DATE" name="createdDate" type="date"/>
   </class>
 </hibernate-mapping>

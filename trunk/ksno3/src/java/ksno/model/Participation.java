@@ -16,6 +16,16 @@ public class Participation {
     private int price;   
     private Date createdDate;
     private String comment;
+    boolean onWaitList;
+
+    public boolean getOnWaitList() {
+        return onWaitList;
+    }
+
+    public void setOnWaitList(boolean onWaitList) {
+        this.onWaitList = onWaitList;
+    }
+    
 
     public String getComment() {
         return comment;

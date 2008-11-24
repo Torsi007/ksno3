@@ -104,7 +104,9 @@ public class JSFUtil {
         }
     }
     
+    public static String sessionBeanTextModify = "TextModify";
     public static final String sessionBeanArticleModify = "ArticleModify";
+    public static final String sessionBeanEventModify = "EventModify";    
     public static final String sessionBeanSignedOnEvent = "SignedOnEvent";    
     
 

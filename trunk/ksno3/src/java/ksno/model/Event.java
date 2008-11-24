@@ -58,6 +58,10 @@ public class Event implements LabelValuePair {
         this.participations = participations;
     } 
     
+    public int getNumberOfParticipants(){
+        return getParticipations().size();
+    }
+    
     public String getComment () {
         return comment;
     }
