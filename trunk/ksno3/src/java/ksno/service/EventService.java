@@ -6,6 +6,7 @@
 package ksno.service;
 
 import java.util.List;
+import ksno.model.BeginnerCourse;
 import ksno.model.Event;
 
 /**
@@ -18,6 +19,7 @@ public interface EventService {
     public void deleteEvent(Event event); 
     public void updateEvent(Event event);
     public Event getEvent(Long id); 
+    public BeginnerCourse getBeginnerCourse(Long id);    
     public List getBeginnerCourses();
     public List getOpenUpcommingWinterBeginnerCourses(); 
     public String getAwailableSeatsOnOpenUpcommingWinterBeginnerCourses();

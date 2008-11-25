@@ -13,8 +13,9 @@
     <property column="HELMET_SIZE" name="helmetSize" type="string"/>
     <property column="WETSUIT_SIZE" name="wetSuitSize" type="string"/>
     <property column="COMMENT" name="comment" type="string"/>
+    <property column="COMMENT_KSNO" name="commentKSNO" type="string"/>    
     <property column="PRICE" name="price" type="integer"/>
     <property column="ON_WAIT_LIST" name="onWaitList" type="boolean"/>    
-    <property column="CREATED_DATE" name="createdDate" type="date"/>
+    <property column="CREATED_DATE" name="createdDate" type="calendar"/>
   </class>
 </hibernate-mapping>

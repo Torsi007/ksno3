@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.regex.Matcher;
 
 /**
  *
@@ -96,6 +95,17 @@ public class Text {
     public String getSubject() {
         return subject;
     }
+    
+    public String getSubject(HashMap<String, String> hm) {
+        String temp = getSubject();
+        Iterator iter = hm.entrySet().iterator();
+        while(iter.hasNext()){
+            Entry<String, String> entry = (Entry<String, String>)iter.next();
+            temp = temp.replaceAll("~" + entry.getKey() + "~", entry.getValue());
+        }
+        
+        return temp;
+    }    
 
     public void setSubject(String subject) {
         this.subject = subject;
