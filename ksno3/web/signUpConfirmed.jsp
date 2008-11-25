@@ -24,9 +24,19 @@
                     <span>Deltagere</span>
                     <ul type="square" style="margin-top:0">	
                         <t:dataList value="#{SignUpConfirmed_Backing.event.participations}" var="participation">
-                            <li><span><t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/></span></li>
+                            <t:htmlTag value="li" rendered="#{!participation.onWaitList}">
+                                <span><t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/></span>
+                            </t:htmlTag>
                         </t:dataList>                    
                     </ul>
+                    <span>Venteliste</span>
+                    <ul type="square" style="margin-top:0">	
+                        <t:dataList value="#{SignUpConfirmed_Backing.event.participations}" var="participation">
+                            <t:htmlTag value="li" rendered="#{participation.onWaitList}">
+                                <span><t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/></span>
+                            </t:htmlTag>
+                        </t:dataList>                    
+                    </ul>                    
                 </div>
             </h:form> 
         </f:view>    

@@ -33,13 +33,40 @@
 
                     }                   
                 }
-
+                coursesChangeHandler();
              
             }
             
             function goBack(){
                 window.location = 'courses_summer.jsp#when';
                 }
+                
+            
+            function coursesChangeHandler(){
+                var domElemSelect = document.getElementById("signup:courses");
+                var selectedValue = domElemSelect.options[domElemSelect.selectedIndex].value;
+                var strAwailableSeats = document.getElementById("signup:courseFreeSeats").innerHTML;
+                if(strAwailableSeats != undefined){
+                    var courseAvailableSeatsEntries = strAwailableSeats.split("~");
+                    for(var i = 0; i<courseAvailableSeatsEntries.length; i++){
+                        var courseAvailableSeatsEntry = courseAvailableSeatsEntries[i];
+                        var courseId = courseAvailableSeatsEntry.split(":")[0];
+                        if(courseId == selectedValue){
+                            var awailSeats = courseAvailableSeatsEntry.split(":")[1];
+                            if(parseInt(awailSeats)> 0){
+                                document.getElementById("awailSeatsInfo").innerHTML  = awailSeats + " ledige plasser";    
+                            }else{
+                                document.getElementById("awailSeatsInfo").innerHTML  = "Dette kurset er fullt. Om du ønsker kan du sette deg på reservelisten (fortsett påmeldingen), vi vil da kontakte deg om noen skulle melde seg av. Et annet alternativ er å velge et annet kurs.";
+                            }
+                            
+                            break;
+                        }
+                    }
+                    
+                }
+                
+            }
+                                   
             
         </script>
        
@@ -125,8 +152,14 @@
                             <t:selectOneMenu id="courses" style="width:200" binding="#{SignUpSummer_Backing.coursesSelect}">
                                 <f:selectItems value="#{SignUpSummer_Backing.coursesSelectItems}"/>
                             </t:selectOneMenu>  
+                            <t:outputText style="display:none" id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/>
                         </td>	
                     </tr>
+                    <tr>		
+                        <td required="true" colspan="2">
+                            <span style="width:200" id="awailSeatsInfo"/>
+                        </td>	
+                    </tr>                     
                     <tr style="display:none">		
                         <td colspan="2" valign="bottom">
                             <h:commandButton id="sbm" style="width:98" value="Meld meg på!" action="#{SignUpSummer_Backing.signOn}" />
