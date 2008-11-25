@@ -43,7 +43,7 @@
             function coursesChangeHandler(){
                 var domElemSelect = document.getElementById("signup:courses");
                 var selectedValue = domElemSelect.options[domElemSelect.selectedIndex].value;
-                var strAwailableSeats = document.getElementById("signup:courseFreeSeats").value;
+                var strAwailableSeats = document.getElementById("signup:courseFreeSeats").innerHTML;
                 if(strAwailableSeats != undefined){
                     var courseAvailableSeatsEntries = strAwailableSeats.split("~");
                     for(var i = 0; i<courseAvailableSeatsEntries.length; i++){
@@ -52,7 +52,7 @@
                         if(courseId == selectedValue){
                             var awailSeats = courseAvailableSeatsEntry.split(":")[1];
                             if(parseInt(awailSeats)> 0){
-                                document.getElementById("awailSeatsInfo").innerHTML  = awailSeats + "Ledige plasser";    
+                                document.getElementById("awailSeatsInfo").innerHTML  = awailSeats + " ledige plasser";    
                             }else{
                                 document.getElementById("awailSeatsInfo").innerHTML  = "Dette kurset er fullt. Om du ønsker kan du sette deg på reservelisten (fortsett påmeldingen), vi vil da kontakte deg om noen skulle melde seg av. Et annet alternativ er å velge et annet kurs.";
                             }
@@ -118,8 +118,8 @@
                             <span style="display:block; margin-top:8">Kursdato</span>
                             <t:selectOneMenu id="courses" style="width:200" binding="#{SignUpWinter_Backing.coursesSelect}" onchange="coursesChangeHandler()">
                                 <f:selectItems value="#{SignUpWinter_Backing.coursesSelectItems}"/>
-                            </t:selectOneMenu>  
-                            <t:inputHidden id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/>
+                            </t:selectOneMenu> 
+                            <t:outputText style="display:none" id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/>
                         </td>	
                     </tr>
                     <tr>		

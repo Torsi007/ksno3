@@ -291,6 +291,10 @@
             <property-name>participationService</property-name>
             <value>#{ParticipationService}</value>
         </managed-property> 
+        <managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>            
     </managed-bean>      
     <managed-bean>
         <managed-bean-name>SignUpWinter_Backing</managed-bean-name>
