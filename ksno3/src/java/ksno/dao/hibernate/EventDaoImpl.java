@@ -8,6 +8,7 @@ package ksno.dao.hibernate;
 import java.util.Date;
 import java.util.List;
 import ksno.dao.EventDao;
+import ksno.model.BeginnerCourse;
 import ksno.model.Event;
 import ksno.util.HibernateUtil;
 import org.hibernate.Query;
@@ -77,6 +78,13 @@ public class EventDaoImpl implements EventDao {
         Event event = (Event)session.get(Event.class,id);
         return event;        
     }
+    
+    public BeginnerCourse getBeginnerCourse(Long id) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+        BeginnerCourse course = (BeginnerCourse)session.get(BeginnerCourse.class,id);
+        return course;        
+    }    
     
     public List getOpenBeginnerCourses() {
         Query q = null;

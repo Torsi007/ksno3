@@ -1,6 +1,6 @@
 package ksno.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 
 
@@ -14,9 +14,22 @@ public class Participation {
     private String helmetSize;
     private String wetSuitSize;
     private int price;   
-    private Date createdDate;
+    private Calendar createdDate;
     private String comment;
+    private String commentKSNO;    
     boolean onWaitList;
+
+    public String getCommentKSNO() {
+        return commentKSNO;
+    }
+
+    public void setCommentKSNO(String commentKSNO) {
+        this.commentKSNO = commentKSNO;
+    }
+    
+    public void appendCommentKSNO(String comment){
+        this.commentKSNO = this.commentKSNO + "\n" + comment;
+    }
 
     public boolean getOnWaitList() {
         return onWaitList;
@@ -35,11 +48,11 @@ public class Participation {
         this.comment = comment;
     }
 
-    public Date getCreatedDate() {
+    public Calendar getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(Calendar createdDate) {
         this.createdDate = createdDate;
     }
 

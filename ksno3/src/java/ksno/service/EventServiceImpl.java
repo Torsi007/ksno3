@@ -100,6 +100,9 @@ public class EventServiceImpl implements EventService {
         eventDao.updateEvent(event);
     }
 
+    public BeginnerCourse getBeginnerCourse(Long id) {
+        return eventDao.getBeginnerCourse(id);
+    }
         
 
 }
