@@ -9,13 +9,13 @@
     <!-- Lasy to false to make SignUpConfirm work properly-->
     <many-to-one cascade="save-update" class="Person" column="PARTICIPANT_ID" lazy="false" name="participant"/>
     <many-to-one cascade="save-update" class="Event" column="EVENT_ID" name="event"/>
-    <property column="SHOE_SIZE" name="shoeSize" type="integer"/>
+    <property column="SHOE_SIZE" name="shoeSize" type="string"/>
     <property column="HELMET_SIZE" name="helmetSize" type="string"/>
     <property column="WETSUIT_SIZE" name="wetSuitSize" type="string"/>
     <property column="COMMENT" name="comment" type="string"/>
-    <property column="COMMENT_KSNO" name="commentKSNO" type="string"/>    
+    <property column="COMMENT_KSNO" name="commentKSNO" type="string"/>
     <property column="PRICE" name="price" type="integer"/>
-    <property column="ON_WAIT_LIST" name="onWaitList" type="boolean"/>    
+    <property column="ON_WAIT_LIST" name="onWaitList" type="boolean"/>
     <property column="CREATED_DATE" name="createdDate" type="calendar"/>
   </class>
 </hibernate-mapping>
