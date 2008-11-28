@@ -6,6 +6,7 @@
 package ksno.service;
 
 import java.util.List;
+import ksno.model.Email;
 import ksno.model.Text;
 
 /**
@@ -19,4 +20,5 @@ public interface TextService {
     public void updateText(Text Text);
     public void deleteText(Text Text);
     public List getTexts();
+    public Email getEmail(String name);
 }

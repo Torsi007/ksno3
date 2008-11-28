@@ -17,4 +17,5 @@ public interface ParticipationService {
     public Long newParticipation(Participation participation);
     public void updateParticipation(Participation participation);
     public List getParticipations();
+    public void deleteParticipation(Participation participation);   
 }
