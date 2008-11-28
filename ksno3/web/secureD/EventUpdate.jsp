@@ -16,7 +16,7 @@
         <title>Nytt kurs</title>
         <script src="../resources/js/logic.js" type="text/javascript"></script>
         <style type="text/css">
-            #calendarfieldscontainer {height:20px; width:300px;  position:relative}
+            #calendarfieldscontainer {height:20px; width:20px;  position:relative}
             #calendaricon { position:absolute; left:0px; top:0px; clear:both}
             #calendarcontainer { display:none; position:absolute; left:5px; top:0px; z-index:1}
             
@@ -42,7 +42,7 @@
                                 <f:convertDateTime pattern="yyyy-MM-dd"/>
                             </t:inputText>
                         </td>
-                        <td>
+                        <td style="overflow:hidden; width:20">
                             <script type="text/javascript">
                                 YAHOO.namespace("ksno.signup.calendar");
 
@@ -88,8 +88,6 @@
                                 <div id="calendarcontainer"></div>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
                         <td>Slutt Dato</td>
                         <td required="true">
                             <t:inputText id="endDate" value="#{EventModify.endDate}">   
@@ -143,39 +141,27 @@
                             </div>                           
                         </td>
                     </tr>  
-                  
                     <tr>
                         <td>Kommentar</td>
-                        <td>
+                        <td colspan="5">
                             <t:inputText id="it1" value="#{EventModify.comment}" />                        
                         </td>
-                        <td/>
                     </tr> 
                     <tr>
                         <td>Ant plasser</td>
                         <td required="true">
                             <t:inputText id="it2" value="#{EventModify.maxSize}" />                        
                         </td>
-                        <td/>
-                    </tr>  
-                    <tr>
                         <td>Åpent kurs</td>
                         <td>                    
                             <t:selectBooleanCheckbox value="#{EventModify.open}"/>
                         </td>
-                        <td/>   
-                    </tr> 
-                    
-                     <tr>
                         <td>Ansvarlig</td>
                         <td>
-                            
                             <t:selectOneMenu value="#{EventModify.responsible.id}" >
-                                <f:selectItems value="#{BeginnerCourseCreate_Backing.instructorSelectItems}"/>
-                            </t:selectOneMenu> 
-
+                                <f:selectItems value="#{EventUpdate_Backing.instructorSelectItems}"/>
+                            </t:selectOneMenu>
                         </td>
-                        <td/>
                     </tr>    
                     
                     <tr>
@@ -186,11 +172,110 @@
                                 <f:selectItem itemLabel="Jæren" itemValue="Jæren"/>                                
                             </t:selectOneMenu>    
                         </td>
-                        <td/>
+                        <td colsapn="4"/>
                     </tr>  
-                    
                 </table>
-                <h:commandButton value="Lagre og avslutt" action="#{EventUpdate_Backing.updateEvent}" />                                                                
+                <b>Deltagere</b><br/>
+                <t:dataTable id="dt1" value="#{EventModify.participations}" binding="#{EventUpdate_Backing.data}" var="participation" first="0" width="100%">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Navn" />
+                        </f:facet> 
+                        <h:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"></h:outputText>
+                    </h:column> 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Mail" />
+                        </f:facet> 
+                        <h:inputText value="#{participation.participant.userName}"></h:inputText>
+                    </h:column>   
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Telefon" />
+                        </f:facet> 
+                        <h:inputText value="#{participation.participant.phone}"></h:inputText>
+                    </h:column>                     
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Sko" />
+                        </f:facet> 
+                        <t:selectOneMenu style="width:98" required="true" value="#{participation.shoeSize}" >
+                            <f:selectItem itemLabel="-" itemValue="empty"/>                                
+                            <f:selectItem itemLabel="45" itemValue="45"/>
+                            <f:selectItem itemLabel="44" itemValue="44"/>
+                            <f:selectItem itemLabel="43" itemValue="43"/>
+                            <f:selectItem itemLabel="42" itemValue="42"/>
+                            <f:selectItem itemLabel="41" itemValue="41"/>
+                            <f:selectItem itemLabel="40" itemValue="40"/>
+                            <f:selectItem itemLabel="39" itemValue="39"/>                                
+                            <f:selectItem itemLabel="38" itemValue="38"/>
+                            <f:selectItem itemLabel="37" itemValue="37"/>
+                            <f:selectItem itemLabel="36" itemValue="36"/>
+                            <f:selectItem itemLabel="35" itemValue="35"/>                                
+                        </t:selectOneMenu>                          
+                    </h:column>   
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Hjelm" />
+                        </f:facet> 
+                         <t:selectOneMenu style="width:98" required="true" value="#{participation.helmetSize}" >
+                            <f:selectItem itemLabel="Tar med selv!" itemValue="empty"/>                                
+                            <f:selectItem itemLabel="XXL" itemValue="XXL"/>
+                            <f:selectItem itemLabel="XL" itemValue="XL"/>
+                            <f:selectItem itemLabel="L" itemValue="L"/>
+                            <f:selectItem itemLabel="M" itemValue="M"/>
+                            <f:selectItem itemLabel="S" itemValue="S"/>
+                            <f:selectItem itemLabel="XS" itemValue="XS"/>
+                        </t:selectOneMenu>  
+                    </h:column>    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Våtdrakt" />
+                        </f:facet> 
+                        <t:selectOneMenu  style="width:98" required="true" value="#{participation.wetSuitSize}">
+                            <f:selectItem itemLabel="-" itemValue="empty"/>
+                            <f:selectItem itemLabel="XXL" itemValue="XXL"/>
+                            <f:selectItem itemLabel="XL" itemValue="XL"/>
+                            <f:selectItem itemLabel="L" itemValue="L"/>
+                            <f:selectItem itemLabel="M" itemValue="M"/>
+                            <f:selectItem itemLabel="S" itemValue="S"/>
+                            <f:selectItem itemLabel="XS" itemValue="XS"/>
+                        </t:selectOneMenu>                        
+                    </h:column>  
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Bruker kommentar" />
+                        </f:facet> 
+                        <h:outputText value="#{participation.comment}"></h:outputText>
+                    </h:column>       
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ksno kommentar" />
+                        </f:facet> 
+                        <h:inputText value="#{participation.commentKSNO}"/>
+                    </h:column>      
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="På ventelist" />
+                        </f:facet> 
+                        <h:selectBooleanCheckbox value="#{participation.onWaitList}"/>
+                    </h:column>
+                    <%--
+                     <h:column>
+                        <h:commandLink action="#{EventUpdate_Backing.selectEditParticipant}">
+                            <h:outputText value="Endre"/>
+                        </h:commandLink>
+                    </h:column>  
+                    --%>
+                     <h:column>
+                        <h:commandLink action="#{EventUpdate_Backing.participantDelete}">
+                            <h:outputText value="Slett"/>
+                        </h:commandLink>
+                    </h:column>                    
+                </t:dataTable>
+                 <h:commandButton value="Lagre og avslutt" action="#{EventUpdate_Backing.updateEvent}" />  
+                 <h:commandButton value="Legg til ukjent deltager" action="#{EventUpdate_Backing.participantUnknownAdd}"/>
+                 <h:commandButton value="Legg til deltager" action="addParticipant"/>
                 <t:outputText binding="#{EventUpdate_Backing.errorMsg}"/>
             </h:form>  
             <h:form>

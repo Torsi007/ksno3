@@ -35,6 +35,20 @@
                         </td>
                         <td/>
                     </tr>  
+                    <tr>
+                        <td>To mottakere</td>
+                        <td required="true">
+                            <t:inputText id="it3" value="#{TextModify.toRecipients}" />                        
+                        </td>
+                        <td>Mottaker(e), om flere komma separert</td>
+                    </tr>  
+                    <tr>
+                        <td>CC mottakere</td>
+                        <td>
+                            <t:inputText id="it4" value="#{TextModify.ccRecipients}" />                        
+                        </td>
+                        <td>Mottaker(e), om flere komma separert</td>
+                    </tr>                    
                      <tr>
                         <td colspan="3">Text</td>
                     </tr>                       
@@ -44,8 +58,8 @@
                         </td>
                     </tr>    
                 </table>                
-                <h:commandButton value="Lagre og avslutt" action="#{TextUpdate_Backing.update}" />                                                                
-                <t:outputText binding="#{TextUpdate_Backing.errorMsg}"/>
+                <h:commandButton value="Lagre og avslutt" action="#{EmailUpdate_Backing.update}" />                                                                
+                <t:outputText binding="#{EmailUpdate_Backing.errorMsg}"/>
             </h:form>  
             <h:form>
                   <h:commandButton immediate="true" value="Avbryt" action="cancel" /> 

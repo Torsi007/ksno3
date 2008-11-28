@@ -58,6 +58,7 @@
                     </h:column>                    
                 </h:dataTable>  
                 <h:commandButton value="Opprett ny tekst" action="textCreate"/>   
+                <h:commandButton value="Opprett ny mail tekst" action="emailCreate"/>                   
                 <t:outputText styleClass="errorMsg" binding="#{TextsMaintain_Backing.errorMsg}"/>    
             </h:form>    
             <h:form>
