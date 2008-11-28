@@ -5,11 +5,10 @@
 
 package ksno.ui.jsf.backing;
 
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ksno.model.Email;
 import ksno.model.Person;
-import ksno.model.Text;
 import ksno.service.PersonService;
 import ksno.service.TextService;
 import ksno.util.JSFUtil;
@@ -21,15 +20,35 @@ import org.apache.myfaces.component.html.ext.HtmlOutputText;
  *
  * @author tor.hauge
  */
-public class TextCreate {
+public class EmailCreate {
     
     private HtmlInputText name;
     private HtmlInputText subject;
+    private HtmlInputText toRecipients;
+    private HtmlInputText ccRecipients;    
     private HtmlInputTextarea body;    
     private HtmlOutputText errorMsg;
     private TextService textService;
     private PersonService personService;
 
+    public HtmlInputText getCcRecipients() {
+        return ccRecipients;
+    }
+
+    public void setCcRecipients(HtmlInputText ccRecipients) {
+        this.ccRecipients = ccRecipients;
+    }
+
+    public HtmlInputText getToRecipients() {
+        return toRecipients;
+    }
+
+    public void setToRecipients(HtmlInputText toRecipients) {
+        this.toRecipients = toRecipients;
+    }
+
+    
+    
     public HtmlInputTextarea getBody() {
         return body;
     }
@@ -82,20 +101,24 @@ public class TextCreate {
       return Logger.getLogger(this.getClass().getName());
     }    
     
-    public String createText(){
+    public String createEmail(){
         String returnVal = "success";
         try{
-            Text text = new Text();
-            text.setName(name.getValue().toString());
-            text.setSubject(subject.getValue().toString());
-            text.setBody(body.getValue().toString());
+            Email email = new Email();
+            email.setName(name.getValue().toString());
+            email.setSubject(subject.getValue().toString());
+            email.setBody(body.getValue().toString());
+            email.setToRecipients(toRecipients.getValue().toString());
+            if(ccRecipients.getValue() != null){
+                email.setCcRecipients(ccRecipients.getValue().toString());
+            }
             
             String userName = JSFUtil.getRequest().getUserPrincipal().getName();
             Person currentUser = personService.getPerson(userName);
             
-            text.setAuthor(currentUser);
+            email.setAuthor(currentUser);
             
-            textService.newText(text);
+            textService.newText(email);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create text", e);
             errorMsg.setValue("Teksten ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            

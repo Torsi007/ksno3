@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.model.SelectItem;
 import ksno.model.BeginnerCourse;
+import ksno.model.Email;
 import ksno.model.Event;
 import ksno.model.Participation;
 import ksno.model.Person;
@@ -196,7 +197,7 @@ public class SignUpWinter {
             if(person != null){
                 getLogService().log(Level.SEVERE,"Unable to sign on participant");
                 errorMsg.setValue("Brukeren " + person.getFirstName() + " " + person.getLastName() + " er allerede registrert med mail: " + email.getValue().toString() + ". Kitesurfing.no beklager at vår web løsning ikke håndterer dette, vennligst meld deg på via mail eller telefon (se kontakt detaljer nederst på siden).");            
-                returnVal = "no";                
+                return "no";                
             }else{
                 person = new Person();
             }
@@ -222,63 +223,42 @@ public class SignUpWinter {
             participationService.newParticipation(participation);
             
             
+            HashMap<String, String> hm = new HashMap<String, String>();
+            hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
+            hm.put("name", person.getFirstName() +  " " + person.getLastName());
+            hm.put("phone", Integer.toString(person.getPhone()));
+            hm.put("email", person.getUserName());             
             if(wait){
-                 int pos = course.getNumberOfParticipants() - course.getMaxSize();
-                 try{
-                    Text text = textService.getText("SignOnWaitHaukeli");
-                    String subject = text.getSubject();
-                    HashMap<String, String> hm = new HashMap<String, String>();
-                    hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
-                    hm.put("name", person.getFirstName());
-                    hm.put("position", Integer.toString(pos));                    
-                    String message = text.getBody(hm);           
-                    SendMail sendMail = new SendMail(person.getUserName(),"torerik.hauge@gmail.com", subject, message);
+                int pos = course.getNumberOfParticipants() - course.getMaxSize();
+                hm.put("position", Integer.toString(pos));   
+                try{
+                    Email mail = textService.getEmail("SignOnWaitHaukeli");
+                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
                     sendMail.send(); 
                 }catch(Exception e){
                     getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
                     participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
                 }               
-                 try{
-                    Text text = textService.getText("SignedOnWaitMessageToHaukeli");
-                    String subject = text.getSubject();
-                    HashMap<String, String> hm = new HashMap<String, String>();
-                    hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
-                    hm.put("name", person.getFirstName());
-                    hm.put("position", Integer.toString(pos));   
-                    hm.put("phone", Integer.toString(person.getPhone()));
-                    hm.put("email", person.getUserName());                     
-                    String message = text.getBody(hm);           
-                    SendMail sendMail = new SendMail("tor-erik@kitesurfing.no","torerik.hauge@gmail.com", subject, message);
+                try{
+                    Email mail = textService.getEmail("SignedOnWaitMessageToHaukeli");
+                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
                     sendMail.send(); 
                 }catch(Exception e){
                     getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
                     participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
-                }                 
+            }                 
             }else{
                 try{
-                    Text text = textService.getText("SignOnConfirmedHaukeli");
-                    String subject = text.getSubject();
-                    HashMap<String, String> hm = new HashMap<String, String>();
-                    hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
-                    hm.put("name", person.getFirstName());
-                    String message = text.getBody(hm);           
-                    SendMail sendMail = new SendMail(person.getUserName(),"torerik.hauge@gmail.com", subject, message);
+                    Email mail = textService.getEmail("SignOnConfirmedHaukeli");
+                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
                     sendMail.send(); 
                 }catch(Exception e){
                     getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
                     participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
                 }
                 try{
-                    Text text = textService.getText("SignedOnMessageToHaukeli");
-                    HashMap<String, String> hm = new HashMap<String, String>();
-                    hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
-                    hm.put("name", person.getFirstName() + " " + person.getLastName());
-                    hm.put("phone", Integer.toString(person.getPhone()));
-                    hm.put("email", person.getUserName()); 
-                    String subject = text.getSubject(hm);                
-                    String message = text.getBody(hm);  
-                    //Bytte med info@haukeliseter.no
-                    SendMail sendMail = new SendMail("tor-erik@kitesurfing.no","torerik.hauge@gmail.com", subject, message);
+                    Email mail = textService.getEmail("SignedOnMessageToHaukeli");
+                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
                     sendMail.send(); 
                 }catch(Exception e){
                     getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
@@ -299,12 +279,6 @@ public class SignUpWinter {
         participation.setHelmetSize(helmetSize.getValue().toString());
     }
     
-    private void setSummerValues(Participation participation){
-        participation.setHelmetSize(helmetSize.getValue().toString());
-        participation.setShoeSize(Integer.parseInt(shoeSize.getValue().toString()));
-        participation.setWetSuitSize(wetSuitSize.getValue().toString());    
-    }    
-
     public String test(){
      return "jall";
     }
