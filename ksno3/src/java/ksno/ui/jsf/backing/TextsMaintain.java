@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIData;
+import ksno.model.Email;
 import ksno.model.Text;
 import ksno.service.TextService;
 import ksno.util.JSFUtil;
@@ -81,10 +82,14 @@ public class TextsMaintain {
    
     public String textUpdate(){ 
         
-        String returnVal = "success";
+        String returnVal = "textUpdate";
         try{
-            Text TextModify = (Text)this.getData().getRowData();
-            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanTextModify, TextModify);
+            Text textModify = (Text)this.getData().getRowData();
+            if(textModify instanceof Email){
+                returnVal = "emailUpdate";
+            }
+
+            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanTextModify, textModify);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to select Text", e);
             errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
