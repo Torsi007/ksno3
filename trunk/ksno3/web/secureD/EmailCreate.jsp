@@ -25,28 +25,42 @@
                     <tr>
                         <td>Navn</td>
                         <td required="true">
-                            <t:inputText id="it1" binding="#{TextCreate_Backing.name}" />                        
+                            <t:inputText id="it1" binding="#{EmailCreate_Backing.name}" />                        
                         </td>
                         <td/>
                     </tr> 
                     <tr>
                         <td>Overskrift</td>
                         <td required="true">
-                            <t:inputText id="it2" binding="#{TextCreate_Backing.subject}" />                        
+                            <t:inputText id="it2" binding="#{EmailCreate_Backing.subject}" />                        
                         </td>
                         <td/>
+                    </tr> 
+                    <tr>
+                        <td>To mottakere</td>
+                        <td required="true">
+                            <t:inputText id="it3" binding="#{EmailCreate_Backing.toRecipients}" />                        
+                        </td>
+                        <td>Mottaker(e), om flere komma separert</td>
                     </tr>  
+                    <tr>
+                        <td>CC mottakere</td>
+                        <td>
+                            <t:inputText id="it4" binding="#{EmailCreate_Backing.ccRecipients}" />                        
+                        </td>
+                        <td>Mottaker(e), om flere komma separert</td>
+                    </tr>                    
                      <tr>
                         <td colspan="3">Text</td>
                     </tr>                       
                      <tr>
                         <td colspan="3">
-                            <t:inputTextarea required="true"  binding="#{TextCreate_Backing.body}"  rows="4" cols="40" style="width: 100%"/> 
+                            <t:inputTextarea required="true"  binding="#{EmailCreate_Backing.body}"  rows="4" cols="40" style="width: 100%"/> 
                         </td>
                     </tr>    
                 </table>
-                <h:commandButton value="Lagre og avslutt" action="#{TextCreate_Backing.createText}" />                                                                
-                <t:outputText binding="#{TextCreate_Backing.errorMsg}"/>
+                <h:commandButton value="Lagre og avslutt" action="#{EmailCreate_Backing.createEmail}" />                                                                
+                <t:outputText binding="#{EmailCreate_Backing.errorMsg}"/>
             </h:form>  
             <h:form>
                   <h:commandButton immediate="true" value="Avbryt" action="cancel" /> 
