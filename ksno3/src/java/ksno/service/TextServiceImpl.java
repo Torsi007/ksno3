@@ -8,6 +8,7 @@ package ksno.service;
 import java.util.Date;
 import java.util.List;
 import ksno.dao.TextDao;
+import ksno.model.Email;
 import ksno.model.Text;
 
 
@@ -52,5 +53,9 @@ public class TextServiceImpl implements TextService {
 
     public Text getText(String name) {
         return textDao.getText(name);
+    }
+
+    public Email getEmail(String name) {
+        return textDao.getEmail(name);
     }
 }

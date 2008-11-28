@@ -42,6 +42,10 @@ public class ParticipationServiceImpl implements ParticipationService {
     
     public List getParticipations() {
         return participationDao.getParticipations();
-    }    
+    }
+
+    public void deleteParticipation(Participation participation) {
+        participationDao.deleteParticipation(participation);
+    }
 
 }
