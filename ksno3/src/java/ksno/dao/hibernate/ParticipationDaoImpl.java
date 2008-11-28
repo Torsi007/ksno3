@@ -69,4 +69,9 @@ public class ParticipationDaoImpl implements ParticipationDao {
         
 
     }
+    
+    public void deleteParticipation(Participation participation) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.delete(participation);
+    }      
 }

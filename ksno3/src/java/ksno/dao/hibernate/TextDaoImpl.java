@@ -7,6 +7,7 @@ package ksno.dao.hibernate;
 
 import java.util.List;
 import ksno.dao.TextDao;
+import ksno.model.Email;
 import ksno.model.Text;
 import ksno.util.HibernateUtil;
 import org.hibernate.Query;
@@ -68,6 +69,19 @@ public class TextDaoImpl implements TextDao {
         return returnVal;        
     }
     
- 
+       public Email getEmail(String name){
+        
+        Query q = null;
+        List returnVal = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+
+        q=session.createQuery("from Email e where e.name = :nm");
+        q.setParameter("nm",name);            
+        returnVal =  q.list();
+
+        return (Email)returnVal.get(0);          
+
+    }   
 
 }
