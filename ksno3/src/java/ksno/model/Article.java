@@ -26,6 +26,19 @@ public class Article implements Serializable {
     private Set images = new HashSet();
     private Person author;
     private boolean visible;
+    
+    public void addImage(Image image){
+        if(image == null){
+            throw new IllegalArgumentException("Image to be added is null");
+        }
+        if(image.getArticle() != null){
+            image.getArticle().getImages().remove(image);
+        }
+        image.setArticle(this);
+        images.add(image);
+    }    
+    
+    // <editor-fold defaultstate="collapsed" desc=" Getters and setters">        
 
     public boolean isVisible() {
         return visible;
@@ -115,17 +128,12 @@ public class Article implements Serializable {
         this.name = name;
     }
     
-    public void addImage(Image image){
-        if(image == null){
-            throw new IllegalArgumentException("Image to be added is null");
-        }
-        if(image.getArticle() != null){
-            image.getArticle().getImages().remove(image);
-        }
-        image.setArticle(this);
-        images.add(image);
-    }
-
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc=" equals and hashcode">       
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -151,4 +159,5 @@ public class Article implements Serializable {
         hash = 17 * hash + (this.createdDate != null ? this.createdDate.hashCode() : 0);
         return hash;
     }
+    // </editor-fold>    
 }

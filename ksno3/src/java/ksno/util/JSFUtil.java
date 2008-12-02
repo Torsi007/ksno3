@@ -109,6 +109,6 @@ public class JSFUtil {
     public static final String sessionBeanEventModify = "EventModify";    
     public static final String sessionBeanSignedOnEvent = "SignedOnEvent";    
     public static final String sessionBeanParticipationModify = "ParticipationModify";
-    
+    public static final String sessionBeanTransactionModify = "TransactionModify";    
 
 }
