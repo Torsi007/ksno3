@@ -23,6 +23,11 @@
         <param-name>picasaWeb.baseUrl</param-name>
         <param-value>http://picasaweb.google.com/data/feed/api/user/kitesurfing.no</param-value>
     </context-param>
+    <context-param>
+        <description>Used in calendar converter to avvoid timezone offsets</description>
+        <param-name>timeZone</param-name>
+        <param-value>GMT+1</param-value>
+    </context-param>
     <filter>
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>

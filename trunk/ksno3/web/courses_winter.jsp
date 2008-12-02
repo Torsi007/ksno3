@@ -59,31 +59,31 @@
                     <a name="price">
                         <h1>Pris</h1>
                     </a>									
-                    <h2>2 dagers kurs</h2>					
+                    <h2>2 dagers kurs</h2>	
                     <p>
                         <text>Kun kurs</text>
                     </p>					
                     <ul type="square">						
-                        <li>1 Person : 1900 NOK</li>						
-                        <li>1 Person, DNT medlem : 1700 NOK</li>					
+                        <li>1 Person : 2000 NOK</li>						
+                        <li>1 Person, DNT medlem : 1900 NOK</li>					
                     </ul>					
                     <p>
                         <text>Kurs og overnatting - lavbudsjett</text>
                     </p>					
                     <ul type="square">						
-                        <li>1 Person : 2260 NOK</li>						
-                        <li>1 Person, DNT medlem, under 26 : 1990 NOK</li>						
-                        <li>1 Person, DNT medlem, voksen : 2100 NOK</li>					
+                        <li>1 Person : 2510 NOK</li>						
+                        <li>1 Person, DNT medlem, under 26 : 2205 NOK</li>						
+                        <li>1 Person, DNT medlem, voksen : 2350 NOK</li>					
                     </ul>					
                     <p>
-                        <text>Følgende inngår: Overnatting på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> natt til lørdag og natt til søndag. Felles toalett, dusj og kjøkken i nabobygg. Treretters middag på lørdag, og villmarkspa på kvelden.<br/>						Tillegg frokost og niste for to dager, kr 250.					</text>
+                        <text>Følgende inngår: Overnatting på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> natt til lørdag og natt til søndag. Felles toalett, dusj og kjøkken i nabobygg. Treretters middag på lørdag, og villmarkspa på kvelden. <br/>Tillegg frokost og niste for to dager, kr 330.</text>
                     </p>					
                     <p>
                         <text>Kurs og overnatting - full pakke</text>
                     </p>					
                     <ul type="square">						
-                        <li>1 Person : 3050 NOK</li>						
-                        <li>1 Person, DNT medlem : 2890 NOK</li>					
+                        <li>1 Person : 3295 NOK</li>						
+                        <li>1 Person, DNT medlem : 3135 NOK</li>					
                     </ul>					
                     <p>
                         <text>Følgende inngår: Overnatting på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> natt til lørdag og natt til søndag. Felles toalett og dusj i gangen. Fokost, niste og treretters middag på lørdag, og villmarkspa på kvelden.</text>

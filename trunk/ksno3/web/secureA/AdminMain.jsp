@@ -20,11 +20,13 @@
         <f:view>
             <h:form enctype="multipart/form-data">
                 <h2>Welcom to the page administration</h2>
-                <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Maintain articles</t:commandLink>
+                <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Administrer artikler</t:commandLink>
                 <br/>
-                <t:commandLink enabledOnUserRole="admin,internal" action="eventsMaintain">Maintain events</t:commandLink>                
+                <t:commandLink enabledOnUserRole="admin,internal" action="eventsMaintain">Administrer opplegg</t:commandLink>                
                 <br/>
-                <t:commandLink enabledOnUserRole="admin,internal" action="textsMaintain">Maintain texts</t:commandLink>                
+                <t:commandLink enabledOnUserRole="admin,internal" action="textsMaintain">Administrer tekster</t:commandLink>                
+                <br/>
+                <t:commandLink enabledOnUserRole="admin,internal" action="transactionsMaintain">Administrer økonomi</t:commandLink>                                
             </h:form>        
         </f:view>
         
