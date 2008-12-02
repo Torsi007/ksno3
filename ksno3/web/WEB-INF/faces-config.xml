@@ -29,7 +29,12 @@
         <managed-bean-name>RequestBean1</managed-bean-name>
         <managed-bean-class>ksno3.RequestBean1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>    
+    </managed-bean>  
+    <converter>
+        <description>Convert string - calendar</description>
+        <converter-id>CalendarConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.CalendarConverter</converter-class>
+    </converter>
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
@@ -61,6 +66,11 @@
         <managed-bean-class>ksno.dao.hibernate.TextDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean> 
+   <managed-bean>
+        <managed-bean-name>TransactionDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.TransactionDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>     
    <!-- ******** Service *************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleService</managed-bean-name>
@@ -70,6 +80,11 @@
             <property-name>articleDao</property-name>
             <value>#{ArticleDao}</value>
         </managed-property>        
+    </managed-bean> 
+   <managed-bean>
+        <managed-bean-name>DocumentService</managed-bean-name>
+        <managed-bean-class>ksno.service.DocumentServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>    
    <managed-bean>
         <managed-bean-name>EventService</managed-bean-name>
@@ -116,6 +131,15 @@
             <value>#{TextDao}</value>
         </managed-property>        
     </managed-bean>   
+   <managed-bean>
+        <managed-bean-name>TransactionService</managed-bean-name>
+        <managed-bean-class>ksno.service.TransactionServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>transactionDao</property-name>
+            <value>#{TransactionDao}</value>
+        </managed-property>        
+    </managed-bean>      
    <!-- ******** UI ******************************************************* -->  
     <managed-bean>
         <managed-bean-name>Article_Backing</managed-bean-name>
@@ -240,6 +264,41 @@
         </managed-property>
     </managed-bean> 
     <managed-bean>
+        <managed-bean-name>EmailCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.EmailCreate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>  
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>         
+    </managed-bean>     
+    <managed-bean>
+        <managed-bean-name>EmailUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.EmailUpdate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>        
+    </managed-bean>  
+    <managed-bean>
+        <managed-bean-name>EventAddParticipant_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.EventAddParticipant</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>   
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>          
+    </managed-bean>     
+    <managed-bean>
         <managed-bean-name>EventUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.EventUpdate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -247,6 +306,14 @@
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
+        </managed-property>        
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>         
     </managed-bean>      
     <managed-bean>
         <managed-bean-name>EventsMaintain_Backing</managed-bean-name>
@@ -347,7 +414,50 @@
             <property-name>textService</property-name>
             <value>#{TextService}</value>
         </managed-property>        
-    </managed-bean>        
+    </managed-bean>     
+    <managed-bean>
+        <managed-bean-name>TransactionCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.TransactionCreate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>transactionService</property-name>
+            <value>#{TransactionService}</value>
+        </managed-property> 
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>   
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>  
+        <managed-property>
+            <property-name>documentService</property-name>
+            <value>#{DocumentService}</value>
+        </managed-property>         
+    </managed-bean>   
+    <managed-bean>
+        <managed-bean-name>TransactionUpdate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.TransactionUpdate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>transactionService</property-name>
+            <value>#{TransactionService}</value>
+        </managed-property>        
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>                
+    </managed-bean>     
+    <managed-bean>
+        <managed-bean-name>TransactionsMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.TransactionsMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>transactionService</property-name>
+            <value>#{TransactionService}</value>
+        </managed-property>        
+    </managed-bean>    
     <!-- ******** Navigation ******************************************************* -->   
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
@@ -362,7 +472,11 @@
         <navigation-case>
             <from-outcome>textsMaintain</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>          
+        </navigation-case>    
+        <navigation-case>
+            <from-outcome>transactionsMaintain</from-outcome>
+            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
+        </navigation-case>    
     </navigation-rule> 
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
@@ -461,13 +575,57 @@
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
         </navigation-case>         
-    </navigation-rule>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/EmailCreate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{EmailCreate_Backing.createEmail}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/secureD/EmailUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{EmailUpdate_Backing.update}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/secureD/EventAddParticipant.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{EventAddParticipant_Backing.addParticipant}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>    
     <navigation-rule>
         <from-view-id>/secureD/EventUpdate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>addParticipant</from-outcome>
+            <to-view-id>/secureD/EventAddParticipant.jsp</to-view-id>
+        </navigation-case>     
+        <navigation-case>
+            <from-outcome>signUpWinter</from-outcome>
+            <to-view-id>/SignUpWinter.jsp</to-view-id>
+        </navigation-case>        
         <navigation-case>
             <from-action>#{EventUpdate_Backing.updateEvent}</from-action>            
             <from-outcome>success</from-outcome>
@@ -525,11 +683,60 @@
             <to-view-id>/secureD/TextCreate.jsp</to-view-id>
         </navigation-case> 
         <navigation-case>
+            <from-outcome>emailCreate</from-outcome>
+            <to-view-id>/secureD/EmailCreate.jsp</to-view-id>
+        </navigation-case>        
+        <navigation-case>
             <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>            
-            <from-outcome>success</from-outcome>
+            <from-outcome>textUpdate</from-outcome>
             <to-view-id>/secureD/TextUpdate.jsp</to-view-id>
-        </navigation-case>          
-    </navigation-rule>     
+        </navigation-case>    
+        <navigation-case>
+            <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>            
+            <from-outcome>emailUpdate</from-outcome>
+            <to-view-id>/secureD/EmailUpdate.jsp</to-view-id>
+        </navigation-case>         
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/secureD/TransactionUpdate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
+        </navigation-case>  
+        <navigation-case>
+            <from-action>#{TransactionUpdate_Backing.update}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>      
+    <navigation-rule>
+        <from-view-id>/secureD/TransactionCreate.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{TransactionCreate_Backing.createTransaction}</from-action>            
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
+        </navigation-case>    
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
+        </navigation-case>            
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/secureD/TransactionsMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>transactionCreate</from-outcome>
+            <to-view-id>/secureD/TransactionCreate.jsp</to-view-id>
+        </navigation-case>    
+        <navigation-case>
+            <from-action>#{TransactionsMaintain_Backing.selectEditTransaction}</from-action>
+            <from-outcome>transactionUpdate</from-outcome>
+            <to-view-id>/secureD/TransactionUpdate.jsp</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>    
     <navigation-rule>
         <from-view-id>/SignUpSummer.jsp</from-view-id>
         <navigation-case>
