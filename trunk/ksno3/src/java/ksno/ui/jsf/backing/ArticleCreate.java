@@ -35,6 +35,7 @@ public class ArticleCreate {
     PersonService personService;
     ImageService imageService;
 
+    // <editor-fold defaultstate="collapsed" desc=" getters and setters">
     public HtmlOutputText getErrorMsg() {
         return errorMsg;
     }
@@ -104,6 +105,9 @@ public class ArticleCreate {
     public void setPersonService(PersonService personService) {
         this.personService = personService;
     }
+
+    // </editor-fold>
+    
     
     public String createArticle(){
         String returnVal = "success";

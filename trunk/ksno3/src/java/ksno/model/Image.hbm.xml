@@ -8,6 +8,6 @@
     <version column="VERSION" name="version"/>
     <property column="NAME" name="name" type="string"/>
     <many-to-one cascade="none" class="Person" column="PERSON_ID" name="owner" not-null="true"/>
-    <many-to-one cascade="none" class="Article" column="ARTICLE_ID" name="article" not-null="true"/>
+    <many-to-one cascade="none" class="Article" column="ARTICLE_ID" name="article"/>
   </class>
 </hibernate-mapping>

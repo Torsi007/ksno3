@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class name="Transaction" optimistic-lock="version" table="TRANSACTION">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <property column="CATEGORY" name="category" type="string"/>
+    <property column="COMMENT" name="comment" type="string"/>
+    <property column="AMOUNT" name="amount" type="double"/>
+    <property column="DATE" name="date" type="calendar_date"/>
+    <property column="CREATED_DATE" name="createdDate" type="calendar"/>
+    <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="calendar"/>
+    <many-to-one cascade="none" class="Person" column="OWNER_ID" lazy="false" name="owner"/>
+    <many-to-one cascade="save-update" class="Image" column="IMAGE_ID" name="image"/>
+  </class>
+</hibernate-mapping>

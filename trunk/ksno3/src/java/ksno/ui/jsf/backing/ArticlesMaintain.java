@@ -24,7 +24,21 @@ public class ArticlesMaintain {
     private ArticleService articleService;
     private ImageService imageService;
     private HtmlOutputText errorMsg;
-
+    private HtmlInputText name;
+    private UIData data;   
+    
+    
+    public List getArticles(){
+        List l = null;
+        try{
+            l = articleService.getArticles();
+        }catch(Exception e){
+            int i = 0;
+        }
+        return l;
+    }  
+    
+    // <editor-fold defaultstate="collapsed" desc=" getters and setters">
     public HtmlOutputText getErrorMsg() {
         return errorMsg;
     }
@@ -44,8 +58,7 @@ public class ArticlesMaintain {
     public void setImageService(ImageService imageService) {
         this.imageService = imageService;
     }
-    private HtmlInputText name;
-    private UIData data;
+
 
     public ArticleService getArticleService() {
         return articleService;
@@ -69,18 +82,9 @@ public class ArticlesMaintain {
 
     public void setName(HtmlInputText name) {
         this.name = name;
-    }
-    
-    public List getArticles(){
-        List l = null;
-        try{
-            l = articleService.getArticles();
-        }catch(Exception e){
-            int i = 0;
-        }
-        return l;
-    }
-    
+    }    
+    // </editor-fold>
+
     public String selectEditArticle(){
         String returnVal = "articleMasterUpdate";
         try{
