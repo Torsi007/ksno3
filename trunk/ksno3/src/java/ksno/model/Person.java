@@ -6,7 +6,6 @@
 package ksno.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,9 +15,6 @@ import java.util.Set;
  */
 public class Person implements Serializable, LabelValuePair {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.96906DA5-CEA1-70A3-8CE9-23D089AC1DF3]
-    // </editor-fold> 
     private int phone;
     private Long id;
     private int version;
@@ -27,6 +23,91 @@ public class Person implements Serializable, LabelValuePair {
     String userName;
     String passWord;
     private Set participations = new HashSet();
+    private Set roles = new HashSet();
+    boolean allowMail;
+    boolean uiSendMail;
+    String companyName;
+    String companyNumber;
+    String streetName;
+    String streetNumber;
+    String zipCode;
+    String city;
+
+    // <editor-fold defaultstate="collapsed" desc=" getters and setters">    
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyNumber() {
+        return companyNumber;
+    }
+
+    public void setCompanyNumber(String companyNumber) {
+        this.companyNumber = companyNumber;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+    
+
+    public boolean isUiSendMail() {
+        return uiSendMail;
+    }
+
+    public void setUiSendMail(boolean uiSendMail) {
+        this.uiSendMail = uiSendMail;
+    }
+    
+    public boolean isAllowMail() {
+        return allowMail;
+    }
+
+    public void setAllowMail(boolean allowMail) {
+        this.allowMail = allowMail;
+    }    
+    
+    public Set getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set roles) {
+        this.roles = roles;
+    }
+    
+    
 
     public Set getParticipations() {
         return participations;
@@ -36,26 +117,6 @@ public class Person implements Serializable, LabelValuePair {
         this.participations = participations;
     }    
     
-    public void addParticipation(Participation participation){
-        if(participation == null){
-            throw new IllegalArgumentException("Participation to be added is null");
-        }
-        if(participation.getParticipant() != null){
-            participation.getParticipant().getParticipations().remove(participation);
-        }
-        participation.setParticipant(this);
-        participations.add(participation);
-    }
-
-    public Person(){};
-
-    public Person(String lastName, String firstName, String userName, String passWord) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.userName = userName;
-        this.passWord = passWord;
-    }
-
     public String getPassWord() {
         return passWord;
     }
@@ -98,7 +159,63 @@ public class Person implements Serializable, LabelValuePair {
 
     public Long getId() {
         return id;
+    }    
+    
+
+    public void setId(Long studentId) {
+        this.id = studentId;
     }
+
+    public int getPhone () {
+        return phone;
+    }
+
+
+    public void setPhone (int val) {
+        this.phone = val;
+    }
+
+    public String getLabel() {
+        return getFirstName() + " " + getLastName();
+    }
+
+    public String getValue() {
+         return Long.toString(id);
+    }    
+    // </editor-fold>
+    
+    public void addParticipation(Participation participation){
+        if(participation == null){
+            throw new IllegalArgumentException("Participation to be added is null");
+        }
+        if(participation.getParticipant() != null){
+            participation.getParticipant().getParticipations().remove(participation);
+        }
+        participation.setParticipant(this);
+        participations.add(participation);
+    }
+    
+    public void addRole(UserRoles userRole){
+        if(userRole == null){
+            throw new IllegalArgumentException("Participation to be added is null");
+        }
+        if(userRole.getUser() != null){
+            userRole.getUser().getRoles().remove(userRole);
+        }
+        userRole.setUser(this);
+        roles.add(userRole);    
+    }
+    
+    public Person(){};
+
+    public Person(String lastName, String firstName, String userName, String passWord) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.userName = userName;
+        this.passWord = passWord;
+    }
+
+
 
     @Override
     public boolean equals(Object obj) {
@@ -134,35 +251,4 @@ public class Person implements Serializable, LabelValuePair {
         return hash;
     }
 
-    public void setId(Long studentId) {
-        this.id = studentId;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.7913D1A2-DA14-CE7E-5A60-1C3A8C88B808]
-    // </editor-fold> 
-    public void setId (int studentId) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.BC9741C3-32A7-F9AD-7B8F-AC161DEFDC23]
-    // </editor-fold> 
-    public int getPhone () {
-        return phone;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.4E0AC9AB-ABA4-56AC-4423-F2641CB526A5]
-    // </editor-fold> 
-    public void setPhone (int val) {
-        this.phone = val;
-    }
-
-    public String getLabel() {
-        return getFirstName() + " " + getLastName();
-    }
-
-    public String getValue() {
-         return Long.toString(id);
-    }
  }

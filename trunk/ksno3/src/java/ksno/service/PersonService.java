@@ -20,4 +20,5 @@ public interface PersonService {
     public Person getPerson(String userName);    
     public List getPersons();
     public Long newPerson(Person person);
+    public void updatePerson(Person person);
 }

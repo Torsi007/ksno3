@@ -80,6 +80,24 @@ public class PersonDaoImpl implements PersonDao {
         }
         return l;
 
-    }    
+    }
+
+    public void updatePerson(Person person) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try{
+            session.saveOrUpdate(person);
+        }catch(Exception e){
+            session.merge(person);
+        }finally{
+        }
+
+    }
+
+    public Person getPerson(Long id) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+        Person person = (Person)session.get(Person.class,id);
+        return person; 
+    }
 
 }

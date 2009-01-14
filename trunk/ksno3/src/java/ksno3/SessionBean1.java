@@ -8,6 +8,9 @@ package ksno3;
 
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
 import javax.faces.FacesException;
+import ksno.model.Person;
+import ksno.service.PersonService;
+import ksno.util.JSFUtil;
 
 /**
  * <p>Session scope data bean for your application.  Create properties
@@ -121,5 +124,48 @@ public class SessionBean1 extends AbstractSessionBean {
     protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
+    
+    private String strVal1 = "juba";
+    private Long longVal1;
+    private Person currentUser;
+    private PersonService personService;
+
+    public PersonService getPersonService() {
+        return personService;
+    }
+
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
+    }
+    
+    
+
+    public Long getLongVal1() {
+        return longVal1;
+    }
+
+    public void setLongVal1(Long longVal1) {
+        this.longVal1 = longVal1;
+    }
+    
+    
+
+    public String getStrVal1() {
+        return strVal1;
+    }
+
+    public void setStrVal1(String strVal1) {
+        this.strVal1 = strVal1;
+    }
+
+    public Person getCurrentUser(){
+        if(currentUser == null){
+            String userName = JSFUtil.getRequest().getUserPrincipal().getName();
+            currentUser = personService.getPerson(userName);        
+        }
+        return currentUser;
+    }
+    
+    public static final String ELLongVal1 = "#{SessionBean1.longVal1}";
 
 }

@@ -23,7 +23,7 @@ public class ArticleUpdate {
     private HtmlOutputText errorMsg;  
     
   private Logger getLogService(){
-      return Logger.getLogger(ArticleUpdate.class.getName());
+      return Logger.getLogger(this.getClass().getName());
   }    
 
     public HtmlOutputText getErrorMsg() {

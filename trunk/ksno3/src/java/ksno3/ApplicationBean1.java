@@ -7,6 +7,7 @@
 package ksno3;
 
 import com.sun.rave.web.ui.appbase.AbstractApplicationBean;
+import java.util.List;
 import javax.faces.FacesException;
 
 /**
@@ -101,4 +102,26 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     public String getLocaleCharacterEncoding() {
         return super.getLocaleCharacterEncoding();
     }
+    
+    private List events;
+    private List persons;    
+
+    public List getEvents() {
+        return events;
+    }
+
+    public void setEvents(List events) {
+        this.events = events;
+    }
+
+    public List getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List persons) {
+        this.persons = persons;
+    }
+    
+    
+    
 }

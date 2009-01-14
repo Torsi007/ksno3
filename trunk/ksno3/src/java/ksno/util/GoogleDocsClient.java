@@ -6,14 +6,14 @@
 package ksno.util;
 
 import javax.faces.context.ExternalContext;
-import com.google.gdata.client.docs.DocsService;
+//import com.google.gdata.client.docs.DocsService;
 import com.google.gdata.data.media.MediaStreamSource;
 
 
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
-import com.google.gdata.data.docs.DocumentListEntry;
-import com.google.gdata.data.docs.DocumentEntry;
+//import com.google.gdata.data.docs.DocumentListEntry;
+//import com.google.gdata.data.docs.DocumentEntry;
 import com.google.gdata.data.PlainTextConstruct;
 
 
@@ -29,12 +29,10 @@ import java.util.logging.Logger;
  * @author tor.hauge
  */
 public class GoogleDocsClient {
-  private final String baseUrl;
+/*  private final String baseUrl;
   private final DocsService service;
 
-  /**
-   * Constructs a new un-authenticated client.
-   */
+
   public GoogleDocsClient() {
      ExternalContext context = JSFUtil.getServletContext();
      String applicationName = context.getInitParameter("applicationName");
@@ -72,6 +70,6 @@ public class GoogleDocsClient {
   
 return uploaded.getLinks().get(0).getHref();
           
-  }
+  }*/
 
 }

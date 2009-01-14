@@ -15,6 +15,7 @@ public class Transaction {
     private Long id;
     private int version;
     private Person owner;    
+    private Person customer;
     private Image image;
     private String comment;
     private Double amount;
@@ -23,7 +24,16 @@ public class Transaction {
     private Calendar createdDate;
     private Calendar lastUpdatedDate;
 
+    
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public Person getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Person customer) {
+        this.customer = customer;
+    }    
+    
     public Double getAmount() {
         return amount;
     }

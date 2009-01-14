@@ -15,7 +15,7 @@ import ksno.model.Person;
 import ksno.service.ArticleService;
 import ksno.service.ImageService;
 import ksno.service.PersonService;
-import ksno.util.ImageSize;
+import ksno.util.ImageMeta;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputHidden;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
@@ -222,18 +222,19 @@ public class ArticleImagesUpdate {
     private Image uploadAndCreateImage(UploadedFile upImg, HtmlOutputText upLoadImgResult) {
         Image image = new Image(); 
         String userName = JSFUtil.getRequest().getUserPrincipal().getName();
-        HashMap<ImageSize, String> imageSize = new HashMap<ImageSize, String>();
+        HashMap<ImageMeta, String> imageSize = new HashMap<ImageMeta, String>();
         try {
             imageSize = imageService.uploadImage(upImg.getInputStream(), userName);
         } catch (Exception ex) {
             upLoadImgResult.setValue("File uploaded failed. " + ex.getMessage());
             Logger.getLogger(ArticleImagesUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String imgName = imageSize.get(ImageSize.MAX);
+        String imgName = imageSize.get(ImageMeta.sizeMAX);
         if(imgName != null){
             Person currentUser = personService.getPerson(JSFUtil.getRequest().getUserPrincipal().getName());
             image.setOwner(currentUser);
-            image.setName(imgName);        
+            image.setName(imgName); 
+            image.setUrl(imageSize.get(ImageMeta.url));
             return image;
         }else{
             return null;

@@ -12,7 +12,7 @@ import ksno.model.Article;
 import ksno.model.Image;
 import ksno.service.ArticleService;
 import ksno.service.ImageService;
-import ksno.util.ImageSize;
+import ksno.util.ImageMeta;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -78,11 +78,12 @@ public class ArticleMasterUpdate {
             Article article = (Article)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanArticleModify);
             
             if(upAvatar != null){
-                HashMap<ImageSize,String> imageSize = imageService.uploadImage(upAvatar.getInputStream(), article.getAuthor().getUserName());
+                HashMap<ImageMeta,String> imageSize = imageService.uploadImage(upAvatar.getInputStream(), article.getAuthor().getUserName());
                 Image image = new Image();
                 image.setOwner(article.getAuthor());
-                image.setName(imageSize.get(ImageSize.MAX));
-                article.setAvatarUrl(imageSize.get(ImageSize.MIN));
+                image.setName(imageSize.get(ImageMeta.sizeMAX));
+                image.setUrl(imageSize.get(ImageMeta.url));
+                article.setAvatarUrl(imageSize.get(ImageMeta.sizeMIN));
                 article.addImage(image);
             }
             articleService.updateArticle(article);

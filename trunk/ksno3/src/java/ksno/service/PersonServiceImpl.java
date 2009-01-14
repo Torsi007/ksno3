@@ -7,15 +7,23 @@ package ksno.service;
 
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ksno.dao.PersonDao;
 import ksno.model.Instructor;
 import ksno.model.Person;
+import ksno.security.PasswordFactory;
+import ksno.util.JSFUtil;
 
 /**
  *
  * @author Tor-Erik
  */
 public class PersonServiceImpl implements PersonService {
+    
+  private Logger getLogService(){
+      return Logger.getLogger(this.getClass().getName());
+  }        
 
     public PersonDao getPersonDao() {
         return personDao;
@@ -28,8 +36,7 @@ public class PersonServiceImpl implements PersonService {
    private PersonDao personDao;
 
     public Person getPerson(Long id) {
-//        Person person = personDao.getPerson(id);
-        Person person = new Person();
+        Person person = personDao.getPerson(id);
         return person;
     }
     
@@ -38,13 +45,24 @@ public class PersonServiceImpl implements PersonService {
     }
     
     public List getPersons(){
-        return personDao.getPersons();
-        
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            getLogService().log(Level.SEVERE, null, ex);
+        }
+        List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.persons}", c);
+        if(returnList == null){
+            returnList = personDao.getPersons();
+            JSFUtil.setValue("#{ApplicationBean1.persons}", returnList, c);
+        }
+        return returnList;        
     }
     
     public Long newPerson(Person person){
+        clearPersonsApplicationCache();
         if(person.getPassWord() == null){
-            person.setPassWord("1234");
+            person.setPassWord(PasswordFactory.getPassword());
         }
 
         return personDao.newPerson(person);
@@ -57,5 +75,20 @@ public class PersonServiceImpl implements PersonService {
     public Instructor getInstructor(Long id) {
         return personDao.getInstructor(id);
     }
+
+    public void updatePerson(Person person) {
+        personDao.updatePerson(person);
+    }
+    
+    private void clearPersonsApplicationCache(){
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            getLogService().log(Level.SEVERE, null, ex);
+        }
+        JSFUtil.setValue("#{ApplicationBean1.persons}", null, c);    
+    }
+    
 
 }
