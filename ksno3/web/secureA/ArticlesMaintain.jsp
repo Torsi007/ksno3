@@ -50,7 +50,7 @@
                         <f:facet name="header">
                             <h:outputText value="Aktiv" />
                         </f:facet> 
-                        <h:selectBooleanCheckbox value="#{item.visible}"/>
+                        <t:selectBooleanCheckbox enabledOnUserRole="admin,internal" value="#{item.visible}"/>
                     </h:column>                     
                      <h:column>
                         <h:commandLink action="#{ArticlesMaintain_Backing.selectEditArticle}">

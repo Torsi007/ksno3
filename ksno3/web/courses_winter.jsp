@@ -86,7 +86,7 @@
                         <li>1 Person, DNT medlem : 3135 NOK</li>					
                     </ul>					
                     <p>
-                        <text>Følgende inngår: Overnatting på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> natt til lørdag og natt til søndag. Felles toalett og dusj i gangen. Fokost, niste og treretters middag på lørdag, og villmarkspa på kvelden.</text>
+                        <text>Følgende inngår: Overnatting på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> natt til lørdag og natt til søndag. Boende i fjellrom med bad og tolett på rommet. Frokost lørdag og søndag, niste og treretters middag på lørdag, og villmarkspa på kvelden.</text>
                     </p>					
                     <h2>Teambuilding / Spesialer</h2>					
                     <p>

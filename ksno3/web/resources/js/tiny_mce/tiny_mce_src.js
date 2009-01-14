@@ -2835,7 +2835,7 @@ tinymce.create('static tinymce.util.XHR', {
 				dom.setStyle(b, 'left', t.getStyle('left', 1));
 				dom.setStyle(b, 'top', t.getStyle('top', 1));
 				dom.setStyle(b, 'width', t.getStyle('width', 1));
-				dom.setStyle(b, 'height', t.getStyle('height', 1));
+				dom.setStyle(b, 'height', t.getStyle('height', '100%'));
 				dom.setStyle(b, 'display', t.getStyle('display', 1));
 				dom.setStyle(b, 'zIndex', parseInt(t.getStyle('zIndex', 1) || 0) - 1);
 			}

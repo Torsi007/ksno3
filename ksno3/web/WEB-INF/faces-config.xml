@@ -19,6 +19,10 @@
         <managed-bean-name>SessionBean1</managed-bean-name>
         <managed-bean-class>ksno3.SessionBean1</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>          
     </managed-bean>
     <managed-bean>
         <managed-bean-name>ApplicationBean1</managed-bean-name>
@@ -330,6 +334,28 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
+        <managed-bean-name>Preferences_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.Preferences</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property> 
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>SendMail_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.SendMail</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property> 
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>         
+    </managed-bean>    
+    <managed-bean>
         <managed-bean-name>SignUpConfirmed_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.SignUpConfirmed</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -447,7 +473,11 @@
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>                
+        </managed-property>    
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>         
     </managed-bean>     
     <managed-bean>
         <managed-bean-name>TransactionsMaintain_Backing</managed-bean-name>
@@ -474,9 +504,17 @@
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
         </navigation-case>    
         <navigation-case>
-            <from-outcome>transactionsMaintain</from-outcome>
-            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
-        </navigation-case>    
+            <from-outcome>adminEconomy</from-outcome>
+            <to-view-id>/secureD/AdminEconomy.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sendMail</from-outcome>
+            <to-view-id>/secureD/SendMail.jsp</to-view-id>
+        </navigation-case>          
+        <navigation-case>
+            <from-outcome>preferences</from-outcome>
+            <to-view-id>/secureA/Preferences.jsp</to-view-id>
+        </navigation-case>  
     </navigation-rule> 
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
@@ -565,6 +603,24 @@
         </navigation-case>        
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/secureA/Preferences.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/secureD/AdminEconomy.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>transactionsMaintain</from-outcome>
+            <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>        
+    </navigation-rule>    
+    <navigation-rule>
         <from-view-id>/secureD/CourseCreate.jsp</from-view-id>
         <navigation-case>
             <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>            
@@ -649,6 +705,13 @@
         </navigation-case>        
     </navigation-rule> 
     <navigation-rule>
+        <from-view-id>/secureD/SendMail.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>  
+    </navigation-rule>     
+    <navigation-rule>
         <from-view-id>/secureD/TextCreate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
@@ -731,6 +794,11 @@
             <from-action>#{TransactionsMaintain_Backing.selectEditTransaction}</from-action>
             <from-outcome>transactionUpdate</from-outcome>
             <to-view-id>/secureD/TransactionUpdate.jsp</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{TransactionsMaintain_Backing.invoice}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/Invoice.jsp</to-view-id>
         </navigation-case> 
         <navigation-case>
             <from-outcome>cancel</from-outcome>

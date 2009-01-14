@@ -67,14 +67,14 @@
             <h:form enctype="multipart/form-data" onsubmit="return validate_local()">
                 <h1>Ny artikkel</h1>
                 <p>Du er i ferd med å opprette en ny artikkel</p>
-                <table>
+                <table width="100%">
                     <tr>
-                        <td>Navn</td>
-                        <td required="true">
+                        <td style="width:1">Navn</td>
+                        <td style="width:1" required="true">
                             <t:inputText label="test" id="it1" required="true" binding="#{ArticleCreate_Backing.name}">
                             </t:inputText>
                         </td>
-                        <td/>
+                        <td style="width:100%">&nbsp</td>                    
                     </tr>
                     <tr>
                         <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
@@ -84,8 +84,8 @@
                             <t:inputTextarea required="true"  binding="#{ArticleCreate_Backing.intro}"  id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
                     </tr>                    
-                   <tr>
-                        <td>Ekstra forfattere</td>
+                   <!--tr>
+                        <td>Ekstra forfattereee</td>
                         <td>
                             Trenger en dropdown liste her for å kunne velge en eller flere forfattere                        
                         </td>
@@ -97,7 +97,7 @@
                             Trenger noen checkboxer her for å kunne sette kategorier, eks Utsyr : Reise : Sport info : Teknikk osv...                        
                         </td>
                         <td></td>
-                    </tr>
+                    </tr-->
                     <tr>
                         <td nowrap>Forsidebilde (minimum vidde 144px)</td>                        
                         <td required="true"><t:inputFileUpload id="avatarUpload1" required="true" value="#{ArticleCreate_Backing.upAvatar}" size="20" /></td>

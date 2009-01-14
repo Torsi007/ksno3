@@ -51,12 +51,22 @@
                             <h:outputText value="Kommentar" />
                         </f:facet> 
                         <h:outputText value="#{item.comment}"></h:outputText>
-                    </h:column>                     
+                    </h:column>  
+                     <h:column>
+                         <h:outputLink type="external" rendered="#{item.image.url != Empty}"  value="#{item.image.url}">
+                            <h:outputText value="image"/>
+                        </h:outputLink>
+                    </h:column>                      
+                     <h:column>
+                        <h:commandLink action="#{TransactionsMaintain_Backing.invoice}">
+                            <h:outputText value="Faktura"/>
+                        </h:commandLink>
+                    </h:column>                      
                      <h:column>
                         <h:commandLink action="#{TransactionsMaintain_Backing.selectEditTransaction}">
                             <h:outputText value="Endre"/>
                         </h:commandLink>
-                    </h:column>     
+                    </h:column>                    
                      <h:column>
                         <h:commandLink action="#{TransactionsMaintain_Backing.transactionDelete}">
                             <h:outputText value="Slett"/>

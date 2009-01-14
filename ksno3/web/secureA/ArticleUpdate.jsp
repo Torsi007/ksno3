@@ -5,8 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
@@ -22,6 +20,7 @@
 		mode : "textareas",
 		theme : "advanced",
 		plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                height: "100%",
 
 		// Theme options
 		theme_advanced_buttons1 : "bold,formatselect,|,sub,sup,|,charmap,|,fullscreen",
@@ -45,26 +44,29 @@
 			staffid : "991234"
 		}
 	});
+
     </script>       
     </head>
     <body>
         <f:view>
-            <h:form>
-                <h1>Oppdater artikkel</h1>
-                <p>Gratulerer, du er nå klar til å legge inn tekst og bilder</p>
-                <p>Feltet nedenfor er en forholdsvis rik editor, skriv in og formatter etter eget ønske.</p>                
-                <p>Tilgjengelige bilder vises i tabellen under...</p>                
-                <t:inputTextarea binding="#{ArticleUpdate_Backing.body}" value="#{ArticleModify.body}" id="myTextArea" rows="20" cols="80" style="width: 100%"/>
-                <p>Tilgjengelige bilder vises i tabellen under, lim inn url fra nadre kolonne</p>                
-                <table>
-                    <t:dataList value="#{ArticleModify.images}" var="img">
-                        <tr><td><t:graphicImage url="#{img.name}" height="80"/></td><td>..<t:outputText value="#{img.name}"/></td></tr>
-                    </t:dataList>                    
+            <h:form id="ca">
+                <table height="100%" width="100%">
+                    <tr style="height:1"><td><h1>Oppdater artikkel</h1></td></tr>
+                    <tr><td style="height:100%;width:100%">
+                        <t:inputTextarea binding="#{ArticleUpdate_Backing.body}" value="#{ArticleModify.body}" id="myTextArea" style="width: 100%; height:100%"/>                        
+                    </td></tr>
+                    <tr style="height:1"><td>
+                        <h:commandButton value="Legg til flere bilder" action="#{ArticleUpdate_Backing.goToArticleImagesUpdate}"/>
+                        <h:commandButton value="Endre intro" action="#{ArticleUpdate_Backing.goToArticleMasterUpdate}"/>                
+                        <h:commandButton value="Fullfør" action="#{ArticleUpdate_Backing.saveArticle}" />   
+                        <t:outputText binding="#{ArticleUpdate_Backing.errorMsg}"/>
+                    </td></tr>                    
                 </table>
-                <h:commandButton value="Legg til flere bilder" action="#{ArticleUpdate_Backing.goToArticleImagesUpdate}"/>
-                <h:commandButton value="Endre intro" action="#{ArticleUpdate_Backing.goToArticleMasterUpdate}"/>                
-                <h:commandButton value="Fullfør" action="#{ArticleUpdate_Backing.saveArticle}" />   
-                <t:outputText binding="#{ArticleUpdate_Backing.errorMsg}"/>
+                <div id="imagelist" style="display:none">
+                    <t:dataList value="#{ArticleModify.images}" var="img">
+                        <t:graphicImage url="#{img.name}" height="80" onclick="selectImage()" style="cursor:hand"/>
+                    </t:dataList>                    
+                </div>
             </h:form>        
         </f:view>
     </body>

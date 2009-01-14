@@ -56,19 +56,21 @@
             }else{
                 return validate();
             }             
-        }        
+        } 
+
+
     </script>               
     </head>
     <body>
         <f:view>
-            <h:form enctype="multipart/form-data" onsubmit="validate_local()">
-                <table>
+            <h:form id="ca" enctype="multipart/form-data" onsubmit="validate_local()">
+                <table width="100%">
                     <tr>
-                        <td>Navn</td>
-                        <td required="true">
+                        <td style="width:1">Navn</td>
+                        <td style="width:1" required="true">
                             <t:inputText id="it1" required="true" value="#{ArticleModify.name}" />                        
                         </td>
-                        <td/>
+                        <td style="width:100%">&nbsp</td>
                     </tr>
                     <tr>
                         <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
@@ -78,7 +80,7 @@
                             <t:inputTextarea required="true" value="#{ArticleModify.intro}" id="myTextArea" rows="4" cols="40" style="width: 100%"/>
                         </td>
                     </tr>                    
-                   <tr>
+                   <!--tr>
                         <td>Ekstra forfattere</td>
                         <td>
                             Trenger en dropdown liste her for å kunne velge en eller flere forfattere                        
@@ -91,15 +93,15 @@
                             Trenger noen checkboxer her for å kunne sette kategorier, eks Utsyr : Reise : Sport info : Teknikk osv...                        
                         </td>
                         <td></td>
-                    </tr>
+                    </tr-->
                     <tr>
-                        <td nowrap>Forsidebilde (minimum vidde 144px)</td>                        
+                        <td style="width:1" nowrap>Forsidebilde (minimum vidde 144px)</td>                        
                         <td colspan="2"><t:graphicImage url="#{ArticleModify.avatarUrl}"/></td>
                     </tr>                    
                     <tr>
                         <td>Endre...</td>
                         <td><t:inputFileUpload id="avatarUpload" value="#{ArticleMasterUpdate_Backing.upAvatar}" size="20" /></td>
-                        <td><t:outputText binding="#{ArticleMasterUpdate_Backing.upAvatarResult}"/></td>
+                        <td align="left"><t:outputText binding="#{ArticleMasterUpdate_Backing.upAvatarResult}"/></td>
                     </tr>
                 </table>
                 <h:commandButton value="Gå videre" action="#{ArticleMasterUpdate_Backing.updateArticle}" /> 
