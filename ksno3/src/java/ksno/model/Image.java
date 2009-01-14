@@ -15,8 +15,17 @@ public class Image implements Serializable {
     private Long id;
     private int version;    
     private String name;
+    private String url;
     private Person owner;
     private Article article;
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 
     public Article getArticle() {
         return article;

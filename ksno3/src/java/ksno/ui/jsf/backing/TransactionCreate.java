@@ -7,8 +7,10 @@ package ksno.ui.jsf.backing;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.model.SelectItem;
 import ksno.model.Image;
 import ksno.model.Person;
 import ksno.model.Transaction;
@@ -17,7 +19,7 @@ import ksno.service.ImageService;
 import ksno.service.PersonService;
 import ksno.service.TransactionService;
 
-import ksno.util.ImageSize;
+import ksno.util.ImageMeta;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
@@ -33,6 +35,7 @@ public class TransactionCreate {
     private HtmlInputText date;    
     private HtmlInputText amount;      
     private HtmlSelectOneMenu category;
+    private HtmlSelectOneMenu customerSelect;    
     private HtmlOutputText upAttachmentResult;
     private HtmlOutputText errorMsg;   
     private UploadedFile upAttachment;
@@ -40,13 +43,16 @@ public class TransactionCreate {
     private PersonService personService;
     private ImageService imageService;
     private DocumentService documentService;
-
-
-
-    //ImageService imageService; 
     
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public HtmlSelectOneMenu getCustomerSelect() {
+        return customerSelect;
+    }
 
+    public void setCustomerSelect(HtmlSelectOneMenu customerSelect) {
+        this.customerSelect = customerSelect;
+    }
+    
     public DocumentService getDocumentService() {
         return documentService;
     }
@@ -140,6 +146,11 @@ public class TransactionCreate {
   }    
     
     // </editor-fold>
+  
+    public SelectItem[] getCustomers(){
+        List persons = personService.getPersons();
+        return JSFUtil.toSelectItemArray(persons, true);        
+    }   
     
     public String createTransaction(){
         String returnVal = "success";
@@ -153,10 +164,11 @@ public class TransactionCreate {
             Person currentUser = personService.getPerson(userName);
             transaction.setOwner(currentUser);
             
-            HashMap<ImageSize,String> imageSize = imageService.uploadImage(upAttachment.getInputStream(), userName);
+            HashMap<ImageMeta,String> imageSize = imageService.uploadImage(upAttachment.getInputStream(), userName);
             Image image = new Image();
             image.setOwner(currentUser);
-            image.setName(imageSize.get(ImageSize.MAX));
+            image.setName(imageSize.get(ImageMeta.sizeMAX));
+            image.setUrl(imageSize.get(ImageMeta.url));
             
             transaction.setImage(image);
             transactionService.newTransaction(transaction);

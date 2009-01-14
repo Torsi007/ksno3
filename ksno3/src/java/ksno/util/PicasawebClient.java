@@ -62,11 +62,11 @@ import javax.faces.context.ExternalContext;
   }
 
   
-  public HashMap<ImageSize,String> uploadImage(InputStream stream, String userName) throws MalformedURLException, IOException, ServiceException, Exception{
+  public HashMap<ImageMeta,String> uploadImage(InputStream stream, String userName) throws MalformedURLException, IOException, ServiceException, Exception{
     getLogService().log(Level.INFO, "start");
     String url = null;
     String id = "";
-    HashMap<ImageSize,String> returnImageMap = new HashMap<ImageSize,String>();
+    HashMap<ImageMeta,String> returnImageMap = new HashMap<ImageMeta,String>();
     AlbumEntry entry = getAlbumByTitle(userName);
     
     if(entry == null){
@@ -106,16 +106,18 @@ import javax.faces.context.ExternalContext;
         throw sex;
     }    
     url = returnedPhoto.getMediaThumbnails().get(1).getUrl();
-    returnImageMap.put(ImageSize.MIN , url);
+    returnImageMap.put(ImageMeta.sizeMIN , url);
     if(returnedPhoto.getWidth() > 800){
-        returnImageMap.put(ImageSize.MAX , url.replaceFirst("/s144/", "/s800/"));
+        returnImageMap.put(ImageMeta.sizeMAX , url.replaceFirst("/s144/", "/s800/"));
     }else if(returnedPhoto.getWidth() > 400){
-        returnImageMap.put(ImageSize.MAX , url.replaceFirst("/s144/", "/s400/"));
+        returnImageMap.put(ImageMeta.sizeMAX , url.replaceFirst("/s144/", "/s400/"));
     }else if(returnedPhoto.getWidth() > 288){
-        returnImageMap.put(ImageSize.MAX , url.replaceFirst("/s144/", "/s288/"));
+        returnImageMap.put(ImageMeta.sizeMAX , url.replaceFirst("/s144/", "/s288/"));
     }else{
-        returnImageMap.put(ImageSize.MAX , url);
+        returnImageMap.put(ImageMeta.sizeMAX , url);
     }
+    returnImageMap.put(ImageMeta.url , returnedPhoto.getHtmlLink().getHref());
+
     return returnImageMap;
           
   }

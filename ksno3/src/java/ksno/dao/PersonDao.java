@@ -17,9 +17,11 @@ public interface PersonDao {
 
       public List getPersons();
       public List getInstructors();
-      
+      public Person getPerson(Long id);      
       public Person getPerson(String userName);
       public Instructor getInstructor(Long id);
       public Long newPerson(Person person);
+
+    public void updatePerson(Person person);
     
 }

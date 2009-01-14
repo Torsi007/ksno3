@@ -12,10 +12,21 @@
     <property column="USER_NAME" name="userName" type="string"/>
     <property column="USER_PASS" name="passWord" type="string"/>
     <property column="PHONE" name="phone" type="integer"/>
+    <property column="ALLOW_MAIL" name="allowMail" type="boolean"/>
     <set cascade="save-update" inverse="true" lazy="true" name="participations" table="PARTICIPATION">
       <key column="PARTICIPANT_ID"/>
       <one-to-many class="Participation"/>
     </set>
+    <set cascade="save-update" inverse="true" lazy="true" name="roles" table="USER_ROLES">
+      <key column="USER_NAME"/>
+      <one-to-many class="UserRoles"/>
+    </set>
+    <property column="COMPANY_NAME" name="companyName" type="string"/>
+    <property column="COMPANY_NUMBER" name="companyNumber" type="string"/>
+    <property column="STREET_NAME" name="streetName" type="string"/>
+    <property column="STREET_NUMBER" name="streetNumber" type="string"/>    
+    <property column="ZIP_CODE" name="zipCode" type="string"/>        
+    <property column="CITY" name="city" type="string"/>            
     <subclass discriminator-value="I" name="Instructor">
       <property column="ACC_NUMBER" name="accountNumber" type="string"/>
       <set cascade="save-update" inverse="true" name="events" table="EVENT">

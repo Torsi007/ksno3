@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="ksno.model">
-  <class name="Image" optimistic-lock="version" polymorphism="implicit" table="IMAGE">
+  <class name="UserRoles" optimistic-lock="version" polymorphism="implicit" table="USER_ROLES">
     <id column="ID" name="id">
       <generator class="increment"/>
     </id>
     <version column="VERSION" name="version"/>
-    <property column="NAME" name="name" type="string"/>
-    <property column="URL" name="url" type="string"/>
-    <many-to-one cascade="none" class="Person" column="PERSON_ID" name="owner" not-null="true"/>
-    <many-to-one cascade="none" class="Article" column="ARTICLE_ID" name="article"/>
+    <many-to-one class="Person" column="USER_NAME" lazy="false" name="user" not-null="true"/>
+    <property column="ROLE" name="role" type="string"/>
   </class>
 </hibernate-mapping>

@@ -9,7 +9,13 @@ package ksno.util;
  *
  * @author tor.hauge
  */
-public enum ImageSize {
-    MIN, MAX
+public enum ImageMeta {
+    sizeMIN, sizeMAX, url
+
+
+
+
+
+
 
 }

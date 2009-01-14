@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ksno.dao.ImageDao;
 import ksno.model.Image;
-import ksno.util.ImageSize;
+import ksno.util.ImageMeta;
 import ksno.util.PicasawebClient;
 
 /**
@@ -38,7 +38,7 @@ public class ImageServiceImpl implements ImageService {
         return imageDao.newImage(image);
     }
 
-    public HashMap<ImageSize,String> uploadImage(InputStream stream, String userName) throws Exception {
+    public HashMap<ImageMeta,String> uploadImage(InputStream stream, String userName) throws Exception {
         getLogService().log(Level.SEVERE, "start");
         try {
             PicasawebClient client = new PicasawebClient();

@@ -9,9 +9,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ksno.dao.EventDao;
 import ksno.model.BeginnerCourse;
 import ksno.model.Event;
+import ksno.util.JSFUtil;
 
 /**
  *
@@ -30,10 +33,22 @@ public class EventServiceImpl implements EventService {
     }
     
     public List getEvents() {
-        return eventDao.getEvents();
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EventServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.events}", c);
+        if(returnList == null){
+            returnList = eventDao.getEvents();
+            JSFUtil.setValue("#{ApplicationBean1.events}", returnList, c);
+        }
+        return returnList;
     }
 
     public Long newEvent(Event event) {
+        clearEventsApplicationCache();
         return eventDao.newEvent(event);
     }
     
@@ -93,6 +108,7 @@ public class EventServiceImpl implements EventService {
     }       
 
     public void deleteEvent(Event event) {
+        clearEventsApplicationCache();        
         eventDao.deleteEvent(event);
     }
 
@@ -103,6 +119,18 @@ public class EventServiceImpl implements EventService {
     public BeginnerCourse getBeginnerCourse(Long id) {
         return eventDao.getBeginnerCourse(id);
     }
+    
+    private void clearEventsApplicationCache(){
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EventServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JSFUtil.setValue("#{ApplicationBean1.events}", null, c);    
+    }
+    
+    
         
 
 }

@@ -89,6 +89,19 @@ public class TransactionsMaintain {
 
        return returnVal;
     }    
+   
+    public String invoice(){
+        String returnVal = "success";
+        try{
+            Transaction transactionModify = (Transaction)this.getData().getRowData();
+            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanTransactionModify, transactionModify);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to select transaction", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
+            returnVal = "no";
+        }
+       return returnVal;    
+    }
     
 
 }

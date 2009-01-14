@@ -5,6 +5,7 @@
 
 package ksno.ui.jsf.backing;
 
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import ksno.model.Event;
 import ksno.model.Participation;
 import ksno.model.Person;
 import ksno.model.Text;
+import ksno.model.UserRoles;
+import ksno.security.PasswordFactory;
 import ksno.service.EventService;
 import ksno.service.ParticipationService;
 import ksno.service.PersonService;
@@ -27,6 +30,7 @@ import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
+import sun.security.util.Password;
 
 /**
  *
@@ -202,10 +206,18 @@ public class SignUpWinter {
                 person = new Person();
             }
             person.setUserName(email.getValue().toString());
+            person.setPassWord(PasswordFactory.getPassword());
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
-
+            
+            try{
+                UserRoles userRole = new UserRoles();
+                userRole.setRole(JSFUtil.roleAuthUser);
+                person.addRole(userRole);
+            }catch (Exception ex1){
+                getLogService().log(Level.WARNING,"Unable to add role " + JSFUtil.roleAuthUser + " to user " + person.getUserName());
+            }
             BeginnerCourse course = eventService.getBeginnerCourse(Long.parseLong(coursesSelect.getValue().toString()));
            
             Participation participation = new Participation();
@@ -227,7 +239,9 @@ public class SignUpWinter {
             hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
             hm.put("name", person.getFirstName() +  " " + person.getLastName());
             hm.put("phone", Integer.toString(person.getPhone()));
-            hm.put("email", person.getUserName());             
+            hm.put("email", person.getUserName()); 
+            hm.put("username", person.getUserName());            
+            hm.put("password", person.getPassWord());
             if(wait){
                 int pos = course.getNumberOfParticipants() - course.getMaxSize();
                 hm.put("position", Integer.toString(pos));   

@@ -8,14 +8,13 @@ package ksno.util;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.el.ValueExpression;
 import javax.faces.application.Application;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import ksno.model.LabelValuePair;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
@@ -31,9 +30,29 @@ public class JSFUtil {
         String returnVal;
         FacesContext fc = FacesContext.getCurrentInstance();        
         Application application = fc.getApplication();
-        returnVal = (String) application.evaluateExpressionGet(fc, ELexpression, String.class);            
+        returnVal = (String) application.evaluateExpressionGet(fc, ELexpression, String.class);   
         return returnVal;
     }
+    
+    public static Object getValue(String expr, Class c) {
+        FacesContext context = FacesContext.getCurrentInstance();                
+        ValueExpression ve = context.getApplication().getExpressionFactory().createValueExpression(context.getELContext(), expr, c);
+        if (ve != null) {
+            return ve.getValue(context.getELContext());
+        }
+        return null;
+    }
+    
+    public static void setValue(String expr, Object value, Class c) {
+        FacesContext context = FacesContext.getCurrentInstance();                        
+        ValueExpression ve = context.getApplication().getExpressionFactory().createValueExpression(context.getELContext(), expr, c);
+        if (ve != null) {
+            ve.setValue(context.getELContext(), value);
+        }
+    }
+
+  
+
     
     public static Object getBeanValue(String ELexpression, Class clazz) throws Exception{
         Object returnVal;
@@ -41,6 +60,10 @@ public class JSFUtil {
         Application application = fc.getApplication();
         returnVal = (Object) application.evaluateExpressionGet(fc, ELexpression, clazz);          
         return returnVal;
+    }
+    
+    public static String getCurrentUserName(){
+        return getRequest().getUserPrincipal().getName();
     }
     
     public static ExternalContext getServletContext(){
@@ -56,12 +79,26 @@ public class JSFUtil {
     }
 
     public static SelectItem[] toSelectItemArray(List events) {
-        SelectItem[] selectItems = new SelectItem[events.size()];
-        for(int i = 0; i< events.size(); i++){
-            LabelValuePair kvp = (LabelValuePair)events.get(i);
-            selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+        return JSFUtil.toSelectItemArray(events, false);
+    }
+    
+    public static SelectItem[] toSelectItemArray(List events, boolean includeEmpty) {
+        SelectItem[] selectItems = null;
+        if(includeEmpty){
+            selectItems = new SelectItem[events.size() + 1];
+            selectItems[0] = new SelectItem("-1","<Please select>");
+            for(int i = 1; i< selectItems.length; i++){
+                LabelValuePair kvp = (LabelValuePair)events.get(i - 1);
+                selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+            }
+        }else{
+            selectItems = new SelectItem[events.size()];
+            for(int i = 0; i< selectItems.length; i++){
+                LabelValuePair kvp = (LabelValuePair)events.get(i);
+                selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+            }        
         }
-        return selectItems;
+        return selectItems;        
     }
     
     public static String uploadImage(UploadedFile file, HtmlOutputText result){
@@ -110,5 +147,6 @@ public class JSFUtil {
     public static final String sessionBeanSignedOnEvent = "SignedOnEvent";    
     public static final String sessionBeanParticipationModify = "ParticipationModify";
     public static final String sessionBeanTransactionModify = "TransactionModify";    
+    public static final String roleAuthUser = "authuser";
 
 }

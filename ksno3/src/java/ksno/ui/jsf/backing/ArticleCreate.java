@@ -14,7 +14,7 @@ import ksno.model.Person;
 import ksno.service.ArticleService;
 import ksno.service.ImageService;
 import ksno.service.PersonService;
-import ksno.util.ImageSize;
+import ksno.util.ImageMeta;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
@@ -119,13 +119,13 @@ public class ArticleCreate {
             Person currentUser = personService.getPerson(userName);
             article.setAuthor(currentUser);
 
-            HashMap<ImageSize,String> imageSize = imageService.uploadImage(upAvatar.getInputStream(), userName);
+            HashMap<ImageMeta,String> imageSize = imageService.uploadImage(upAvatar.getInputStream(), userName);
             Image image = new Image();
             image.setOwner(currentUser);
-            image.setName(imageSize.get(ImageSize.MAX));
-            
+            image.setName(imageSize.get(ImageMeta.sizeMAX));
+            image.setUrl(imageSize.get(ImageMeta.url));
 
-            article.setAvatarUrl(imageSize.get(ImageSize.MIN));
+            article.setAvatarUrl(imageSize.get(ImageMeta.sizeMIN));
             
             article.addImage(image);
             

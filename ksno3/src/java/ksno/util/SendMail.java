@@ -79,7 +79,7 @@ public class SendMail {
             Transport.send(simpleMessage);			
         } catch (MessagingException e) {
             // TODO Auto-generated catch block
-             e.printStackTrace();
+              e.printStackTrace();
         }		
     }
         

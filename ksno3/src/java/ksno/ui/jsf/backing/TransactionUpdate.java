@@ -6,15 +6,20 @@
 package ksno.ui.jsf.backing;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.model.SelectItem;
 import ksno.model.Image;
+import ksno.model.Person;
 import ksno.model.Transaction;
 import ksno.service.ImageService;
+import ksno.service.PersonService;
 import ksno.service.TransactionService;
-import ksno.util.ImageSize;
+import ksno.util.ImageMeta;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 /**
@@ -27,8 +32,27 @@ public class TransactionUpdate {
     private UploadedFile upAttachment;
     private TransactionService transactionService;
     private ImageService imageService;
-    
+    private HtmlSelectOneMenu customerSelect;     
+    private PersonService personService;
+
+   
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public HtmlSelectOneMenu getCustomerSelect() {
+        return customerSelect;
+    }
+
+    public void setCustomerSelect(HtmlSelectOneMenu customerSelect) {
+        this.customerSelect = customerSelect;
+    }
+
+    public PersonService getPersonService() {
+        return personService;
+    }
+
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
+    }    
+    
     public ImageService getImageService() {
         return imageService;
     }
@@ -74,9 +98,33 @@ public class TransactionUpdate {
       private Logger getLogService(){
 
           return Logger.getLogger(this.getClass().getName());
-      }   
+      }  
+      
+      private String customerId;
+      
+    public String getCustomerId(){
+        if(customerId == null){
+            Transaction transaction = (Transaction)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanTransactionModify);
+            if(transaction.getCustomer() != null){
+                customerId = transaction.getCustomer().getId().toString();
+            }
+        }
+        if(customerId == null){
+            customerId = "-1";
+        }
+        return customerId;
+    }
+    
+    public void setCustomerId(String customerId){
+        this.customerId = customerId;
+    }
     // </editor-fold>
 
+    public SelectItem[] getCustomers(){
+        List persons = personService.getPersons();
+        return JSFUtil.toSelectItemArray(persons, true);        
+    } 
+    
 
       
     public String update(){
@@ -85,13 +133,20 @@ public class TransactionUpdate {
         try{
             Transaction transaction = (Transaction)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanTransactionModify);
             if(upAttachment != null){
-                HashMap<ImageSize,String> imageSize = imageService.uploadImage(upAttachment.getInputStream(), JSFUtil.getRequest().getUserPrincipal().getName());
+                HashMap<ImageMeta,String> imageSize = imageService.uploadImage(upAttachment.getInputStream(), JSFUtil.getRequest().getUserPrincipal().getName());
                 Image image = new Image();
                 image.setOwner(transaction.getOwner());
-                image.setName(imageSize.get(ImageSize.MAX));
+                image.setName(imageSize.get(ImageMeta.sizeMAX));
+                image.setUrl(imageSize.get(ImageMeta.url));                
                 transaction.setImage(image);
-            }            
+            }
+
+            Person selectedCustomer = personService.getPerson(Long.parseLong(customerId));
             
+            if(transaction.getCustomer() != selectedCustomer){
+                transaction.setCustomer(selectedCustomer);
+            }
+                    
             transactionService.updateTransaction(transaction);
             JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanTransactionModify);
         }catch(Exception e){

@@ -25,7 +25,8 @@ public class DocumentServiceImpl implements DocumentService {
         try {
             GoogleDocsClient client = new GoogleDocsClient();
             getLogService().log(Level.SEVERE, "return");
-            return client.uploadDocument(stream, userName);
+            //return client.uploadDocument(stream, userName);
+            return "tiyu";
         } catch (Exception ex) {
             getLogService().log(Level.SEVERE, "An error occured on attempt to upload the image", ex);
             throw new Exception("An error occured on attemt to upload the image",ex);
