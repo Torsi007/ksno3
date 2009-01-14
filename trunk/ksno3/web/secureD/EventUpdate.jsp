@@ -187,7 +187,7 @@
                         <f:facet name="header">
                             <h:outputText value="Mail" />
                         </f:facet> 
-                        <h:inputText value="#{participation.participant.userName}"></h:inputText>
+                        <h:inputText readonly="true" value="#{participation.participant.userName}"></h:inputText>
                     </h:column>   
                     <h:column>
                         <f:facet name="header">

@@ -62,6 +62,7 @@
                                 <f:selectItem itemLabel="Kurs" itemValue="course"/>                                
                                 <f:selectItem itemLabel="Reise" itemValue="travel"/>
                                 <f:selectItem itemLabel="Salg" itemValue="sale"/>                                
+                                <f:selectItem itemLabel="Utstyr" itemValue="gear"/>                                                                
                             </t:selectOneMenu>  
                         </td>
                         <td></td>
@@ -75,6 +76,15 @@
                         </td>  
                         <td>Format: yyyy-MM-dd</td>
                     </tr>                        
+                    <tr>
+                        <td>Kunde</td>
+                        <td>
+                            <t:selectOneMenu binding="#{TransactionCreate_Backing.customerSelect}">
+                                <f:selectItems value="#{TransactionCreate_Backing.customers}"/>
+                            </t:selectOneMenu> 
+                        </td>  
+                        <td/>
+                    </tr>                    
                     <tr>
                         <td nowrap>Attachment</td>                        
                         <td required="true"><t:inputFileUpload id="attachmentUpload" required="true" value="#{TransactionCreate_Backing.upAttachment}" size="20" /></td>

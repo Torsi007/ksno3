@@ -22,11 +22,15 @@
                 <h2>Welcom to the page administration</h2>
                 <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Administrer artikler</t:commandLink>
                 <br/>
-                <t:commandLink enabledOnUserRole="admin,internal" action="eventsMaintain">Administrer opplegg</t:commandLink>                
+                <t:commandLink visibleOnUserRole="admin,internal"  action="eventsMaintain">Administrer opplegg</t:commandLink>                
                 <br/>
-                <t:commandLink enabledOnUserRole="admin,internal" action="textsMaintain">Administrer tekster</t:commandLink>                
+                <t:commandLink visibleOnUserRole="admin,internal" action="textsMaintain">Administrer tekster</t:commandLink>                
                 <br/>
-                <t:commandLink enabledOnUserRole="admin,internal" action="transactionsMaintain">Administrer økonomi</t:commandLink>                                
+                <t:commandLink visibleOnUserRole="admin,internal" action="adminEconomy">Administrer økonomi</t:commandLink>                                
+                <br/>
+                <t:commandLink visibleOnUserRole="admin,internal" action="sendMail">Send mail</t:commandLink>                                
+                <br/>                
+                <t:commandLink visibleOnUserRole="admin,internal,authuser" action="preferences">Innstillinger</t:commandLink>                                                
             </h:form>        
         </f:view>
         

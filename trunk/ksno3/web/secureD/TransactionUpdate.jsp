@@ -43,11 +43,21 @@
                                 <f:selectItem itemLabel="Internett" itemValue="internet"/> 
                                 <f:selectItem itemLabel="Kurs" itemValue="course"/>                                
                                 <f:selectItem itemLabel="Reise" itemValue="travel"/>
-                                <f:selectItem itemLabel="Salg" itemValue="sale"/>                                
+                                <f:selectItem itemLabel="Salg" itemValue="sale"/>   
+                                <f:selectItem itemLabel="Utstyr" itemValue="gear"/>                                                                                                
                             </t:selectOneMenu>  
                         </td>
                         <td></td>
                     </tr>
+                    <tr>
+                        <td>Kunde</td>
+                        <td>
+                            <t:selectOneMenu value="#{TransactionUpdate_Backing.customerId}">
+                                <f:selectItems value="#{TransactionUpdate_Backing.customers}"/>
+                            </t:selectOneMenu> 
+                        </td>  
+                        <td/>
+                    </tr>                     
                     <tr>
                         <td>Dato</td>
                         <td required="true">
@@ -64,7 +74,7 @@
                     </tr>  
                     <tr>
                         <td nowrap>Endre...</td>                        
-                        <td required="true"><t:inputFileUpload id="attachmentUpload" required="true" value="#{TransactionUpdate_Backing.upAttachment}" size="20" /></td>
+                        <td><t:inputFileUpload id="attachmentUpload" value="#{TransactionUpdate_Backing.upAttachment}" size="20" /></td>
                         <td><t:outputText binding="#{TransactionUpdate_Backing.upAttachmentResult}"/></td>
                     </tr>                    
                     <tr>
