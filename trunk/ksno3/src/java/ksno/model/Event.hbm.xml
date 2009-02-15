@@ -18,7 +18,10 @@
       <key column="EVENT_ID"/>
       <one-to-many class="Participation"/>
     </set>
-    <many-to-one cascade="none" class="Instructor" column="RESPONSIBLE_ID" name="responsible"/>
+    <set cascade="all-delete-orphan" inverse="true" lazy="false" name="instructions" table="INSTRUCTION">
+      <key column="EVENT_ID"/>
+      <one-to-many class="Instruction"/>
+    </set>
     <subclass discriminator-value="BC" name="BeginnerCourse">
       <property column="MAX_SIZE" name="maxSize" type="integer"/>
     </subclass>

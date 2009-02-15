@@ -12,8 +12,11 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIData;
+import javax.faces.component.html.HtmlSelectManyListbox;
 import javax.faces.model.SelectItem;
 import ksno.model.Event;
+import ksno.model.Instruction;
+import ksno.model.Instructor;
 import ksno.model.Participation;
 import ksno.model.Person;
 import ksno.service.EventService;
@@ -29,10 +32,22 @@ import org.apache.myfaces.component.html.ext.HtmlOutputText;
 public class EventUpdate {
 
     private HtmlOutputText errorMsg;
+    private HtmlSelectManyListbox slctManyInstructors;
     private EventService eventService;
     private PersonService personService;
     private ParticipationService participationService;
     private UIData data;
+    private String[] eventInstructors;
+
+    public HtmlSelectManyListbox getSlctManyInstructors() {
+        return slctManyInstructors;
+    }
+
+    public void setSlctManyInstructors(HtmlSelectManyListbox slctManyInstructors) {
+        this.slctManyInstructors = slctManyInstructors;
+    }
+    
+    
 
     public PersonService getPersonService() {
         return personService;
@@ -45,7 +60,23 @@ public class EventUpdate {
     public SelectItem[] getInstructorSelectItems() {
         List instructors = personService.getInstructors();
         return JSFUtil.toSelectItemArray(instructors);
-    }   
+    } 
+    
+    public String[] getEventInstructors() {
+        Event event = (Event)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+        Instructor[] instructors = event.getInstructors();
+        this.eventInstructors = new String[instructors.length];
+        for(int i = 0; i< instructors.length; i++){
+            this.eventInstructors[i] = instructors[i].getId().toString();
+        }
+                
+        return this.eventInstructors;
+    }
+    
+    public void setEventInstructors(String[] instructorIds) {
+        this.eventInstructors = instructorIds;
+    }
+    
     
     public ParticipationService getParticipationService() {
         return participationService;
@@ -90,6 +121,14 @@ public class EventUpdate {
         String returnVal = "success";
         try{
             Event event = (Event)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+            event.getInstructions().clear();
+            for(int i = 0; i< this.eventInstructors.length; i++){
+                Long instructorId = Long.parseLong(this.eventInstructors[i]);
+                Instructor instructor = personService.getInstructor(instructorId);
+                Instruction instruction = new Instruction();
+                instruction.setInstructor(instructor);
+                event.addInstruction(instruction);            
+            }
             eventService.updateEvent(event);
             JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanEventModify);
         }catch(Exception e){

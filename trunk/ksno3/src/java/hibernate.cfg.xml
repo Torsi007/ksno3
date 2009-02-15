@@ -25,7 +25,7 @@
     <mapping resource="ksno/model/Participation.hbm.xml"/>
     <mapping resource="ksno/model/Text.hbm.xml"/>
     <mapping resource="ksno/model/Transaction.hbm.xml"/>
+    <mapping class="" file="" jar="" package="" resource="ksno/model/Instruction.hbm.xml"/>
     <mapping resource="ksno/model/UserRoles.hbm.xml"/>
-    <mapping resource="ksno/model/Invoice.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -10,8 +10,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.html.HtmlOutputText;
+import javax.faces.component.html.HtmlSelectManyListbox;
 import javax.faces.model.SelectItem;
 import ksno.model.BeginnerCourse;
+import ksno.model.Instruction;
 import ksno.model.Instructor;
 import ksno.model.Person;
 import ksno.service.EventService;
@@ -35,20 +37,15 @@ public class BeginnerCourseCreate {
     private HtmlOutputText errorMsg;
     private EventService eventService;
     private PersonService personService;
-    private String responsibleId;
-
-    public String getResponsibleId() {
-        if(responsibleId == null || "".equals(responsibleId)){
-            String userName = JSFUtil.getRequest().getUserPrincipal().getName();
-            Person currentUser = personService.getPerson(userName);
-            responsibleId = Long.toString(currentUser.getId());
-        }
-        return responsibleId;
+    private HtmlSelectManyListbox slctManyInstructors;    
+    
+    public HtmlSelectManyListbox getSlctManyInstructors() {
+        return slctManyInstructors;
     }
 
-    public void setResponsibleId(String responsibleId) {
-        this.responsibleId = responsibleId;
-    }
+    public void setSlctManyInstructors(HtmlSelectManyListbox slctManyInstructors) {
+        this.slctManyInstructors = slctManyInstructors;
+    }    
 
     public HtmlSelectOneMenu getComboResponsible() {
         return comboResponsible;
@@ -154,12 +151,17 @@ public class BeginnerCourseCreate {
             course.setStartDate((Date)startDate.getValue());
             course.setEndDate((Date)endDate.getValue());            
             course.setComment(comment.getValue().toString());                        
-            course.setMaxSize(Integer.parseInt(maxSize.getValue().toString()));                                    
+            course.setMaxSize(Integer.parseInt(maxSize.getValue().toString()));  
+            Object[] selectedInstructors = slctManyInstructors.getSelectedValues();
+            for(int i = 0; i<selectedInstructors.length; i++){
+                String insId = (String)selectedInstructors[i];
+                Long instructorId = Long.parseLong(insId);
+                Instructor instructor = personService.getInstructor(instructorId);
+                Instruction instruction = new Instruction();
+                instruction.setInstructor(instructor);
+                course.addInstruction(instruction);            
+            }            
             course.setLocation(location.getValue().toString());
-            Long insId = Long.decode(getResponsibleId());
-            Instructor responsible = personService.getInstructor(insId);
-            responsible.addEvent(course);
-            //course.setResponsible(responsible);
             boolean op = (Boolean)open.getValue();
             course.setOpen(op);
             eventService.newEvent(course);
