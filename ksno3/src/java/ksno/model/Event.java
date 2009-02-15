@@ -1,7 +1,10 @@
 package ksno.model;
 
+import java.util.ArrayList;
 import java.util.Date; 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class Event implements LabelValuePair {
@@ -14,16 +17,67 @@ public class Event implements LabelValuePair {
     protected String location;
     protected String name;
     private boolean open;
-    private Instructor responsible;
+    private Set instructions = new HashSet();
     private Set participations = new HashSet();
 
     // <editor-fold  desc=" Getters and Setters "> 
-    public Instructor getResponsible() {
-        return responsible;
+    public Instructor[] getInstructors(){
+        Instructor[] list = new Instructor[instructions.size()];
+        Iterator it = instructions.iterator();
+        int i = 0;
+        while (it.hasNext()){
+            Instruction instruction = (Instruction)it.next();
+            list[i] = instruction.getInstructor();
+            i++;
+        }
+        return list;
+    }   
+    
+    public void setInstructors(Instructor[] instructors){
+        for(int i = 0; i< instructors.length; i++){
+            Instructor instructor = instructors[i];
+            Instruction instruction = new Instruction();
+            instructor.addInstruction(instruction);  
+            addInstruction(instruction);
+            
+        }
+    }      
+    
+    
+    public String getInstructorsCSV(){
+        String returnVal = "";
+        Iterator it = instructions.iterator();
+        while (it.hasNext()){
+            Instruction instruction = (Instruction)it.next();
+            returnVal += instruction.getInstructor().getFirstName();
+            returnVal += ",";
+        }
+        return returnVal;
+    }
+    
+    public Set getInstructions() {
+        return instructions;
     }
 
-    public void setResponsible(Instructor responsible) {
-        this.responsible = responsible;
+    public void setInstructions(Set instructions) {
+        this.instructions = instructions;
+    }    
+    
+    public Set getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(Set participations) {
+        this.participations = participations;
+    }     
+    
+    
+    public Set getResponsible() {
+        return instructions;
+    }
+
+    public void setResponsible(Set instructions) {
+        this.instructions = instructions;
     }
     
     public String getLocation() {
@@ -49,14 +103,6 @@ public class Event implements LabelValuePair {
     public void setName(String name) {
         this.name = name;
     }
-    
-    public Set getParticipations() {
-        return participations;
-    }
-
-    public void setParticipations(Set participations) {
-        this.participations = participations;
-    } 
     
     public int getNumberOfParticipants(){
         return getParticipations().size();
@@ -167,6 +213,17 @@ public class Event implements LabelValuePair {
         }
         participation.setEvent(this);
         participations.add(participation);
+    }
+    
+    public void addInstruction(Instruction instruction){
+        if(instruction == null){
+            throw new IllegalArgumentException("Instruction to be added is null");
+        }
+        if(instruction.getEvent() != null){
+            instruction.getEvent().getInstructions().remove(instruction);
+        }
+        instruction.setEvent(this);
+        instructions.add(instruction);
     }    
 
     // <editor-fold defaultstate="collapsed" desc=" Constructors "> 

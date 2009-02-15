@@ -13,7 +13,7 @@
     <property column="CREATED_DATE" name="createdDate" type="calendar"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="calendar"/>
     <many-to-one cascade="none" class="Person" column="OWNER_ID" lazy="false" name="owner"/>
-    <many-to-one cascade="none" class="Person" column="CUSTOMER_ID" lazy="false" name="customer"/>    
+    <many-to-one cascade="none" class="Person" column="CUSTOMER_ID" lazy="false" name="customer"/>
     <many-to-one cascade="save-update" class="Image" column="IMAGE_ID" name="image"/>
   </class>
 </hibernate-mapping>

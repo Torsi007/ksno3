@@ -6,7 +6,7 @@
       <generator class="increment"/>
     </id>
     <version column="VERSION" name="version"/>
-    <many-to-one class="Person" column="USER_NAME" lazy="false" name="user" not-null="true"/>
+    <many-to-one class="Person" column="USER_NAME" lazy="false" name="user" not-null="true" property-ref="userName"/>
     <property column="ROLE" name="role" type="string"/>
   </class>
 </hibernate-mapping>

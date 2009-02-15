@@ -24,6 +24,16 @@ public class Preferences {
     private HtmlInputSecret inpPw1;
     private HtmlOutputText errorMsg;
     private HtmlOutputText outTxtPassword;
+    private String test;
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+    
 
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
     public HtmlInputSecret getInpPw1() {
