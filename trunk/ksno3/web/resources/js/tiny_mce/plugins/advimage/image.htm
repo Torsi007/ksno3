@@ -10,13 +10,17 @@
         <script type="text/javascript" src="js/image.js"></script>
         <script type="text/javascript">
             function test(){
-                document.getElementById("imgList").innerHTML = tinyMCEPopup.editor.container.document.getElementById("imageList").innerHTML;
+                if(tinyMCEPopup.editor.container.document != undefined){
+                    document.getElementById("imgList").innerHTML = tinyMCEPopup.editor.container.document.getElementById("imagelist").innerHTML;    
+                }else{
+                    document.getElementById("imgList").innerHTML = tinyMCEPopup.editor.container.ownerDocument.getElementById("imagelist").innerHTML;    
+                    
+                }
                 document.getElementById("imgList").style.height = 180;
-                
             }
             
-            function selectImage(){
-                document.getElementById("src").value = event.srcElement.src;
+            function selectImage(url){
+                document.getElementById("src").value = url;
             }              
         </script>
         <link href="css/advimage.css" rel="stylesheet" type="text/css" />
@@ -69,7 +73,7 @@
                     
                     <fieldset>
                         <legend>Select image</legend>
-                        <div id="imgList" style="overflow:auto"></div>
+                        <div id="imgList" style="overflow:auto; height: 180"></div>
                     </fieldset>
                     
                 </div>

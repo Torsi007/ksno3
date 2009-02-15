@@ -50,7 +50,7 @@
                         <f:facet name="header">
                             <h:outputText value="Ansvarlig" />
                         </f:facet> 
-                        <h:outputText value="#{item.responsible.firstName}"></h:outputText>
+                        <h:outputText value="#{item.instructorsCSV}"></h:outputText>
                     </h:column>                      
                     <h:column>
                         <f:facet name="header">

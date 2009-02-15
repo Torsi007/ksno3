@@ -64,7 +64,7 @@
                 </table>
                 <div id="imagelist" style="display:none">
                     <t:dataList value="#{ArticleModify.images}" var="img">
-                        <t:graphicImage url="#{img.name}" height="80" onclick="selectImage()" style="cursor:hand"/>
+                        <t:graphicImage url="#{img.name}" height="80" onclick="selectImage('#{img.name}')" style="cursor:hand"/>
                     </t:dataList>                    
                 </div>
             </h:form>        

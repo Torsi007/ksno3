@@ -65,7 +65,7 @@
                 </h:dataTable>  
                 <input type="button" value="Tilbake til hovedsiden" onclick="toStartPage()"/>
                 <h:commandButton value="Opprett ny artikkel" action="articleCreate"/>   
-                <h:commandButton value="Lagre" action="#{ArticlesMaintain_Backing.articlesUpdate}"/>
+                <t:commandButton value="Lagre" visibleOnUserRole="admin,internal" action="#{ArticlesMaintain_Backing.articlesUpdate}"/>    
                 <t:outputText styleClass="errorMsg" binding="#{ArticlesMaintain_Backing.errorMsg}"/>
             </h:form> 
             <h:form>

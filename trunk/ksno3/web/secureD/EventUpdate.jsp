@@ -156,11 +156,11 @@
                         <td>                    
                             <t:selectBooleanCheckbox value="#{EventModify.open}"/>
                         </td>
-                        <td>Ansvarlig</td>
+                        <td>Instruktører</td>
                         <td>
-                            <t:selectOneMenu value="#{EventModify.responsible.id}" >
+                            <h:selectManyListbox  size="3"  value="#{EventUpdate_Backing.eventInstructors}" binding="#{EventUpdate_Backing.slctManyInstructors}">
                                 <f:selectItems value="#{EventUpdate_Backing.instructorSelectItems}"/>
-                            </t:selectOneMenu>
+                            </h:selectManyListbox>                            
                         </td>
                     </tr>    
                     
