@@ -99,7 +99,8 @@
                         <td>
                             <span style="display:block; margin-top:8">Hjelm størrelse</span>    
                             <t:selectOneMenu style="width:98" required="true" binding="#{SignUpSummer_Backing.helmetSize}" >
-                                <f:selectItem itemLabel="Tar med selv!" itemValue="empty"/>                                
+                                <f:selectItem itemLabel="--" itemValue="empty"/>                                
+                                <f:selectItem itemLabel="Tar med selv!" itemValue="Tar med selv"/>                               
                                 <f:selectItem itemLabel="XXL" itemValue="XXL"/>
                                 <f:selectItem itemLabel="XL" itemValue="XL"/>
                                 <f:selectItem itemLabel="L" itemValue="L"/>

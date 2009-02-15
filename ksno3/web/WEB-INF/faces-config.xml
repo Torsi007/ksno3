@@ -39,6 +39,11 @@
         <converter-id>CalendarConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.CalendarConverter</converter-class>
     </converter>
+    <converter>
+        <description>Convert string - person</description>
+        <converter-id>PersonConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.PersonConverter</converter-class>
+    </converter>    
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
@@ -757,7 +762,7 @@
         <navigation-case>
             <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>            
             <from-outcome>emailUpdate</from-outcome>
-            <to-view-id>/secureD/EmailUpdate.jsp</to-view-id>
+            <to-view-id>/secureD/TextUpdate.jsp</to-view-id>
         </navigation-case>         
     </navigation-rule> 
     <navigation-rule>

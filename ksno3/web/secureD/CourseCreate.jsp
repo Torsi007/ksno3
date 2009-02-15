@@ -168,13 +168,11 @@
                     </tr> 
                     
                      <tr>
-                        <td>Ansvarlig</td>
+                        <td>Instruktører</td>
                         <td>
-                            
-                            <t:selectOneMenu value="#{BeginnerCourseCreate_Backing.responsibleId}" >
+                            <h:selectManyListbox  size="3"  value="#{BeginnerCourseCreate_Backing.responsibleIds}" binding="#{BeginnerCourseCreate_Backing.slctManyInstyructors}">
                                 <f:selectItems value="#{BeginnerCourseCreate_Backing.instructorSelectItems}"/>
-                            </t:selectOneMenu> 
-
+                            </h:selectManyListbox>                             
                         </td>
                         <td/>
                     </tr>    
