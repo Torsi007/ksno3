@@ -19,6 +19,7 @@ import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
+import ksno.security.PasswordFactory;
 
 /**
  *
@@ -178,6 +179,7 @@ public class EventAddParticipant {
 
             person.setUserName(email.getValue().toString());
             person.setFirstName(firstName.getValue().toString());
+            person.setPassWord(PasswordFactory.getPassword());            
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
             
