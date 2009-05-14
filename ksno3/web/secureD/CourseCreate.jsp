@@ -170,7 +170,7 @@
                      <tr>
                         <td>Instruktører</td>
                         <td>
-                            <h:selectManyListbox  size="3"  value="#{BeginnerCourseCreate_Backing.responsibleIds}" binding="#{BeginnerCourseCreate_Backing.slctManyInstructors}">
+                            <h:selectManyListbox  size="3"  binding="#{BeginnerCourseCreate_Backing.slctManyInstructors}">
                                 <f:selectItems value="#{BeginnerCourseCreate_Backing.instructorSelectItems}"/>
                             </h:selectManyListbox>                             
                         </td>

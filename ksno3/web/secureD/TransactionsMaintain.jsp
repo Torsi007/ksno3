@@ -42,6 +42,12 @@
                     </h:column>  
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="Kategori" />
+                        </f:facet> 
+                        <h:outputText value="#{item.category}"></h:outputText>
+                    </h:column>                        
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Beløp" />
                         </f:facet> 
                         <h:outputText value="#{item.amount}"></h:outputText>
