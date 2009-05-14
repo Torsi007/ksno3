@@ -86,7 +86,7 @@
                         <table cellspacing="0" cellpadding="0" class="footer" width="100%">	
                             <tr>        
                                 <td align="center">            
-                                    <span >Ta gjerne kontakt med oss! Telefon: 47753527 / 41191592 E-post: <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a>            
+                                    <span >Ta gjerne kontakt med oss! Telefon: 47753527 E-post: <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a>            
                                     </span>        
                                 </td>        
                             </tr>

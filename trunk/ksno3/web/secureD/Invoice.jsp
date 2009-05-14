@@ -100,19 +100,16 @@
                                 <tr style="height:130">
                                     <td></td>
                                     <td></td>
-                                    <td style="text-align:right"><h:outputText value="#{TransactionModify.date}"/></td>
+                                    <td style="text-align:right;" valign="top"><br/><h:outputText value="#{TransactionModify.date}"/></td>
                                 </tr>
                                 <tr style="height:145">
-                                    <td>
-                                        <table cellpadding="0" cellspacing="0" border="0">
+                                    <td valign="top">
+                                        <table cellpadding="0" cellspacing="0" border="0" style="margin-top:15">
                                             <tr>
                                                 <td><h:outputText value="#{TransactionModify.customer.companyName}"/></td>
                                             </tr>
                                             <tr>
-                                                <td>Attn:</td>
-                                            </tr>
-                                            <tr>
-                                                <td><h:outputText value="#{TransactionModify.customer.firstName}"/>&nbsp;<h:outputText value="#{TransactionModify.customer.lastName}"/></td>
+                                                <td>Attn:&nbsp;<h:outputText value="#{TransactionModify.customer.firstName}"/>&nbsp;<h:outputText value="#{TransactionModify.customer.lastName}"/></td>
                                             </tr>
                                             <tr>
                                                 <td><h:outputText value="#{TransactionModify.customer.streetName} #{TransactionModify.customer.streetNumber}"/></td>
@@ -123,8 +120,8 @@
                                         </table>
                                     </td>
                                     <td></td>
-                                    <td>
-                                        <table cellpadding="0" cellspacing="0" border="0">
+                                    <td valign="top">
+                                        <table cellpadding="0" cellspacing="0" border="0" style="margin-top:15">
                                             <tr>
                                                 <td><h:outputText value="#{TransactionModify.owner.companyName}"/></td>
                                             </tr>
@@ -139,8 +136,8 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><h:outputText value="#{TransactionModify.amount}"/></td>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:outputText value="#{TransactionModify.owner.accountNumber}"/></td>
+                                    <td style="height:40" valign="bottom"><h:outputText value="#{TransactionModify.amount}"/></td>
+                                    <td valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:outputText value="#{TransactionModify.owner.accountNumber}"/></td>
                                 </tr>
                             </table>
                         </td>
