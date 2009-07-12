@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>        
         <title>Kitesurfing.no</title>
     </head>
-    <body style="background-image : url(resources/img/components/backgrounds/header.jpg);" >
+    <body style="background-image : url(resources/img/components/backgrounds/header.jpg); overflow:hidden" >
         <f:view>
             <table cellspacing="0" cellpadding="0" class="fullstretch outer">        
                 <tr><td colspan="100" style="height: 67"/></tr>
