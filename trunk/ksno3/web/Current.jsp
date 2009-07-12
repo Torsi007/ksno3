@@ -29,8 +29,8 @@
                         
                         <t:htmlTag styleClass="active" value="tr" rendered="#{article.body != null}" >
                             <f:param name="onclick" value="setThisContent('#{Current_Backing.articleUrl}?id=#{article.id}')" />
-                            <f:param name="onmouseout" value="setBackgroundColor('transparent')" />                            
-                            <f:param name="onmouseover" value="setBackgroundColor('#666666')" />                                                        
+                            <f:param name="onmouseout" value="setBackgroundColor('transparent'); setBackground(event)" />
+                            <f:param name="onmouseover" value="setBackgroundColor('#666666'); setBackground(event)" />
                             <td>
                                     <h1>
                                         <h:outputText value="#{article.name}"/>    
