@@ -1,6 +1,13 @@
+var backgroundColor = 'transparent';
+
 function setBackgroundColor(color){
-	rowElement = findElement(event.srcElement,'tr')
-	rowElement.style.background = color;
+    backgroundColor = color;
+}
+
+function setBackground(event){
+    var srcEl = event.srcElement? event.srcElement : event.target;
+	rowElement = findElement(srcEl,'tr')
+	rowElement.style.background = backgroundColor;
 }
 
 function findElement(elem,tag){
@@ -8,7 +15,11 @@ function findElement(elem,tag){
 		return elem
 	}
 	else{
-		return		findElement(elem.parentElement,'tr');
+        var parent = elem.parentElement;
+        if(parent == undefined){
+            parent = elem.parentNode;
+        }
+		return		findElement(parent,'tr');
 	}
 }
 
@@ -121,19 +132,19 @@ function validate(){
     var formElement = event.srcElement;
     var validated = validateRequiredElements(formElement, "input");
     if(validated){
-      validated = validateRequiredElements(formElement, "select");    
+      validated = validateRequiredElements(formElement, "select");
     }else{
-        validateRequiredElements(formElement, "select");    
+        validateRequiredElements(formElement, "select");
     }
     if(!validated){
-        alert("De merkede elementene er obligatoriske."); 
+        alert("De merkede elementene er obligatoriske.");
         return  validated;
     }
-    
+
     validated = validateFormatFields(formElement);
-    
- 
-    
+
+
+
     return validated;
 }
 
@@ -143,20 +154,20 @@ function validateFormatFields(form){
     for(var i = 0; i<formElements.length; i++){
         var formElement = formElements[i];
 
-        if(formElement.type != "hidden" && formElement.type != "submit"){          
+        if(formElement.type != "hidden" && formElement.type != "submit"){
           if(hasFormat(formElement, "email")){
               if(!validateEmail(formElement)){
                   return false;
-                  
-              }                   
-          }  
+
+              }
+          }
           if(hasFormat(formElement, "phone")){
               if(!validatePhone(formElement)){
                   return false;
-                  
-              }                   
+
+              }
           }
-        }            
+        }
     }
     return hasCorrectFormat;
 }
@@ -164,23 +175,23 @@ function validateFormatFields(form){
 function validatePhone(elem){
     var str = elem.value;
     if(str != undefined && str != ""){
-        
+
         if(!checkInternationalPhone(str)){
           elem.style.background = "orange";
-           elem.focus();     
+           elem.focus();
            alert("Ugyldig telefonnummer. Det må være på format ########. Mellomrom er tillat, og man kan også ha retningsnummer på format +##");
            return false;
         }
 
-        
+
     }
               elem.style.background = "white";
               return true;
-    
+
 }
 
 function isRequired(field){
-    
+
     return field.required ||field.parentElement.required;
 }
 
@@ -191,23 +202,23 @@ function validateRequiredElements(form, tagName){
         var formElement = formElements[i];
         if(tagName.toLowerCase() == "select"){
             if(isRequired(formElement) && (formElement.value == undefined || formElement.value == "" || formElement.value == "empty" || formElement.value == "Empty")){
-                formElement.style.background = "orange";                    
-                allRequired = false;                
-            }else{
-               formElement.style.background = "white";                
-            }
-        }else{
-          if(formElement.type != "hidden" && formElement.type != "submit"){          
-            if(isRequired(formElement) && (formElement.value == undefined || formElement.value == "")){
-                formElement.style.background = "orange";                    
+                formElement.style.background = "orange";
                 allRequired = false;
             }else{
-                formElement.style.background = "white";                    
-            }            
-          }            
+               formElement.style.background = "white";
+            }
+        }else{
+          if(formElement.type != "hidden" && formElement.type != "submit"){
+            if(isRequired(formElement) && (formElement.value == undefined || formElement.value == "")){
+                formElement.style.background = "orange";
+                allRequired = false;
+            }else{
+                formElement.style.background = "white";
+            }
+          }
         }
 
-    }  
+    }
     return allRequired;
 }
 
@@ -217,7 +228,7 @@ function hasFormat(field, format){
     if(fieldFormat != undefined){
         fieldFormat = fieldFormat.toLowerCase();
         returnVal = fieldFormat.indexOf(format.toLowerCase()) > -1
-        
+
     }
     return returnVal;
 }
@@ -235,7 +246,7 @@ var minDigitsInIPhoneNumber = 8;
 function isInteger(s)
 {   var i;
     for (i = 0; i < s.length; i++)
-    {   
+    {
         // Check that current character is number.
         var c = s.charAt(i);
         if (((c < "0") || (c > "9"))) return false;
@@ -249,7 +260,7 @@ function trim(s)
     // Search through string's characters one by one.
     // If character is not a whitespace, append to returnString.
     for (i = 0; i < s.length; i++)
-    {   
+    {
         // Check that current character isn't whitespace.
         var c = s.charAt(i);
         if (c != " ") returnString += c;
@@ -262,7 +273,7 @@ function stripCharsInBag(s, bag)
     // Search through string's characters one by one.
     // If character is not in bag, append to returnString.
     for (i = 0; i < s.length; i++)
-    {   
+    {
         // Check that current character isn't whitespace.
         var c = s.charAt(i);
         if (bag.indexOf(c) == -1) returnString += c;
@@ -339,11 +350,11 @@ function validateEmail(elem) {
             return false
          }
 
-      
+
     }
            elem.style.background = "white";
 
-         return true 					
+         return true
 	}
 
 
@@ -360,10 +371,10 @@ function getBaseId(srcElem){
           basePath = id.substring(0, lastColon + 1);*/
 
       return false;
-               
-                
-    
-    
+
+
+
+
 }
 
 
