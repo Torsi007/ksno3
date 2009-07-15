@@ -131,8 +131,9 @@
                     <p>
                         <text>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</text>
                     </p>
-                    <a name="when"/>		
-                    <h1>Kursdatoer</h1>		
+                    <a name="when">		
+                        <h1>Kursdatoer</h1>
+                    </a>
                     <p>Foreløpige kursdatoer:</p>		
                     <ul type="square">
                         <t:dataList value="#{CoursesSummer_Backing.courses}" var="course">
