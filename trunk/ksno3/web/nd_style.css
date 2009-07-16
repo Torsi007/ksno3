@@ -1,4 +1,5 @@
 body.frontpage {background-color:#EFEFEF; background-image:url('background.jpg'); background-repeat:repeat-x; margin:0; font-family:"Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;}
+
 body.frontpage table.middleSection {background-image:url('main_image2.jpg'); width:940px; margin: 0 auto; display:block; height:269px; table-layout:fixed; border-collapse:collapse; color:white; empty-cells:show}
 body.frontpage table.middleSection td.leftSection {width:269px; }
 body.frontpage table.middleSection td.leftSection h1 {font-size: 36px; line-height: 35px; font-weight:500; margin: 20px 18px 10px 20px}
@@ -7,8 +8,25 @@ body.frontpage table.middleSection td.leftSection h2 {font-size: 24px; line-heig
 body.frontpage table.middleSection td.middleSection {width:402px}
 body.frontpage table.middleSection td.rightSection {width:269px; vertical-align:top;}
 body.frontpage table.middleSection td.rightSection div {display:block; margin: 24px 5px 50px 60px;}
-body.frontpage table.middleSection td.rightSection div h1 {font-size: 18px; font-weight:500; margin: 3 0;}
+body.frontpage table.middleSection td.rightSection div h1 {font-size: 18px; font-weight:500; margin: 3px 0px;}
 body.frontpage table.middleSection td.rightSection div a {font-size: 14px; color:white}
+
+body.frontpage table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:269px; table-layout:fixed; border-collapse:collapse; color:white; empty-cells:show}
+body.frontpage table.bottomSection td.leftSection {width:269px; }
+body.frontpage table.bottomSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
+body.frontpage table.bottomSection td.leftSection table.videoList td {vertical-align:top; }
+body.frontpage table.bottomSection td.leftSection table.videoList td img {vertical-align:top; margin: 3px }
+body.frontpage table.bottomSection td.leftSection table.videoList td h1 {color:#787878; font-size: 14px; margin:3px 0px 12px 0px; }
+body.frontpage table.bottomSection td.leftSection table.videoList td span {color:#303030; font-size: 14px; margin:12px 0px; display:block;}
+body.frontpage table.bottomSection td.leftSection table.videoList td a {color:#7DB639; font-size: 14px; margin:12px 0px; display:block;}
+body.frontpage table.bottomSection td.leftSection div.videoSection div {width:100px; margin: 0px; display:inline;}
+
+body.frontpage table.bottomSection td.middleSection {width:402px; vertical-align:top }
+body.frontpage table.bottomSection td.middleSection div.expandedNews { display:block; color:#787878; font-size: 12px; margin: 0px 6px;}
+body.frontpage table.bottomSection td.middleSection div.expandedNews h1 { color:#7DB639; font-size: 18px; margin:8px 0px 8px 0px; }
+body.frontpage table.bottomSection td.middleSection div.expandedNews a { color:#787878; margin:3px 0px 12px 0px; }
+
+
 
 table.button {height:29px; border-collapse:collapse; color:white; margin: 10px 18px 10px 20px; cursor:pointer;}
 table.button tr td {background-image:url('nd_button.gif'); background-repeat:repeat-x; padding: 0px 10px;}
