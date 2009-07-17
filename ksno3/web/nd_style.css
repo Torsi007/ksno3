@@ -28,6 +28,11 @@ body.frontpage table.bottomSection td.middleSection {width:402px; vertical-align
 body.frontpage table.bottomSection td.middleSection div.expandedNews { display:block; color:#787878; font-size: 12px; margin: 0px 6px;}
 body.frontpage table.bottomSection td.middleSection div.expandedNews h1 { color:#7DB639; font-size: 18px; margin:8px 0px 8px 0px; }
 body.frontpage table.bottomSection td.middleSection div.expandedNews a { color:#787878; margin:3px 0px 12px 0px; }
+body.frontpage table.bottomSection td.middleSection table.newsList { color:#787878; border-collapse:collapse; width:100%; margin: 10px 0px 0px 6px; }
+body.frontpage table.bottomSection td.middleSection table.newsList tr td a { color:#7DB639; text-decoration: none }
+body.frontpage table.bottomSection td.middleSection table.newsList tr td.date { width: 80px }
+body.frontpage table.bottomSection td.middleSection table.newsList tr td.separator { width: 6px; padding: 4px 3px }
+body.frontpage table.bottomSection td.middleSection table.newsList tr td { width: 100%; white-space:nowrap; font-size: 12px; padding: 4px 0px }
 
 body.frontpage table.bottomSection td.rightSection {width:269px; vertical-align:top; }
 body.frontpage table.bottomSection td.rightSection div.courseList { display:block; color:#787878; font-size: 12px; margin: 0px 6px; height:100%; vertical-align:top; }
@@ -35,7 +40,7 @@ body.frontpage table.bottomSection td.rightSection div.courseList h1 { color:#7D
 body.frontpage table.bottomSection td.rightSection div.courseList table {border-collapse:collapse; table-layout:fixed }
 body.frontpage table.bottomSection td.rightSection div.courseList table tr td{color:#787878; font-size:11px; white-space:nowrap; padding: 4px 0px}
 
-body.frontpage table.bottomSection td.rightSection div.weLike { display:block; height:54px; color: #636363; font-size:10px; padding: 0px 0px 0px 140px; background-color:red}
+body.frontpage table.bottomSection td.rightSection div.weLike { display:block; height:54px; color: #636363; font-size:10px; padding: 0px 0px 0px 140px;}
 body.frontpage table.bottomSection td.rightSection div.weLike h1 { display:block; font-size:10px; margin:0;}
 
 
