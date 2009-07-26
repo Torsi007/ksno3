@@ -66,12 +66,22 @@
             <h:form id="ca" enctype="multipart/form-data" onsubmit="validate_local()">
                 <table width="100%">
                     <tr>
-                        <td style="width:1">Navn</td>
+                        <td style="width:1">Name</td>
                         <td style="width:1" required="true">
                             <t:inputText id="it1" required="true" value="#{ArticleModify.name}" />                        
                         </td>
                         <td style="width:100%">&nbsp</td>
                     </tr>
+                   <tr>
+                       <td style="width:1">Category</td>
+                       <td style="width:1" required="true">
+                           <t:selectOneMenu value="#{ArticleModify.category.name}" binding="#{ArticleMasterUpdate_Backing.slctCategory}">
+                               <f:selectItems value="#{ArticleMasterUpdate_Backing.CategorySelectItems}"/>
+                           </t:selectOneMenu>    
+                       </td>
+                       <td style="width:100%">&nbsp</td>
+                    </tr>
+
                     <tr>
                         <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
                     </tr>
