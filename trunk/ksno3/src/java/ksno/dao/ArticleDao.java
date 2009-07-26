@@ -6,6 +6,7 @@
 package ksno.dao;
 import java.util.List;
 import ksno.model.Article;
+import ksno.model.Category;
 
 /**
  *
@@ -17,5 +18,7 @@ public interface ArticleDao {
       public void updateArticle(Article article);
       public void deleteArticle(Article article);      
       public List getArticles();
-      public List getVisibleArticles();
+      public Category getCategory(String name);
+      public List<Category> getCategories();
+      public List<Article> getVisibleArticles();
 }

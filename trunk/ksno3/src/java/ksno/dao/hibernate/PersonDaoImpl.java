@@ -6,7 +6,6 @@
 package ksno.dao.hibernate;
 
 import ksno.dao.PersonDao;
-import java.util.LinkedList;
 import java.util.List;
 import ksno.model.Instructor;
 import ksno.model.Person;

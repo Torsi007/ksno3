@@ -39,6 +39,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     public void updateTransaction(Transaction transaction) {
+        transaction.setLastUpdatedDate(Calendar.getInstance());
         transactionDao.updateTransaction(transaction);
     }
     

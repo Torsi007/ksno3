@@ -5,25 +5,6 @@
 
 package ksno.util;
 
-import javax.faces.context.ExternalContext;
-//import com.google.gdata.client.docs.DocsService;
-import com.google.gdata.data.media.MediaStreamSource;
-
-
-import com.google.gdata.util.AuthenticationException;
-import com.google.gdata.util.ServiceException;
-//import com.google.gdata.data.docs.DocumentListEntry;
-//import com.google.gdata.data.docs.DocumentEntry;
-import com.google.gdata.data.PlainTextConstruct;
-
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author tor.hauge

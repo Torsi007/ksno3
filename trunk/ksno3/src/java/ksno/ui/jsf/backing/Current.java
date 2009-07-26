@@ -5,6 +5,11 @@
 
 package ksno.ui.jsf.backing;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List; 
 import ksno.service.PersonService;
 import ksno.service.ArticleService;
@@ -30,6 +35,10 @@ public class Current {
         return "Article.jsp";
     }
 
+    public String getArticle1Url() {
+        return "Article1.jsp";
+    }
+
     public ArticleService getArticleService() {
         return articleService;
     }
@@ -38,8 +47,70 @@ public class Current {
         this.articleService = articleService;
     }
 
-    public List getArticles() {
+    public List<ksno.model.Article> getArticles() {
         return articleService.getVisibleArticles();
+    }
+
+    public List getFirstThreeArticles() {
+        List<ksno.model.Article> visibleArticles = this.getArticles();
+        Iterator <ksno.model.Article> articleIterator = visibleArticles.iterator();
+        List<ksno.model.Article> returnList = new LinkedList<ksno.model.Article>();
+        while(articleIterator.hasNext() && returnList.size()<3){
+            ksno.model.Article article = articleIterator.next();
+            if(article.getFrontPagePosition().equals("default")){
+                returnList.add(article);
+            }
+        }
+        return returnList;
+    }
+
+    public List getArticlesFromFour() {
+        List<ksno.model.Article> visibleArticles = this.getArticles();
+        Iterator <ksno.model.Article> articleIterator = visibleArticles.iterator();
+        List<ksno.model.Article> returnList = new LinkedList<ksno.model.Article>();
+        int i = 0;
+        while(articleIterator.hasNext()){
+            ksno.model.Article article = articleIterator.next();
+            if(article.getFrontPagePosition().equals("default")){
+                i++;
+                if(i>3){
+                    returnList.add(article);
+                }
+            }
+        }
+        return returnList;
+    }
+
+
+
+    static final Comparator<ksno.model.Article> ORDER_BY_CAT = new Comparator<ksno.model.Article>(){
+        public int compare(ksno.model.Article a1, ksno.model.Article a2){
+            return a2.getCategory().getName().compareTo(a1.getCategory().getName());
+        }
+    };
+
+
+    public List<ksno.model.Article> getHeadlines(){
+        List<ksno.model.Article> visibleArticles = this.getArticles();
+        Collections.sort(visibleArticles, ORDER_BY_CAT);
+        Iterator <ksno.model.Article> articleIterator = visibleArticles.iterator();
+        List<ksno.model.Article> headl = new LinkedList<ksno.model.Article>();
+
+        ksno.model.Article prevArticle = null;
+        while(articleIterator.hasNext()){
+            ksno.model.Article article = articleIterator.next();
+            if(article.getFrontPagePosition().equals("top")){
+                if(prevArticle != null){
+                    if(article.getCategory().equals(prevArticle.getCategory())){
+                        article.setSameAsPrevCat(true);
+                    }
+                }
+                headl.add(article);
+                prevArticle = article;
+            }
+        }
+
+        return headl;
     }
     
     public boolean isHaveArticles(){

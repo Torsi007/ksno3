@@ -78,23 +78,23 @@ public class JSFUtil {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     }
 
-    public static SelectItem[] toSelectItemArray(List events) {
-        return JSFUtil.toSelectItemArray(events, false);
+    public static SelectItem[] toSelectItemArray(List items) {
+        return JSFUtil.toSelectItemArray(items, false);
     }
     
-    public static SelectItem[] toSelectItemArray(List events, boolean includeEmpty) {
+    public static SelectItem[] toSelectItemArray(List items, boolean includeEmpty) {
         SelectItem[] selectItems = null;
         if(includeEmpty){
-            selectItems = new SelectItem[events.size() + 1];
+            selectItems = new SelectItem[items.size() + 1];
             selectItems[0] = new SelectItem("-1","<Please select>");
             for(int i = 1; i< selectItems.length; i++){
-                LabelValuePair kvp = (LabelValuePair)events.get(i - 1);
+                LabelValuePair kvp = (LabelValuePair)items.get(i - 1);
                 selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
             }
         }else{
-            selectItems = new SelectItem[events.size()];
+            selectItems = new SelectItem[items.size()];
             for(int i = 0; i< selectItems.length; i++){
-                LabelValuePair kvp = (LabelValuePair)events.get(i);
+                LabelValuePair kvp = (LabelValuePair)items.get(i);
                 selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
             }        
         }
@@ -140,8 +140,8 @@ public class JSFUtil {
             return uniqueFileName;
         }
     }
-    
-    public static String sessionBeanTextModify = "TextModify";
+    public static final String sessionBeanVideoModify = "VideoModify";
+    public static final String sessionBeanTextModify = "TextModify";
     public static final String sessionBeanArticleModify = "ArticleModify";
     public static final String sessionBeanEventModify = "EventModify";    
     public static final String sessionBeanSignedOnEvent = "SignedOnEvent";    

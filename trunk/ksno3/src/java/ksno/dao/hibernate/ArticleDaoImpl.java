@@ -9,6 +9,7 @@ package ksno.dao.hibernate;
 import java.util.List;
 import ksno.dao.ArticleDao;
 import ksno.model.Article;
+import ksno.model.Category;
 import ksno.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -77,11 +78,33 @@ public class ArticleDaoImpl implements ArticleDao {
         returnVal =  q.list();
         return returnVal;        
     }
-    
-    public List getVisibleArticles() {
 
+    public Category getCategory(String name){
         Query q = null;
         List returnVal = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+        q=session.createQuery("from Category ac where ac.name = :pun");
+        q.setParameter("pun",name);
+        returnVal =  q.list();
+
+        return (Category)returnVal.get(0);
+    }
+
+    public List<Category> getCategories() {
+        Query q = null;
+        List returnVal = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+        q=session.createQuery("from Category a order by a.name desc");
+        returnVal =  q.list();
+        return returnVal;
+    }
+    
+    public List<Article> getVisibleArticles() {
+
+        Query q = null;
+        List<Article> returnVal = null;
                 try{
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //session.beginTransaction();
@@ -93,6 +116,7 @@ public class ArticleDaoImpl implements ArticleDao {
         }
 
         return returnVal;
-    }    
+    }
+
 
 }

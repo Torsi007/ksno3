@@ -6,9 +6,12 @@
 package ksno.ui.jsf.backing;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.model.SelectItem;
 import ksno.model.Article;
+import ksno.model.Category;
 import ksno.model.Image;
 import ksno.model.Person;
 import ksno.service.ArticleService;
@@ -19,6 +22,7 @@ import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 /**
@@ -34,8 +38,22 @@ public class ArticleCreate {
     ArticleService articleService;
     PersonService personService;
     ImageService imageService;
+    private HtmlSelectOneMenu slctCategory;
 
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public HtmlSelectOneMenu getSlctCategory() {
+        return slctCategory;
+    }
+
+    public void setSlctCategory(HtmlSelectOneMenu slctCategory) {
+        this.slctCategory = slctCategory;
+    }
+
+    public SelectItem[] getCategorySelectItems() {
+        List<Category> Categories = articleService.getCategories();
+        return JSFUtil.toSelectItemArray(Categories);
+    }
+
     public HtmlOutputText getErrorMsg() {
         return errorMsg;
     }
@@ -115,6 +133,8 @@ public class ArticleCreate {
             Article article = new Article();
             article.setName(name.getValue().toString());
             article.setIntro(intro.getValue().toString());
+            Category category = articleService.getCategory(slctCategory.getValue().toString());
+            article.setCategory(category);
             String userName = JSFUtil.getRequest().getUserPrincipal().getName();
             Person currentUser = personService.getPerson(userName);
             article.setAuthor(currentUser);
