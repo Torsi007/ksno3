@@ -17,7 +17,7 @@
       <key column="PARTICIPANT_ID"/>
       <one-to-many class="Participation"/>
     </set>
-    <set cascade="save-update" inverse="true" lazy="true" name="roles" table="USER_ROLES" >
+    <set cascade="save-update" inverse="true" lazy="true" name="roles" table="USER_ROLES">
       <key column="USER_NAME" property-ref="userName"/>
       <one-to-many class="UserRoles"/>
     </set>

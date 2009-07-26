@@ -15,6 +15,9 @@ import ksno.service.ArticleService;
 import ksno.service.ImageService;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
+import javax.faces.model.SelectItem;
+import ksno.model.Category;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -25,6 +28,9 @@ public class ArticlesMaintain {
     private ImageService imageService;
     private HtmlOutputText errorMsg;
     private HtmlInputText name;
+    private HtmlSelectOneMenu slctCategory;
+
+
     private UIData data;   
     
     
@@ -39,6 +45,9 @@ public class ArticlesMaintain {
     }  
     
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+
+
+
     public HtmlOutputText getErrorMsg() {
         return errorMsg;
     }

@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import ksno.dao.ArticleDao;
 import ksno.model.Article;
+import ksno.model.Category;
 
 /**
  *
@@ -52,8 +53,17 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.getArticles();
     }  
     
-    public List getVisibleArticles() {
+    public List<Article> getVisibleArticles() {
         return articleDao.getVisibleArticles();
     }
+
+    public List<Category> getCategories() {
+        return articleDao.getCategories();
+    }
+
+    public Category getCategory(String name) {
+        return articleDao.getCategory(name);
+    }
+
 
 }

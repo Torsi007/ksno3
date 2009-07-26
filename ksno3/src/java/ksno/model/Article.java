@@ -19,7 +19,10 @@ public class Article implements Serializable {
     private int version;
     private String name;
     private String body;
-    private String intro; 
+    private String intro;
+    private Category category;
+    private boolean sameAsPrevCat = false;
+    private String frontPagePosition;
     private String avatarUrl;
     private Date createdDate;
     private Date lastUpdatedDate;
@@ -38,7 +41,30 @@ public class Article implements Serializable {
         images.add(image);
     }    
     
-    // <editor-fold defaultstate="collapsed" desc=" Getters and setters">        
+    // <editor-fold defaultstate="collapsed" desc=" Getters and setters">
+    public boolean isSameAsPrevCat() {
+        return sameAsPrevCat;
+    }
+
+    public void setSameAsPrevCat(boolean val) {
+        this.sameAsPrevCat = val;
+    }
+
+    public String getFrontPagePosition() {
+        return frontPagePosition;
+    }
+
+    public void setFrontPagePosition(String frontPagePosition) {
+        this.frontPagePosition = frontPagePosition;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public boolean isVisible() {
         return visible;

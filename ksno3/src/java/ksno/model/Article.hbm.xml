@@ -11,9 +11,11 @@
     <property column="INTRO" name="intro" type="string"/>
     <property column="AVATAR_URL" name="avatarUrl" type="string"/>
     <property column="VISIBLE" name="visible" type="boolean"/>
+    <property column="FRONTPAGEPOSITION" name="frontPagePosition" type="string"/>
     <property column="CREATED_DATE" name="createdDate" type="date"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="date"/>
     <many-to-one cascade="none" class="Person" column="AUTHOR_ID" lazy="false" name="author" not-null="true"/>
+    <many-to-one cascade="none" class="Category" column="CATEGORY_ID" name="category" not-null="true"/>
     <set cascade="save-update" inverse="true" lazy="false" name="images" table="IMAGE">
       <key column="ARTICLE_ID"/>
       <one-to-many class="Image"/>
