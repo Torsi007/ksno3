@@ -1,5 +1,5 @@
 <%-- 
-    Document   : AdminArticles
+    Document   : AdminVideos
     Created on : 28.sep.2008, 13:19:26
     Author     : halsnehauge
 --%>
@@ -27,7 +27,7 @@
     <body>
         <f:view>
             <h:form>
-                <h:dataTable id="dt1" value="#{ArticlesMaintain_Backing.articles}" binding="#{ArticlesMaintain_Backing.data}" var="item" first="0" width="100%">
+                <h:dataTable id="dt1" value="#{VideosMaintain_Backing.videos}" binding="#{VideosMaintain_Backing.data}" var="item" first="0" width="100%">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Tittel" />
@@ -44,44 +44,24 @@
                         <f:facet name="header">
                             <h:outputText value="Forfatter" />
                         </f:facet> 
-                        <h:outputText value="#{item.author.firstName} #{item.author.lastName}"></h:outputText>
-                    </h:column>  
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Aktiv" />
-                        </f:facet> 
-                        <t:selectBooleanCheckbox enabledOnUserRole="admin,internal" value="#{item.visible}"/>
+                        <h:outputText value="#{item.owner.firstName} #{item.owner.lastName}"></h:outputText>
                     </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Location" />
-                        </f:facet>
-                        <t:selectOneMenu value="#{item.frontPagePosition}" >
-                            <f:selectItem itemLabel="Top" itemValue="top"/>
-                            <f:selectItem itemLabel="Default" itemValue="default"/>
-                        </t:selectOneMenu>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Category" />
-                        </f:facet>
-                        <h:outputText value="#{item.category.name}"/>
-                    </h:column>
+
                      <h:column>
-                        <h:commandLink action="#{ArticlesMaintain_Backing.selectEditArticle}">
+                        <h:commandLink action="#{VideosMaintain_Backing.selectEditVideo}">
                             <h:outputText value="Endre"/>
                         </h:commandLink>
                     </h:column>     
                      <h:column>
-                        <h:commandLink action="#{ArticlesMaintain_Backing.articleDelete}">
+                        <h:commandLink action="#{VideosMaintain_Backing.videoDelete}">
                             <h:outputText value="Slett"/>
                         </h:commandLink>
                     </h:column>
                 </h:dataTable>  
                 <input type="button" value="Tilbake til hovedsiden" onclick="toStartPage()"/>
-                <h:commandButton value="Opprett ny artikkel" action="articleCreate"/>   
-                <t:commandButton value="Lagre" visibleOnUserRole="admin,internal" action="#{ArticlesMaintain_Backing.articlesUpdate}"/>    
-                <t:outputText styleClass="errorMsg" binding="#{ArticlesMaintain_Backing.errorMsg}"/>
+                <h:commandButton value="Opprett ny" action="videoCreate"/>
+                <t:commandButton value="Lagre" visibleOnUserRole="admin,internal" action="#{VideosMaintain_Backing.videosUpdate}"/>
+                <t:outputText styleClass="errorMsg" binding="#{VideosMaintain_Backing.errorMsg}"/>
             </h:form> 
             <h:form>
                   <h:commandButton immediate="true" value="Avbryt" action="cancel" /> 

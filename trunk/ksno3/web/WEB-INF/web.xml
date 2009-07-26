@@ -28,6 +28,26 @@
         <param-name>timeZone</param-name>
         <param-value>GMT+1</param-value>
     </context-param>
+    <context-param>
+        <description>User name Youtube (maybe it should be kitesurfingNo)</description>
+        <param-name>youtube.userName</param-name>
+        <param-value>kitesurfing.no@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <description>Password</description>
+        <param-name>youtube.passWord</param-name>
+        <param-value>Sw1tchBlade</param-value>
+    </context-param>
+    <context-param>
+        <description>The Developer Key should be provided in every YouTube API request.</description>
+        <param-name>youtube.devKey</param-name>
+        <param-value>AI39si6PqsiS70ppVM_YcZhe3seipUzurCEQ9qCaR3Bzu7fHyCEiCyTlJfa-YtgLJkYkr8pzifUv4Vjg0Ncbb4w4agl4bM8WKw</param-value>
+    </context-param>
+    <context-param>
+        <description>Provides feeds of videos uploaded on kitesurfiingNo user</description>
+        <param-name>youtube.baseUrl</param-name>
+        <param-value>http://gdata.youtube.com/feeds/api/users/kitesurfingNo/uploads</param-value>
+    </context-param>
     <filter>
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
@@ -141,7 +161,7 @@
         <auth-method>BASIC</auth-method>
         <realm-name>Example Form-Based Authentication Area</realm-name>
     </login-config>
-        
+
     <!-- Security roles referenced by this web application -->
     <security-role>
         <role-name>admin</role-name>

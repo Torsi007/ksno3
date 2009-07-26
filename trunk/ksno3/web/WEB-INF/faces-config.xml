@@ -79,7 +79,12 @@
         <managed-bean-name>TransactionDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.TransactionDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>     
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>VideoDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.VideoDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
    <!-- ******** Service *************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleService</managed-bean-name>
@@ -148,7 +153,16 @@
             <property-name>transactionDao</property-name>
             <value>#{TransactionDao}</value>
         </managed-property>        
-    </managed-bean>      
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>VideoService</managed-bean-name>
+        <managed-bean-class>ksno.service.VideoServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>videoDao</property-name>
+            <value>#{VideoDao}</value>
+        </managed-property>
+    </managed-bean>
    <!-- ******** UI ******************************************************* -->  
     <managed-bean>
         <managed-bean-name>Article_Backing</managed-bean-name>
@@ -492,7 +506,29 @@
             <property-name>transactionService</property-name>
             <value>#{TransactionService}</value>
         </managed-property>        
-    </managed-bean>    
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>VideosMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.VideosMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>videoService</property-name>
+            <value>#{VideoService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>VideoCreate_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.VideoCreate</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>videoService</property-name>
+            <value>#{VideoService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>  
+    </managed-bean>
     <!-- ******** Navigation ******************************************************* -->   
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
@@ -519,7 +555,11 @@
         <navigation-case>
             <from-outcome>preferences</from-outcome>
             <to-view-id>/secureA/Preferences.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>videosMaintain</from-outcome>
+            <to-view-id>/secureA/VideosMaintain.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule> 
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
@@ -824,5 +864,21 @@
             <from-outcome>SignUpConfirmed</from-outcome>
             <to-view-id>/signUpConfirmed.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureA/VideosMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>videoCreate</from-outcome>
+            <to-view-id>/secureA/VideoCreate.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{VideosMaintain_Backing.selectEditVideo}</from-action>
+            <from-outcome>videoUpdate</from-outcome>
+            <to-view-id>/secureA/VideoUpdate.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
