@@ -19,12 +19,30 @@ import javax.servlet.http.HttpServletRequest;
 import ksno.model.LabelValuePair;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
+import org.apache.myfaces.component.html.ext.HtmlInputText;
+import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 
 /**
  *
  * @author halsnehauge
  */
 public class JSFUtil {
+
+    public static String getText(HtmlInputText text){
+        if(text.getValue() != null){
+            return text.getValue().toString();
+        }else{
+            return "";
+        }
+    }
+
+    public static String getText(HtmlInputTextarea textArea){
+        if(textArea.getValue() != null){
+            return textArea.getValue().toString();
+        }else{
+            return "";
+        }
+    }
     
     public static String getStringValue(String ELexpression) throws Exception{
         String returnVal;
@@ -46,9 +64,7 @@ public class JSFUtil {
     public static void setValue(String expr, Object value, Class c) {
         FacesContext context = FacesContext.getCurrentInstance();                        
         ValueExpression ve = context.getApplication().getExpressionFactory().createValueExpression(context.getELContext(), expr, c);
-        if (ve != null) {
-            ve.setValue(context.getELContext(), value);
-        }
+        ve.setValue(context.getELContext(), value);
     }
 
   
