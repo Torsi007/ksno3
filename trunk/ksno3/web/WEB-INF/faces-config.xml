@@ -527,7 +527,11 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>  
+        </managed-property>
+        <managed-property>
+            <property-name>id</property-name>
+            <value>#{param.id}</value>
+        </managed-property>   
     </managed-bean>
     <!-- ******** Navigation ******************************************************* -->   
     <navigation-rule>
