@@ -17,13 +17,24 @@ public class Video implements Serializable {
     private int version;    
     private String name;
     private String url;
+    private String description;
     private String thumbnail;
     private Person owner;
     private Article article;
     private Calendar createdDate;
     private Calendar lastUpdatedDate;
 
+
+
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getThumbnail() {
         return thumbnail;
     }
@@ -108,7 +119,13 @@ public class Video implements Serializable {
             return false;
         }
         final Video other = (Video) obj;
-        if (this.getName() != other.getName() && (this.getName() == null || !this.getName().equals(other.getName()))) {
+        if ((this.getName() == null) ? (other.getName() != null) : !this.getName().equals(other.getName())) {
+            return false;
+        }
+        if ((this.getUrl() == null) ? (other.getUrl() != null) : !this.getUrl().equals(other.getUrl())) {
+            return false;
+        }
+        if (this.getCreatedDate() != other.getCreatedDate() && (this.getCreatedDate() == null || !this.getCreatedDate().equals(other.getCreatedDate()))) {
             return false;
         }
         return true;
@@ -117,9 +134,12 @@ public class Video implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + (this.getName() != null ? this.getName().hashCode() : 0);
+        hash = 67 * hash + (this.getName() != null ? this.getName().hashCode() : 0);
+        hash = 67 * hash + (this.getUrl() != null ? this.getUrl().hashCode() : 0);
+        hash = 67 * hash + (this.getCreatedDate() != null ? this.getCreatedDate().hashCode() : 0);
         return hash;
     }
+
     // </editor-fold>
 
 }

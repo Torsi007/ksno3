@@ -39,7 +39,7 @@ public class PersonDaoImpl implements PersonDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //session.beginTransaction();
 
-        q=session.createQuery("from Person");
+        q=session.createQuery("from Person p order by p.lastName asc");
         returnVal =  q.list();
 
         return returnVal;  

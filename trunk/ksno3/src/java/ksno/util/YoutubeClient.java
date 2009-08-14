@@ -4,27 +4,32 @@
  */
 package ksno.util;
 
-import com.google.gdata.client.*;
 import com.google.gdata.client.youtube.*;
-import com.google.gdata.data.*;
-import com.google.gdata.data.geo.impl.*;
-import com.google.gdata.data.media.*;
-import com.google.gdata.data.media.mediarss.*;
+//import com.google.gdata.data.media.*;
+//import com.google.gdata.data.media.mediarss.*;
 import com.google.gdata.data.youtube.*;
-import com.google.gdata.data.extensions.*;
-import com.google.gdata.util.*;
-
-
+import com.google.gdata.util.AuthenticationException;
+import com.google.gdata.util.ServiceException;
 import java.io.IOException;
-import java.io.InputStream;
+import com.google.gdata.util.common.xml.*;
+import com.google.gdata.data.extensions.Email;
+import com.google.gdata.data.media.mediarss.MediaCategory;
+import com.google.gdata.data.media.mediarss.MediaDescription;
+import com.google.gdata.data.media.mediarss.MediaKeywords;
+import com.google.gdata.data.media.mediarss.MediaTitle;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.component.UIData;
+import ksno.model.Video;
+import ksno.service.VideoService;
+import ksno.util.JSFUtil;
+
+
 import javax.faces.context.ExternalContext;
+import ksno.model.Video;
 
 public class YoutubeClient {
 
@@ -116,21 +121,24 @@ public class YoutubeClient {
 
     }*/
 
-    public String uploadVideo(){
+    public YouTubeUploadUrlAndToken uploadVideo(Video video){
         VideoEntry newEntry = new VideoEntry();
 
         YouTubeMediaGroup mg = newEntry.getOrCreateMediaGroup();
         mg.setTitle(new MediaTitle());
-        mg.getTitle().setPlainTextContent("My Test Movie");
-        mg.addCategory(new MediaCategory(YouTubeNamespace.CATEGORY_SCHEME, "Autos"));
+        mg.getTitle().setPlainTextContent(video.getName());
+        mg.addCategory(new MediaCategory(YouTubeNamespace.CATEGORY_SCHEME, "Sports"));
+        //mg.addCategory(new MediaCategory(YouTubeNamespace.CATEGORY_SCHEME, "Travel"));
         mg.setKeywords(new MediaKeywords());
-        mg.getKeywords().addKeyword("cars");
-        mg.getKeywords().addKeyword("funny");
+        mg.getKeywords().addKeyword("kitesurfing");
+        mg.getKeywords().addKeyword("norway");
+        mg.getKeywords().addKeyword("kite");
+        mg.getKeywords().addKeyword("kiteboarding");
         mg.setDescription(new MediaDescription());
-        mg.getDescription().setPlainTextContent("My description");
+        mg.getDescription().setPlainTextContent(video.getDescription());
         mg.setPrivate(false);
-        mg.addCategory(new MediaCategory(YouTubeNamespace.DEVELOPER_TAG_SCHEME, "mydevtag"));
-        mg.addCategory(new MediaCategory(YouTubeNamespace.DEVELOPER_TAG_SCHEME, "anotherdevtag"));
+        mg.addCategory(new MediaCategory(YouTubeNamespace.DEVELOPER_TAG_SCHEME, "kitesurfingno"));
+        mg.addCategory(new MediaCategory(YouTubeNamespace.DEVELOPER_TAG_SCHEME, "web"));
 
         //newEntry.setGeoCoordinates(new GeoRssWhere(37.0, -122.0));
 
@@ -150,7 +158,7 @@ public class YoutubeClient {
             Logger.getLogger(YoutubeClient.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return token.getToken() + "~" + token.getUrl();
+        return new YouTubeUploadUrlAndToken(token.getUrl(), token.getToken());
 
     }
 
@@ -162,6 +170,18 @@ public class YoutubeClient {
         List<VideoEntry> entries = videoFeed.getEntries();
         return entries;
     }
+    
+    public VideoEntry getVideoEntry(String id) throws IOException, ServiceException{
+        String videoEntryUrl = "http://gdata.youtube.com/feeds/api/videos/" + id;
+        return service.getEntry(new URL(videoEntryUrl), VideoEntry.class);
+    
+    }
+
+    public VideoEntry getVideoEntryInProgress(String id) throws ServiceException, IOException{
+        String videoEntryUrl = "http://gdata.youtube.com/feeds/api/users/default/uploads/" + id;
+        return service.getEntry(new URL(videoEntryUrl), VideoEntry.class);
+    }
+
 
 
 

@@ -52,14 +52,19 @@ public class PersonServiceImpl implements PersonService {
             getLogService().log(Level.SEVERE, null, ex);
         }
         List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.persons}", c);
+
         if(returnList == null){
             returnList = personDao.getPersons();
             JSFUtil.setValue("#{ApplicationBean1.persons}", returnList, c);
+            getLogService().log(Level.INFO,"Person list returned not found in cache adding list of " + returnList.size() + " persons to it");
+        }else{
+            getLogService().log(Level.INFO,"Person list returned from cahce contained " + returnList.size() + " persons");
         }
         return returnList;        
     }
     
     public Long newPerson(Person person){
+        getLogService().log(Level.INFO,"Adding new person " + person.getFirstName());
         clearPersonsApplicationCache();
         if(person.getPassWord() == null){
             person.setPassWord(PasswordFactory.getPassword());

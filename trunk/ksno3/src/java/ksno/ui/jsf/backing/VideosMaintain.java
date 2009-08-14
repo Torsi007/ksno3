@@ -4,7 +4,16 @@
  */
 
 package ksno.ui.jsf.backing;
-
+import com.google.gdata.client.youtube.*;
+//import com.google.gdata.data.media.*;
+//import com.google.gdata.data.media.mediarss.*;
+import com.google.gdata.data.youtube.*;
+import com.google.gdata.util.AuthenticationException;
+import com.google.gdata.util.ServiceException;
+import java.io.IOException;
+import com.google.gdata.util.common.xml.*;
+import com.google.gdata.data.extensions.Email;
+import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +62,13 @@ public class VideosMaintain {
     }
     // </editor-fold>
     
-    public List getVideos(){
+    public List getVideos() throws AuthenticationException, ServiceException, IOException{
+        /*YouTubeService svc = new YouTubeService("kitesurfingHauge-kitesurfingNo-1","AI39si6PqsiS70ppVM_YcZhe3seipUzurCEQ9qCaR3Bzu7fHyCEiCyTlJfa-YtgLJkYkr8pzifUv4Vjg0Ncbb4w4agl4bM8WKw");
+        svc.setUserCredentials("kitesurfing.no@gmail.com", "Sw1tchBlade");
+        String videoEntryUrl = "http://gdata.youtube.com/feeds/api/videos/xx81BAyxAMI";
+        VideoEntry entry = svc.getEntry(new URL(videoEntryUrl), VideoEntry.class);*/
+
+
         List l = null;
         try{
             l = videoService.getVideos();
