@@ -162,29 +162,4 @@ public class VideoCreate {
     }
 
 
-    public String uploadVideo(){
-        String returnVal = "success";
-        try{
-            YoutubeClient youtubeClient = new YoutubeClient();
-            VideoEntry videoEntry = youtubeClient.getVideoEntryInProgress(this.getId());
-            getVideo().setUrl(videoEntry.getHtmlLink().getHref());
-            getVideo().setThumbnail(videoEntry.getMediaGroup().getThumbnails().get(0).getUrl());
-            videoService.newVideo(this.getVideo());
-            this.setVideo(null);
-            /*
-            for(MediaThumbnail mediaThumbnail : videoEntry.getMediaGroup().getThumbnails()) {
-              System.out.println("\t\tThumbnail URL: " + mediaThumbnail.getUrl());
-              System.out.println("\t\tThumbnail Time Index: " +
-              mediaThumbnail.getTime());
-              System.out.println();
-            }*/
-        }catch(Exception e){
-            getLogService().log(Level.SEVERE,"Unable to create video", e);
-            errorMsg.setValue("Videoen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
-            returnVal = "no";
-        }
-        return returnVal;
-    }
-
-
 }
