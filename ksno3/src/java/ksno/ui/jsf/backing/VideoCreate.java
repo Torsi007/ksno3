@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ksno.ui.jsf.backing;
 
 import com.google.gdata.data.youtube.VideoEntry;
@@ -30,7 +29,7 @@ import org.apache.myfaces.component.html.ext.HtmlInputHidden;
  * @author tor.hauge
  */
 public class VideoCreate {
-    
+
     private HtmlInputText name;
     private HtmlInputText url;
     private HtmlInputTextarea description;
@@ -39,17 +38,8 @@ public class VideoCreate {
     private PersonService personService;
     private HtmlInputHidden youTubeUploadURL;
     private HtmlInputHidden youTubeUploadToken;
-    String id;
     private Video video;
-
-   // <editor-fold defaultstate="collapsed" desc=" getters and setters">
-    public Video getVideo() {
-        return video;
-    }
-
-    public void setVideo(Video video) {
-        this.video = video;
-    }
+    String id;
 
     public String getId() {
         return id;
@@ -57,6 +47,15 @@ public class VideoCreate {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public Video getVideo() {
+        return video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
     }
 
     public HtmlInputTextarea getDescription() {
@@ -82,7 +81,6 @@ public class VideoCreate {
     public void setYouTubeUploadURL(HtmlInputHidden youTybeUploadURL) {
         this.youTubeUploadURL = youTybeUploadURL;
     }
-
 
     public HtmlOutputText getErrorMsg() {
         return errorMsg;
@@ -123,36 +121,53 @@ public class VideoCreate {
     public void setVideoService(VideoService videoService) {
         this.videoService = videoService;
     }
-    
-    private Logger getLogService(){
-      return Logger.getLogger(this.getClass().getName());
+
+    private Logger getLogService() {
+        return Logger.getLogger(this.getClass().getName());
     }
     // </editor-fold>
-    
-    public String createVideoMeta(){
+
+    public String createVideoMeta() {
+        String returnVal = "success";
+        try {
+            setVideo(new Video());
+            getVideo().setName(JSFUtil.getText(name));
+            getVideo().setDescription(JSFUtil.getText(description));
+            String userName = JSFUtil.getRequest().getUserPrincipal().getName();
+            Person currentUser = personService.getPerson(userName);
+            getVideo().setOwner(currentUser);
+            YoutubeClient youtubeClient = new YoutubeClient();
+            YouTubeUploadUrlAndToken result = youtubeClient.uploadVideo(getVideo());
+            this.getYouTubeUploadURL().setValue(result.getUrl());
+            this.getYouTubeUploadToken().setValue(result.getToken());
+            videoService.newVideo(video);
+
+        } catch (Exception e) {
+            this.getYouTubeUploadURL().setValue("");
+            this.getYouTubeUploadToken().setValue("");
+            getLogService().log(Level.SEVERE, "Unable to create video", e);
+            errorMsg.setValue("Videoen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
+            returnVal = "no";
+        }
+        return returnVal;
+    }
+
+    public String uploadVideo(){
         String returnVal = "success";
         try{
-            if(this.getId() == null || "".equals(this.getId())){
-                setVideo(new Video());
-                getVideo().setName(JSFUtil.getText(name));
-
-                getVideo().setDescription(JSFUtil.getText(description));
-
-                String userName = JSFUtil.getRequest().getUserPrincipal().getName();
-                Person currentUser = personService.getPerson(userName);
-
-                getVideo().setOwner(currentUser);
-
-                //videoService.newVideo(video);
-                YoutubeClient youtubeClient = new YoutubeClient();
-                YouTubeUploadUrlAndToken result = youtubeClient.uploadVideo(getVideo());
-                this.getYouTubeUploadURL().setValue(result.getUrl());
-                this.getYouTubeUploadToken().setValue(result.getToken());
-
-            }else{
-                getLogService().log(Level.WARNING,"A video entry is already present, unable to create a new one. Something wrong with the logic here, because the video id should have been removed");
-            }
-
+            YoutubeClient youtubeClient = new YoutubeClient();
+            VideoEntry videoEntry = youtubeClient.getVideoEntryInProgress(this.getId());
+            getVideo().setUrl(videoEntry.getHtmlLink().getHref());
+            getVideo().setThumbnail(videoEntry.getMediaGroup().getThumbnails().get(0).getUrl());
+            videoService.newVideo(this.getVideo());
+            this.setVideo(null);
+            /*
+            for(MediaThumbnail mediaThumbnail : videoEntry.getMediaGroup().getThumbnails()) {
+              System.out.println("\t\tThumbnail URL: " + mediaThumbnail.getUrl());
+              System.out.println("\t\tThumbnail Time Index: " +
+              mediaThumbnail.getTime());
+              System.out.println();
+            }*/
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create video", e);
             errorMsg.setValue("Videoen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
@@ -160,6 +175,4 @@ public class VideoCreate {
         }
         return returnVal;
     }
-
-
 }
