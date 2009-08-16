@@ -127,14 +127,17 @@ ksnoImgageBorder.prototype.update = function(){
 	}
 }
 
-function validate(){
-
-    var formElement = event.srcElement;
+function validate(formElem){
+    var formElement = formElem;
+    if(formElement == undefined){
+        formElement = event.srcElement? event.srcElement : event.target;
+    }
     var validated = validateRequiredElements(formElement, "input");
     if(validated){
       validated = validateRequiredElements(formElement, "select");
-    }else{
-        validateRequiredElements(formElement, "select");
+    }
+    if(validated){
+      validated = validateRequiredElements(formElement, "textarea");
     }
     if(!validated){
         alert("De merkede elementene er obligatoriske.");
@@ -191,8 +194,16 @@ function validatePhone(elem){
 }
 
 function isRequired(field){
-
-    return field.required ||field.parentElement.required;
+    if(field.parentElement != undefined){
+        return field.required ||field.parentElement.required
+    }else{
+        if(field.attributes.getNamedItem("required")!= undefined){
+            return field.attributes.getNamedItem("required").nodeValue == "true";
+        }else if(field.parentNode.attributes.getNamedItem("required")!= undefined){
+            return field.parentNode.attributes.getNamedItem("required").nodeValue == "true";
+        }
+    }
+    
 }
 
 function validateRequiredElements(form, tagName){
@@ -223,7 +234,18 @@ function validateRequiredElements(form, tagName){
 }
 
 function hasFormat(field, format){
-    var fieldFormat = (field.format != undefined)?field.format:field.parentElement.format;
+    var fieldFormat;
+    try{
+        fieldFormat = (field.format != undefined)?field.format:field.parentElement.format;
+    }catch(err){}
+    try{
+        if(field.attributes.getNamedItem("format")!= undefined){
+            fieldFormat = field.attributes.getNamedItem("format").nodeValue;
+        }
+        if(field.parentNode.attributes.getNamedItem("format")!= undefined){
+            fieldFormat = field.parentNode.attributes.getNamedItem("format").nodeValue;
+        }
+    }catch(err){}
     var returnVal =false;
     if(fieldFormat != undefined){
         fieldFormat = fieldFormat.toLowerCase();
