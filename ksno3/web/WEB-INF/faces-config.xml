@@ -285,6 +285,10 @@
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>videoService</property-name>
+            <value>#{VideoService}</value>
+        </managed-property>
     </managed-bean> 
     <managed-bean>
         <managed-bean-name>EmailCreate_Backing</managed-bean-name>
@@ -531,7 +535,15 @@
         <managed-property>
             <property-name>id</property-name>
             <value>#{param.id}</value>
-        </managed-property>   
+        </managed-property>
+        <managed-property>
+            <property-name>code</property-name>
+            <value>#{param.code}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>status</property-name>
+            <value>#{param.status}</value>
+        </managed-property>
     </managed-bean>
     <!-- ******** Navigation ******************************************************* -->   
     <navigation-rule>
@@ -657,7 +669,14 @@
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
         </navigation-case>        
-    </navigation-rule> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureA/VideoCreate.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureA/VideosMaintain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/AdminEconomy.jsp</from-view-id>
         <navigation-case>

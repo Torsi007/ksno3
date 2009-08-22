@@ -13,7 +13,22 @@
         <title>Upload video</title>
         <script type="text/javascript" src="../resources/js/jquery.js"></script>
         <script src="../resources/js/logic.js" type="text/javascript"></script>
-        <title>Kitesurfing.no</title>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                populate();
+            });
+
+            function populate(){
+                var domElemStatus = document.getElementById("store:uploadStatus");
+                var domElemVidId = document.getElementById("store:vidId");
+                var domElemStore = document.getElementById("store:storeVid");
+                if(domElemStatus.value != undefined && domElemStatus.value == "200"){
+                    domElemStore.click();
+                }
+            }
+
+
+        </script>
     </head>
     <body>
         <form id="uploadYouTubeForm" action="" method ="post" enctype="multipart/form-data">
@@ -27,13 +42,15 @@
                 </tr>
             </table>
             <input id="youtubeToken" type="hidden" name="token" value="token_value"/>
-            
         </form>
-        <iframe frameborder="none" style="width:100%; height: 400; border:none" src="VideoMetaCreate.jsp" id="content"></iframe>
-           <f:view>
-            <h:form id="hjh">
-                <t:inputText id="vidId" value="#{VideoCreate_Backing.id}" />
+        <f:view>
+            <h:form id="store" style="display:none">
+                <t:inputHidden id="vidId" value="#{VideoCreate_Backing.id}" />
+                <t:inputHidden id="uploadStatus" value="#{VideoCreate_Backing.status}" />
+                <t:inputHidden id="statusCode" value="#{VideoCreate_Backing.code}" />
+                <h:commandButton value="Store" id="storeVid" action="#{VideoCreate_Backing.storeVideo}" />
             </h:form>
-           </f:view>
+        </f:view>
+        <iframe frameborder="none" style="width:100%; height: 400; border:none" src="VideoMetaCreate.jsp" id="content"></iframe>
     </body>
 </html>
