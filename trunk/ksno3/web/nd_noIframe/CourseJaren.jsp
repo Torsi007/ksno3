@@ -35,15 +35,13 @@
             <tr>
                 <td class="leftSection" >
                     <div>
-                        <font style="font-size:36px; line-height:35px; margin-bottom:20px">Hi we're Kitesurfing.no</font>
-                        <font style="font-size:25px; line-height: 25px;">We do kite<br/>courses in J&aelig;ren and Haukelister</font>
-                        <table class="button" id="btnLearnMore">
-                            <tr>
-                                <td class="left"></td>
-                                <td>Learn more</td>
-                                <td class="right"></td>
-                            </tr>
-                        </table>
+                        <h1>Course dates 2009</h1>
+                        <t:dataList value="#{Current_Backing.headlines}" var="headline">
+                            <t:htmlTag value="a">
+                                <f:param name="href" value="../#{Current_Backing.article1Url}?id=#{headline.id}" />
+                                <h:outputText value="#{headline.name}" escape="false"/>
+                            </t:htmlTag>
+                        </t:dataList>
                     </div>
                 </td>
                 <td class="middleSection"></td>

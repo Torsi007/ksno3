@@ -4,7 +4,7 @@
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 
 <%--
     This file is an entry point for JavaServer Faces application.
@@ -25,7 +25,7 @@
                 <tr style="height: 1"><td colspan="100" class="heading"  style="text-indent: 160">Instruction and Training</td></tr>		
                 <tr cellspacing="0" cellpadding="0">	
                     <td style="height: 100%">
-                        <style>.loginLink {cursor:hand;}</style> 
+                        <style type="text/css">.loginLink {cursor:hand;}</style>
                         <table cellspacing="0" cellpadding="0" class="menu" id="menu">   
                             <tr style="height: 1">        
                                 <td><img src="resources/img/components/backgrounds/menu_top.gif"/></td>    
@@ -37,7 +37,7 @@
                                         <tr><td id="menu2" name="menu2" onclick="changeMainMenu('2')"><a href="about_us.jsp" target="contentFrame">:: Om Oss</a></td></tr>
                                         <tr><td id="menu3" name="menu3" onclick="changeMainMenu('3')"><a href="faces/courses_west.jsp" target="contentFrame">:: Kurs - Jæren</a><input id="anchors3" name="anchors3" type="hidden" value="&lt;a href='faces/courses_west.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='faces/courses_west.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='faces/courses_west.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='faces/courses_west.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='faces/courses_west.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='faces/courses_west.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='faces/courses_west.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='faces/courses_west.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='faces/courses_west.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='faces/SignUpSummer.jsp?id=-1' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
                                         <tr><td id="menu4" name="menu4" onclick="changeMainMenu('4')"><a href="faces/courses_winter.jsp" target="contentFrame">:: Kurs - Haukeli</a><input id="anchors4" name="anchors4" type="hidden" value="&lt;a href='faces/courses_winter.jsp#who' target='contentFrame' class='anchorElement'&gt;HVEM&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#what' target='contentFrame' class='anchorElement'&gt;HVA&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#where' target='contentFrame' class='anchorElement'&gt;HVOR&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#price' target='contentFrame' class='anchorElement'&gt;PRIS&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#accom' target='contentFrame' class='anchorElement'&gt;OVERNATTING&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#guarantee' target='contentFrame' class='anchorElement'&gt;GARANTI&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#practical' target='contentFrame' class='anchorElement'&gt;PRAKTISK&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#questions' target='contentFrame' class='anchorElement'&gt;SPØRSMÅL&lt;/a&gt;&lt;a href='faces/courses_winter.jsp#when' target='contentFrame' class='anchorElement'&gt;NÅR&lt;/a&gt;&lt;a href='faces/SignUpWinter.jsp?id=-1' target='contentFrame' class='anchorElement'&gt;PÅMELDING&lt;/a&gt;"/></td></tr>
-                                        <tr><td id="menu5" name="menu5"><a href="faces/secureA/AdminMain.jsp" target="_blank">:: Log in</a></td></tr>                                                                                
+                                        <tr><td id="menu5" name="menu5"><a href="faces/secureA/AdminMain.jsp" target="_blank">:: Log in</a><a style="display:none" href="faces/AllArticles.jsp" target="contentFrame">All articles</a></td></tr>
                                     </table> 		
                                 </td>    
                             </tr>    
@@ -54,7 +54,7 @@
                             <tr><td style="height: 1"><img src="resources/img/components/backgrounds/menu_bottom.gif"/></td>    
                             </tr>
                         </table>
-                        <input type="hidden" name="menuId" id="menuId" value="1"/>
+                        <input type="hidden" name="menuId" id="menuId" value="1"></input>
                         <input type="hidden" name="subMenuId" id="subMenuId" value="0"/>            
                         <input type="hidden" name="contentPage" id="contentPage" value="/current.jsp"/>                                    
                     </td>			
