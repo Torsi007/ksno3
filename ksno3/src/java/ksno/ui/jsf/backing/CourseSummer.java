@@ -32,7 +32,7 @@ import org.apache.myfaces.component.html.ext.HtmlSelectOneListbox;
  *
  * @author tor.hauge
  */
-public class SignUpSummer {
+public class CourseSummer {
     private HtmlInputText email;
     private HtmlInputText firstName;    
     private HtmlInputText lastName;
@@ -42,6 +42,7 @@ public class SignUpSummer {
     private HtmlSelectOneMenu helmetSize;  
     private HtmlSelectOneMenu coursesSelect;
     private HtmlSelectOneListbox lstBxcoursesSelect;
+    private long id;
     private EventService eventService;
     private PersonService personService;
     private TextService textService;  
@@ -144,6 +145,14 @@ public class SignUpSummer {
         this.eventService = eventService;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        getLogService().log(Level.INFO, "Setting course id to " + id);
+        this.id = id;
+    }
 
     public HtmlInputText getEmail() {
         return email;
@@ -198,6 +207,10 @@ public class SignUpSummer {
         return wetSuitSize;
     }
 
+    public BeginnerCourse getCourse(){
+        getLogService().log(Level.INFO, "About to get course object for id " + getId());
+        return eventService.getBeginnerCourse(getId());
+    }
 
     public List getUpCommingCourses(){
         return eventService.getUpcommingSummerBeginnerCourses();

@@ -21,5 +21,6 @@ public interface ArticleService {
     public Category getCategory(String name);
     public List<Category> getCategories();
     public List<Article> getVisibleArticles();
+    public List<Article> getArticlesByCategory(Category category);
 
 }

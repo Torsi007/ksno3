@@ -17,7 +17,7 @@ public interface ArticleDao {
       public Long newArticle(Article article);
       public void updateArticle(Article article);
       public void deleteArticle(Article article);      
-      public List getArticles();
+      public List<Article> getArticles();
       public Category getCategory(String name);
       public List<Category> getCategories();
       public List<Article> getVisibleArticles();

@@ -40,6 +40,24 @@ public class VideoCreate {
     private HtmlInputHidden youTubeUploadToken;
     private Video video;
     String id;
+    String status;
+    String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getId() {
         return id;
@@ -140,7 +158,7 @@ public class VideoCreate {
             YouTubeUploadUrlAndToken result = youtubeClient.uploadVideo(getVideo());
             this.getYouTubeUploadURL().setValue(result.getUrl());
             this.getYouTubeUploadToken().setValue(result.getToken());
-            videoService.newVideo(video);
+            //videoService.newVideo(video);
 
         } catch (Exception e) {
             this.getYouTubeUploadURL().setValue("");
@@ -152,22 +170,15 @@ public class VideoCreate {
         return returnVal;
     }
 
-    public String uploadVideo(){
+    public String storeVideo(){
         String returnVal = "success";
         try{
             YoutubeClient youtubeClient = new YoutubeClient();
-            VideoEntry videoEntry = youtubeClient.getVideoEntryInProgress(this.getId());
-            getVideo().setUrl(videoEntry.getHtmlLink().getHref());
-            getVideo().setThumbnail(videoEntry.getMediaGroup().getThumbnails().get(0).getUrl());
-            videoService.newVideo(this.getVideo());
-            this.setVideo(null);
-            /*
-            for(MediaThumbnail mediaThumbnail : videoEntry.getMediaGroup().getThumbnails()) {
-              System.out.println("\t\tThumbnail URL: " + mediaThumbnail.getUrl());
-              System.out.println("\t\tThumbnail Time Index: " +
-              mediaThumbnail.getTime());
-              System.out.println();
-            }*/
+            Video video = youtubeClient.getVideoInProgress(this.getId());
+            String userName = JSFUtil.getRequest().getUserPrincipal().getName();
+            Person currentUser = personService.getPerson(userName);
+            video.setOwner(currentUser);
+            videoService.newVideo(video);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create video", e);
             errorMsg.setValue("Videoen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());

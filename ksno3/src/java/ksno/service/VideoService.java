@@ -17,4 +17,5 @@ public interface VideoService {
     public void updateVideo(Video video);
     public void deleteVideo(Video video);
     public List<Video> getVideos();
+    public List<Video> getPublishedVideos();
 }

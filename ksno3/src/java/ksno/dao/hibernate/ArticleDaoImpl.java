@@ -69,7 +69,7 @@ public class ArticleDaoImpl implements ArticleDao {
 
     }    
 
-    public List getArticles() {
+    public List<Article> getArticles() {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

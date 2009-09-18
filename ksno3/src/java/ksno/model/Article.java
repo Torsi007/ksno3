@@ -22,7 +22,7 @@ public class Article implements Serializable {
     private String intro;
     private Category category;
     private boolean sameAsPrevCat = false;
-    private String frontPagePosition;
+    private String frontPagePosition = "default";
     private String avatarUrl;
     private Date createdDate;
     private Date lastUpdatedDate;

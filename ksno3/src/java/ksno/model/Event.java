@@ -41,7 +41,11 @@ public class Event implements LabelValuePair {
             addInstruction(instruction);
             
         }
-    }      
+    }
+
+    public Instructor getCourseResponsible(){
+        return this.getInstructors()[0];
+    }
     
     
     public String getInstructorsCSV(){

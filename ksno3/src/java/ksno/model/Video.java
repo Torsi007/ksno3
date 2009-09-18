@@ -23,10 +23,35 @@ public class Video implements Serializable {
     private Article article;
     private Calendar createdDate;
     private Calendar lastUpdatedDate;
-
-
+    private String duration;
+    private String youTubeId;
+    private String state;
 
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getYouTubeId() {
+        return youTubeId;
+    }
+
+    public void setYouTubeId(String youTubeId) {
+        this.youTubeId = youTubeId;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -139,6 +164,8 @@ public class Video implements Serializable {
         hash = 67 * hash + (this.getCreatedDate() != null ? this.getCreatedDate().hashCode() : 0);
         return hash;
     }
+
+
 
     // </editor-fold>
 
