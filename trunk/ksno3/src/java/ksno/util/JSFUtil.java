@@ -10,6 +10,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.el.ValueExpression;
 import javax.faces.application.Application;
 import javax.faces.context.ExternalContext;
@@ -156,6 +158,19 @@ public class JSFUtil {
             return uniqueFileName;
         }
     }
+
+    public static void clearApplicationCache(String type){
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JSFUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String expression = "#{ApplicationBean1."+ type +"}";
+        JSFUtil.setValue(expression, null, c);
+    }
+
+
     public static final String sessionBeanVideoModify = "VideoModify";
     public static final String sessionBeanTextModify = "TextModify";
     public static final String sessionBeanArticleModify = "ArticleModify";

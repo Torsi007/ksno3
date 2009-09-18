@@ -5,6 +5,8 @@
 
 package ksno.ui.jsf.backing;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import ksno.service.EventService;
 
@@ -26,6 +28,19 @@ public class CoursesSummer {
     
     public List getCourses(){
         return eventService.getUpcommingSummerBeginnerCourses();
+    }
+
+    public List getTwoNextCourses(){
+        List<ksno.model.BeginnerCourse> courses = this.getCourses();
+        Iterator <ksno.model.BeginnerCourse> courseIterator = courses.iterator();
+        List<ksno.model.BeginnerCourse> returnList = new LinkedList<ksno.model.BeginnerCourse>();
+        while(courseIterator.hasNext() && returnList.size()<2){
+            ksno.model.BeginnerCourse course = courseIterator.next();
+            returnList.add(course);
+        }
+        return returnList;
+
+
     }
 
 }

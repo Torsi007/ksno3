@@ -7,8 +7,10 @@
 package ksno3;
 
 import com.sun.rave.web.ui.appbase.AbstractApplicationBean;
+import java.util.Calendar;
 import java.util.List;
 import javax.faces.FacesException;
+import ksno.model.Article;
 
 /**
  * <p>Application scope data bean for your application.  Create properties
@@ -102,9 +104,27 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     public String getLocaleCharacterEncoding() {
         return super.getLocaleCharacterEncoding();
     }
-    
+
     private List events;
-    private List persons;    
+    private List<Article> articles;
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+    private List persons;
+    private Calendar youTubeListLastScanned;
+
+    public Calendar getYouTubeListLastScanned() {
+        return youTubeListLastScanned;
+    }
+
+    public void setYouTubeListLastScanned(Calendar youTubeListLastScanned) {
+        this.youTubeListLastScanned = youTubeListLastScanned;
+    }
 
     public List getEvents() {
         return events;

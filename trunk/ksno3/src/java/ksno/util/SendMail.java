@@ -87,7 +87,7 @@ public class SendMail {
     {
         public PasswordAuthentication getPasswordAuthentication()
         {
-            return new PasswordAuthentication("kitesurfing1", "CrossB0w");
+            return new PasswordAuthentication("kitesurfing1", "Sw1tchBlade");
         }
     }
     

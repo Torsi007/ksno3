@@ -66,6 +66,11 @@ public class Category implements LabelValuePair {
         return true;
     }
 
+                @Override
+    public String toString() {
+        return "Category: " + this.getName();
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;

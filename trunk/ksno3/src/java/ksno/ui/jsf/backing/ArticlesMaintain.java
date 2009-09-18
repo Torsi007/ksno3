@@ -34,7 +34,7 @@ public class ArticlesMaintain {
     private UIData data;   
     
     
-    public List getArticles(){
+    public List<Article> getArticles(){
         List l = null;
         try{
             l = articleService.getArticles();

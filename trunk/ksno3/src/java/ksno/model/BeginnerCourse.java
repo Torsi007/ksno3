@@ -17,6 +17,10 @@ public class BeginnerCourse extends Event {
     public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
     }
+
+    public int getAvailableSeats(){
+        return getMaxSize() - getNumberOfParticipants();
+    }
     // </editor-fold> 
 
     // <editor-fold defaultstate="collapsed" desc=" Constructors "> 

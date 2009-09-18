@@ -11,8 +11,10 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List; 
+import ksno.model.Video;
 import ksno.service.PersonService;
 import ksno.service.ArticleService;
+import ksno.service.VideoService;
 
 /**
  *
@@ -20,16 +22,18 @@ import ksno.service.ArticleService;
  */
 public class Current {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.177A5D44-BFF0-529F-1BA4-66190D1DD9E3]
-    // </editor-fold> 
     List persons;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.4AC25B9D-F2B3-05A6-4150-16A3C8960ED7]
-    // </editor-fold> 
     PersonService personService;
     ArticleService articleService;
+    VideoService videoService;
+
+    public VideoService getVideoService() {
+        return videoService;
+    }
+
+    public void setVideoService(VideoService videoService) {
+        this.videoService = videoService;
+    }
 
     public String getArticleUrl() {
         return "Article.jsp";
@@ -81,7 +85,16 @@ public class Current {
         return returnList;
     }
 
-
+    public List getFirstThreeVideos() {
+        List<ksno.model.Video> visibleVideos = this.getVideoService().getPublishedVideos();
+        Iterator <ksno.model.Video> videoIterator = visibleVideos.iterator();
+        List<ksno.model.Video> returnList = new LinkedList<ksno.model.Video>();
+        while(videoIterator.hasNext() && returnList.size()<3){
+            ksno.model.Video video = videoIterator.next();
+            returnList.add(video);
+        }
+        return returnList;
+    }
 
     static final Comparator<ksno.model.Article> ORDER_BY_CAT = new Comparator<ksno.model.Article>(){
         public int compare(ksno.model.Article a1, ksno.model.Article a2){
@@ -114,7 +127,7 @@ public class Current {
     }
     
     public boolean isHaveArticles(){
-        List result = articleService.getArticles();
+        List<Article> result = articleService.getArticles();
         if(result != null && !result.isEmpty()){
             return false;
         }else{
@@ -147,4 +160,6 @@ public class Current {
     // </editor-fold> 
     public void setPersons (List persons) {
     }
+
+
 }
