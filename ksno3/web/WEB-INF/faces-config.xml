@@ -232,6 +232,14 @@
             <property-name>articleService</property-name>
             <value>#{ArticleService}</value>
         </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>
     </managed-bean>        
     <managed-bean>
         <managed-bean-name>ArticlesMaintain_Backing</managed-bean-name>
@@ -267,7 +275,36 @@
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
-    </managed-bean> 
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>CourseSummer_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CourseSummer</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>textService</property-name>
+            <value>#{TextService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>id</property-name>
+            <value>#{param.id}</value>
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>CoursesWinter_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.CoursesWinter</managed-bean-class>
@@ -396,6 +433,10 @@
         <managed-bean-class>ksno.ui.jsf.backing.SignUpSummer</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
         <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
@@ -410,7 +451,7 @@
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>            
+        </managed-property>
     </managed-bean>      
     <managed-bean>
         <managed-bean-name>SignUpWinter_Backing</managed-bean-name>
@@ -880,13 +921,22 @@
             <from-outcome>SignUpConfirmed</from-outcome>
             <to-view-id>/signUpConfirmed.jsp</to-view-id>
         </navigation-case>            
-    </navigation-rule>     <navigation-rule>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/SignUpWinter.jsp</from-view-id>
         <navigation-case>
             <from-action>#{SignUpWinter_Backing.signOn}</from-action>               
             <from-outcome>SignUpConfirmed</from-outcome>
             <to-view-id>/signUpConfirmed.jsp</to-view-id>
         </navigation-case>            
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/nd/SignUpSummerForm.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{SignUpSummer_Backing.signOn}</from-action>
+            <from-outcome>SignUpConfirmed</from-outcome>
+            <to-view-id>/signUpConfirmed.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/VideosMaintain.jsp</from-view-id>
