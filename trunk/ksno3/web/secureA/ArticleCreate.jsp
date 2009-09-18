@@ -80,7 +80,7 @@
                        <td style="width:1">Category</td>
                        <td style="width:1" required="true">
                            <t:selectOneMenu binding="#{ArticleCreate_Backing.slctCategory}">
-                               <f:selectItems value="#{ArticleCreate_Backing.CategorySelectItems}"/>
+                               <f:selectItems value="#{ArticleCreate_Backing.categorySelectItems}"/>
                            </t:selectOneMenu>
                        </td>
                        <td style="width:100%">&nbsp</td>

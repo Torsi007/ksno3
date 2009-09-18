@@ -1,0 +1,19 @@
+table.middleSection {background-image:url('http://farm3.static.flickr.com/2504/3839830270_cc3ed3c876_o.jpg');}
+table.middleSection td.leftSection {width:337px; padding:0px; vertical-align:top; line-height:18px;}
+table.middleSection td.leftSection div {padding:0px 16px 0px 16px; display:block;}
+table.middleSection td.leftSection div h1 {font-size:18px; margin: 20px 0px; font-weight:normal; display:block;}
+table.middleSection td.leftSection div table.courseList td {color:white;}
+
+table.middleSection td.middleSection {width:256px;}
+
+table.middleSection td.rightSection {width:347px; line-height:18px;}
+table.middleSection td.rightSection div {margin: 60px 10px 0px 10px}
+table.middleSection td.rightSection div h1 {margin-top: 0px; font-size:18px; font-weight:normal; display:block;}
+
+table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:auto; table-layout:fixed; border-collapse:collapse; color:#787878; empty-cells:show}
+table.bottomSection div {padding: 8px; font-size:12px}
+table.bottomSection div a {color:#787878; padding: 8px}
+table.bottomSection div h1 {font-size: 18px; font-weight:500; margin: 10px 0px; color:#7DB639;}
+table.bottomSection div h2 {font-size: 16px; font-weight:500; margin: 10px 0px; color:#7DB639;}
+
+
