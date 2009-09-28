@@ -1,12 +1,19 @@
 $(document).ready(function(){
     setFrameHeight();
     setMainMenuItems();
+    setTimeout("setFrameHeight(true)",3000);
 });
 
 
-function setFrameHeight(){
-    this.frameElement.style.height = 1;
-    this.frameElement.style.height = document.body.scrollHeight;
+function setFrameHeight(checkForScroll){
+    if(checkForScroll != undefined){
+        if(parseInt(this.frameElement.style.height) < parseInt(document.body.scrollHeight)){
+            this.frameElement.style.height = document.body.scrollHeight;
+        }
+    }else{
+        this.frameElement.style.height = 1;
+        this.frameElement.style.height = document.body.scrollHeight;
+    }
 }
 
 function setMainMenuItems(){
@@ -20,6 +27,10 @@ function setMainMenuItems(){
             }else if(document.URL.toLowerCase().search("article.jsp") > -1 && domElemAnchor.href.toLowerCase().search("articles.jsp") > -1){
                 domElemAnchor.style.fontWeight = "bolder";
             }else if(document.URL.toLowerCase().search("articles.jsp") > -1 && domElemAnchor.href.toLowerCase().search("articles.jsp") > -1){
+                domElemAnchor.style.fontWeight = "bolder";
+            }else if(document.URL.toLowerCase().search("signupsummer.jsp") > -1 && domElemAnchor.href.toLowerCase().search("coursejaren.jsp") > -1){
+                domElemAnchor.style.fontWeight = "bolder";
+            }else if(document.URL.toLowerCase().search("coursehaukeliseter.jsp") > -1 && domElemAnchor.href.toLowerCase().search("courseshaukeliseter.jsp") > -1){
                 domElemAnchor.style.fontWeight = "bolder";
             }else{
                 domElemAnchor.style.fontWeight = "normal";

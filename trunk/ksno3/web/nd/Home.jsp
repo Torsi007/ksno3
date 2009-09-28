@@ -15,8 +15,12 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 window.top.setStyle("default");
+                $('a[name=modal]').click(function(e) {
+                    window.parent.$('a[name=modal]').click();
+                });
              });
         </script>
+
     </head>
     <body>
         <f:view>
@@ -53,6 +57,11 @@
                     <tr>
                         <td class="leftSection" rowspan="2" valign="top">
                             <h1>Video og tips</h1>
+
+
+ <!-- #dialog is the id of a DIV defined in the code below -->
+ <a href="#dialog" name="modal">Simple Modal Window</a>
+
                             <table class="videoList">
                                 <t:dataList value="#{Current_Backing.firstThreeVideos}" var="video">
                                     <tr>
