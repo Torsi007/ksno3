@@ -9,7 +9,7 @@
     <head>
         <title>kitesurfing.no - kite kurs på jæren</title>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
-        <link rel="stylesheet" type="text/css" href="css/courseJaren.css" />
+        <link rel="stylesheet" type="text/css" href="css/coursesHaukeliseter.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
         <script type="text/javascript">
@@ -27,15 +27,15 @@
                             <div>
                                 <h1>Kurs</h1>
                                 <table class="courseList">
-                                    <t:dataList value="#{CoursesSummer_Backing.courses}" var="course">
+                                    <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
                                         <tr>
                                             <td style="width:146px"><h:outputText value="#{course.startDate} - #{course.endDate}"/></td>
                                             <td style="width:6px">|</td>
                                             <td style="width:106px"><h:outputText value="#{course.name}"/></td>
                                             <td>
-                                                <h:outputLink value="SignUpSummer.jsp" styleClass="button">
+                                                <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
                                                     <f:param name="id" value="#{course.id}"/>
-                                                    <h:outputText value="Go"/>
+                                                    <h:outputText value="#{course.availableSeats}"/>
                                                 </h:outputLink>
                                             </td>
                                         </tr>
@@ -76,21 +76,36 @@
                             <h2>Teambuilding / Spesialer</h2>
                             <p>Vi lager et opplegg som er spesialtilpasset dine ønsker. Utgangspunktet er en fire-timers basis der vi fokuserer på action og morro, istedet for detaljer og teori. Vi kan også ordne kombinasjoner med hundekjøring, toppturer eller andre aktiviteter.						Varighet og lokasjon kan dere være med å påvirke. Ta kontakt for nærmere info.</p>
                             <h1>Lokasjon</h1>
-                            <p>Kursene vil holdes på en av strendene på Nord Jæren. Eksakt hvilken strand som benyttes vil avhenge av vindretning, og vil derfor variere fra gang til gang. Aktuelle strender er: Solastranden - Orrestranden - Hellestø - Brusand.</p>
+                            <p>Oppmøte og utgangspunkt for kurset vil være på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a>. Eksakt lokasjon vil avhenge av vindretning, og vil derfor variere fra gang til gang.</p>
                             <h1>Pris</h1>
-                            <h2>Nybegynnerkurs</h2>
+                            <h2>2 dagers kurs</h2>
+                            <p>Kun kurs</p>
                             <ul type="square">
                                 <li>1 Person : 1900 NOK</li>
+                                <li>1 Person, DNT medlem : 1800 NOK</li>
                             </ul>
-                            <h2>Neopren</h2>
+                            <p>Kurs og overnatting - lavbudsjett</p>
                             <ul type="square">
-                                <li>Våtdrakt/sko: 300 NOK</li>
+                                <li>1 Person, DNT medlem, under 26 : 2515 NOK</li>
+                                <li>1 Person, DNT medlem, voksen : 2690 NOK</li>
+                                <li>1 Person : 2890 NOK</li>
                             </ul>
+                            <p>Følgende inngår: Overnatting to netter på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> i delt stabbursrom. Felles toalett, dusj og kjøkken i nabobygg. Treretters middag på lørdag, og villmarkspa på kvelden. <br>Tillegg frokost og niste for to dager, kr 330.</p>
+                            <p>Kurs og overnatting - Fullpensjon og Fjellrom</p>
+                            <ul type="square">
+                                <li>1 Person, DNT medlem : 3500 NOK</li>
+                                <li>1 Person : 3700 NOK</li>
+                            </ul>
+                            <p>Følgende inngår: Overnatting to netter på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> i fjellrom med bad og tolett på rommet. Frokost lørdag og søndag, niste og treretters middag på lørdag, og villmarkspa på kvelden.</p>
                             <h2>Teambuilding / Spesialer</h2>
                             <p>Teambuilding / Spesialer koster fra 5000 NOK avhengig av tidsramme og innhold.</p>
                             <h2>Rabatter</h2>
-                            <p>Grupperabatt - hver 6 mann er gratis!:</p>
-                            <p>Klarer du å samle en gjeng på 6 mann betaler dere altså for 5 deltagere. Det samme påløper for 12. og 18 mann...</p>
+                            <p>Grupperabatt:</p>
+                            <ul type="square">
+                                <li>4-6 pers: 150/pers
+                                </li>
+                                <li>7-10 pers: 300/pers</li>
+                            </ul>
                             <p>Vi gir også gode priser til studenter, vernepliktige og medlemmer i de kiteklubbene vi samarbeider med.<br>Kontakt oss for avtale!</p>
                             <h1>Kundegaranti</h1>
                             <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene.					Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte,					er vi fleksible nok til å finne en løsning dere som kunder er tilfreds med.					Alle deltakere får muligheten til å gå gjennom alt innholdet i et helt kurs.</p>

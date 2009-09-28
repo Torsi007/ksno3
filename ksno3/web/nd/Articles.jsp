@@ -37,7 +37,7 @@
                     <tr>
                         <td>
                             <div>
-                                <h1>News</h1>
+                                <h1>Nyheter</h1>
                             </div>
                         </td>
                     </tr>
@@ -52,7 +52,7 @@
                                         <h:outputText value="#{article.name}"/>
                                     </t:htmlTag>
                                 </h1>
-                                    <h:outputText value="#{article.createdDate}"/> | <f:verbatim><h:outputText escape="false" value="#{article.intro}"/></f:verbatim>
+                                    <h:outputText value="#{article.createdDate}"/> | <f:verbatim><h:outputText escape="false" value="#{article.intro}"/></f:verbatim>&nbsp;
                                     <t:htmlTag value="a">
                                         <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
                                         <h:outputText escape="false" value="Read More →"/>

@@ -13,8 +13,7 @@
     <head>
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
-        <link rel="stylesheet" type="text/css" href="css/courseSummer.css" />
-        <link rel="stylesheet" type="text/css" href="css/skinned-select.css"/>
+        <link rel="stylesheet" type="text/css" href="css/courseHaukeliseter.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
         <script type="text/javascript" src="js/jquery.skinned-select.js"></script>
@@ -26,14 +25,14 @@
                     <tr>
                         <td class="leftSection">
                             <div>
-                                <h1><h:outputText value="#{CourseSummer_Backing.course.name}"/></h1>
-                                <h2><h:outputText value="#{CourseSummer_Backing.course.startDate} - #{CourseSummer_Backing.course.endDate}"/></h2>
+                                <h1><h:outputText value="#{CourseHaukeliseter_Backing.course.name}"/></h1>
+                                <h2><h:outputText value="#{CourseHaukeliseter_Backing.course.startDate} - #{CourseHaukeliseter_Backing.course.endDate}"/></h2>
                                 <table>
                                     <tr>
-                                        <td>Antall plasser:</td><td class="right" align="right"><h:outputText value="#{CourseSummer_Backing.course.maxSize}"/></td><td></td>
+                                        <td>Antall plasser:</td><td class="right" align="right"><h:outputText value="#{CourseHaukeliseter_Backing.course.maxSize}"/></td><td></td>
                                     </tr>
                                     <tr>
-                                        <td>Ledige plasser:</td><td class="right" align="right"><h:outputText value="#{CourseSummer_Backing.course.availableSeats}"/></td><td></td>
+                                        <td>Ledige plasser:</td><td class="right" align="right"><h:outputText value="#{CourseHaukeliseter_Backing.course.availableSeats}"/></td><td></td>
                                     </tr>
                                     <tr>
                                         <td>Pris:</td><td class="right" align="right">1900</td><td>,-</td>
@@ -48,7 +47,7 @@
                         <td class="rightSection">
                             <div>
                                 <h1>Les om tidligere kurs!</h1>
-                                <t:dataList value="#{CourseSummer_Backing.courseArticles}" var="article">
+                                <t:dataList value="#{CourseHaukeliseter_Backing.courseArticles}" var="article">
                                     <t:htmlTag value="a">
                                         <f:param name="href" value="../nd/Article.jsp?id=#{article.id}" />
                                         <h:outputText value="#{article.name}" escape="false"/>
@@ -63,7 +62,7 @@
                         <td class="leftSection" valign="top">
                             <h1>Påmelding</h1>
                             <t:htmlTag value="iframe" >
-                                <f:param name="src" value="../nd/SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.id}" />
+                                <f:param name="src" value="../nd/SignUpHaukeliseter.jsp?courseId=#{CourseHaukeliseter_Backing.id}" />
                                 <f:param name="scrolling" value="no" />
                                 <f:param name="frameborder" value="0" />
                                 <f:param name="height" value="350" />
@@ -72,16 +71,16 @@
                         <td class="rightSection">
                             <h1>Hei</h1>
                             <t:htmlTag value="img" >
-                                <f:param name="src" value="#{CourseSummer_Backing.course.courseResponsible.profilePicture}" />
+                                <f:param name="src" value="#{CourseHaukeliseter_Backing.course.courseResponsible.profilePicture}" />
                             </t:htmlTag>
                             <p>
-                                Mitt navn er <t:outputText value="#{CourseSummer_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig på kurset du nå titter på. Vi håper du finner det du trenger av informasjon. Har du noen spørsmål send meg en mail på
+                                Mitt navn er <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig på kurset du nå titter på. Vi håper du finner det du trenger av informasjon. Har du noen spørsmål send meg en mail på
                                 <t:htmlTag value="a">
-                                    <f:param name="href" value="#{CourseSummer_Backing.course.courseResponsible.userName}" />
-                                    <h:outputText value="#{CourseSummer_Backing.course.courseResponsible.userName}" escape="false"/>
+                                    <f:param name="href" value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" />
+                                    <h:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" escape="false"/>
                                 </t:htmlTag>
-                                eller ring på <t:outputText value="#{CourseSummer_Backing.course.courseResponsible.phone}"/>
-                                <object width="480" height="385"><param name="movie" value="http://www.youtube.com/v/Z4NRyG1bHlw&hl=en&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Z4NRyG1bHlw&hl=en&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed></object>
+                                eller ring på <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
+                                <embed src="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="533" height="300">
                             </p>
                         </td>
                     </tr>

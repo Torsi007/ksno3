@@ -266,7 +266,28 @@
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
         </managed-property>        
-    </managed-bean>     
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>CourseHaukeliseter_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CourseHaukeliseter</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>id</property-name>
+            <value>#{param.id}</value>
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>CoursesSummer_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.CoursesSummer</managed-bean-class>
