@@ -74,7 +74,22 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public List getInstructors() {
-        return personDao.getInstructors();
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            getLogService().log(Level.SEVERE, null, ex);
+        }
+        List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.instructors}", c);
+
+        if(returnList == null){
+            returnList = personDao.getInstructors();
+            JSFUtil.setValue("#{ApplicationBean1.instructors}", returnList, c);
+            getLogService().log(Level.INFO,"Instructor list returned not found in cache adding list of " + returnList.size() + " persons to it");
+        }else{
+            getLogService().log(Level.INFO,"Instructor list returned from cahce contained " + returnList.size() + " persons");
+        }
+        return returnList;
     }
 
     public Instructor getInstructor(Long id) {

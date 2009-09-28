@@ -91,7 +91,7 @@ public class Article implements Serializable {
     }
     
     public String getIntro() {
-        return intro;
+        return intro.replaceAll("<p>", "").replaceAll("</p>", "");
     }
 
     public void setIntro(String intro) {

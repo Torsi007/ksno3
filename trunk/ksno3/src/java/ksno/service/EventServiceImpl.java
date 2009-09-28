@@ -47,8 +47,39 @@ public class EventServiceImpl implements EventService {
         return returnList;
     }
 
+    public List getEventsFromThisYear(){
+        Class c = null;
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EventServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.eventsFromThisYear}", c);
+        if(returnList != null){
+            Event event = (Event)returnList.get(0);
+            Calendar evStart = Calendar.getInstance();
+            evStart.setTime(event.getStartDate());
+            if(evStart.get(Calendar.YEAR)< Calendar.getInstance().get(Calendar.YEAR)){
+                returnList = null;
+                clearEventsFromThisYearApplicationCache(); 
+            }
+
+        }
+        if(returnList == null){
+ 
+            Calendar start = Calendar.getInstance();
+            start.set(Calendar.YEAR,year);
+            start.set(Calendar.DAY_OF_YEAR,1); //first day of the year.
+            returnList = eventDao.getEvents(start);
+            JSFUtil.setValue("#{ApplicationBean1.eventsFromThisYear}", returnList, c);
+        }
+        return returnList;
+    }
+
     public Long newEvent(Event event) {
         clearEventsApplicationCache();
+        clearEventsFromThisYearApplicationCache();
         return eventDao.newEvent(event);
     }
     
@@ -108,11 +139,14 @@ public class EventServiceImpl implements EventService {
     }       
 
     public void deleteEvent(Event event) {
-        clearEventsApplicationCache();        
+        clearEventsApplicationCache();
+        clearEventsFromThisYearApplicationCache();
         eventDao.deleteEvent(event);
     }
 
     public void updateEvent(Event event) {
+        clearEventsApplicationCache();
+        clearEventsFromThisYearApplicationCache();
         eventDao.updateEvent(event);
     }
 
@@ -130,7 +164,13 @@ public class EventServiceImpl implements EventService {
         JSFUtil.setValue("#{ApplicationBean1.events}", null, c);    
     }
     
-    
-        
-
+    private void clearEventsFromThisYearApplicationCache(){
+        Class c = null;
+        try {
+            c = Class.forName("java.util.List");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EventServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JSFUtil.setValue("#{ApplicationBean1.eventsFromThisYear}", null, c);    
+    }
 }

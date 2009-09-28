@@ -28,4 +28,8 @@ public class CoursesWinter {
         return eventService.getUpcommingWinterBeginnerCourses();
     }
 
+    public boolean isNoCourses(){
+        return (this.getCourses() == null || this.getCourses().size() == 0);
+    }
+
 }

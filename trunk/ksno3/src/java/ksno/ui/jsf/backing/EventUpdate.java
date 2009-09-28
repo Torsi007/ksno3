@@ -156,10 +156,12 @@ public class EventUpdate {
         try{
             Participation participation = (Participation)this.getData().getRowData();
             Event event = (Event)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
-            boolean temp = event.getParticipations().contains(participation);
-            event.getParticipations().remove(participation);  
-            participationService.deleteParticipation(participation);
-            eventService.updateEvent(event);
+            if(event.getParticipations().contains(participation)){
+                event.getParticipations().remove(participation);  
+                eventService.updateEvent(event);
+                participationService.deleteParticipation(participation);
+            }
+
 
            
         }catch(Exception e){

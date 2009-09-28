@@ -15,6 +15,7 @@ import ksno.model.Event;
  */
 public interface EventService {
     public List getEvents();
+    public List getEventsFromThisYear();
     public Long newEvent(Event event);  
     public void deleteEvent(Event event); 
     public void updateEvent(Event event);

@@ -106,7 +106,18 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     }
 
     private List events;
+    private List eventsFromThisYear;
     private List<Article> articles;
+
+    public List getEventsFromThisYear() {
+        return eventsFromThisYear;
+    }
+
+    public void setEventsFromThisYear(List eventsFromThisYear) {
+        this.eventsFromThisYear = eventsFromThisYear;
+    }
+
+    
 
     public List<Article> getArticles() {
         return articles;
@@ -117,6 +128,15 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     }
     private List persons;
     private Calendar youTubeListLastScanned;
+    private List instructors;
+
+    public List getInstructors() {
+        return instructors;
+    }
+
+    public void setInstructors(List instructors) {
+        this.instructors = instructors;
+    }
 
     public Calendar getYouTubeListLastScanned() {
         return youTubeListLastScanned;

@@ -161,6 +161,8 @@ public class YoutubeClient {
         video.setDescription(entry.getMediaGroup().getDescription().getPlainTextContent());
         video.setDuration(Util.prettyPrintTime(entry.getMediaGroup().getDuration()));
         video.setUrl(entry.getHtmlLink().getHref());
+        //video.setUrl(entry.getMediaGroup().getContents().get(0).getUrl());
+
         video.setYouTubeId(entry.getId());
         if(entry.isDraft()){
             video.setState(entry.getPublicationState().getState().toString());

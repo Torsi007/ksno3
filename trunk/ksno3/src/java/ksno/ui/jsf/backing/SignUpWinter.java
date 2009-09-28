@@ -14,10 +14,8 @@ import java.util.logging.Logger;
 import javax.faces.model.SelectItem;
 import ksno.model.BeginnerCourse;
 import ksno.model.Email;
-import ksno.model.Event;
 import ksno.model.Participation;
 import ksno.model.Person;
-import ksno.model.Text;
 import ksno.model.UserRoles;
 import ksno.security.PasswordFactory;
 import ksno.service.EventService;
@@ -41,8 +39,6 @@ public class SignUpWinter {
     private HtmlInputText firstName;    
     private HtmlInputText lastName;
     private HtmlInputText phone;
-    private HtmlSelectOneMenu wetSuitSize;    
-    private HtmlSelectOneMenu shoeSize;        
     private HtmlSelectOneMenu helmetSize;  
     private HtmlSelectOneMenu coursesSelect;
     private long courseId;
@@ -161,22 +157,6 @@ public class SignUpWinter {
 
     public void setPhone(HtmlInputText phone) {
         this.phone = phone;
-    }
-
-    public HtmlSelectOneMenu getShoeSize() {
-        return shoeSize;
-    }
-
-    public void setShoeSize(HtmlSelectOneMenu shoeSize) {
-        this.shoeSize = shoeSize;
-    }
-
-    public HtmlSelectOneMenu getWetSuitSize() {
-        return wetSuitSize;
-    }
-
-    public void setWetSuitSize(HtmlSelectOneMenu wetSuitSize) {
-        this.wetSuitSize = wetSuitSize;
     }
     
     public SelectItem[] getCoursesSelectItems() {

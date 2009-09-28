@@ -27,6 +27,7 @@
     <property column="STREET_NUMBER" name="streetNumber" type="string"/>
     <property column="ZIP_CODE" name="zipCode" type="string"/>
     <property column="CITY" name="city" type="string"/>
+    <property column="PROFILE_PICTURE" name="profilePicture" type="string"/>
     <subclass discriminator-value="I" name="Instructor">
       <property column="ACC_NUMBER" name="accountNumber" type="string"/>
       <set cascade="save-update" inverse="true" name="events" table="EVENT">
