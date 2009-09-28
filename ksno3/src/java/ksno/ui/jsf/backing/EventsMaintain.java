@@ -6,6 +6,7 @@
 package ksno.ui.jsf.backing;
 
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +66,11 @@ public class EventsMaintain {
     public List getEvents(){
         return eventService.getEvents();
     }
+
+    public List getEventsFromThisYear(){
+        return eventService.getEventsFromThisYear();
+    }
+
     
    public String eventDelete(){
        String returnVal = "sucess";

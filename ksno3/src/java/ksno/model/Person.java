@@ -32,8 +32,17 @@ public class Person implements Serializable, LabelValuePair {
     String streetNumber;
     String zipCode;
     String city;
+    private String profilePicture;
 
-    // <editor-fold defaultstate="collapsed" desc=" getters and setters">    
+    // <editor-fold defaultstate="collapsed" desc=" getters and setters">  
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public String getCity() {
         return city;
     }

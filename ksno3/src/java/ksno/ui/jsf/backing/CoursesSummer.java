@@ -30,6 +30,10 @@ public class CoursesSummer {
         return eventService.getUpcommingSummerBeginnerCourses();
     }
 
+    public boolean isNoCourses(){
+        return (this.getCourses() == null || this.getCourses().size() == 0);
+    }
+
     public List getTwoNextCourses(){
         List<ksno.model.BeginnerCourse> courses = this.getCourses();
         Iterator <ksno.model.BeginnerCourse> courseIterator = courses.iterator();

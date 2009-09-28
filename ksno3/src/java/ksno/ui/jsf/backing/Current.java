@@ -55,11 +55,11 @@ public class Current {
         return articleService.getVisibleArticles();
     }
 
-    public List getFirstThreeArticles() {
+    public List getFirstTwoArticles() {
         List<ksno.model.Article> visibleArticles = this.getArticles();
         Iterator <ksno.model.Article> articleIterator = visibleArticles.iterator();
         List<ksno.model.Article> returnList = new LinkedList<ksno.model.Article>();
-        while(articleIterator.hasNext() && returnList.size()<3){
+        while(articleIterator.hasNext() && returnList.size()<2){
             ksno.model.Article article = articleIterator.next();
             if(article.getFrontPagePosition().equals("default")){
                 returnList.add(article);
@@ -68,7 +68,7 @@ public class Current {
         return returnList;
     }
 
-    public List getArticlesFromFour() {
+    public List getArticlesFromThreeToTen() {
         List<ksno.model.Article> visibleArticles = this.getArticles();
         Iterator <ksno.model.Article> articleIterator = visibleArticles.iterator();
         List<ksno.model.Article> returnList = new LinkedList<ksno.model.Article>();
@@ -77,7 +77,7 @@ public class Current {
             ksno.model.Article article = articleIterator.next();
             if(article.getFrontPagePosition().equals("default")){
                 i++;
-                if(i>3){
+                if(i>2 && i<11){
                     returnList.add(article);
                 }
             }

@@ -5,6 +5,7 @@
 
 package ksno.dao.hibernate;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import ksno.dao.EventDao;
@@ -144,7 +145,21 @@ public class EventDaoImpl implements EventDao {
 
         return returnVal;         
 
-    }          
+    }
+
+    public List getEvents(Calendar fromDate) {
+        Query q = null;
+        List returnVal = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+
+
+        q=session.createQuery("from Event e where e.startDate > :fromdate order by e.startDate asc");
+        q.setParameter("fromdate",fromDate.getTime());
+        returnVal =  q.list();
+
+        return returnVal;
+    }
     
      
     
