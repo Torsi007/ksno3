@@ -16,7 +16,10 @@
             $(document).ready(function(){
                 window.top.setStyle("default");
                 $('a[name=modal]').click(function(e) {
-                    window.parent.$('a[name=modal]').click();
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    //window.parent.$('a[name=modal]').click();
+                    window.parent.openModalVideo(url);
                 });
              });
         </script>
@@ -57,11 +60,6 @@
                     <tr>
                         <td class="leftSection" rowspan="2" valign="top">
                             <h1>Video og tips</h1>
-
-
- <!-- #dialog is the id of a DIV defined in the code below -->
- <a href="#dialog" name="modal">Simple Modal Window</a>
-
                             <table class="videoList">
                                 <t:dataList value="#{Current_Backing.firstThreeVideos}" var="video">
                                     <tr>
@@ -76,8 +74,8 @@
                                                 <h:outputText value="#{video.name}" />
                                             </t:htmlTag>
                                             <t:htmlTag value="a">
+                                                <f:param name="name" value="modal" />
                                                 <f:param name="href" value="#{video.url}" />
-                                                <f:param name="target" value="blank" />
                                                 <h:outputText value="Watch [#{video.duration}]" />
                                             </t:htmlTag>
                                         </td>
@@ -131,9 +129,9 @@
                         <td class="rightSection">
                             <h1>Aktiviteter</h1>
                             <div class="courseList">
-                                <h1>Kurs J&aelig;ren</h1>
+                                <h1><a href="CourseJaren.jsp">Kurs J&aelig;ren</a></h1>
                                 <table>
-                                    <t:dataList value="#{CoursesSummer_Backing.courses}" var="course">
+                                    <t:dataList value="#{CoursesSummer_Backing.fourNextCourses}" var="course">
                                         <tr>
                                             <td style="width:73px; white-space: nowrap">
                                                 <h:outputText value="#{course.startDate}">
@@ -160,14 +158,23 @@
                                             <h:outputText value="Settes opp senere"/>
                                         </t:htmlTag>
                                     </t:htmlTag>
+                                    <t:htmlTag value="tr" rendered="#{CoursesSummer_Backing.moreThanFourCourses}">
+                                        <t:htmlTag value="td">
+                                            <f:param name="colspan" value="4"/>
+                                            <t:htmlTag value="a">
+                                                <f:param name="href" value="CourseJaren.jsp"/>
+                                                <h:outputText value="Mer..."/>
+                                            </t:htmlTag>
+                                        </t:htmlTag>
+                                    </t:htmlTag>
                                 </table>
-                                <h1>Kurs Haukeliseter</h1>
+                                <h1><a href="CoursesHaukeliseter.jsp">Kurs Haukeliseter</a></h1>
                                 <table>
-                                    <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
+                                    <t:dataList value="#{CoursesWinter_Backing.fourNextCourses}" var="course">
                                         <tr>
                                             <td style="width:73px; white-space: nowrap">
                                                 <h:outputText value="#{course.startDate}">
-                                                    <f:convertDateTime dateStyle="short" pattern="dd"/>
+                                                    <f:convertDateTime dateStyle="short" pattern="dd.MM"/>
                                                 </h:outputText>
                                                 -
                                                 <h:outputText value="#{course.endDate}">
@@ -188,6 +195,15 @@
                                         <t:htmlTag value="td">
                                             <f:param name="colspan" value="4"/>
                                             <h:outputText value="Settes opp senere"/>
+                                        </t:htmlTag>
+                                    </t:htmlTag>
+                                    <t:htmlTag value="tr" rendered="#{CoursesWinter_Backing.moreThanFourCourses}">
+                                        <t:htmlTag value="td">
+                                            <f:param name="colspan" value="4"/>
+                                            <t:htmlTag value="a">
+                                                <f:param name="href" value="CoursesHaukeliseter.jsp"/>
+                                                <h:outputText value="Mer..."/>
+                                            </t:htmlTag>
                                         </t:htmlTag>
                                     </t:htmlTag>
                                 </table>
