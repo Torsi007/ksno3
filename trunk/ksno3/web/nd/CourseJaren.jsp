@@ -15,6 +15,12 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 window.top.setStyle("default");
+                $('a[name=modal]').click(function(e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    //window.parent.$('a[name=modal]').click();
+                    window.parent.openModalVideo(url);
+                });
             });
         </script>
     </head>
@@ -55,67 +61,110 @@
                 </table>
                 <table class="bottomSection">
                     <tr>
-                        <td>
+                        <td class="leftSection">
                             <div>
-                            <h1>Hvem kan delta</h1>
-                            <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vannsporter.Det beste fra wakeboard, surfing og windsurfing er satt sammen til en sport full av action og utfordringer.Alle som har lyst til å begynne bør ta et kurs. Først og fremst med tanke på sikkerhet, men også for å lære grunnleggende teknikk, noe som igjen gir grunnlag for raskere progresjon.Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
-                            <h1>Kurstilbudene</h1>
-                            <h2>2 dagers kurs</h2>
-                            <p>Kurset har som mål å gjøre deg til en selvstendig kitesurfer, slik at du kan klare deg alene på sjøen/fjellet med ditt nyanskaffede utstyr. Kursene er praktisk lagt opp med mye drageflyging og moro, men det legges allikevel stor vekt på sikkerhet. Dersom vindforholdene tillater det, håper vi å kunne få alle opp på brettene i løpet av kurset.</p>
-                            <p>Hovedtema på kurset vil være:</p>
-                            <ul type="square">
-                                <li>Forståelse av kitens flyområder og kraftsoner</li>
-                                <li>Linedisiplin</li>
-                                <li>Sikkerhet</li>
-                                <li>Rigging/nedrigging</li>
-                                <li>"Launching" og landing av kiten</li>
-                                <li>Navigering av kite</li>
-                                <li>Kiteboarding/skiing på egenhånd</li>
-                                <li>Valg av utstyr</li>
-                            </ul>
-                            <h2>Teambuilding / Spesialer</h2>
-                            <p>Vi lager et opplegg som er spesialtilpasset dine ønsker. Utgangspunktet er en fire-timers basis der vi fokuserer på action og morro, istedet for detaljer og teori. Vi kan også ordne kombinasjoner med hundekjøring, toppturer eller andre aktiviteter.						Varighet og lokasjon kan dere være med å påvirke. Ta kontakt for nærmere info.</p>
-                            <h1>Lokasjon</h1>
-                            <p>Kursene vil holdes på en av strendene på Nord Jæren. Eksakt hvilken strand som benyttes vil avhenge av vindretning, og vil derfor variere fra gang til gang. Aktuelle strender er: Solastranden - Orrestranden - Hellestø - Brusand.</p>
-                            <h1>Pris</h1>
-                            <h2>Nybegynnerkurs</h2>
-                            <ul type="square">
-                                <li>1 Person : 1900 NOK</li>
-                            </ul>
-                            <h2>Neopren</h2>
-                            <ul type="square">
-                                <li>Våtdrakt/sko: 300 NOK</li>
-                            </ul>
-                            <h2>Teambuilding / Spesialer</h2>
-                            <p>Teambuilding / Spesialer koster fra 5000 NOK avhengig av tidsramme og innhold.</p>
-                            <h2>Rabatter</h2>
-                            <p>Grupperabatt - hver 6 mann er gratis!:</p>
-                            <p>Klarer du å samle en gjeng på 6 mann betaler dere altså for 5 deltagere. Det samme påløper for 12. og 18 mann...</p>
-                            <p>Vi gir også gode priser til studenter, vernepliktige og medlemmer i de kiteklubbene vi samarbeider med.<br>Kontakt oss for avtale!</p>
-                            <h1>Kundegaranti</h1>
-                            <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene.					Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte,					er vi fleksible nok til å finne en løsning dere som kunder er tilfreds med.					Alle deltakere får muligheten til å gå gjennom alt innholdet i et helt kurs.</p>
-                            <h1>Praktisk</h1>
-                            <p>Vi stiller med:</p>
-                            <ul type="square">
-                                <li>Drager</li>
-                                <li>Trapeser</li>
-                                <li>Hjelmer</li>
-                            </ul>
-                            <p>
-                                Dere bør ta med:
-                            </p>
-                            <ul type="square">
-                                <li>Solfaktor</li>
-                                <li>Godt med klær</li>
-                                <li>Snøbriller</li>
-                                <li>Ski og eller snowboard</li>
-                                <li>Gamasjer</li>
-                            </ul>
-                            <p>Den første praktiske leksjonen vil foregå uten ski/brett. Vi øver på å navigere dragen stående på bena. Vi anbefaler de av dere som kjører alpint eller telemark til å ta med et par høye varme støvler (i tillegg til skistøvlene), da det er lettere å bevege seg i disse. Dere som kjører snowboard kan benytte snowboard støvlene.					Hvis du er en av dem som mestrer både ski og snowboard anbefaler vi deg å benytte skiene først da dette vil gi raskest progresjon. Men ta gjerne med begge deler på kurset.					En god stor varm dunjakke er genialt å kunne ta på seg i pausene mellom de praktiske leksjonene. Om du er medlem av <a href="http://www.turistforeningen.no/" target="_blank">DNT</a> eller en annen organisasjon som gir deg rett til rabatt, må du fremvise medlemskort eller lignende identifikasjon ved fremmøte lørdag.					<br>					Om du overnatter på lavbudsjett på fjellstuen må ta ta med eget sengetøy.</p>
-                            <h1>Spørsmål?</h1>
-                            <p>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
-                            <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ting.</p>
+                                <h1>Hvem kan delta</h1>
+                                <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Med kiten kan du gi deg ut på alt fra rolige, lange skiturer på fjellet, til å kite i store bølger med et surfebrett. Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være stark! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte – ekstremt eller rolig. Men å lære kiting er både vanskelig og forenet med stor risiko dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
+                                <h1>Kurstilbudene</h1>
+                                <h2>2 dagers kurs</h2>
+                                <p>Kurset har som mål å gjøre deg til en selvstendig kiter, slik at du kan klare deg alene på sjøen/fjellet med ditt eget utstyr. Kursene er praktisk lagt opp med mye drageflyging og moro, men det legges allikevel stor vekt på sikkerhet. Dersom vindforholdene tillater det, håper vi å kunne få alle opp på brettene i løpet av kurset.</p>
+                                <p>Hovedtema på kurset vil være:</p>
+                                <ul type="square">
+                                    <li>Forståelse av kitens flyområde og kraftsone</li>
+                                    <li>Linedisiplin</li>
+                                    <li>Sikkerhet</li>
+                                    <li>Rigging/nedrigging</li>
+                                    <li>"Launching" og landing av kiten</li>
+                                    <li>Navigering av kite</li>
+                                    <li>Kiteboarding/skiing på egenhånd</li>
+                                    <li>Valg av utstyr</li>
+                                </ul>
+                                <h1>Lokasjon</h1>
+                                <p>Kursene vil normalt sett holdes på en av strendene på Nord Jæren. Eksakt hvilken strand som benyttes vil avhenge av vindretning, og vil derfor variere fra gang til gang. Aktuelle strender er: Solastranden - Orrestranden - Hellestø - Brusand.</p>
+                                <h1>Pris</h1>
+                                <h2>Nybegynnerkurs</h2>
+                                <ul type="square">
+                                    <li>1 Person : 1900 NOK</li>
+                                </ul>
+                                <h2>Neopren</h2>
+                                <ul type="square">
+                                    <li>Våtdrakt/sko: 200 NOK</li>
+                                </ul>
+                                <h2>Teambuilding / Spesialer</h2>
+                                <p>Teambuilding / Spesialer koster fra 5000 NOK avhengig av tidsramme og innhold.</p>
+                                <h2>Rabatter</h2>
+                                <p>Grupperabatt - hver 6 mann er gratis!:</p>
+                                <p>Klarer du å samle en gjeng på 6 mann betaler dere altså for 5 deltagere. Det samme påløper for 12. og 18. mann...</p>
+                                <p>Vi gir også gode priser til studenter, vernepliktige og medlemmer i de kiteklubbene vi samarbeider med.<br>Kontakt oss for avtale!</p>
+                                <h1>Vindgaranti</h1>
+                                <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene.</p>
+                                <h1>Praktisk</h1>
+                                <p>Vi stiller med:</p>
+                                <ul type="square">
+                                    <li>Drager</li>
+                                    <li>Trapeser</li>
+                                    <li>Brett</li>
+                                    <li>Hjelmer og redningsvester</li>
+                                    <li>Våtdrakter til utleie</li>
+                                </ul>
+                                <p>
+                                    Dere bør ta med:
+                                </p>
+                                <ul type="square">
+                                    <li>Solfaktor og solbriller</li>
+                                    <li>Godt med klær</li>
+                                    <li>Niste for hele dagen</li>
+                                    <li>Transportmiddel til/fra stranda</li>
+                                </ul>
+                                <p>Om du er medlem av en organisasjon som gir deg rett til rabatt, må du fremvise medlemskort eller lignende identifikasjon ved fremmøte.</p>
+                                <h1>Spørsmål?</h1>
+                                <p>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
+                                <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ring.</p>
                             </div>
+                        </td>
+                        <td class="rightSection">
+                            <h1>Les om tidligere sommerkurs!</h1>
+                            <table class="articleList">
+                                <t:dataList value="#{CoursesSummer_Backing.courseArticles}" var="article">
+                                    <tr>
+                                        <td class="date"><span>
+                                                <h:outputText value="#{article.createdDate}">
+                                                    <f:convertDateTime dateStyle="short" pattern="dd.MM.yy"/>
+                                                </h:outputText>
+                                            </span></td>
+                                        <td class="separator">|</td>
+                                        <td>
+                                            <t:htmlTag value="a">
+                                                <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                                <h:outputText value="#{article.name}"/>
+                                            </t:htmlTag>
+                                        </td>
+                                    </tr>
+                                </t:dataList>
+                            </table>
+                            <h1>Se video av tidligere sommerkurs!</h1>
+                            <table class="videoList">
+                                <t:dataList value="#{CoursesSummer_Backing.courseVideos}" var="video">
+                                    <tr>
+                                        <td>
+                                            <t:htmlTag value="img">
+                                                <f:param name="src" value="#{video.thumbnail}" />
+                                            </t:htmlTag>
+                                        </td>
+                                        <td>
+                                            <h1>Video</h1>
+                                            <t:htmlTag value="span">
+                                                <h:outputText value="#{video.name}" />
+                                            </t:htmlTag>
+                                            <t:htmlTag value="a">
+                                                <f:param name="name" value="modal" />
+                                                <f:param name="href" value="#{video.url}" />
+                                                <h:outputText value="Watch [#{video.duration}]" />
+                                            </t:htmlTag>
+                                        </td>
+                                    </tr>
+                                </t:dataList>
+                            </table>
                         </td>
                     </tr>
                 </table>

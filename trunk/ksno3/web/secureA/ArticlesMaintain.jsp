@@ -65,7 +65,9 @@
                         <f:facet name="header">
                             <h:outputText value="Category" />
                         </f:facet>
-                        <h:outputText value="#{item.category.name}"/>
+                        <t:selectOneMenu value="#{item.category}" converter="CategoryConverter">
+                            <f:selectItems value="#{ArticlesMaintain_Backing.categorySelectItems}"/>
+                       </t:selectOneMenu>
                     </h:column>
                      <h:column>
                         <h:commandLink action="#{ArticlesMaintain_Backing.selectEditArticle}">

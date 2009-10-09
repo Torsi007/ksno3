@@ -1,4 +1,4 @@
-table.middleSection {background-image:url('http://farm3.static.flickr.com/2504/3839830270_cc3ed3c876_o.jpg');}
+table.middleSection {background-image:url('http://farm3.static.flickr.com/2629/3934576443_e500c99356_o.jpg');}
 table.middleSection td.leftSection {width:337px; padding:0px; vertical-align:top; line-height:18px;}
 table.middleSection td.leftSection div {padding:0px 16px 0px 16px; display:block;}
 table.middleSection td.leftSection div h1 {font-size:32px; margin: 30px 0px; font-weight:normal; display:block;}
@@ -23,8 +23,14 @@ table.bottomSection td.leftSection table tr td span {color:#787878; font-size:11
 
 table.bottomSection td.rightSection {width:584px; vertical-align:top; }
 table.bottomSection td.rightSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
-table.bottomSection td.rightSection p {margin: 10px 6px; color:#787878; font-size:11px;}
+table.bottomSection td.rightSection p {margin: 10px 6px; color:#505050; font-size:12px;}
 table.bottomSection td.rightSection img {margin: 2px 6px;}
-table.bottomSection td.rightSection embed {margin: 10px 6px; }
+table.bottomSection td.rightSection h2 {font-size: 20px; font-weight:normal; margin: 10px 6px; color:#7DB639;}
+table.bottomSection td.rightSection table {border-collapse:collapse; width:100%; height:1px; margin-bottom:10px}
+table.bottomSection td.rightSection table tr td {padding: 0px; vertical-align:top}
+table.bottomSection td.rightSection table tr td span {display:block; font-size:12px; color:#505050; margin: 0px 36px 0px 6px}
+
+
+
 
 

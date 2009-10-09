@@ -21,6 +21,23 @@
                     //window.parent.$('a[name=modal]').click();
                     window.parent.openModalVideo(url);
                 });
+
+    if($("#summerCourseList tr").size() > 6){
+        $("#moreSummerCourses").css('display','block');
+        $("#summerCourseList tr:eq(4)").css('display','none');
+    }
+    if($("#summerCourseList tr").size() == 2){
+        $("#summerCoursesSetUpLater").css('display','block');
+    }
+    if($("#winterCourseList tr").size() > 6){
+        $("#moreWinterCourses").css('display','block');
+        $("#winterCourseList tr:eq(4)").css('display','none');
+    }
+    if($("#winterCourseList tr").size() == 2){
+        $("#winterCoursesSetUpLater").css('display','block');
+    }
+
+
              });
         </script>
 
@@ -33,7 +50,7 @@
                         <td class="leftSection" >
                             <div>
                                 <font style="font-size:36px; line-height:35px; margin-bottom:20px">Hei, vi er Kitesurfing.no</font>
-                                <font style="font-size:25px; line-height: 25px;">Vi kj&oslash;rer kitekurs<br/>p&aring; J&aelig;ren og<br/> Haukelister</font>
+                                <font style="font-size:25px; line-height: 25px;">Vi kj&oslash;rer kitekurs<br/>p&aring; J&aelig;ren og<br/> Haukeliseter</font>
                                 <jsp:include page="Button.jsp" >
                                     <jsp:param name="title" value="L&aelig;r Mer" />
                                     <jsp:param name="link" value="aboutUs.html"/>
@@ -129,11 +146,11 @@
                         <td class="rightSection">
                             <h1>Aktiviteter</h1>
                             <div class="courseList">
-                                <h1><a href="CourseJaren.jsp">Kurs J&aelig;ren</a></h1>
-                                <table>
-                                    <t:dataList value="#{CoursesSummer_Backing.fourNextCourses}" var="course">
+                                <h1><a href="CourseJaren.jsp">Sommerkurs</a></h1>
+                                <table id="summerCourseList">
+                                    <t:dataList value="#{CoursesSummer_Backing.fiveNextCourses}" var="course">
                                         <tr>
-                                            <td style="width:73px; white-space: nowrap">
+                                            <td style="width:90px; white-space: nowrap">
                                                 <h:outputText value="#{course.startDate}">
                                                     <f:convertDateTime dateStyle="short" pattern="dd.MM"/>
                                                 </h:outputText>
@@ -142,7 +159,7 @@
                                                     <f:convertDateTime dateStyle="short" pattern="dd.MM.yy"/>
                                                 </h:outputText>
                                             </td>
-                                            <td style="width:8px;">&nbsp;|&nbsp;</td>
+                                            <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>
                                             <td style="width:106px"><h:outputText value="#{course.name}"/></td>
                                             <td>
                                                 <h:outputLink value="SignUpSummer.jsp" styleClass="button">
@@ -152,27 +169,20 @@
                                             </td>
                                         </tr>
                                     </t:dataList>
-                                    <t:htmlTag value="tr" rendered="#{CoursesSummer_Backing.noCourses}">
-                                        <t:htmlTag value="td">
-                                            <f:param name="colspan" value="4"/>
-                                            <h:outputText value="Settes opp senere"/>
-                                        </t:htmlTag>
-                                    </t:htmlTag>
-                                    <t:htmlTag value="tr" rendered="#{CoursesSummer_Backing.moreThanFourCourses}">
-                                        <t:htmlTag value="td">
-                                            <f:param name="colspan" value="4"/>
-                                            <t:htmlTag value="a">
-                                                <f:param name="href" value="CourseJaren.jsp"/>
-                                                <h:outputText value="Mer..."/>
-                                            </t:htmlTag>
-                                        </t:htmlTag>
-                                    </t:htmlTag>
+                                    <tr style="display:none" id="summerCoursesSetUpLater">
+                                        <td colspan="4">Settes opp senere</td>
+                                    </tr>
+                                    <tr style="display:none" id="moreSummerCourses">
+                                        <td colspan="4">
+                                            <a href="CourseJaren.jsp">Mer--></a>
+                                        </td>
+                                    </tr>
                                 </table>
-                                <h1><a href="CoursesHaukeliseter.jsp">Kurs Haukeliseter</a></h1>
-                                <table>
-                                    <t:dataList value="#{CoursesWinter_Backing.fourNextCourses}" var="course">
+                                <h1><a href="CoursesHaukeliseter.jsp">Vinterkurs</a></h1>
+                                <table id="winterCourseList">
+                                    <t:dataList value="#{CoursesWinter_Backing.fiveNextCourses}" var="course">
                                         <tr>
-                                            <td style="width:73px; white-space: nowrap">
+                                            <td style="width:90px; white-space: nowrap">
                                                 <h:outputText value="#{course.startDate}">
                                                     <f:convertDateTime dateStyle="short" pattern="dd.MM"/>
                                                 </h:outputText>
@@ -181,32 +191,36 @@
                                                     <f:convertDateTime dateStyle="short" pattern="dd.MM.yy"/>
                                                 </h:outputText>
                                             </td>
-                                            <td style="width:8px;">&nbsp;|&nbsp;</td>
+                                            <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>
                                             <td style="width:106px"><h:outputText value="#{course.name}"/></td>
                                             <td>
-                                                <h:outputLink value="SignUpSummer.jsp" styleClass="button">
+                                                <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
                                                     <f:param name="id" value="#{course.id}"/>
                                                     <h:outputText value="Go"/>
                                                 </h:outputLink>
                                             </td>
                                         </tr>
                                     </t:dataList>
-                                    <t:htmlTag value="tr" rendered="#{CoursesWinter_Backing.noCourses}">
-                                        <t:htmlTag value="td">
-                                            <f:param name="colspan" value="4"/>
-                                            <h:outputText value="Settes opp senere"/>
-                                        </t:htmlTag>
-                                    </t:htmlTag>
-                                    <t:htmlTag value="tr" rendered="#{CoursesWinter_Backing.moreThanFourCourses}">
-                                        <t:htmlTag value="td">
-                                            <f:param name="colspan" value="4"/>
-                                            <t:htmlTag value="a">
-                                                <f:param name="href" value="CoursesHaukeliseter.jsp"/>
-                                                <h:outputText value="Mer..."/>
-                                            </t:htmlTag>
-                                        </t:htmlTag>
-                                    </t:htmlTag>
+                                    <tr style="display:none" id="winterCoursesSetUpLater">
+                                        <td colspan="4">Settes opp senere</td>
+                                    </tr>
+                                    <tr style="display:none" id="moreWinterCourses">
+                                        <td colspan="4">
+                                            <a href="CoursesHaukeliseter.jsp">Mer--></a>
+                                        </td>
+                                    </tr>
                                 </table>
+                                <!--Sjekkes inn når vi får en side med info
+                                <h1><a href="CoursesHaukeliseter.jsp">Teambuilding & eventer</a></h1>
+                                <table style="width:205px">
+                                    <tr>
+                                        <td style"width:100%">
+                                            Mer info her...
+                                        </td>
+                                        <td style="width:1px"><a href="SignUpSummer.jsp?id=87" class="button">Go</a></td>
+                                    </tr>
+                                </table>
+                                -->
                             </div>
                         </td>
                     </tr>

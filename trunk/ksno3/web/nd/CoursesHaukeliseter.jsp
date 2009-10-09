@@ -15,6 +15,12 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 window.top.setStyle("default");
+                $('a[name=modal]').click(function(e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    //window.parent.$('a[name=modal]').click();
+                    window.parent.openModalVideo(url);
+                });
             });
         </script>
     </head>
@@ -35,7 +41,7 @@
                                             <td>
                                                 <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
                                                     <f:param name="id" value="#{course.id}"/>
-                                                    <h:outputText value="#{course.availableSeats}"/>
+                                                    <h:outputText value="Go"/>
                                                 </h:outputLink>
                                             </td>
                                         </tr>
@@ -55,13 +61,12 @@
                 </table>
                 <table class="bottomSection">
                     <tr>
-                        <td>
+                        <td class="leftSection">
                             <div>
                             <h1>Hvem kan delta</h1>
-                            <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vannsporter.Det beste fra wakeboard, surfing og windsurfing er satt sammen til en sport full av action og utfordringer.Alle som har lyst til å begynne bør ta et kurs. Først og fremst med tanke på sikkerhet, men også for å lære grunnleggende teknikk, noe som igjen gir grunnlag for raskere progresjon.Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
+                            <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Med kiten kan du gi deg ut på alt fra rolige, lange skiturer på fjellet, til å kite i store bølger med et surfebrett. Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være stark! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte – ekstremt eller rolig. Men å lære kiting er både vanskelig og forenet med stor risiko dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
                             <h1>Kurstilbudene</h1>
                             <h2>2 dagers kurs</h2>
-                            <p>Kurset har som mål å gjøre deg til en selvstendig kitesurfer, slik at du kan klare deg alene på sjøen/fjellet med ditt nyanskaffede utstyr. Kursene er praktisk lagt opp med mye drageflyging og moro, men det legges allikevel stor vekt på sikkerhet. Dersom vindforholdene tillater det, håper vi å kunne få alle opp på brettene i løpet av kurset.</p>
                             <p>Hovedtema på kurset vil være:</p>
                             <ul type="square">
                                 <li>Forståelse av kitens flyområder og kraftsoner</li>
@@ -81,56 +86,103 @@
                             <h2>2 dagers kurs</h2>
                             <p>Kun kurs</p>
                             <ul type="square">
-                                <li>1 Person : 1900 NOK</li>
-                                <li>1 Person, DNT medlem : 1800 NOK</li>
+                                <li>1 Person : 1950 NOK</li>
                             </ul>
-                            <p>Kurs og overnatting - lavbudsjett</p>
+                            <h2>Pakkepris med kost og losi</h2>
+                            <p>Prisen varierer beroende på hva du ønsker for losji og mat. Vi har valgt å lage to forskjellige priseksempel for å tilgodese alle lommebøker.
+                                <br/>
+                                Et rimelig alternativ, med losji på stabbur, for deg som vil ha enkel losji og som trenger penger til kiteutstyr. Inkludert er del i stabbursrom to netter med tilgang til kjøkken, treretterts middag og villmarkspa lørdags kveld, samt kitekurs og lån av utstyr hele helgen.
+                                <br/>
+                                "Fullpensjon og fjellrom" er for de som vil ha litt mer luksus. Da er det inkludert treretters middag lørdags kveld samt frokost og niste for to dager. Boendet er i fjellrom, to netter, med dusj, toalett og oppredde senger. Kitekurs og lån av utstyr hele helgen er selvfølgelig og inkludert. 
+                            </p>
+                            <h2>Kitekurs, middag og losji på stabbur</h2>
                             <ul type="square">
-                                <li>1 Person, DNT medlem, under 26 : 2515 NOK</li>
-                                <li>1 Person, DNT medlem, voksen : 2690 NOK</li>
-                                <li>1 Person : 2890 NOK</li>
+                                <li>DNT medlem, under 26 : 2515 kr</li>
+                                <li>DNT medlem, voksen : 2690 kr</li>
+                                <li>Ikke medlem : 2890 kr</li>
                             </ul>
-                            <p>Følgende inngår: Overnatting to netter på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> i delt stabbursrom. Felles toalett, dusj og kjøkken i nabobygg. Treretters middag på lørdag, og villmarkspa på kvelden. <br>Tillegg frokost og niste for to dager, kr 330.</p>
-                            <p>Kurs og overnatting - Fullpensjon og Fjellrom</p>
+                            <h2>Kitekurs "Fullpensjon og Fjellrom"</h2>
                             <ul type="square">
-                                <li>1 Person, DNT medlem : 3500 NOK</li>
-                                <li>1 Person : 3700 NOK</li>
+                                <li>DNT medlem, voksen : 3500 kr</li>
+                                <li>Ikke medlem : 3700 kr</li>
                             </ul>
-                            <p>Følgende inngår: Overnatting to netter på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a> i fjellrom med bad og tolett på rommet. Frokost lørdag og søndag, niste og treretters middag på lørdag, og villmarkspa på kvelden.</p>
-                            <h2>Teambuilding / Spesialer</h2>
-                            <p>Teambuilding / Spesialer koster fra 5000 NOK avhengig av tidsramme og innhold.</p>
-                            <h2>Rabatter</h2>
-                            <p>Grupperabatt:</p>
-                            <ul type="square">
-                                <li>4-6 pers: 150/pers
-                                </li>
-                                <li>7-10 pers: 300/pers</li>
-                            </ul>
-                            <p>Vi gir også gode priser til studenter, vernepliktige og medlemmer i de kiteklubbene vi samarbeider med.<br>Kontakt oss for avtale!</p>
-                            <h1>Kundegaranti</h1>
-                            <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene.					Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte,					er vi fleksible nok til å finne en løsning dere som kunder er tilfreds med.					Alle deltakere får muligheten til å gå gjennom alt innholdet i et helt kurs.</p>
+                            <h1>Vindgaranti</h1>
+                            <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene.
+                                <br/>
+                                Dere må fortsatt betale for kost og losji dersom dere bor på Haukeliseter
+                            </p>
                             <h1>Praktisk</h1>
                             <p>Vi stiller med:</p>
                             <ul type="square">
                                 <li>Drager</li>
                                 <li>Trapeser</li>
-                                <li>Hjelmer</li>
+                                <li>Ekstra hjelmer for de som ikke har egen</li>
                             </ul>
                             <p>
                                 Dere bør ta med:
                             </p>
                             <ul type="square">
+                                <li>Godt med klær, inkludert varm jakke i pausene, ekstra votter og gamasjer! Vi er ute i snøen hele dagen! </li>
+                                <li>Alpin-ski eller snowboard. (Kan du begge anbefaler vi ski i starten. Vi frarader å bruke fjellski.)</li>
                                 <li>Solfaktor</li>
-                                <li>Godt med klær</li>
-                                <li>Snøbriller</li>
-                                <li>Ski og eller snowboard</li>
-                                <li>Gamasjer</li>
+                                <li>Hjelm og snøbriller</li>
+                                <li>Termos</li>
+                                <li>Badeklær / undertøy for bruk i stampen.</li>
+                                <li>For skikjørere med stive plastsko: Alternativ, varm støvel som er lettere å bevege seg i før vi begynner med ski på beina.</li>
+                                <li>Eget sengetøy / sovepose hvis du bor på stabbur eller selvstellsrom. Du kan og leie i resepsjonen.</li>
                             </ul>
-                            <p>Den første praktiske leksjonen vil foregå uten ski/brett. Vi øver på å navigere dragen stående på bena. Vi anbefaler de av dere som kjører alpint eller telemark til å ta med et par høye varme støvler (i tillegg til skistøvlene), da det er lettere å bevege seg i disse. Dere som kjører snowboard kan benytte snowboard støvlene.					Hvis du er en av dem som mestrer både ski og snowboard anbefaler vi deg å benytte skiene først da dette vil gi raskest progresjon. Men ta gjerne med begge deler på kurset.					En god stor varm dunjakke er genialt å kunne ta på seg i pausene mellom de praktiske leksjonene. Om du er medlem av <a href="http://www.turistforeningen.no/" target="_blank">DNT</a> eller en annen organisasjon som gir deg rett til rabatt, må du fremvise medlemskort eller lignende identifikasjon ved fremmøte lørdag.					<br>					Om du overnatter på lavbudsjett på fjellstuen må ta ta med eget sengetøy.</p>
                             <h1>Spørsmål?</h1>
                             <p>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
+                            <p>Har du spørsmål om overnatting, mat og losji, ring <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter</a> på tlf 35062777 eller send mail til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a></p>
                             <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ting.</p>
                             </div>
+                        </td>
+                        <td class="rightSection">
+                            <h1>Video</h1>
+                            <p>Se v&aring;r promoteringsvideo hvor vi presenterer v&aring;rt vinteropplegg p&aring; Haukeliser.</p>
+                             <object width="350" height="197"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=c9ff23&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=c9ff23&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="350" height="197"></embed></object>
+                            <h1>Les om tidligere vinterkurs</h1>
+                            <table class="articleList">
+                                <t:dataList value="#{CoursesWinter_Backing.courseArticles}" var="article">
+                                    <tr>
+                                        <td class="date"><span>
+                                                <h:outputText value="#{article.createdDate}">
+                                                    <f:convertDateTime dateStyle="short" pattern="dd.MM.yy"/>
+                                                </h:outputText>
+                                            </span></td>
+                                        <td class="separator">|</td>
+                                        <td>
+                                            <t:htmlTag value="a">
+                                                <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                                <h:outputText value="#{article.name}"/>
+                                            </t:htmlTag>
+                                        </td>
+                                    </tr>
+                                </t:dataList>
+                            </table>
+                            <h1>Video fra tidligere vinterkurs</h1>
+                            <table class="videoList">
+                                <t:dataList value="#{CoursesWinter_Backing.courseVideos}" var="video">
+                                    <tr>
+                                        <td>
+                                            <t:htmlTag value="img">
+                                                <f:param name="src" value="#{video.thumbnail}" />
+                                            </t:htmlTag>
+                                        </td>
+                                        <td>
+                                            <h1>Video</h1>
+                                            <t:htmlTag value="span">
+                                                <h:outputText value="#{video.name}" />
+                                            </t:htmlTag>
+                                            <t:htmlTag value="a">
+                                                <f:param name="name" value="modal" />
+                                                <f:param name="href" value="#{video.url}" />
+                                                <h:outputText value="Watch [#{video.duration}]" />
+                                            </t:htmlTag>
+                                        </td>
+                                    </tr>
+                                </t:dataList>
+                            </table>
                         </td>
                     </tr>
                 </table>

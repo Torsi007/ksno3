@@ -75,7 +75,6 @@
     <body>
         <f:view>
             <h:form id="signup" onsubmit="return validate()">
-                Kurset kan muligens være fullt...
                 <table style="width:1px;">
                     <tr>		
                         <td required="true" format="email" colspan="2">

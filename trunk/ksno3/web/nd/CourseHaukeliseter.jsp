@@ -16,7 +16,6 @@
         <link rel="stylesheet" type="text/css" href="css/courseHaukeliseter.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
-        <script type="text/javascript" src="js/jquery.skinned-select.js"></script>
     </head>
     <body class="signup">
         <f:view>
@@ -80,8 +79,29 @@
                                     <h:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" escape="false"/>
                                 </t:htmlTag>
                                 eller ring på <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
-                                <embed src="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="533" height="300">
                             </p>
+                            <h1>Deltagere</h1>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h2>Påmeldte</h2>
+                                        <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
+                                            <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
+                                                <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
+                                            </t:htmlTag>
+                                        </t:dataList>
+                                    </td>
+                                    <td>
+                                        <h2>Venteliste</h2>
+                                        <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
+                                            <t:htmlTag value="span" rendered="#{participation.onWaitList}">
+                                                <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
+                                            </t:htmlTag>
+                                        </t:dataList>
+                                    </td>
+                                </tr>
+                            </table>
+
                         </td>
                     </tr>
                 </table>
