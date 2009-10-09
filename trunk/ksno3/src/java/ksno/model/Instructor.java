@@ -8,8 +8,24 @@ public class Instructor extends Person implements LabelValuePair{
     private String accountNumber;
     public Set events = new HashSet();
     public Set instructions = new HashSet();
+    public ksno.model.Text aboutMe;
 
-    // <editor-fold defaultstate="collapsed" desc=" getters and setters">        
+    // <editor-fold defaultstate="collapsed" desc=" getters and setters"> 
+    public Text getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(Text aboutMe) {
+        if(this.getAboutMe() == null){
+            this.aboutMe = aboutMe;
+        }else{
+            this.aboutMe.setBody(aboutMe.getBody());
+            this.aboutMe.setLastUpdatedDate(aboutMe.getLastUpdatedDate());
+            this.aboutMe.setSubject(aboutMe.getSubject());
+        }
+        
+    }
+
     public Set getInstructions() {
         return instructions;
     }

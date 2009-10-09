@@ -11,6 +11,9 @@ import java.util.Calendar;
 import java.util.List;
 import javax.faces.FacesException;
 import ksno.model.Article;
+import ksno.model.BeginnerCourse;
+import ksno.model.Category;
+import ksno.model.Video;
 
 /**
  * <p>Application scope data bean for your application.  Create properties
@@ -107,7 +110,36 @@ public class ApplicationBean1 extends AbstractApplicationBean {
 
     private List events;
     private List eventsFromThisYear;
+    private List<BeginnerCourse> beginnerCoursesFromThisYear;
     private List<Article> articles;
+    private List<Video> videos;
+
+    public List<Video> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(List<Video> videos) {
+        this.videos = videos;
+    }
+    private List<Category> articleCategorys;
+
+    public List<BeginnerCourse> getBeginnerCoursesFromThisYear() {
+        return beginnerCoursesFromThisYear;
+    }
+
+    public void setBeginnerCoursesFromThisYear(List<BeginnerCourse> beginnerCoursesFromThisYear) {
+        this.beginnerCoursesFromThisYear = beginnerCoursesFromThisYear;
+    }
+
+    
+
+    public List<Category> getArticleCategorys() {
+        return articleCategorys;
+    }
+
+    public void setArticleCategorys(List<Category> articleCategorys) {
+        this.articleCategorys = articleCategorys;
+    }
 
     public List getEventsFromThisYear() {
         return eventsFromThisYear;

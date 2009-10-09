@@ -87,12 +87,18 @@ public class ArticleServiceImpl implements ArticleService {
                 returnList.add(article);
             }
         }
-        return articleList;
+        return returnList;
     }
 
     
     public List<Article> getVisibleArticles() {
-        return articleDao.getVisibleArticles();
+        List<Article> returnList = new LinkedList<Article>();
+        for(Article article : this.getArticles()){
+            if(article.isVisible()){
+                returnList.add(article);
+            }
+        }
+        return returnList;
     }
 
     public List<Category> getCategories() {

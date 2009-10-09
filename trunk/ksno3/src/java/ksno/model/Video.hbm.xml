@@ -17,5 +17,6 @@
     <property column="CREATED_DATE" name="createdDate" type="calendar"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="calendar"/>
     <property column="DURATION" name="duration" type="string"/>
+    <many-to-one cascade="none" class="Category" column="CATEGORY_ID" name="category" not-null="true" lazy="false"/>
   </class>
 </hibernate-mapping>

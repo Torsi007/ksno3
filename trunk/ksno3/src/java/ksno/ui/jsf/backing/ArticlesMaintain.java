@@ -17,6 +17,7 @@ import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import javax.faces.model.SelectItem;
 import ksno.model.Category;
+import ksno.service.ArticleCategoryService;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
@@ -25,6 +26,7 @@ import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
  */
 public class ArticlesMaintain {
     private ArticleService articleService;
+    private ArticleCategoryService articleCategoryService;
     private ImageService imageService;
     private HtmlOutputText errorMsg;
     private HtmlInputText name;
@@ -45,8 +47,26 @@ public class ArticlesMaintain {
     }  
     
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public ArticleCategoryService getArticleCategoryService() {
+        return articleCategoryService;
+    }
 
+    public void setArticleCategoryService(ArticleCategoryService articleCategoryService) {
+        this.articleCategoryService = articleCategoryService;
+    }
 
+    public SelectItem[] getCategorySelectItems() {
+        List<Category> Categories = articleCategoryService.getArticleCategorys();
+        return JSFUtil.toObjectSelectItemArray(Categories);
+    }
+
+    public HtmlSelectOneMenu getSlctCategory() {
+        return slctCategory;
+    }
+
+    public void setSlctCategory(HtmlSelectOneMenu slctCategory) {
+        this.slctCategory = slctCategory;
+    }
 
     public HtmlOutputText getErrorMsg() {
         return errorMsg;
@@ -122,12 +142,13 @@ public class ArticlesMaintain {
     }
     
     public String articlesUpdate(){ 
-        
+        getLogService().log(Level.INFO, "About to update articles");
        String returnVal = "sucess";
         try{
             List articles = (List)getData().getValue();
             for(int i = 0; i< articles.size(); i++){
                 Article article = (Article)articles.get(i);
+                getLogService().log(Level.INFO,"Updating article with category " + article.getCategory().getLabel());
                 articleService.updateArticle(article); 
             }
         }catch(Exception e){

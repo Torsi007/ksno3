@@ -96,6 +96,7 @@ public class ArticleMasterUpdate {
         String returnVal = "articleUpd";
         try{
             Article article = (Article)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanArticleModify);
+            getLogService().log(Level.INFO,"The article to update is: " +  article.getName());
             
             if(upAvatar != null){
                 HashMap<ImageMeta,String> imageSize = imageService.uploadImage(upAvatar.getInputStream(), article.getAuthor().getUserName());
@@ -108,6 +109,7 @@ public class ArticleMasterUpdate {
             }
             Category cat = articleService.getCategory(slctCategory.getValue().toString());
             article.setCategory(cat);
+            getLogService().log(Level.INFO,"Setting category: " +  cat);
             articleService.updateArticle(article);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create article", e);
@@ -117,6 +119,7 @@ public class ArticleMasterUpdate {
     }   
     
     public String updateIntro(){
+        getLogService().log(Level.INFO,"About to update intro on article");
         String returnVal = "success";
         try{
             returnVal = this.updateArticle();

@@ -26,6 +26,7 @@ public class Video implements Serializable {
     private String duration;
     private String youTubeId;
     private String state;
+    private Category category;
 
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
     public String getState() {
@@ -131,6 +132,14 @@ public class Video implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
     // </editor-fold>
 

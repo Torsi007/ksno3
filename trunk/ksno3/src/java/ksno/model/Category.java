@@ -9,7 +9,7 @@ package ksno.model;
  *
  * @author Roger
  */
-public class Category implements LabelValuePair {
+public class Category implements LabelObjectValuePair, LabelValuePair {
 
     private Long id;
     private int version;
@@ -23,6 +23,14 @@ public class Category implements LabelValuePair {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStringId(){
+        return this.id.toString();
+    }
+
+     public void setStringId(String id){
+        this.id = Long.parseLong(id);
     }
 
     public String getName() {
@@ -66,7 +74,7 @@ public class Category implements LabelValuePair {
         return true;
     }
 
-                @Override
+    @Override
     public String toString() {
         return "Category: " + this.getName();
     }
@@ -82,8 +90,14 @@ public class Category implements LabelValuePair {
         return this.getName();
     }
 
-    public String getValue() {
-        return this.getName();
+    public Object getObject() {
+        return this;
     }
+
+    public String getValue() {
+        return this.getId().toString();
+    }
+
+
     // </editor-fold>
 }

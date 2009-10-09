@@ -5,6 +5,7 @@
 package ksno.service;
 
 import java.util.List;
+import ksno.model.Category;
 import ksno.model.Video;
 
 /**
@@ -18,4 +19,5 @@ public interface VideoService {
     public void deleteVideo(Video video);
     public List<Video> getVideos();
     public List<Video> getPublishedVideos();
+    public List<Video> getVideosByCategory(Category category);
 }

@@ -116,7 +116,7 @@ public class CourseSummer {
     public List<ksno.model.Article> getCourseArticles(){
         getLogService().log(Level.INFO, "Start getCourseArticles()");
         Category category = new Category();
-        category.setName("Courses");
+        category.setName("Vinterkurs");
         List<ksno.model.Article> returnList = getArticleService().getArticlesByCategory(category);
         getLogService().log(Level.INFO, "Found a list of " + returnList.size() + " articles.");
         while(returnList.size() > 5){
