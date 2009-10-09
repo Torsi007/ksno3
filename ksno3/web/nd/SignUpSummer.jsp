@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="css/skinned-select.css"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
-        <script type="text/javascript" src="js/jquery.skinned-select.js"></script>
+
     </head>
     <body class="signup">
         <f:view>
@@ -81,9 +81,29 @@
                                     <h:outputText value="#{CourseSummer_Backing.course.courseResponsible.userName}" escape="false"/>
                                 </t:htmlTag>
                                 eller ring på <t:outputText value="#{CourseSummer_Backing.course.courseResponsible.phone}"/>
-                                <object width="480" height="385"><param name="movie" value="http://www.youtube.com/v/Z4NRyG1bHlw&hl=en&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Z4NRyG1bHlw&hl=en&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed></object>
                             </p>
-                        </td>
+                            <h1>Deltagere</h1>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h2>Påmeldte</h2>
+                                        <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
+                                            <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
+                                                <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
+                                            </t:htmlTag>
+                                        </t:dataList>
+                                    </td>
+                                    <td>
+                                        <h2>Venteliste</h2>
+                                        <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
+                                            <t:htmlTag value="span" rendered="#{participation.onWaitList}">
+                                                <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
+                                            </t:htmlTag>
+                                        </t:dataList>
+                                    </td>
+                                </tr>
+                            </table>
+                          </td>
                     </tr>
                 </table>
             </h:form>

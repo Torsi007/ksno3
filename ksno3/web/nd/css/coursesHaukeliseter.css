@@ -11,9 +11,30 @@ table.middleSection td.rightSection div {margin: 60px 10px 0px 10px}
 table.middleSection td.rightSection div h1 {margin-top: 0px; font-size:18px; font-weight:normal; display:block;}
 
 table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:auto; table-layout:fixed; border-collapse:collapse; color:#505050; empty-cells:show}
-table.bottomSection div {padding: 8px; font-size:12px}
-table.bottomSection div a {color:#787878; padding: 8px}
-table.bottomSection div h1 {font-size: 18px; font-weight:500; margin: 10px 0px; color:#7DB639;}
-table.bottomSection div h2 {font-size: 16px; font-weight:500; margin: 10px 0px; color:#7DB639;}
+table.bottomSection td.leftSection {width:584px; vertical-align:top }
+table.bottomSection td.leftSection div {padding: 8px; font-size:12px}
+table.bottomSection td.leftSection div a {color:#787878; padding: 8px}
+table.bottomSection td.leftSection div h1 {font-size: 18px; font-weight:500; margin: 10px 0px; color:#7DB639;}
+table.bottomSection td.leftSection div h2 {font-size: 16px; font-weight:500; margin: 10px 0px; color:#7DB639;}
+
+table.bottomSection td.rightSection {width:356px; vertical-align:top; }
+table.bottomSection td.rightSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
+table.bottomSection td.rightSection p {margin: 10px 6px; color:#505050; font-size:12px;}
+table.bottomSection td.rightSection embed {margin: 10px 6px; }
+table.bottomSection td.rightSection table.articleList { color:#505050; border-collapse:collapse; width:100%; margin: 10px 0px 0px 6px; }
+table.bottomSection td.rightSection table.articleList tr td a { color:#7DB639; text-decoration: none }
+table.bottomSection td.rightSection table.articleList tr td.date span {white-space:nowrap; }
+table.bottomSection td.rightSection table.articleList tr td.date { width: 80px; }
+table.bottomSection td.rightSection table.articleList tr td.separator { width: 6px; padding: 4px 3px }
+table.bottomSection td.rightSection table.articleList tr td { width: 100%; white-space:nowrap; font-size: 12px; padding: 4px 0px }
+table.bottomSection td.rightSection table.videoList td {vertical-align:top; }
+table.bottomSection td.rightSection table.videoList td img {vertical-align:top; margin: 3px }
+table.bottomSection td.rightSection table.videoList td h1 {color:#787878; font-size: 14px; margin:3px 0px 12px 0px; }
+table.bottomSection td.rightSection table.videoList td span {color:#303030; font-size: 14px; margin:12px 0px; display:block;}
+table.bottomSection td.rightSection table.videoList td a {color:#7DB639; font-size: 14px; margin:12px 0px; display:block;}
+
+
+
+
 
 

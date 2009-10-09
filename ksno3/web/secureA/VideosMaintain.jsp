@@ -38,7 +38,9 @@
                         <f:facet name="header">
                             <h:outputText value="Opprettet" />
                         </f:facet> 
-                        <h:outputText value="#{item.createdDate}"></h:outputText>
+                        <h:outputText value="#{item.createdDate}">
+                            <f:converter converterId="CalendarConverter"/>
+                        </h:outputText>
                     </h:column>                    
                     <h:column>
                         <f:facet name="header">
@@ -46,12 +48,23 @@
                         </f:facet> 
                         <h:outputText value="#{item.owner.firstName} #{item.owner.lastName}"></h:outputText>
                     </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category" />
+                        </f:facet>
+                        <t:selectOneMenu value="#{item.category}" converter="CategoryConverter">
+                            <f:selectItems value="#{VideosMaintain_Backing.categorySelectItems}"/>
+                       </t:selectOneMenu>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Thumbnail" />
+                        </f:facet>
+                        <t:htmlTag value="img" style="height:40px">
+                            <f:param name="src" value="#{item.thumbnail}"/>
 
-                     <h:column>
-                        <h:commandLink action="#{VideosMaintain_Backing.selectEditVideo}">
-                            <h:outputText value="Endre"/>
-                        </h:commandLink>
-                    </h:column>     
+                        </t:htmlTag>
+                    </h:column>
                      <h:column>
                         <h:commandLink action="#{VideosMaintain_Backing.videoDelete}">
                             <h:outputText value="Slett"/>

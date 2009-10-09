@@ -32,13 +32,15 @@
                         <f:facet name="header">
                             <h:outputText value="Start dato" />
                         </f:facet> 
-                        <h:outputText value="#{item.startDate}"></h:outputText>
+                        <h:outputText value="#{item.startDate}">
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Slutt dato" />
                         </f:facet> 
-                        <h:outputText value="#{item.endDate}"></h:outputText>
+                        <h:outputText value="#{item.endDate}">
+                        </h:outputText>
                     </h:column>   
                     <h:column>
                         <f:facet name="header">

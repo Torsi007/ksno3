@@ -6,6 +6,7 @@ $(document).ready(function(){
 
 
 function setFrameHeight(checkForScroll){
+    try{
     if(checkForScroll != undefined){
         if(parseInt(this.frameElement.style.height) < parseInt(document.body.scrollHeight)){
             this.frameElement.style.height = document.body.scrollHeight;
@@ -14,6 +15,7 @@ function setFrameHeight(checkForScroll){
         this.frameElement.style.height = 1;
         this.frameElement.style.height = document.body.scrollHeight;
     }
+    }catch(err){}
 }
 
 function setMainMenuItems(){

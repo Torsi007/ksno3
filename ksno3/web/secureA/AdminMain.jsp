@@ -22,6 +22,8 @@
                 <h2>Welcom to the page administration</h2>
                 <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Administrer artikler</t:commandLink>
                 <br/>
+                <t:commandLink visibleOnUserRole="admin,internal" action="articleCategories">Administrer kategorier</t:commandLink>
+                <br/>
                 <t:commandLink enabledOnUserRole="admin,internal,authuser" action="videosMaintain">Administrer videoer</t:commandLink>
                 <br/>
                 <t:commandLink visibleOnUserRole="admin,internal"  action="eventsMaintain">Administrer opplegg</t:commandLink>                
@@ -32,7 +34,9 @@
                 <br/>
                 <t:commandLink visibleOnUserRole="admin,internal" action="sendMail">Send mail</t:commandLink>                                
                 <br/>                
-                <t:commandLink visibleOnUserRole="admin,internal,authuser" action="preferences">Innstillinger</t:commandLink>                                                
+                <t:commandLink visibleOnUserRole="admin,internal,authuser" action="preferences">Innstillinger</t:commandLink>
+                <br/>
+                <t:commandLink visibleOnUserRole="admin,internal" action="instructorProfile">Instruktørprofil</t:commandLink>
             </h:form>        
         </f:view>
         

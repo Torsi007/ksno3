@@ -63,6 +63,14 @@
                         </td>
                         <td/>
                     </tr>
+                   <tr>
+                       <td style="width:1">Category</td>
+                       <td style="width:1" required="true">
+                           <t:selectOneMenu binding="#{VideoCreate_Backing.slctCategory}">
+                               <f:selectItems value="#{VideoCreate_Backing.categorySelectItems}"/>
+                           </t:selectOneMenu>
+                       </td>
+                    </tr>
                     <tr>
                         <td colspan="3">Descripion</td>
                     </tr>

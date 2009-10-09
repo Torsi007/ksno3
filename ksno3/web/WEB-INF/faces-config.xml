@@ -43,13 +43,23 @@
         <description>Convert string - person</description>
         <converter-id>PersonConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.PersonConverter</converter-class>
-    </converter>    
+    </converter>
+    <converter>
+        <description>Convert string - category</description>
+        <converter-id>CategoryConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.CategoryConverter</converter-class>
+    </converter>
    <!-- ******** DAO ****************************************************** -->
+   <managed-bean>
+        <managed-bean-name>ArticleCategoryDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.ArticleCategoryDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>ArticleDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ArticleDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>      
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>EventDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.EventDaoImpl</managed-bean-class>
@@ -86,6 +96,15 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
    <!-- ******** Service *************************************************** -->
+   <managed-bean>
+        <managed-bean-name>ArticleCategoryService</managed-bean-name>
+        <managed-bean-class>ksno.service.ArticleCategoryServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>articleCategoryDao</property-name>
+            <value>#{ArticleCategoryDao}</value>
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>ArticleService</managed-bean-name>
         <managed-bean-class>ksno.service.ArticleServiceImpl</managed-bean-class>
@@ -163,7 +182,16 @@
             <value>#{VideoDao}</value>
         </managed-property>
     </managed-bean>
-   <!-- ******** UI ******************************************************* -->  
+   <!-- ******** UI ******************************************************* -->
+    <managed-bean>
+        <managed-bean-name>AboutUs_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.AboutUs</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>Article_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.Article</managed-bean-class>
@@ -176,7 +204,16 @@
             <property-name>id</property-name>
             <value>#{param.id}</value>
         </managed-property>        
-    </managed-bean>   
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ArticleCategoryMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ArticleCategoryMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>articleCategoryService</property-name>
+            <value>#{ArticleCategoryService}</value>
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>ArticleCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleCreate</managed-bean-class>
@@ -188,12 +225,12 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>  
+        </managed-property>
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>              
-    </managed-bean>         
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>ArticleImagesUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleImagesUpdate</managed-bean-class>
@@ -205,12 +242,12 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>  
+        </managed-property>
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>         
-    </managed-bean>         
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>ArticleMasterUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleMasterUpdate</managed-bean-class>
@@ -222,8 +259,8 @@
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>        
-    </managed-bean>   
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>ArticleUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticleUpdate</managed-bean-class>
@@ -240,7 +277,7 @@
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
         </managed-property>
-    </managed-bean>        
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>ArticlesMaintain_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.ArticlesMaintain</managed-bean-class>
@@ -250,10 +287,14 @@
             <value>#{ArticleService}</value>
         </managed-property>
         <managed-property>
+            <property-name>articleCategoryService</property-name>
+            <value>#{ArticleCategoryService}</value>
+        </managed-property>
+        <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>        
-    </managed-bean>      
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>BeginnerCourseCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.BeginnerCourseCreate</managed-bean-class>
@@ -265,7 +306,7 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>        
+        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>CourseHaukeliseter_Backing</managed-bean-name>
@@ -295,6 +336,14 @@
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>videoService</property-name>
+            <value>#{VideoService}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -334,7 +383,15 @@
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
-    </managed-bean>        
+        <managed-property>
+            <property-name>articleService</property-name>
+            <value>#{ArticleService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>videoService</property-name>
+            <value>#{VideoService}</value>
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>Current_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.Current</managed-bean-class>
@@ -347,7 +404,7 @@
             <property-name>videoService</property-name>
             <value>#{VideoService}</value>
         </managed-property>
-    </managed-bean> 
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>EmailCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.EmailCreate</managed-bean-class>
@@ -355,12 +412,12 @@
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>  
+        </managed-property>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>         
-    </managed-bean>     
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>EmailUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.EmailUpdate</managed-bean-class>
@@ -368,8 +425,8 @@
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>        
-    </managed-bean>  
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>EventAddParticipant_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.EventAddParticipant</managed-bean-class>
@@ -377,12 +434,12 @@
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
-        </managed-property>   
+        </managed-property>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>          
-    </managed-bean>     
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>EventUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.EventUpdate</managed-bean-class>
@@ -394,12 +451,12 @@
         <managed-property>
             <property-name>participationService</property-name>
             <value>#{ParticipationService}</value>
-        </managed-property>        
+        </managed-property>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>         
-    </managed-bean>      
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>EventsMaintain_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.EventsMaintain</managed-bean-class>
@@ -408,7 +465,20 @@
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
         </managed-property>
-    </managed-bean>   
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Instructor_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.InstructorModify</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>imageService</property-name>
+            <value>#{ImageService}</value>
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>Main_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.Main</managed-bean-class>
@@ -421,7 +491,7 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property> 
+        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>SendMail_Backing</managed-bean-name>
@@ -430,12 +500,12 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property> 
+        </managed-property>
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
-        </managed-property>         
-    </managed-bean>    
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>SignUpConfirmed_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.SignUpConfirmed</managed-bean-class>
@@ -443,12 +513,12 @@
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
-        </managed-property>  
+        </managed-property>
         <managed-property>
             <property-name>id</property-name>
             <value>#{param.id}</value>
-        </managed-property>          
-    </managed-bean>     
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>SignUpSummer_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.SignUpSummer</managed-bean-class>
@@ -464,16 +534,16 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>      
+        </managed-property>
         <managed-property>
             <property-name>participationService</property-name>
             <value>#{ParticipationService}</value>
-        </managed-property> 
+        </managed-property>
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
         </managed-property>
-    </managed-bean>      
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>SignUpWinter_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.SignUpWinter</managed-bean-class>
@@ -485,16 +555,16 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>      
+        </managed-property>
         <managed-property>
             <property-name>participationService</property-name>
             <value>#{ParticipationService}</value>
-        </managed-property> 
+        </managed-property>
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>        
-    </managed-bean>   
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>TextCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.TextCreate</managed-bean-class>
@@ -502,12 +572,12 @@
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>  
+        </managed-property>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>         
-    </managed-bean>  
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>TextUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.TextUpdate</managed-bean-class>
@@ -515,8 +585,8 @@
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>        
-    </managed-bean>    
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>TextsMaintain_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.TextsMaintain</managed-bean-class>
@@ -524,8 +594,8 @@
         <managed-property>
             <property-name>textService</property-name>
             <value>#{TextService}</value>
-        </managed-property>        
-    </managed-bean>     
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>TransactionCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.TransactionCreate</managed-bean-class>
@@ -533,20 +603,20 @@
         <managed-property>
             <property-name>transactionService</property-name>
             <value>#{TransactionService}</value>
-        </managed-property> 
+        </managed-property>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>   
+        </managed-property>
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>  
+        </managed-property>
         <managed-property>
             <property-name>documentService</property-name>
             <value>#{DocumentService}</value>
-        </managed-property>         
-    </managed-bean>   
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>TransactionUpdate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.TransactionUpdate</managed-bean-class>
@@ -554,16 +624,16 @@
         <managed-property>
             <property-name>transactionService</property-name>
             <value>#{TransactionService}</value>
-        </managed-property>        
+        </managed-property>
         <managed-property>
             <property-name>imageService</property-name>
             <value>#{ImageService}</value>
-        </managed-property>    
+        </managed-property>
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
-        </managed-property>         
-    </managed-bean>     
+        </managed-property>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>TransactionsMaintain_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.TransactionsMaintain</managed-bean-class>
@@ -571,12 +641,16 @@
         <managed-property>
             <property-name>transactionService</property-name>
             <value>#{TransactionService}</value>
-        </managed-property>        
+        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>VideosMaintain_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.VideosMaintain</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>categoryService</property-name>
+            <value>#{ArticleCategoryService}</value>
+        </managed-property>
         <managed-property>
             <property-name>videoService</property-name>
             <value>#{VideoService}</value>
@@ -586,6 +660,10 @@
         <managed-bean-name>VideoCreate_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.VideoCreate</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>categoryService</property-name>
+            <value>#{ArticleCategoryService}</value>
+        </managed-property>
         <managed-property>
             <property-name>videoService</property-name>
             <value>#{VideoService}</value>
@@ -607,21 +685,25 @@
             <value>#{param.status}</value>
         </managed-property>
     </managed-bean>
-    <!-- ******** Navigation ******************************************************* -->   
+    <!-- ******** Navigation ******************************************************* -->
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>articlesMaintain</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>articleCategories</from-outcome>
+            <to-view-id>/secureD/ArticleCategoriesMaintain.jsp</to-view-id>
+        </navigation-case>
         <navigation-case>
             <from-outcome>eventsMaintain</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>       
+        </navigation-case>
         <navigation-case>
             <from-outcome>textsMaintain</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
             <from-outcome>adminEconomy</from-outcome>
             <to-view-id>/secureD/AdminEconomy.jsp</to-view-id>
@@ -629,7 +711,7 @@
         <navigation-case>
             <from-outcome>sendMail</from-outcome>
             <to-view-id>/secureD/SendMail.jsp</to-view-id>
-        </navigation-case>          
+        </navigation-case>
         <navigation-case>
             <from-outcome>preferences</from-outcome>
             <to-view-id>/secureA/Preferences.jsp</to-view-id>
@@ -638,99 +720,103 @@
             <from-outcome>videosMaintain</from-outcome>
             <to-view-id>/secureA/VideosMaintain.jsp</to-view-id>
         </navigation-case>
-    </navigation-rule> 
+        <navigation-case>
+            <from-outcome>instructorProfile</from-outcome>
+            <to-view-id>/secureD/Instructor.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleCreate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{ArticleCreate_Backing.createArticle}</from-action>                        
+            <from-action>#{ArticleCreate_Backing.createArticle}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
         <navigation-case>
-            <from-action>#{ArticleCreate_Backing.createIntro}</from-action>            
+            <from-action>#{ArticleCreate_Backing.createIntro}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
             <from-outcome>Cancel</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>            
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleImagesUpdate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{ArticleImagesUpdate_Backing.cancel}</from-action>                                    
+            <from-action>#{ArticleImagesUpdate_Backing.cancel}</from-action>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>        
+        </navigation-case>
         <navigation-case>
-            <from-action>#{ArticleImagesUpdate_Backing.saveArticle}</from-action>                        
+            <from-action>#{ArticleImagesUpdate_Backing.saveArticle}</from-action>
             <from-outcome>articleUpdate</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
         <navigation-case>
-            <from-action>#{ArticleImagesUpdate_Backing.uploadImages}</from-action>                        
+            <from-action>#{ArticleImagesUpdate_Backing.uploadImages}</from-action>
             <from-outcome>articleUpdate</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
-        </navigation-case>                    
-    </navigation-rule>   
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleMasterUpdate.jsp</from-view-id>
         <navigation-case>
             <from-action>#{ArticleMasterUpdate_Backing.updateArticle}</from-action>
             <from-outcome>articleUpd</from-outcome>
             <to-view-id>/secureA/ArticleUpdate.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
             <from-action>#{ArticleMasterUpdate_Backing.updateIntro}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case> 
+        </navigation-case>
         <navigation-case>
             <from-outcome>Cancel</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>           
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticleUpdate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{ArticleUpdate_Backing.goToArticleImagesUpdate}</from-action>               
+            <from-action>#{ArticleUpdate_Backing.goToArticleImagesUpdate}</from-action>
             <from-outcome>articleImagesUpdate</from-outcome>
             <to-view-id>/secureA/ArticleImagesUpdate.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
         <navigation-case>
-            <from-action>#{ArticleUpdate_Backing.goToArticleMasterUpdate}</from-action>             
+            <from-action>#{ArticleUpdate_Backing.goToArticleMasterUpdate}</from-action>
             <from-outcome>articleMasterUpdate</from-outcome>
             <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
         <navigation-case>
-            <from-action>#{ArticleUpdate_Backing.saveArticle}</from-action>                                    
+            <from-action>#{ArticleUpdate_Backing.saveArticle}</from-action>
             <from-outcome>articlesMaintain</from-outcome>
             <to-view-id>/secureA/ArticlesMaintain.jsp</to-view-id>
-        </navigation-case>            
-    </navigation-rule> 
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/ArticlesMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>articleCreate</from-outcome>
             <to-view-id>/secureA/ArticleCreate.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
             <from-action>#{ArticlesMaintain_Backing.selectEditArticle}</from-action>
             <from-outcome>articleMasterUpdate</from-outcome>
             <to-view-id>/secureA/ArticleMasterUpdate.jsp</to-view-id>
-        </navigation-case> 
+        </navigation-case>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>        
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/Preferences.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>        
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureA/VideoCreate.jsp</from-view-id>
@@ -748,76 +834,83 @@
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/ArticleCategoriesMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/CourseCreate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>            
+            <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>
             <from-outcome>eventsMaintain</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>         
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/EmailCreate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{EmailCreate_Backing.createEmail}</from-action>            
+            <from-action>#{EmailCreate_Backing.createEmail}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/EmailUpdate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{EmailUpdate_Backing.update}</from-action>            
+            <from-action>#{EmailUpdate_Backing.update}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/EventAddParticipant.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{EventAddParticipant_Backing.addParticipant}</from-action>            
+            <from-action>#{EventAddParticipant_Backing.addParticipant}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/EventUpdate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case> 
+        </navigation-case>
         <navigation-case>
             <from-outcome>addParticipant</from-outcome>
             <to-view-id>/secureD/EventAddParticipant.jsp</to-view-id>
-        </navigation-case>     
+        </navigation-case>
         <navigation-case>
             <from-outcome>signUpWinter</from-outcome>
             <to-view-id>/SignUpWinter.jsp</to-view-id>
-        </navigation-case>        
+        </navigation-case>
         <navigation-case>
-            <from-action>#{EventUpdate_Backing.updateEvent}</from-action>            
+            <from-action>#{EventUpdate_Backing.updateEvent}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>     
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
         <navigation-case>
@@ -827,136 +920,156 @@
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{EventsMaintain_Backing.eventUpdate}</from-action>            
+            <from-action>#{EventsMaintain_Backing.eventUpdate}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule> 
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/Instructor.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{Instructor_Backing.store}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/SendMail.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>  
-    </navigation-rule>     
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/TextCreate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{TextCreate_Backing.createText}</from-action>            
+            <from-action>#{TextCreate_Backing.createText}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>        
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/TextUpdate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{TextUpdate_Backing.update}</from-action>            
+            <from-action>#{TextUpdate_Backing.update}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/TextsMaintain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/TextsMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
             <from-outcome>textCreate</from-outcome>
             <to-view-id>/secureD/TextCreate.jsp</to-view-id>
-        </navigation-case> 
+        </navigation-case>
         <navigation-case>
             <from-outcome>emailCreate</from-outcome>
             <to-view-id>/secureD/EmailCreate.jsp</to-view-id>
-        </navigation-case>        
+        </navigation-case>
         <navigation-case>
-            <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>            
+            <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>
             <from-outcome>textUpdate</from-outcome>
             <to-view-id>/secureD/TextUpdate.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
-            <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>            
+            <from-action>#{TextsMaintain_Backing.textUpdate}</from-action>
             <from-outcome>emailUpdate</from-outcome>
             <to-view-id>/secureD/TextUpdate.jsp</to-view-id>
-        </navigation-case>         
-    </navigation-rule> 
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/TransactionUpdate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>Cancel</from-outcome>
             <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
-        </navigation-case>  
+        </navigation-case>
         <navigation-case>
-            <from-action>#{TransactionUpdate_Backing.update}</from-action>            
+            <from-action>#{TransactionUpdate_Backing.update}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>      
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/TransactionCreate.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{TransactionCreate_Backing.createTransaction}</from-action>            
+            <from-action>#{TransactionCreate_Backing.createTransaction}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
             <from-outcome>Cancel</from-outcome>
             <to-view-id>/secureD/TransactionsMaintain.jsp</to-view-id>
-        </navigation-case>            
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/secureD/TransactionsMaintain.jsp</from-view-id>
         <navigation-case>
             <from-outcome>transactionCreate</from-outcome>
             <to-view-id>/secureD/TransactionCreate.jsp</to-view-id>
-        </navigation-case>    
+        </navigation-case>
         <navigation-case>
             <from-action>#{TransactionsMaintain_Backing.selectEditTransaction}</from-action>
             <from-outcome>transactionUpdate</from-outcome>
             <to-view-id>/secureD/TransactionUpdate.jsp</to-view-id>
-        </navigation-case> 
+        </navigation-case>
         <navigation-case>
             <from-action>#{TransactionsMaintain_Backing.invoice}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/secureD/Invoice.jsp</to-view-id>
-        </navigation-case> 
+        </navigation-case>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>        
-    </navigation-rule>    
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/SignUpSummer.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{SignUpSummer_Backing.signOn}</from-action>               
+            <from-action>#{SignUpSummer_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
             <to-view-id>/signUpConfirmed.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/SignUpWinter.jsp</from-view-id>
         <navigation-case>
-            <from-action>#{SignUpWinter_Backing.signOn}</from-action>               
+            <from-action>#{SignUpWinter_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
             <to-view-id>/signUpConfirmed.jsp</to-view-id>
-        </navigation-case>            
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/nd/SignUpSummerForm.jsp</from-view-id>
         <navigation-case>
             <from-action>#{SignUpSummer_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>/signUpConfirmed.jsp</to-view-id>
+            <to-view-id>/nd/signUpSummerConfirmed.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/nd/SignUpHaukeliseter.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{SignUpWinter_Backing.signOn}</from-action>
+            <from-outcome>SignUpConfirmed</from-outcome>
+            <to-view-id>/nd/signUpWinterConfirmed.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -976,3 +1089,4 @@
         </navigation-case>
     </navigation-rule>
 </faces-config>
+

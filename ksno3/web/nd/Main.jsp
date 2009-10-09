@@ -23,21 +23,16 @@
                 });
             }
 
-
-            $(document).ready(function(){
-                //select all the a tag with name equal to modal
-                $('a[name=modal]').click(function(e) {
-                    //Cancel the link behavior
-                    e.preventDefault();
+            function openModalVideo(url){
                     //Get the A tag
-                    var id = $(this).attr('href');
+                    var id = '#dialog';
 
                     //Get the screen height and width
-                    var maskHeight = 2000;
-                    var maskWidth = 2000;
+                    var maskHeight = document.body.scrollHeight;
+                    var maskWidth = document.body.scrollWidth;
 
                     //Set height and width to mask to fill up the whole screen
-                    $('#mask').css({'width':maskWidth,'height':maskHeight,'left':'0'});
+                    $('#mask').css({'width':maskWidth,'height':maskHeight,'left':'0','top':'0'});
                     //transition effect
                     $('#mask').fadeIn(1000);
                     $('#mask').fadeTo("slow",0.8);
@@ -45,16 +40,25 @@
                     //Get the window height and width
                     var winH = $(window).height();
                     var winW = $(window).width();
+                    var videoWidth = '650';
+
+                    var videoHeight = '505';
+
+var val ="<object width='"+videoWidth+"' height='"+videoHeight+"'><param name='movie' value='"+url+"'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='"+url+"' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='"+videoWidth+"' height='"+videoHeight+"'></embed></object>";
+        $(id).html(val);
 
                     //Set the popup window to center
-                    $(id).css('top',  winH/2-$(id).height()/2);
-                    $(id).css('left', winW/2-$(id).width()/2);
+                    $(id).css('top',  (winH/2)-(videoHeight/2));
+                    $(id).css('left', (winW/2)-(videoWidth/2));
 
                     //transition effect
                     $(id).fadeIn(2000);
 
-                });
+                }
 
+
+            $(document).ready(function(){
+                //select all the a tag with name equal to modal
                 //if close button is clicked
                 $('.window .close').click(function (e) {
                     //Cancel the link behavior
@@ -103,7 +107,6 @@
             <!-- #customize your modal window here -->
             <div id="boxes">
                 <div id="dialog" class="window">
-                    <object width="320" height="265"><param name="movie" value="http://www.youtube.com/v/-2Y5UBChD_Y&hl=en&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/-2Y5UBChD_Y&hl=en&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="320" height="265"></embed></object>
                     <a href="#" class="close">Close it</a>
                 </div>
             </div>
@@ -121,9 +124,9 @@
                                 <tr>
                                     <td style="width:58px;"><a style="font-weight:bolder" href="Home.jsp" target="content">Hjem</a></td>
                                     <td style="width:70px"><a href="Articles.jsp" target="content">Nyheter</a></td>
-                                    <td style="width:98px"><a href="CourseJaren.jsp" target="content" >Kurs J&aelig;ren</a></td>
-                                    <td style="width:136px"><a href="CoursesHaukeliseter.jsp" target="content">Kurs Haukeliseter</a></td>
-                                    <td style="width:86px"><a href="aboutUs.html" target="content">Om oss</a></td>
+                                    <td style="width:98px"><a href="CourseJaren.jsp" target="content" >Sommerkurs</a></td>
+                                    <td style="width:86px"><a href="CoursesHaukeliseter.jsp" target="content">Vinterkurs</a></td>
+                                    <td style="width:86px"><a href="aboutUs.jsp" target="content">Om oss</a></td>
                                 </tr>
                             </table>
                         </td>
