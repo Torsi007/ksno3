@@ -130,6 +130,18 @@ public class EventDaoImpl implements EventDao {
         
 
     }
+
+    public List<BeginnerCourse> getBeginnerCourses(Calendar fromDate) {
+        Query q = null;
+        List returnVal = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        q=session.createQuery("from BeginnerCourse bc where bc.startDate > :fromdate order by bc.startDate asc");
+        q.setParameter("fromdate",fromDate.getTime());
+        returnVal =  q.list();
+
+        return returnVal;
+    }
     
     public List getBeginnerCourses(Date fromDate, Date toDate, String location) {
         Query q = null;

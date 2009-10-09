@@ -18,6 +18,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import ksno.model.LabelObjectValuePair;
 import ksno.model.LabelValuePair;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
@@ -118,6 +119,29 @@ public class JSFUtil {
         }
         return selectItems;        
     }
+
+    public static SelectItem[] toObjectSelectItemArray(List items) {
+        return JSFUtil.toObjectSelectItemArray(items, false);
+    }
+
+    public static SelectItem[] toObjectSelectItemArray(List items, boolean includeEmpty) {
+        SelectItem[] selectItems = null;
+        if(includeEmpty){
+            selectItems = new SelectItem[items.size() + 1];
+            selectItems[0] = new SelectItem("-1","<Please select>");
+            for(int i = 1; i< selectItems.length; i++){
+                LabelObjectValuePair kvp = (LabelObjectValuePair)items.get(i - 1);
+                selectItems[i] = new SelectItem(kvp.getObject(),kvp.getLabel());
+            }
+        }else{
+            selectItems = new SelectItem[items.size()];
+            for(int i = 0; i< selectItems.length; i++){
+                LabelObjectValuePair kvp = (LabelObjectValuePair)items.get(i);
+                selectItems[i] = new SelectItem(kvp.getObject(),kvp.getLabel());
+            }
+        }
+        return selectItems;
+    }
     
     public static String uploadImage(UploadedFile file, HtmlOutputText result){
         String strReturn = null;
@@ -174,6 +198,7 @@ public class JSFUtil {
     public static final String sessionBeanVideoModify = "VideoModify";
     public static final String sessionBeanTextModify = "TextModify";
     public static final String sessionBeanArticleModify = "ArticleModify";
+    public static final String sessionBeanArticleCategoryModify = "ArticleCategoryModify";
     public static final String sessionBeanEventModify = "EventModify";    
     public static final String sessionBeanSignedOnEvent = "SignedOnEvent";    
     public static final String sessionBeanParticipationModify = "ParticipationModify";

@@ -21,7 +21,6 @@ public interface EventService {
     public void updateEvent(Event event);
     public Event getEvent(Long id); 
     public BeginnerCourse getBeginnerCourse(Long id);    
-    public List getBeginnerCourses();
     public List getOpenUpcommingWinterBeginnerCourses(); 
     public String getAwailableSeatsOnOpenUpcommingWinterBeginnerCourses();
     public List getOpenUpcommingSummerBeginnerCourses();   

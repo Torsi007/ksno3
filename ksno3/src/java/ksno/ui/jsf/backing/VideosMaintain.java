@@ -18,10 +18,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIData;
+import javax.faces.model.SelectItem;
+import ksno.model.Category;
 import ksno.model.Video;
+import ksno.service.ArticleCategoryService;
+import ksno.service.ArticleService;
 import ksno.service.VideoService;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -31,8 +36,34 @@ public class VideosMaintain {
     private VideoService videoService;
     private HtmlOutputText errorMsg;
     private UIData data;
+    ArticleCategoryService categoryService;
+    private HtmlSelectOneMenu slctCategory;
+
 
     // <editor-fold defaultstate="collapsed" desc=" getters and setters">
+    public SelectItem[] getCategorySelectItems() {
+        List<Category> Categories = categoryService.getArticleCategorys();
+        return JSFUtil.toObjectSelectItemArray(Categories);
+    }
+
+
+    public ArticleCategoryService getCategoryService() {
+        return categoryService;
+    }
+
+    public void setCategoryService(ArticleCategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+
+    public HtmlSelectOneMenu getSlctCategory() {
+        return slctCategory;
+    }
+
+    public void setSlctCategory(HtmlSelectOneMenu slctCategory) {
+        this.slctCategory = slctCategory;
+    }
+
   private Logger getLogService(){
       return Logger.getLogger(this.getClass().getName());
   }     
@@ -103,7 +134,24 @@ public class VideosMaintain {
         }       
 
        return returnVal;
-    }    
+    }
+
+   public String videosUpdate(){
+       String returnVal = "sucess";
+        try{
+            List videos = (List)getData().getValue();
+            for(int i = 0; i< videos.size(); i++){
+                Video video = (Video)videos.get(i);
+                videoService.updateVideo(video);
+            }
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to update videos", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
+            returnVal = "no";
+        }
+       return returnVal;
+    }
+
    
 
     

@@ -22,7 +22,12 @@ import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import com.google.gdata.util.common.xml.*;
 import com.google.gdata.data.extensions.Email;
 import com.google.gdata.data.media.mediarss.MediaThumbnail;
+import java.util.List;
+import javax.faces.model.SelectItem;
+import ksno.model.Category;
+import ksno.service.ArticleCategoryService;
 import org.apache.myfaces.component.html.ext.HtmlInputHidden;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -42,6 +47,29 @@ public class VideoCreate {
     String id;
     String status;
     String code;
+    private HtmlSelectOneMenu slctCategory;
+    private ArticleCategoryService categoryService;
+
+    public ArticleCategoryService getCategoryService() {
+        return categoryService;
+    }
+
+    public void setCategoryService(ArticleCategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+    public HtmlSelectOneMenu getSlctCategory() {
+        return slctCategory;
+    }
+
+    public SelectItem[] getCategorySelectItems() {
+        List<Category> Categories = categoryService.getArticleCategorys();
+        return JSFUtil.toSelectItemArray(Categories);
+    }
+
+    public void setSlctCategory(HtmlSelectOneMenu slctCategory) {
+        this.slctCategory = slctCategory;
+    }
 
     public String getCode() {
         return code;
@@ -151,6 +179,10 @@ public class VideoCreate {
             setVideo(new Video());
             getVideo().setName(JSFUtil.getText(name));
             getVideo().setDescription(JSFUtil.getText(description));
+            long categoryId = Long.parseLong(slctCategory.getValue().toString());
+            Category category = categoryService.getArticleCategory(categoryId);
+            getVideo().setCategory(category);
+
             String userName = JSFUtil.getRequest().getUserPrincipal().getName();
             Person currentUser = personService.getPerson(userName);
             getVideo().setOwner(currentUser);
@@ -178,6 +210,9 @@ public class VideoCreate {
             String userName = JSFUtil.getRequest().getUserPrincipal().getName();
             Person currentUser = personService.getPerson(userName);
             video.setOwner(currentUser);
+            long l = 1;
+            Category category = categoryService.getArticleCategory(l);
+            video.setCategory(category);
             videoService.newVideo(video);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create video", e);
