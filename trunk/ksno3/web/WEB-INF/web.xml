@@ -48,6 +48,11 @@
         <param-name>youtube.baseUrl</param-name>
         <param-value>http://gdata.youtube.com/feeds/api/users/kitesurfingNo/uploads</param-value>
     </context-param>
+    <context-param>
+        <description>Unicode escaping</description>
+        <param-name>com.sun.faces.disableUnicodeEscaping</param-name>
+        <param-value>true</param-value>
+    </context-param>
     <filter>
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>

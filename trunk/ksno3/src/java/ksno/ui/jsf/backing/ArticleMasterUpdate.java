@@ -107,7 +107,7 @@ public class ArticleMasterUpdate {
                 article.setAvatarUrl(imageSize.get(ImageMeta.sizeMIN));
                 article.addImage(image);
             }
-            Category cat = articleService.getCategory(slctCategory.getValue().toString());
+            Category cat = articleService.getCategory(Long.parseLong(slctCategory.getValue().toString()));
             article.setCategory(cat);
             getLogService().log(Level.INFO,"Setting category: " +  cat);
             articleService.updateArticle(article);

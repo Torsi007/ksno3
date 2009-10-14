@@ -1,16 +1,10 @@
-<%-- 
-    Document   : CreateVideo
-    Created on : 16.sep.2008, 18:59:01
-    Author     : halsnehauge
---%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
+
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Upload video</title>
+
+        <title>kitesurfing.no - last opp video</title>
         <script type="text/javascript" src="../resources/js/jquery.js"></script>
         <script src="../resources/js/logic.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -53,4 +47,5 @@
         </f:view>
         <iframe frameborder="none" style="width:100%; height: 400; border:none" src="VideoMetaCreate.jsp" id="content"></iframe>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+

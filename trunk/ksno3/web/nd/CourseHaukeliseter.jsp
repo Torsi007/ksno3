@@ -1,20 +1,13 @@
+<jsp:include page="Heading.jsp" ></jsp:include>
 
-<%-- 
-    Document   : SignUp
-    Created on : 07.okt.2008, 20:01:44
-    Author     : halsnehauge
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 <html>
     <head>
-        <title>JSP Page</title>
+        <title>kitesurfing.no - kurs vinter</title>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
         <link rel="stylesheet" type="text/css" href="css/courseHaukeliseter.css" />
-        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
     </head>
     <body class="signup">
@@ -40,7 +33,7 @@
                                         <td>Neoprenleie:</td><td class="right" align="right">200</td><td>,-</td>
                                     </tr>
                                 </table>
-                             </div>
+                            </div>
                         </td>
                         <td class="middleSection"></td>
                         <td class="rightSection">
@@ -59,7 +52,7 @@
                 <table class="bottomSection">
                     <tr>
                         <td class="leftSection" valign="top">
-                            <h1>PÃ¥melding</h1>
+                            <h1>Påmelding</h1>
                             <t:htmlTag value="iframe" >
                                 <f:param name="src" value="../nd/SignUpHaukeliseter.jsp?courseId=#{CourseHaukeliseter_Backing.id}" />
                                 <f:param name="scrolling" value="no" />
@@ -73,18 +66,18 @@
                                 <f:param name="src" value="#{CourseHaukeliseter_Backing.course.courseResponsible.profilePicture}" />
                             </t:htmlTag>
                             <p>
-                                Mitt navn er <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig pÃ¥ kurset du nÃ¥ titter pÃ¥. Vi hÃ¥per du finner det du trenger av informasjon. Har du noen spÃ¸rsmÃ¥l send meg en mail pÃ¥
+                                Mitt navn er <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig på kurset du nå titter på. Vi håper du finner det du trenger av informasjon. Har du noen spørsmål send meg en mail på
                                 <t:htmlTag value="a">
                                     <f:param name="href" value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" />
                                     <h:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" escape="false"/>
                                 </t:htmlTag>
-                                eller ring pÃ¥ <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
+                                eller ring på <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
                             </p>
                             <h1>Deltagere</h1>
                             <table>
                                 <tr>
                                     <td>
-                                        <h2>PÃ¥meldte</h2>
+                                        <h2>Påmeldte</h2>
                                         <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
                                             <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
                                                 <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
@@ -108,4 +101,5 @@
             </h:form>
         </f:view>       
     </body>
-</html>
+    <jsp:include page="Ending.jsp" ></jsp:include>
+

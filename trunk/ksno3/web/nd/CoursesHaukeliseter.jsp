@@ -1,16 +1,13 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<jsp:include page="Heading.jsp" ></jsp:include>
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
-<html>
-    <head>
-        <title>kitesurfing.no - kite kurs pÃ¥ jÃ¦ren</title>
+
+        <title>kitesurfing.no - kitekurs</title>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
         <link rel="stylesheet" type="text/css" href="css/coursesHaukeliseter.css" />
-        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
@@ -53,8 +50,8 @@
                         <td class="rightSection">
                             <div>
                                 <h1>Hva er et nybegynnerkurs?</h1>
-                                MÃ¥let vÃ¥rt er at du som deltager skal sitte igjen med erfaring og kunnskap nok til Ã¥ kunne gÃ¥ ut Ã¥ kite pÃ¥ egenhÃ¥nd pÃ¥ snÃ¸ eller vann etter et nybegynnerkurs.
-                                Vi lÃ¦rer deg de grunnleggende tingene, som sikkerhet, vurdering av spots, vÃ¦r og vind, launching, landing og kraft kontroll. I lÃ¸pet av et kurs tilstreber vi Ã¥ gi alle one-on-one assistanse i de mer avanserte Ã¸velsene.
+                                Målet vårt er at du som deltager skal sitte igjen med erfaring og kunnskap nok til å kunne gå ut å kite på egenhånd på snø eller vann etter et nybegynnerkurs.
+                                Vi lærer deg de grunnleggende tingene, som sikkerhet, vurdering av spots, vær og vind, launching, landing og kraft kontroll. I løpet av et kurs tilstreber vi å gi alle one-on-one assistanse i de mer avanserte øvelsene.
                             </div>
                         </td>
                     </tr>
@@ -64,24 +61,24 @@
                         <td class="leftSection">
                             <div>
                             <h1>Hvem kan delta</h1>
-                            <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snÃ¸sporter. Dette gjÃ¸r det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Med kiten kan du gi deg ut pÃ¥ alt fra rolige, lange skiturer pÃ¥ fjellet, til Ã¥ kite i store bÃ¸lger med et surfebrett. Til tross for at kitesurfing kan vÃ¦re en ekstremsport er det ogsÃ¥ en sport som er mulig Ã¥ utÃ¸ve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 Ã¥r og du trenger ikke Ã¥ vÃ¦re stark! Det er en riktig familieaktivitet, der alle kan utÃ¸ve sporten pÃ¥ sin mÃ¥te â€“ ekstremt eller rolig. Men Ã¥ lÃ¦re kiting er bÃ¥de vanskelig og forenet med stor risiko dersom man prÃ¸ver Ã¥ lÃ¦re pÃ¥ egen hÃ¥nd! Av den grunn bÃ¸r alle som har lyst til Ã¥ begynne ta et kurs! FÃ¸rst og fremst med tanke pÃ¥ sikkerhet, men ogsÃ¥ for  raskere progresjon. Er du under 16 Ã¥r, mÃ¥ du ha med godkjennelse fra foreldre for Ã¥ kunne delta.</p>
+                            <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Med kiten kan du gi deg ut på alt fra rolige, lange skiturer på fjellet, til å kite i store bølger med et surfebrett. Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være stark! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte ? ekstremt eller rolig. Men å lære kiting er både vanskelig og forenet med stor risiko dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
                             <h1>Kurstilbudene</h1>
                             <h2>2 dagers kurs</h2>
-                            <p>Hovedtema pÃ¥ kurset vil vÃ¦re:</p>
+                            <p>Hovedtema på kurset vil være:</p>
                             <ul type="square">
-                                <li>ForstÃ¥else av kitens flyomrÃ¥der og kraftsoner</li>
+                                <li>Forståelse av kitens flyområder og kraftsoner</li>
                                 <li>Linedisiplin</li>
                                 <li>Sikkerhet</li>
                                 <li>Rigging/nedrigging</li>
                                 <li>"Launching" og landing av kiten</li>
                                 <li>Navigering av kite</li>
-                                <li>Kiteboarding/skiing pÃ¥ egenhÃ¥nd</li>
+                                <li>Kiteboarding/skiing på egenhånd</li>
                                 <li>Valg av utstyr</li>
                             </ul>
                             <h2>Teambuilding / Spesialer</h2>
-                            <p>Vi lager et opplegg som er spesialtilpasset dine Ã¸nsker. Utgangspunktet er en fire-timers basis der vi fokuserer pÃ¥ action og morro, istedet for detaljer og teori. Vi kan ogsÃ¥ ordne kombinasjoner med hundekjÃ¸ring, toppturer eller andre aktiviteter.						Varighet og lokasjon kan dere vÃ¦re med Ã¥ pÃ¥virke. Ta kontakt for nÃ¦rmere info.</p>
+                            <p>Vi lager et opplegg som er spesialtilpasset dine ønsker. Utgangspunktet er en fire-timers basis der vi fokuserer på action og morro, istedet for detaljer og teori. Vi kan også ordne kombinasjoner med hundekjøring, toppturer eller andre aktiviteter.						Varighet og lokasjon kan dere være med å påvirke. Ta kontakt for nærmere info.</p>
                             <h1>Lokasjon</h1>
-                            <p>OppmÃ¸te og utgangspunkt for kurset vil vÃ¦re pÃ¥ <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a>. Eksakt lokasjon vil avhenge av vindretning, og vil derfor variere fra gang til gang.</p>
+                            <p>Oppmøte og utgangspunkt for kurset vil være på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a>. Eksakt lokasjon vil avhenge av vindretning, og vil derfor variere fra gang til gang.</p>
                             <h1>Pris</h1>
                             <h2>2 dagers kurs</h2>
                             <p>Kun kurs</p>
@@ -89,13 +86,13 @@
                                 <li>1 Person : 1950 NOK</li>
                             </ul>
                             <h2>Pakkepris med kost og losi</h2>
-                            <p>Prisen varierer beroende pÃ¥ hva du Ã¸nsker for losji og mat. Vi har valgt Ã¥ lage to forskjellige priseksempel for Ã¥ tilgodese alle lommebÃ¸ker.
+                            <p>Prisen varierer beroende på hva du ønsker for losji og mat. Vi har valgt å lage to forskjellige priseksempel for å tilgodese alle lommebøker.
                                 <br/>
-                                Et rimelig alternativ, med losji pÃ¥ stabbur, for deg som vil ha enkel losji og som trenger penger til kiteutstyr. Inkludert er del i stabbursrom to netter med tilgang til kjÃ¸kken, treretterts middag og villmarkspa lÃ¸rdags kveld, samt kitekurs og lÃ¥n av utstyr hele helgen.
+                                Et rimelig alternativ, med losji på stabbur, for deg som vil ha enkel losji og som trenger penger til kiteutstyr. Inkludert er del i stabbursrom to netter med tilgang til kjøkken, treretterts middag og villmarkspa lørdags kveld, samt kitekurs og lån av utstyr hele helgen.
                                 <br/>
-                                "Fullpensjon og fjellrom" er for de som vil ha litt mer luksus. Da er det inkludert treretters middag lÃ¸rdags kveld samt frokost og niste for to dager. Boendet er i fjellrom, to netter, med dusj, toalett og oppredde senger. Kitekurs og lÃ¥n av utstyr hele helgen er selvfÃ¸lgelig og inkludert. 
+                                "Fullpensjon og fjellrom" er for de som vil ha litt mer luksus. Da er det inkludert treretters middag lørdags kveld samt frokost og niste for to dager. Boendet er i fjellrom, to netter, med dusj, toalett og oppredde senger. Kitekurs og lån av utstyr hele helgen er selvfølgelig og inkludert. 
                             </p>
-                            <h2>Kitekurs, middag og losji pÃ¥ stabbur</h2>
+                            <h2>Kitekurs, middag og losji på stabbur</h2>
                             <ul type="square">
                                 <li>DNT medlem, under 26 : 2515 kr</li>
                                 <li>DNT medlem, voksen : 2690 kr</li>
@@ -107,9 +104,9 @@
                                 <li>Ikke medlem : 3700 kr</li>
                             </ul>
                             <h1>Vindgaranti</h1>
-                            <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal vÃ¦re fornÃ¸yde og fÃ¸le at de fÃ¥r valuta for pengene. Dersom vÃ¦rgudene skulle vÃ¦re vanskelige og det blir vanskelig Ã¥ gjennomfÃ¸re kurset pÃ¥ en tilfredstillende mÃ¥te, er vi fleksible nok til Ã¥ tilby dere plass pÃ¥ et annet kurs gratis! Vi regner med Ã¥ kunne gjennomfÃ¸re kurset dersom det er minimum 4 timer med nok vind for Ã¥ fly kitene.
+                            <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene.
                                 <br/>
-                                Dere mÃ¥ fortsatt betale for kost og losji dersom dere bor pÃ¥ Haukeliseter
+                                Dere må fortsatt betale for kost og losji dersom dere bor på Haukeliseter
                             </p>
                             <h1>Praktisk</h1>
                             <p>Vi stiller med:</p>
@@ -119,22 +116,22 @@
                                 <li>Ekstra hjelmer for de som ikke har egen</li>
                             </ul>
                             <p>
-                                Dere bÃ¸r ta med:
+                                Dere bør ta med:
                             </p>
                             <ul type="square">
-                                <li>Godt med klÃ¦r, inkludert varm jakke i pausene, ekstra votter og gamasjer! Vi er ute i snÃ¸en hele dagen! </li>
-                                <li>Alpin-ski eller snowboard. (Kan du begge anbefaler vi ski i starten. Vi frarader Ã¥ bruke fjellski.)</li>
+                                <li>Godt med klær, inkludert varm jakke i pausene, ekstra votter og gamasjer! Vi er ute i snøen hele dagen! </li>
+                                <li>Alpin-ski eller snowboard. (Kan du begge anbefaler vi ski i starten. Vi frarader å bruke fjellski.)</li>
                                 <li>Solfaktor</li>
-                                <li>Hjelm og snÃ¸briller</li>
+                                <li>Hjelm og snøbriller</li>
                                 <li>Termos</li>
-                                <li>BadeklÃ¦r / undertÃ¸y for bruk i stampen.</li>
-                                <li>For skikjÃ¸rere med stive plastsko: Alternativ, varm stÃ¸vel som er lettere Ã¥ bevege seg i fÃ¸r vi begynner med ski pÃ¥ beina.</li>
-                                <li>Eget sengetÃ¸y / sovepose hvis du bor pÃ¥ stabbur eller selvstellsrom. Du kan og leie i resepsjonen.</li>
+                                <li>Badeklær / undertøy for bruk i stampen.</li>
+                                <li>For skikjørere med stive plastsko: Alternativ, varm støvel som er lettere å bevege seg i før vi begynner med ski på beina.</li>
+                                <li>Eget sengetøy / sovepose hvis du bor på stabbur eller selvstellsrom. Du kan og leie i resepsjonen.</li>
                             </ul>
-                            <h1>SpÃ¸rsmÃ¥l?</h1>
-                            <p>Har du noen spÃ¸rsmÃ¥l sÃ¥ send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
-                            <p>Har du spÃ¸rsmÃ¥l om overnatting, mat og losji, ring <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter</a> pÃ¥ tlf 35062777 eller send mail til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a></p>
-                            <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig Ã¥ booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle Ã¸nsker. Send oss en mail eller ting.</p>
+                            <h1>Spørsmål?</h1>
+                            <p>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
+                            <p>Har du spørsmål om overnatting, mat og losji, ring <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter</a> på tlf 35062777 eller send mail til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a></p>
+                            <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ting.</p>
                             </div>
                         </td>
                         <td class="rightSection">
@@ -189,5 +186,5 @@
             </h:form>
         </f:view>
     </body>
-</html>
+<jsp:include page="Ending.jsp" ></jsp:include>
 

@@ -168,6 +168,7 @@ public class InstructorModify {
             aboutMe.setSubject("Short text for instructor " +  ins.getFirstName());
             aboutMe.setCreatedDate(new Date());
             aboutMe.setLastUpdatedDate(new Date());
+            getLogService().log(Level.INFO, "Storing instructor profile data: Text" + aboutMe.getBody());
             ins.setAboutMe(aboutMe);
             personService.updatePerson(ins);
             

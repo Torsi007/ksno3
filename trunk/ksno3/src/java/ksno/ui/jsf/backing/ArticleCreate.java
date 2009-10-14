@@ -133,7 +133,7 @@ public class ArticleCreate {
             Article article = new Article();
             article.setName(name.getValue().toString());
             article.setIntro(intro.getValue().toString());
-            Category category = articleService.getCategory(slctCategory.getValue().toString());
+            Category category = articleService.getCategory(Long.parseLong(slctCategory.getValue().toString()));
             article.setCategory(category);
             String userName = JSFUtil.getRequest().getUserPrincipal().getName();
             Person currentUser = personService.getPerson(userName);
@@ -148,6 +148,7 @@ public class ArticleCreate {
             article.setAvatarUrl(imageSize.get(ImageMeta.sizeMIN));
             
             article.addImage(image);
+            getLogService().log(Level.INFO, "Creating article with heading: " + article.getName());
             
             articleService.newArticle(article);
             JSFUtil.getSessionMap().put(JSFUtil.sessionBeanArticleModify, article);

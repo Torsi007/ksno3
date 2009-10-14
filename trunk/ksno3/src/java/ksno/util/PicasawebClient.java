@@ -116,6 +116,7 @@ import javax.faces.context.ExternalContext;
     }else{
         returnImageMap.put(ImageMeta.sizeMAX , url);
     }
+    returnImageMap.put(ImageMeta.sizeMed , url.replaceFirst("/s144/", "/s288/"));
     returnImageMap.put(ImageMeta.url , returnedPhoto.getHtmlLink().getHref());
 
     return returnImageMap;

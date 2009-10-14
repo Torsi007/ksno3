@@ -229,7 +229,7 @@ public class ArticleImagesUpdate {
             upLoadImgResult.setValue("File uploaded failed. " + ex.getMessage());
             Logger.getLogger(ArticleImagesUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String imgName = imageSize.get(ImageMeta.sizeMAX);
+        String imgName = imageSize.get(ImageMeta.sizeMed);
         if(imgName != null){
             Person currentUser = personService.getPerson(JSFUtil.getRequest().getUserPrincipal().getName());
             image.setOwner(currentUser);

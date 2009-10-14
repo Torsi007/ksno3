@@ -1,17 +1,11 @@
-<%-- 
-    Document   : Preferences
-    Created on : 08.des.2008, 22:30:16
-    Author     : tor.hauge
---%>
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>  
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>kitesurfing.no - instillinger</title>
         <script type="text/javascript">
             function validate(){
                 var domElemPw1 = document.getElementById('preferences:pw1'); 
@@ -21,13 +15,13 @@
                    if(domElemPw1.value.length > 5){
                         if(domElemPw1.value != domElemPw2.value){
                             returnval = false;
-                            alert("Passordene du har angitt stemmer ikke overrens, legg til verider pÃ¥ nytt");
+                            alert("Passordene du har angitt stemmer ikke overrens, legg til verider på nytt");
                             domElemPw1.value = domElemPw2.value = "";
                             domElemPw1.focus();                            
                         }
                    }else{
                        returnval = false;
-                       alert("Passordene du angir mÃ¥ vÃ¦re lengre enn 5 bokstaver");
+                       alert("Passordene du angir må være lengre enn 5 bokstaver");
                         domElemPw1.value = domElemPw2.value = "";
                         domElemPw1.focus();                       
                    }
@@ -45,10 +39,10 @@
                 <h3>Felles mail</h3>
                 <table>
                     <tr>
-                        <td colspan="2">Kitesurfing.no Ã¸nsker ikke Ã¥ plage deg med unÃ¸dvendig spam og er derfor restriktive hva angÃ¥r utsendelse av mails. Normalt vil vi sende to felles mail i Ã¥ret, en mail pÃ¥ hÃ¸sten hvor vi gir deg tilbud pÃ¥ brukt kiter, og en nyhetsmail tidlig pÃ¥ nyÃ¥ret. Om du ikke Ã¸nsker Ã¥ motta slik mail fra oss kan du skru av dette nedenfor.</td>
+                        <td colspan="2">Kitesurfing.no ønsker ikke å plage deg med unødvendig spam og er derfor restriktive hva angår utsendelse av mails. Normalt vil vi sende to felles mail i året, en mail på høsten hvor vi gir deg tilbud på brukt kiter, og en nyhetsmail tidlig på nyåret. Om du ikke ønsker å motta slik mail fra oss kan du skru av dette nedenfor.</td>
                     </tr>
                     <tr>
-                        <td style="width:300" nowrap>Ja jeg Ã¸nsker Ã¥ motta mails fra kitesurfing.no</td><td style="width:100%;" align="left"><t:selectBooleanCheckbox value="#{Preferences_Backing.user.allowMail}"/></td>
+                        <td style="width:300" nowrap>Ja jeg ønsker å motta mails fra kitesurfing.no</td><td style="width:100%;" align="left"><t:selectBooleanCheckbox value="#{Preferences_Backing.user.allowMail}"/></td>
                     </tr>                    
                 </table>
                 <h3>Endre Passord</h3>
@@ -73,4 +67,5 @@
             
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+

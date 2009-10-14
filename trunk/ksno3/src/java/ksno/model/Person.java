@@ -185,7 +185,7 @@ public class Person implements Serializable, LabelValuePair {
     }
 
     public String getLabel() {
-        return getFirstName() + " " + getLastName();
+        return getLastName() + ",  " + getFirstName();
     }
 
     public String getValue() {

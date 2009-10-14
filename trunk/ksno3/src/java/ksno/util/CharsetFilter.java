@@ -17,7 +17,7 @@ public class CharsetFilter implements Filter {
         encoding = config.getInitParameter("requestEncoding");
 
         if (encoding == null) {
-            encoding = "UTF-8";
+            encoding = "utf-8";
         }
     }
 
@@ -25,9 +25,8 @@ public class CharsetFilter implements Filter {
             throws IOException, ServletException {
         // Respect the client-specified character encoding
         // (see HTTP specification section 3.4.1)
-        if (null == request.getCharacterEncoding()) {
-            request.setCharacterEncoding(encoding);
-        }
+        request.setCharacterEncoding(encoding);
+        response.setCharacterEncoding(encoding);
         next.doFilter(request, response);
     }
 

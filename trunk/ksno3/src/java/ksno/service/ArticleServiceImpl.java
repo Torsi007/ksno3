@@ -109,5 +109,9 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.getCategory(name);
     }
 
+    public Category getCategory(Long id) {
+        return articleDao.getCategory(id);
+    }
+
 
 }

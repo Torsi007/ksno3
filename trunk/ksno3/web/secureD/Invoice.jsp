@@ -1,18 +1,8 @@
-<%-- 
-    Document   : CreateArticle
-    Created on : 16.sep.2008, 18:59:01
-    Author     : halsnehauge
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Faktura</title>
+        <title>kitesurfing.no - Faktura</title>
     </head>
     <body class="invoice" style="margin: 0 0 0 25">
         <f:view>
@@ -84,7 +74,7 @@
                                     <td><h:outputText value="#{TransactionModify.owner.firstName}"/>&nbsp;<h:outputText value="#{TransactionModify.owner.lastName}"/></td>
                                 </tr>
                                 <tr>
-                                    <td>InstruktÃ¸r</td>
+                                    <td>Instruktør</td>
                                 </tr>
                             </table>
                         </td>
@@ -100,7 +90,11 @@
                                 <tr style="height:130">
                                     <td></td>
                                     <td></td>
-                                    <td style="text-align:right;" valign="top"><br/><h:outputText value="#{TransactionModify.date}"/></td>
+                                    <td style="text-align:right;" valign="top"><br/>
+                                        <h:outputText value="#{TransactionModify.date}">
+                                            <f:converter converterId="CalendarConverter"/>
+                                        </h:outputText>
+                                    </td>
                                 </tr>
                                 <tr style="height:145">
                                     <td valign="top">
@@ -146,7 +140,7 @@
             </h:form>
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
 
 
 
