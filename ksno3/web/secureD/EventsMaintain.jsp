@@ -1,20 +1,9 @@
-<%-- 
-    Document   : AdminArticles
-    Created on : 28.sep.2008, 13:19:26
-    Author     : halsnehauge
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>      
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Kitesurfing.no - administrer kurs</title>
         <script type="text/javascript">
             function toStartPage(){
                 var currentLocation = window.location.href;
@@ -74,7 +63,7 @@
                     </h:column>       
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Ã…pent" />
+                            <h:outputText value="Åpent" />
                         </f:facet> 
                         <h:selectBooleanCheckbox value="#{item.open}"/>
                     </h:column> 
@@ -98,4 +87,4 @@
             </h:form>             
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>

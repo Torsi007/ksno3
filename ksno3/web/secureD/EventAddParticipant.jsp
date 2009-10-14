@@ -1,24 +1,15 @@
-<%-- 
-    Document   : EventAddParticipant
-    Created on : 27.nov.2008, 22:29:33
-    Author     : tor.hauge
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/> 
         <script src="../resources/js/logic.js" type="text/javascript"></script>
         <style type="text/css">
             input {margin-right:4}
             select {margin-right:4}          
         </style>                
-        <title>JSP Page</title>
+        <title>Kitesurfing.no - legg til kursdeltager</title>
     </head>
     <body>
         <f:view>
@@ -46,7 +37,7 @@
                             <t:inputText style="width:98" binding="#{EventAddParticipant_Backing.phone}"/>
                         </td>	
                         <td>
-                            <span style="display:block; margin-top:8">Hjelm stÃ¸rrelse</span>    
+                            <span style="display:block; margin-top:8">Hjelm størrelse</span>    
                             <t:selectOneMenu style="width:98" required="true" binding="#{EventAddParticipant_Backing.helmetSize}" >
                                 <f:selectItem itemLabel="Tar med selv!" itemValue="empty"/>                                
                                 <f:selectItem itemLabel="XXL" itemValue="XXL"/>
@@ -60,7 +51,7 @@
                     </tr>
                     <tr>
                         <td required="true">
-                            <span style="display:block; margin-top:8">VÃ¥tdrakt stÃ¸rrelse</span>                            
+                            <span style="display:block; margin-top:8">Våtdrakt størrelse</span>                            
                             <t:selectOneMenu  style="width:98" required="true" binding="#{EventAddParticipant_Backing.wetSuitSize}" >
                                 <f:selectItem itemLabel="-" itemValue="empty"/>
                                 <f:selectItem itemLabel="XXL" itemValue="XXL"/>
@@ -72,7 +63,7 @@
                             </t:selectOneMenu>  
                         </td>	
                         <td required="true" align="right">
-                            <span style="display:block; margin-top:8">Sko stÃ¸rrelse</span>                            
+                            <span style="display:block; margin-top:8">Sko størrelse</span>                            
                             <t:selectOneMenu style="width:98" required="true" binding="#{EventAddParticipant_Backing.shoeSize}" >
                                 <f:selectItem itemLabel="-" itemValue="empty"/>                                
                                 <f:selectItem itemLabel="45" itemValue="45"/>
@@ -113,4 +104,5 @@
                 <t:outputText styleClass="errorMsg" binding="#{EventAddParticipant_Backing.errorMsg}"/>
         </f:view>       
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+

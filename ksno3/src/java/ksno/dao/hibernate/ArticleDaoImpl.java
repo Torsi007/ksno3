@@ -100,6 +100,18 @@ public class ArticleDaoImpl implements ArticleDao {
         returnVal =  q.list();
         return returnVal;
     }
+
+    public Category getCategory(Long id) {
+        Query q = null;
+        List returnVal = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session.beginTransaction();
+        q=session.createQuery("from Category ac where ac.id = :pun");
+        q.setParameter("pun",id);
+        returnVal =  q.list();
+
+        return (Category)returnVal.get(0);
+    }
     
     public List<Article> getVisibleArticles() {
 
@@ -117,6 +129,8 @@ public class ArticleDaoImpl implements ArticleDao {
 
         return returnVal;
     }
+
+
 
 
 }

@@ -19,6 +19,7 @@ public interface ArticleDao {
       public void deleteArticle(Article article);      
       public List<Article> getArticles();
       public Category getCategory(String name);
+      public Category getCategory(Long id);
       public List<Category> getCategories();
       public List<Article> getVisibleArticles();
 }

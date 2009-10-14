@@ -1,20 +1,8 @@
-<%-- 
-    Document   : AdminVideos
-    Created on : 28.sep.2008, 13:19:26
-    Author     : halsnehauge
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>      
-
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>kitesurfing.no - Videoer</title>
         <script type="text/javascript">
             function toStartPage(){
                 var currentLocation = window.location.href;
@@ -81,4 +69,5 @@
             </h:form>            
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+

@@ -97,6 +97,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public void updatePerson(Person person) {
+        clearPersonsApplicationCache();
         personDao.updatePerson(person);
     }
     
@@ -107,7 +108,8 @@ public class PersonServiceImpl implements PersonService {
         } catch (ClassNotFoundException ex) {
             getLogService().log(Level.SEVERE, null, ex);
         }
-        JSFUtil.setValue("#{ApplicationBean1.persons}", null, c);    
+        JSFUtil.setValue("#{ApplicationBean1.persons}", null, c);
+        JSFUtil.setValue("#{ApplicationBean1.instructors}", null, c);
     }
     
 

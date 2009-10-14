@@ -23,7 +23,9 @@ table.bottomSection td.leftSection div.videoSection div {width:100px; margin: 0p
 
 table.bottomSection td.middleSection {width:402px; vertical-align:top }
 table.bottomSection td.middleSection div.expandedNews { display:block; color:#505050; font-size: 12px; margin: 0px 6px;}
-table.bottomSection td.middleSection div.expandedNews h1 { color:#7DB639; font-size: 18px; margin:8px 0px 8px 0px; cursor:pointer}
+table.bottomSection td.middleSection div.expandedNews h1 { padding: 0px; margin:8px 0px}
+table.bottomSection td.middleSection div.expandedNews h1 a{ color:#7DB639; font-size: 18px; margin:8px 0px 8px 0px; text-decoration:none}
+table.bottomSection td.middleSection div.expandedNews h1 a:hover{text-decoration:underline}
 table.bottomSection td.middleSection div.expandedNews a { color:#505050; margin:3px 0px 12px 5px; }
 table.bottomSection td.middleSection div.expandedNews hr { color:#787878; border: 0; background-color:#787878; height: 1px;width: 100%; margin-top: 12px; display:block; }
 table.bottomSection td.middleSection table.newsList { color:#505050; border-collapse:collapse; width:100%; margin: 10px 0px 0px 6px; }

@@ -1,20 +1,9 @@
-<%-- 
-    Document   : AdminArticles
-    Created on : 28.sep.2008, 13:19:26
-    Author     : halsnehauge
---%>
-
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>      
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>kitesurfing.no - administrer tekster</title>
         <script type="text/javascript">
             function toStartPage(){
                 var currentLocation = window.location.href;
@@ -66,4 +55,4 @@
             </h:form>             
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>

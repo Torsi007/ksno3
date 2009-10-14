@@ -1,20 +1,12 @@
-<%-- 
-    Document   : CreateArticle
-    Created on : 16.sep.2008, 18:59:01
-    Author     : halsnehauge
---%>
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Oppdater artikkel</title>
+        <title>kitesurfing.no - Oppdater artikkel</title>
         <script src="../resources/js/logic.js" type="text/javascript"></script>        
         <script src="../resources/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -50,7 +42,7 @@
         function validate_local(){
             var textarea = tinyMCE.get(event.srcElement.id + ':myTextArea'); 
             if ( (textarea.getContent()=="") || (textarea.getContent()==null) ) {
-                    alert("Felt kan ikke vÃ¦re tomt");
+                    alert("Felt kan ikke være tomt");
                     textarea.focus();
                     return false; 
             }else{
@@ -83,7 +75,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan="3">Intro text (vil dukke opp pÃ¥ forsiden)</td>
+                        <td colspan="3">Intro text (vil dukke opp på forsiden)</td>
                     </tr>
                     <tr>
                         <td colspan="3" required="true">
@@ -93,14 +85,14 @@
                    <!--tr>
                         <td>Ekstra forfattere</td>
                         <td>
-                            Trenger en dropdown liste her for Ã¥ kunne velge en eller flere forfattere                        
+                            Trenger en dropdown liste her for å kunne velge en eller flere forfattere                        
                         </td>
                         <td>Du vil automatisk bli satt opp som en av forfatterene</td>
                     </tr>                    
                    <tr>
                         <td>Kategorier</td>
                         <td>
-                            Trenger noen checkboxer her for Ã¥ kunne sette kategorier, eks Utsyr : Reise : Sport info : Teknikk osv...                        
+                            Trenger noen checkboxer her for å kunne sette kategorier, eks Utsyr : Reise : Sport info : Teknikk osv...                        
                         </td>
                         <td></td>
                     </tr-->
@@ -114,7 +106,7 @@
                         <td align="left"><t:outputText binding="#{ArticleMasterUpdate_Backing.upAvatarResult}"/></td>
                     </tr>
                 </table>
-                <h:commandButton value="GÃ¥ videre" action="#{ArticleMasterUpdate_Backing.updateArticle}" /> 
+                <h:commandButton value="Gå videre" action="#{ArticleMasterUpdate_Backing.updateArticle}" /> 
                 <h:commandButton value="Lagre og avslutt" action="#{ArticleMasterUpdate_Backing.updateIntro}" /> 
             </h:form>
             <h:form>                
@@ -122,4 +114,5 @@
             </h:form>        
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+

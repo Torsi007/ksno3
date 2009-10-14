@@ -1,21 +1,12 @@
+<jsp:include page="Heading.jsp" ></jsp:include>
 
-<%-- 
-    Document   : SignUp
-    Created on : 07.okt.2008, 20:01:44
-    Author     : halsnehauge
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
-<html>
-    <head>
-        <title>JSP Page</title>
+        <title>kitesurfing.no - påmelding sommerkurs</title>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
         <link rel="stylesheet" type="text/css" href="css/signUpSummerForm.css" />
         <link rel="stylesheet" type="text/css" href="css/skinned-select.css"/>
-        <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/default.js"></script>
         <script src="js/logic.js" type="text/javascript"></script>
 
@@ -57,7 +48,7 @@
                             if(parseInt(awailSeats)> 0){
                                 document.getElementById("awailSeatsInfo").innerHTML  = awailSeats + " ledige plasser";    
                             }else{
-                                document.getElementById("awailSeatsInfo").innerHTML  = "Dette kurset er fullt. Om du Ã¸nsker kan du sette deg pÃ¥ reservelisten (fortsett pÃ¥meldingen), vi vil da kontakte deg om noen skulle melde seg av. Et annet alternativ er Ã¥ velge et annet kurs.";
+                                document.getElementById("awailSeatsInfo").innerHTML  = "Dette kurset er fullt. Om du ønsker kan du sette deg på reservelisten (fortsett påmeldingen), vi vil da kontakte deg om noen skulle melde seg av. Et annet alternativ er å velge et annet kurs.";
                             }
                             
                             break;
@@ -98,7 +89,7 @@
                             <t:inputText binding="#{SignUpSummer_Backing.phone}"/>
                         </td>	
                         <td>
-                            <span>Hjelm stÃ¸rrelse</span>
+                            <span>Hjelm størrelse</span>
                             <div class="my-skinnable-select">
                                 <t:selectOneMenu required="true" binding="#{SignUpSummer_Backing.helmetSize}" >
                                     <f:selectItem itemLabel="--" itemValue="empty"/>
@@ -115,7 +106,7 @@
                     </tr>
                     <tr>
                         <td required="true">
-                            <span>VÃ¥tdrakt stÃ¸rrelse</span>
+                            <span>Våtdrakt størrelse</span>
                             <div class="my-skinnable-select">
                                 <t:selectOneMenu  required="true" binding="#{SignUpSummer_Backing.wetSuitSize}" >
                                     <f:selectItem itemLabel="-" itemValue="empty"/>
@@ -129,7 +120,7 @@
                             </div>
                         </td>	
                         <td required="true">
-                            <span>Sko stÃ¸rrelse</span>
+                            <span>Sko størrelse</span>
                             <div class="my-skinnable-select">
                                 <t:selectOneMenu  required="true" binding="#{SignUpSummer_Backing.shoeSize}" >
                                     <f:selectItem itemLabel="-" itemValue="empty"/>
@@ -172,7 +163,7 @@
                     </tr>                     
                     <tr style="display:none">		
                         <td colspan="2" valign="bottom">
-                            <h:commandButton id="sbm" value="Meld meg pÃ¥!" action="#{SignUpSummer_Backing.signOn}" />
+                            <h:commandButton id="sbm" value="Meld meg på!" action="#{SignUpSummer_Backing.signOn}" />
                         </td>	
                      </tr>                    
                 </table>  
@@ -181,7 +172,7 @@
                 <tr>
                     <td>
                         <jsp:include page="Button.jsp" >
-                            <jsp:param name="title" value="Meld meg pÃ¥" />
+                            <jsp:param name="title" value="Meld meg på" />
                             <jsp:param name="link" value="javascript:document.getElementById('signup:sbm').click()"/>
                             <jsp:param name="width" value="306"/>
                         </jsp:include>
@@ -191,4 +182,5 @@
             <t:outputText styleClass="errorMsg" binding="#{SignUpSummer_Backing.errorMsg}"/>
         </f:view>       
     </body>
-</html>
+<jsp:include page="Ending.jsp" ></jsp:include>
+

@@ -1,17 +1,9 @@
-<%-- 
-    Document   : CreateArticle
-    Created on : 16.sep.2008, 18:59:01
-    Author     : halsnehauge
---%>
+<jsp:include page="../nd/Heading.jsp" ></jsp:include>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Upload video</title>
+        <title>kitesurfing.no - video</title>
         <script type="text/javascript" src="../resources/js/jquery.js"></script>
         <script src="../resources/js/logic.js" type="text/javascript"></script>
         <title>Kitesurfing.no</title>
@@ -28,7 +20,7 @@
                 var domElemForm = this.parent.document.getElementById("uploadYouTubeForm");
                 var val = domElemYouTubeUploadURL.value;
                 if(val != undefined && val != ""){
-                    domElemForm.action = val + "?nexturl=http://localhost:8084/ksno3/faces/secureA/VideoCreate.jsp";
+                    domElemForm.action = val + "?nexturl=http://www.kitesurfing.no/ksno3/faces/secureA/VideoCreate.jsp";
                     this.parent.document.getElementById("youtubeToken").value = domElemYouTubeUploadToken.value;
                     domElemForm.submit();
                 }
@@ -90,4 +82,4 @@
             </h:form>
         </f:view>
     </body>
-</html>
+<jsp:include page="../nd/Ending.jsp" ></jsp:include>
