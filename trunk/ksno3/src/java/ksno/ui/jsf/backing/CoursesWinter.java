@@ -10,11 +10,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.model.SelectItem;
 import ksno.model.Category;
 import ksno.model.Video;
 import ksno.service.ArticleService;
 import ksno.service.EventService;
 import ksno.service.VideoService;
+import ksno.util.JSFUtil;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -24,6 +27,15 @@ public class CoursesWinter {
     private EventService eventService;
     private ArticleService articleService;
     private VideoService videoService;
+    private HtmlSelectOneMenu coursesSelect;
+
+    public HtmlSelectOneMenu getCoursesSelect() {
+        return coursesSelect;
+    }
+
+    public void setCoursesSelect(HtmlSelectOneMenu coursesSelect) {
+        this.coursesSelect = coursesSelect;
+    }
 
     public ArticleService getArticleService() {
         return articleService;
@@ -54,6 +66,11 @@ public class CoursesWinter {
     
     public List getCourses(){
         return eventService.getOpenUpcommingWinterBeginnerCourses();
+    }
+
+    public SelectItem[] getCoursesSelectItems() {
+        List events = eventService.getOpenUpcommingWinterBeginnerCourses();
+        return JSFUtil.toSelectItemArray(events);
     }
 
     public List<ksno.model.Article> getCourseArticles(){

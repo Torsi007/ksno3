@@ -270,7 +270,7 @@ public class SignUpWinter {
     }
     
     private void setWinterValues(Participation participation){
-        participation.setHelmetSize(helmetSize.getValue().toString());
+        participation.setHelmetSize("empty");
     }
     
     public String test(){
