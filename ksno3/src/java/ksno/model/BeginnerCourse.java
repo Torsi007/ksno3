@@ -27,7 +27,7 @@ public class BeginnerCourse extends Event {
 
 
     public BeginnerCourse () {
-        this.setName("Nybegynner kurs");
+        this.setName("Nybegynnerkurs");
     }
         // </editor-fold> 
 

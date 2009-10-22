@@ -96,6 +96,10 @@ public class Current {
         return returnList;
     }
 
+    public List getVideos() {
+        return this.getVideoService().getPublishedVideos();
+    }
+
     static final Comparator<ksno.model.Article> ORDER_BY_CAT = new Comparator<ksno.model.Article>(){
         public int compare(ksno.model.Article a1, ksno.model.Article a2){
             return a2.getCategory().getName().compareTo(a1.getCategory().getName());
@@ -117,6 +121,8 @@ public class Current {
                     if(article.getCategory().equals(prevArticle.getCategory())){
                         article.setSameAsPrevCat(true);
                     }
+                }else{
+                    article.setSameAsPrevCat(false);
                 }
                 headl.add(article);
                 prevArticle = article;

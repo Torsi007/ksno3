@@ -82,7 +82,7 @@ public class ArticleServiceImpl implements ArticleService {
         getLogService().log(Level.INFO, "Found " + articleList.size() + "articles");
         for (Article article : articleList) {
             getLogService().log(Level.INFO, "Article " + article.getName() + " is of category " + article.getCategory());
-            if (article.getCategory().equals(category)) {
+            if (article.getCategory().equals(category) && article.isVisible()) {
                 getLogService().log(Level.INFO, "Hence adding it to return list");
                 returnList.add(article);
             }
