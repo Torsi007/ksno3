@@ -11,6 +11,7 @@ table.bottomSection td.leftSection {width:356px; vertical-align:top }
 table.bottomSection td.leftSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
 table.bottomSection td.leftSection img {margin: 0px 6px 6px 6px}
 table.bottomSection td.leftSection p {margin: 10px 6px; color:#505050; font-size:12px;}
+table.bottomSection td.leftSection h2 {margin: 10px 6px; color:#505050; font-weight:bold; font-size:12px}
 
 table.bottomSection td.rightSection {width:584px; vertical-align:top; }
 table.bottomSection td.rightSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}

@@ -1,8 +1,11 @@
 table.middleSection {background-image:url('http://farm3.static.flickr.com/2629/3934576443_e500c99356_o.jpg');}
 table.middleSection td.leftSection {width:337px; padding:0px; vertical-align:top; line-height:18px;}
 table.middleSection td.leftSection div {padding:0px 16px 0px 16px; display:block;}
-table.middleSection td.leftSection div h1 {font-size:18px; margin: 20px 0px; font-weight:normal; display:block;}
-table.middleSection td.leftSection div table.courseList td {color:white;}
+table.middleSection td.leftSection div h1 {font-size:18px; margin: 20px 0px 10px 0px; font-weight:normal; display:block;}
+table.middleSection td.leftSection div table.courseList td b{color:white;}
+table.middleSection td.leftSection div table.courseList td a{color:white; text-decoration:none}
+table.middleSection td.leftSection div table.courseList td a:hover{text-decoration:underline}
+table.middleSection td.leftSection div table.courseList td a.button:hover{text-decoration:none}
 
 table.middleSection td.middleSection {width:256px;}
 
@@ -13,7 +16,12 @@ table.middleSection td.rightSection div h1 {margin-top: 0px; font-size:18px; fon
 table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:auto; table-layout:fixed; border-collapse:collapse; color:#505050; empty-cells:show}
 table.bottomSection td.leftSection {width:584px; vertical-align:top }
 table.bottomSection td.leftSection div {padding: 8px; font-size:12px}
-table.bottomSection td.leftSection div a {color:#787878; padding: 8px}
+table.bottomSection td.leftSection div.select-text {padding: 0px; font-size:11px;}
+table.bottomSection td.leftSection div a.button {display:inline; margin-left: 6px; color:white; font-size:12px }
+table.bottomSection td.leftSection div.skinned-select {padding: 0px; }
+table.bottomSection td.leftSection div table {margin: 0px; border-collapse:collapse }
+table.bottomSection td.leftSection div table td{padding: 0px;}
+table.bottomSection td.leftSection div a {color:#787878;}
 table.bottomSection td.leftSection div h1 {font-size: 18px; font-weight:500; margin: 10px 0px; color:#7DB639;}
 table.bottomSection td.leftSection div h2 {font-size: 16px; font-weight:500; margin: 10px 0px; color:#7DB639;}
 
