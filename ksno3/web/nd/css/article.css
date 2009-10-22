@@ -10,6 +10,7 @@ table.middleSection td div h2 {font-size:11px; line-height: 11px;}
 table.bottomSection td {color:#505050; font-size:12px; padding: 8px; }
 table.bottomSection td h2 {font-size: 14px; font-weight:500; margin: 6px 0px; color:#505050;}
 table.bottomSection td a img {border: none}
+table.bottomSection td a {color: #505050}
 
 table.bottomSection table {border-collapse:collapse; height:100%; width:100% }
 table.bottomSection table td.left {width:100%; vertical-align:top }
@@ -17,6 +18,7 @@ table.bottomSection table td.right {width:296px; padding: 0px 4px; vertical-alig
 table.bottomSection table td.right img {border: 1px solid black; display:block; margin: 0px 0px 4px 0px; cursor:url}
 table.bottomSection table tr td {color:#505050; font-size:12px; padding: 8px; }
 table.bottomSection table tr td h2 {font-size: 14px; font-weight:500; margin: 6px 0px; color:#505050;}
+table.bottomSection table tr td a{color:#505050; }
 
 
 

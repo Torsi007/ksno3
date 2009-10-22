@@ -1,7 +1,8 @@
 body {margin: 0; font-family:"Helvetica Neue", Helvetica, Verdana, Arial, sans-serif; text-align: center; }
 
-div.topMenu {background-image:url('../img/logo.jpg'); background-repeat:no-repeat; width: 940px; height:139px; margin: 20px auto 0px auto; }
+div.topMenu {width: 940px; height:139px; margin: 20px auto 0px auto; }
 div.topMenu table {border-collapse:collapse; width:100%; height:100% }
+div.topMenu table tr td a img {border: 0 none }
 div.topMenu td.top {color:#636262; font-size: 11px; text-decoration:none; height:20px}
 div.topMenu td.top a{color:#636262; font-size: 11px; text-decoration:none}
 div.topMenu td.main {height:100%; vertical-align:bottom; padding-bottom:10px;}

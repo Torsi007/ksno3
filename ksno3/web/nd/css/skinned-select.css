@@ -28,6 +28,7 @@ div.skinned-select {
 	background: url('../img/skin.png') no-repeat scroll 0pt 100%;
         background-position: top left;
         margin-top:1px;
+        padding:0;
 }
 div.skinned-select select {
 	opacity: 0;
@@ -43,6 +44,7 @@ div.skinned-select .select-text {
 	width: 150px;
 	z-index: 1;
         color: #303030;
+        padding: 0;
 }
 div.skinned-select .select-text,
 div.skinned-select select,
@@ -50,6 +52,7 @@ div.skinned-select select option {
 	width: 150px;
 	font-size: 11px;
 	color: #303030;
+        padding:0px;
 }
 
 /* non javascript version select */
