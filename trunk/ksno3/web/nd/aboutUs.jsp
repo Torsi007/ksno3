@@ -25,7 +25,7 @@
                             <br>
                             V&aring;r forretning fokuserer prim&aelig;rt p&aring; kursaktiviteter
                             noe som gj&oslash;r oss veldig fleksible. Vi skreddersyr og
-                            tilrettelegger v&aelig;re kurs slik at vi kan im&oslash;tekomme
+                            tilrettelegger våre kurs slik at vi kan im&oslash;tekomme
                             v&aring;re kunders behov og forventninger samtidig som vi
                             ivaretar det som betyr mest: <font style="font-size: 18px;">Sikkerhet og moro!</font>
                         </div>
@@ -45,6 +45,9 @@
                         <h1>Instruktørene</h1>
                         <t:dataList value="#{AboutUs_Backing.instructors}" var="instructor">
                             <t:graphicImage url="#{instructor.profilePicture}" alt="#{instructor.firstName} #{instructor.lastName}"/>
+                            <t:htmlTag value="h2">
+                                <h:outputText value="#{instructor.firstName} #{instructor.lastName}"/>
+                            </t:htmlTag>
                             <t:htmlTag value="p">
                                 <h:outputText value="#{instructor.aboutMe.body}"/>
                             </t:htmlTag>

@@ -54,17 +54,19 @@
         <param-value>true</param-value>
     </context-param>
     <filter>
+        <filter-name>CharsetFilter</filter-name>
+        <filter-class>ksno.util.CharsetFilter</filter-class>
+        <init-param>
+            <param-name>requestEncoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter>
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
         <init-param>
             <param-name>uploadMaxFileSize</param-name>
             <param-value>20m</param-value>
-            <description>Set the size limit for uploaded files.
-            Format: 10 - 10 bytes
-                    10k - 10 KB
-                    10m - 10 MB
-                    1g - 1 GB
-            </description>
         </init-param>
         <init-param>
             <param-name>uploadThresholdSize</param-name>
@@ -75,21 +77,10 @@
             <param-value>/tmp</param-value>
         </init-param>
     </filter>
-    <filter>
+    <filter-mapping>
         <filter-name>CharsetFilter</filter-name>
-        <filter-class>ksno.util.CharsetFilter</filter-class>
-        <init-param>
-            <param-name>requestEncoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>MyFacesExtensionsFilter</filter-name>
-        <servlet-name>Faces Servlet</servlet-name>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>MyFacesExtensionsFilter</filter-name>
-        <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/faces/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>MyFacesExtensionsFilter</filter-name>
@@ -99,10 +90,7 @@
         <filter-name>MyFacesExtensionsFilter</filter-name>
         <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
     </filter-mapping>
-    <filter-mapping>
-        <filter-name>CharsetFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

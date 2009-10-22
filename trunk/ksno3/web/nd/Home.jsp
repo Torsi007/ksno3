@@ -47,7 +47,7 @@
                             <font style="font-size:36px; line-height:35px; margin-bottom:20px">Hei, vi er Kitesurfing.no</font>
                             <font style="font-size:25px; line-height: 25px;">Vi kj&oslash;rer kitekurs<br/>p&aring; J&aelig;ren og<br/> Haukeliseter</font>
                                 <jsp:include page="Button.jsp" >
-                                    <jsp:param name="title" value="Lær Mer" />
+                                    <jsp:param name="title" value="Les mer" />
                                     <jsp:param name="link" value="aboutUs.html"/>
                                 </jsp:include>
                         </div>
@@ -88,7 +88,7 @@
                                         <t:htmlTag value="a">
                                             <f:param name="name" value="modal" />
                                             <f:param name="href" value="#{video.url}" />
-                                            <h:outputText value="Watch [#{video.duration}]" />
+                                            <h:outputText value="Vis [#{video.duration}]" />
                                         </t:htmlTag>
                                     </td>
                                 </tr>

@@ -9,7 +9,7 @@
 <table class="button" style="width:<%= request.getParameter("width")%>px">
     <tr>
         <td class="left"></td>
-        <td><a href="<%= request.getParameter("link")%>"><%= request.getParameter("title")%></a></td>
+        <td align="<%= request.getParameter("textAlign")%>"><a href="<%= request.getParameter("link")%>"><%= request.getParameter("title")%></a></td>
         <td class="right"></td>
     </tr>
 </table>

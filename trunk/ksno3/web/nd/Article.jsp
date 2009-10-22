@@ -13,8 +13,8 @@
     $(document).ready(function(){
         window.top.setStyle("news");
         $('img').click(function(e) {
-            var url = $(this).attr('src');
-            window.parent.openModalImage(url);
+
+            window.parent.openModalImage($(this));
         });
     });
 

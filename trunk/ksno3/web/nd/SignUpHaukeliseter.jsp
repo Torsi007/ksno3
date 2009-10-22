@@ -88,21 +88,7 @@
                         <span>Telefon</span>
                         <t:inputText binding="#{SignUpWinter_Backing.phone}"/>
                     </td>
-                    <td>
-                        <span>Hjelm størrelse</span>
-                        <div class="my-skinnable-select">
-                            <t:selectOneMenu required="true" binding="#{SignUpWinter_Backing.helmetSize}" >
-                                <f:selectItem itemLabel="--" itemValue="empty"/>
-                                <f:selectItem itemLabel="Tar med selv!" itemValue="Tar med selv"/>
-                                <f:selectItem itemLabel="XXL" itemValue="XXL"/>
-                                <f:selectItem itemLabel="XL" itemValue="XL"/>
-                                <f:selectItem itemLabel="L" itemValue="L"/>
-                                <f:selectItem itemLabel="M" itemValue="M"/>
-                                <f:selectItem itemLabel="S" itemValue="S"/>
-                                <f:selectItem itemLabel="XS" itemValue="XS"/>
-                            </t:selectOneMenu>
-                        </div>
-                    </td>
+                    <td/>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -140,6 +126,7 @@
                         <jsp:param name="title" value="Meld meg på" />
                         <jsp:param name="link" value="javascript:document.getElementById('signup:sbm').click()"/>
                         <jsp:param name="width" value="306"/>
+                        <jsp:param name="textAlign" value="center"/>
                     </jsp:include>
                 </td>
             </tr>
