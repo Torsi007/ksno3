@@ -1,6 +1,8 @@
 $(document).ready(
   function() {
+      try{
       setHiddenFieldsFromRequestParams();
+      }catch(err){}
      $('.my-skinnable-select').each(
       function(i) {
         selectContainer = $(this);

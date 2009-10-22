@@ -17,6 +17,16 @@
                     //window.parent.$('a[name=modal]').click();
                     window.parent.openModalVideo(url);
                 });
+
+                var year = "2000";
+                $(".courseList input").each(function (i) {
+                    var currYear = this.value;
+                    if(currYear != year){
+                        $(this).parent().parent().before("<tr><td colspan=2><b>"+currYear+"</b></td></tr>");
+                    }
+                    year = currYear;
+
+                });
             });
         </script>
     </head>
@@ -31,11 +41,15 @@
                                 <table class="courseList">
                                     <t:dataList value="#{CoursesSummer_Backing.courses}" var="course">
                                         <tr>
-                                            <td style="width:146px"><h:outputText value="#{course.startDate} - #{course.endDate}"/></td>
-                                            <td style="width:6px">|</td>
-                                            <td style="width:106px"><h:outputText value="#{course.name}"/></td>
+                                            <td style="width:120px">
+                                                <h:outputLink value="CourseHaukeliseter.jsp">
+                                                    <f:param name="id" value="#{course.id}"/>
+                                                    <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
+                                                </h:outputLink>
+                                                    <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
+                                            </td>
                                             <td>
-                                                <h:outputLink value="SignUpSummer.jsp" styleClass="button">
+                                                <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
                                                     <f:param name="id" value="#{course.id}"/>
                                                     <h:outputText value="Go"/>
                                                 </h:outputLink>
@@ -119,7 +133,7 @@
                             </div>
                         </td>
                         <td class="rightSection">
-                            <h1>Les om tidligere sommerkurs!</h1>
+                            <h1>Les om tidligere sommerkurs</h1>
                             <table class="articleList">
                                 <t:dataList value="#{CoursesSummer_Backing.courseArticles}" var="article">
                                     <tr>
@@ -138,7 +152,7 @@
                                     </tr>
                                 </t:dataList>
                             </table>
-                            <h1>Se video av tidligere sommerkurs!</h1>
+                            <h1>Video av tidligere sommerkurs</h1>
                             <table class="videoList">
                                 <t:dataList value="#{CoursesSummer_Backing.courseVideos}" var="video">
                                     <tr>
@@ -155,7 +169,7 @@
                                             <t:htmlTag value="a">
                                                 <f:param name="name" value="modal" />
                                                 <f:param name="href" value="#{video.url}" />
-                                                <h:outputText value="Watch [#{video.duration}]" />
+                                                <h:outputText value="Vis [#{video.duration}]" />
                                             </t:htmlTag>
                                         </td>
                                     </tr>

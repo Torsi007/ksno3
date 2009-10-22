@@ -19,13 +19,42 @@
         });
     }
 
+    var viewport = {
+        o: function() {
+            if (self.innerHeight) {
+                this.pageYOffset = self.pageYOffset;
+                this.pageXOffset = self.pageXOffset;
+                this.innerHeight = self.innerHeight;
+                this.innerWidth = self.innerWidth;
+            } else if (document.documentElement && document.documentElement.clientHeight) {
+                this.pageYOffset = document.documentElement.scrollTop;
+                this.pageXOffset = document.documentElement.scrollLeft;
+                this.innerHeight = document.documentElement.clientHeight;
+                this.innerWidth = document.documentElement.clientWidth;
+            } else if (document.body) {
+                this.pageYOffset = document.body.scrollTop;
+                this.pageXOffset = document.body.scrollLeft;
+                this.innerHeight = document.body.clientHeight;
+                this.innerWidth = document.body.clientWidth;
+            }
+            return this;
+        },
+        init: function(el, w, h) {
+            var imgW = (parseInt($(el).width()) > 50) ? $(el).width() : w;
+            var imgH = (parseInt($(el).height()) > 50) ? $(el).height() : h;
+            $(el).css("left",Math.round(viewport.o().innerWidth/2) + viewport.o().pageXOffset - Math.round(imgW/2));
+            $(el).css("top",Math.round(viewport.o().innerHeight/2) + viewport.o().pageYOffset - Math.round(imgH/2));
+            return parseInt($(el).width());
+        }
+    };
+
     function openModalVideo(url){
-        //Get the A tag
         var id = '#dialog';
 
         //Get the screen height and width
-        var maskHeight = document.body.scrollHeight;
-        var maskWidth = document.body.scrollWidth;
+        var maskHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
+        var maskWidth = Math.max(document.body.scrollWidth, document.body.clientWidth);
+
 
         //Set height and width to mask to fill up the whole screen
         $('#mask').css({'width':maskWidth,'height':maskHeight,'left':'0','top':'0'});
@@ -44,32 +73,36 @@
         $(id).html(val);
 
         //Set the popup window to center
-        $(id).css('top',  (winH/2)-(videoHeight/2));
-        $(id).css('left', (winW/2)-(videoWidth/2));
-
+        viewport.init(id, videoWidth, videoHeight );
         //transition effect
         $(id).fadeIn(2000);
 
     }
 
-    function getPos(img, imgs){
-
-
-    }
-
-    function openModalImage(url){
+    function openModalImage(image){
         //Get the A tag
-        var id = '#dialog';
+        var url = image.attr("src");
+        var imgHeight = image.height();
+        var imgWidth = image.width();
+        var factor = 1;
         try{
-            if(url != undefined && url.indexOf("s288")){
+            if(url != undefined && url.indexOf("s288") > 0){
                 url = url.replace(/s288/,"s800");
+                factor = 800/288;
+            }else if(url != undefined && url.indexOf("s400") > 0){
                 url = url.replace(/s400/,"s800");
+                factor = 800/400;
             }
         }catch(err){}
+        imgHeight = Math.round(imgHeight * factor);
+        imgWidth = Math.round(imgWidth * factor);
+        var val ="<img src='"+ url +"'/>";
+        var id = '#dialog';
+        $(id).html(val);
 
         //Get the screen height and width
-        var maskHeight = document.body.scrollHeight;
-        var maskWidth = document.body.scrollWidth;
+        var maskHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
+        var maskWidth = Math.max(document.body.scrollWidth, document.body.clientWidth);
 
         //Set height and width to mask to fill up the whole screen
         $('#mask').css({'width':maskWidth,'height':maskHeight,'left':'0','top':'0'});
@@ -78,32 +111,17 @@
         $('#mask').fadeTo("slow",0.8);
 
         //Get the window height and width
-        var winH = $(window).height();
-        var winW = $(window).width();
+        //var winH = $(window).height();
+        //var winW = $(window).width();
 
-        var val ="<img src='"+ url +"'/>";
-        $(id).html(val);
+        viewport.init(id, imgWidth, imgHeight );
+        $(id).fadeIn(2000);
 
-
-        var videoHeight = 800;
-        var videoWidth = 600;
-        if(jQuery.browser.msie){
-            videoHeight = $(id).height();
-            videoWidth = $(id).width();
-        }else{
-            videoHeight = $(id).children(0).get(0).naturalHeight;
-            videoWidth = $(id).children(0).get(0).naturalWidth;
-        }
-        //Set the popup window to center
-        $(id).css('top',  (winH/2)-(videoHeight/2));
-        $(id).css('left', (winW/2)-(videoWidth/2));
 
         $(id).click(function(event){
             $('#mask, .window').hide();
         });
 
-        //transition effect
-        $(id).fadeIn(2000);
 
     }
 
@@ -120,6 +138,7 @@
 
         //if mask is clicked
         $('#mask').click(function () {
+            $("#dialog").html("");
             $(this).hide();
             $('.window').hide();
         });
@@ -136,19 +155,11 @@
 
     #boxes .window {
         position:absolute;
-        width:440px;
-        height:200px;
         display:none;
         z-index:9999;
         padding:20px;
     }
 
-
-    /* Customize your modal window here, you can add background image too */
-    #boxes #dialog {
-        width:375px;
-        height:203px;
-    }
 </style>
 </head>
 <body>
@@ -165,7 +176,7 @@
         <div class="topMenu">
             <table>
                 <tr>
-                    <td></td>
+                    <td><a href="Home.jsp" target="content"><img src="img/logo.jpg" alt="kitesurfing.no logo"/></a></td>
                     <td class="top">
                         <a href="../secureA/AdminMain.jsp" target="_blank" style="width:40">Log in</a>
                     </td>
@@ -175,7 +186,7 @@
                         <table id="mainMenu">
                             <tr>
                                 <td style="width:58px;"><a style="font-weight:bolder" href="Home.jsp" target="content">Hjem</a></td>
-                                <td style="width:70px"><a href="Articles.jsp" target="content">Nyheter</a></td>
+                                <td style="width:80px"><a href="Articles.jsp" target="content">Publisert</a></td>
                                 <td style="width:98px"><a href="CourseJaren.jsp" target="content" >Sommerkurs</a></td>
                                 <td style="width:86px"><a href="CoursesHaukeliseter.jsp" target="content">Vinterkurs</a></td>
                                 <td style="width:86px"><a href="aboutUs.jsp" target="content">Om oss</a></td>

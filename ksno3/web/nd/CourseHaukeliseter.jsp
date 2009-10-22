@@ -29,17 +29,14 @@
                                     <tr>
                                         <td>Pris:</td><td class="right" align="right">1900</td><td>,-</td>
                                     </tr>
-                                    <tr>
-                                        <td>Neoprenleie:</td><td class="right" align="right">200</td><td>,-</td>
-                                    </tr>
                                 </table>
                             </div>
                         </td>
                         <td class="middleSection"></td>
                         <td class="rightSection">
                             <div>
-                                <h1>Les om tidligere kurs!</h1>
-                                <t:dataList value="#{CourseHaukeliseter_Backing.courseArticles}" var="article">
+                                <h1>Les om tidligere vinterkurs!</h1>
+                                <t:dataList value="#{CoursesWinter_Backing.courseArticles}" var="article">
                                     <t:htmlTag value="a">
                                         <f:param name="href" value="../nd/Article.jsp?id=#{article.id}" />
                                         <h:outputText value="#{article.name}" escape="false"/>

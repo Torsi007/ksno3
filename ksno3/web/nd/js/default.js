@@ -1,20 +1,23 @@
+var framHeightCheckCount = 0;
+
 $(document).ready(function(){
-    setFrameHeight();
     setMainMenuItems();
-    setTimeout("setFrameHeight(true)",3000);
+    setFrameHeight();
 });
 
 
-function setFrameHeight(checkForScroll){
+function setFrameHeight(){
     try{
-    if(checkForScroll != undefined){
+        if(framHeightCheckCount == 0){
+            this.frameElement.style.height = 100;
+        }
+        framHeightCheckCount++;
         if(parseInt(this.frameElement.style.height) < parseInt(document.body.scrollHeight)){
             this.frameElement.style.height = document.body.scrollHeight;
         }
-    }else{
-        this.frameElement.style.height = 1;
-        this.frameElement.style.height = document.body.scrollHeight;
-    }
+        if(framHeightCheckCount > 8){
+            setTimeout("setFrameHeight()",250);
+        }
     }catch(err){}
 }
 

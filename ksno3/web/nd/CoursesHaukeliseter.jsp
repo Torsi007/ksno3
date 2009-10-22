@@ -7,6 +7,7 @@
 
         <title>kitesurfing.no - kitekurs</title>
         <link rel="stylesheet" type="text/css" href="css/default.css" />
+        <link rel="stylesheet" type="text/css" href="css/skinned-select.css"/>
         <link rel="stylesheet" type="text/css" href="css/coursesHaukeliseter.css" />
         <script type="text/javascript" src="js/default.js"></script>
         <script type="text/javascript">
@@ -18,8 +19,25 @@
                     //window.parent.$('a[name=modal]').click();
                     window.parent.openModalVideo(url);
                 });
+                $('#signOnBottom a').click(function(e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href') + '?id=' +  $('#signOnBottom select').attr('value');
+                    window.location = url;
+                });
+
+                var year = "2000";
+                $(".courseList input").each(function (i) {
+                    var currYear = this.value;
+                    if(currYear != year){
+                        $(this).parent().parent().before("<tr><td colspan=2><b>"+currYear+"</b></td></tr>");
+                    }
+                    year = currYear;
+
+                });
+
             });
         </script>
+        <script type="text/javascript" src="js/jquery.skinned-select.js"></script>
     </head>
     <body>
         <f:view>
@@ -28,13 +46,17 @@
                     <tr>
                         <td class="leftSection" >
                             <div>
-                                <h1>Kurs</h1>
+                                <h1>Nybegynnerkurs</h1>
                                 <table class="courseList">
                                     <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
                                         <tr>
-                                            <td style="width:146px"><h:outputText value="#{course.startDate} - #{course.endDate}"/></td>
-                                            <td style="width:6px">|</td>
-                                            <td style="width:106px"><h:outputText value="#{course.name}"/></td>
+                                            <td style="width:120px">
+                                                <h:outputLink value="CourseHaukeliseter.jsp">
+                                                    <f:param name="id" value="#{course.id}"/>
+                                                    <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
+                                                </h:outputLink>
+                                                    <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
+                                            </td>
                                             <td>
                                                 <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
                                                     <f:param name="id" value="#{course.id}"/>
@@ -60,10 +82,12 @@
                     <tr>
                         <td class="leftSection">
                             <div>
-                            <h1>Hvem kan delta</h1>
-                            <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Med kiten kan du gi deg ut på alt fra rolige, lange skiturer på fjellet, til å kite i store bølger med et surfebrett. Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være stark! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte ? ekstremt eller rolig. Men å lære kiting er både vanskelig og forenet med stor risiko dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
+                            <h1>Hva er kiting og for hvem?"</h1>
+                            <p>Kitesurfing er spennende, morsomt og en sport med mange muligheter. Det finnes garantert noe som tiltaler deg! Med kiten kan du gjøre alt fra å gi deg ut på alt fra rolige, lange skiturer på fjellet til å surfe på sjøen om sommeren.</p>
+                            <p>Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle. Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være særlig sterk! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte, ekstremt eller rolig.</p>
+                            <p>Å lære kiting er imidlertid både vanskelig og forenet med risiko dersom man prøver å lære på egen hånd. Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for raskere progresjon. Du trenger ingen forkunnskaper for å gå et kurs!</p>
                             <h1>Kurstilbudene</h1>
-                            <h2>2 dagers kurs</h2>
+                            <p>Vi tilbyr 2-dagers nybegynnerkurs som er åpne for alle og spesial-kurs for grupper og bedrifter.</p>
                             <p>Hovedtema på kurset vil være:</p>
                             <ul type="square">
                                 <li>Forståelse av kitens flyområder og kraftsoner</li>
@@ -75,17 +99,16 @@
                                 <li>Kiteboarding/skiing på egenhånd</li>
                                 <li>Valg av utstyr</li>
                             </ul>
-                            <h2>Teambuilding / Spesialer</h2>
-                            <p>Vi lager et opplegg som er spesialtilpasset dine ønsker. Utgangspunktet er en fire-timers basis der vi fokuserer på action og morro, istedet for detaljer og teori. Vi kan også ordne kombinasjoner med hundekjøring, toppturer eller andre aktiviteter.						Varighet og lokasjon kan dere være med å påvirke. Ta kontakt for nærmere info.</p>
+                            <p>Dersom dere vil ha et spesialkurs kan vi og lage et opplegg der vi fokuserer mer på action og morro, og midre på detaljer og teori. Vi kan også ordne kombinasjoner med hundekjøring, toppturer eller andre aktiviteter. Varighet og lokasjon på spesialkursene kan dere være med å påvirke.</p>
                             <h1>Lokasjon</h1>
                             <p>Oppmøte og utgangspunkt for kurset vil være på <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter fjellstue</a>. Eksakt lokasjon vil avhenge av vindretning, og vil derfor variere fra gang til gang.</p>
                             <h1>Pris</h1>
                             <h2>2 dagers kurs</h2>
                             <p>Kun kurs</p>
                             <ul type="square">
-                                <li>1 Person : 1950 NOK</li>
+                                <li>1 Person : 1950 kr</li>
                             </ul>
-                            <h2>Pakkepris med kost og losi</h2>
+                            <h2>Pakkepris med kost og losji</h2>
                             <p>Prisen varierer beroende på hva du ønsker for losji og mat. Vi har valgt å lage to forskjellige priseksempel for å tilgodese alle lommebøker.
                                 <br/>
                                 Et rimelig alternativ, med losji på stabbur, for deg som vil ha enkel losji og som trenger penger til kiteutstyr. Inkludert er del i stabbursrom to netter med tilgang til kjøkken, treretterts middag og villmarkspa lørdags kveld, samt kitekurs og lån av utstyr hele helgen.
@@ -130,8 +153,26 @@
                             </ul>
                             <h1>Spørsmål?</h1>
                             <p>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
-                            <p>Har du spørsmål om overnatting, mat og losji, ring <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter</a> på tlf 35062777 eller send mail til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a></p>
-                            <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ting.</p>
+                            <p>For spørsmål angående overnatting, mat og losji, ring <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter</a> på tlf 35062777 eller send mail til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a></p>
+                            <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ring!</p>
+                            <h1>Påmelding</h1>
+                            <p>Lyst til å bli med? Velg kurs og gå til påmeldingssiden her:</p>
+                            <table id="signOnBottom">
+                                <tr>
+                                    <td>
+                                        <div class="my-skinnable-select">
+                                            <t:selectOneMenu id="courses" binding="#{CoursesWinter_Backing.coursesSelect}" >
+                                                <f:selectItems value="#{CoursesWinter_Backing.coursesSelectItems}"/>
+                                            </t:selectOneMenu>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
+                                            <h:outputText value="Velg"/>
+                                        </h:outputLink>
+                                    </td>
+                                </tr>
+                            </table>
                             </div>
                         </td>
                         <td class="rightSection">
@@ -174,7 +215,7 @@
                                             <t:htmlTag value="a">
                                                 <f:param name="name" value="modal" />
                                                 <f:param name="href" value="#{video.url}" />
-                                                <h:outputText value="Watch [#{video.duration}]" />
+                                                <h:outputText value="Vis [#{video.duration}]" />
                                             </t:htmlTag>
                                         </td>
                                     </tr>
