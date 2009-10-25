@@ -7,7 +7,10 @@
 <link rel="stylesheet" type="text/css" href="css/default.css" />
 <link rel="stylesheet" type="text/css" title="default" href="css/main_default.css" />
 <link rel="stylesheet" type="text/css" title="news" href="css/main_news.css" />
+<script src="http://www.google.com/jsapi?key=ABQIAAAAXvZjzH-5KE_GOtuiRIcN6xRWocm2CbSUxy6tnc3IdZkGwKhZRxR9D3Ff24LqcYf7yiqC2PTSUCdCFQ" type="text/javascript"></script>
 <script type="text/javascript">
+    //<![CDATA[
+
     function setStyle(styleName)
     {
         $("link[@rel*=style][title]").each(function(i)
@@ -142,9 +145,57 @@
             $(this).hide();
             $('.window').hide();
         });
+        var queryParams = $(this).attr("location").search;
+        if(queryParams != undefined && queryParams.indexOf("content")> 0){
+            var url = queryParams.substring(queryParams.indexOf("content=")+8);
+            if(url != undefined && url != "" && url.toLowerCase().indexOf("jsp") > 0 || url.toLowerCase().indexOf("html") > 0){
+                $('#content').attr('src',url);
+            }
+        }
     });
+
+    google.load("search", "1");
+
+    var app;
+    function OnLoad() {
+      app = new App();
+    }
+
+
+    function App() {
+      // Create a search control
+      var searchControl = new google.search.SearchControl();
+      searchControl.setSearchStartingCallback(this, App.prototype.OnSearchStarting);
+      // Add in a full set of searchers
+      var siteSearch = new google.search.WebSearch();
+      siteSearch.setSiteRestriction("kitesurfing.no");
+      searchControl.addSearcher(siteSearch);
+      //searchControl.addSearcher(new google.search.VideoSearch());
+      //searchControl.addSearcher(new google.search.BlogSearch());
+
+      // Set the Local Search center point
+      //localSearch.setCenterPoint("New York, NY");
+
+      // Tell the searcher to draw itself and tell it where to attach
+      searchControl.draw(document.getElementById("searchcontrol"));
+
+      // Execute an inital search
+      //searchControl.execute("Google");
+    }
+    google.setOnLoadCallback(OnLoad);
+
+App.prototype.OnSearchStarting = function(sc, searcher, query) {
+  alert("The Query is: " + query);
+}
+
+
+
+    //]]>
 </script>
 <style>
+    input.gsc-search-button  {color:red};
+    div.gsc-clear-button {background-color:black}
+    div.gsc-results {background-color:white}
 
     #mask {
         position:absolute;
@@ -159,7 +210,6 @@
         z-index:9999;
         padding:20px;
     }
-
 </style>
 </head>
 <body>
@@ -193,7 +243,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td></td>
+                    <td> <div style="position:absolute; z-index:100; top:10; left:400" id="searchcontrol">Loading...</div></td>
                 </tr>
             </table>
         </div>
@@ -205,7 +255,6 @@
     </f:view>
 </body>
 <jsp:include page="Ending.jsp" ></jsp:include>
-
 
 
 
