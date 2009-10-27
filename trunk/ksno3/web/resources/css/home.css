@@ -1,0 +1,50 @@
+table.middleSection {background-image:url('http://farm4.static.flickr.com/3475/3743708959_1cf2d2b48d_o.jpg');}
+table.middleSection td.leftSection {width:269px; padding:0px; vertical-align:top}
+table.middleSection td.leftSection div {padding:10px 16px; display:block;}
+table.middleSection td.leftSection div font{display:block; margin: 10px 0px }
+
+
+table.middleSection td.middleSection {width:402px}
+
+table.middleSection td.rightSection {width:269px; vertical-align:top;}
+table.middleSection td.rightSection div {display:block; margin: 34px 5px 24px 60px; overflow:hidden; height:100%;}
+table.middleSection td.rightSection div h1 {font-size: 18px; font-weight:500; margin: 20px 0px 3px 0px;}
+table.middleSection td.rightSection div a {font-size: 14px; color:white; margin: 6px 0px; display:block;}
+
+table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:auto; table-layout:fixed; border-collapse:collapse; color:white; empty-cells:show}
+table.bottomSection td.leftSection {width:269px; }
+table.bottomSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
+table.bottomSection td.leftSection table.videoList td {vertical-align:top; }
+table.bottomSection td.leftSection table.videoList td img {vertical-align:top; margin: 3px }
+table.bottomSection td.leftSection table.videoList td h1 {color:#787878; font-size: 14px; margin:3px 0px 12px 0px; }
+table.bottomSection td.leftSection table.videoList td span {color:#303030; font-size: 14px; margin:12px 0px; display:block;}
+table.bottomSection td.leftSection table.videoList td a {color:#7DB639; font-size: 14px; margin:12px 0px; display:block;}
+table.bottomSection td.leftSection div.videoSection div {width:100px; margin: 0px; display:inline;}
+
+table.bottomSection td.middleSection {width:402px; vertical-align:top }
+table.bottomSection td.middleSection div.expandedNews { display:block; color:#505050; font-size: 12px; margin: 0px 6px;}
+table.bottomSection td.middleSection div.expandedNews h1 { padding: 0px; margin:8px 0px}
+table.bottomSection td.middleSection div.expandedNews h1 a{ color:#7DB639; font-size: 18px; margin:8px 0px 8px 0px; text-decoration:none}
+table.bottomSection td.middleSection div.expandedNews h1 a:hover{text-decoration:underline}
+table.bottomSection td.middleSection div.expandedNews a { color:#505050; margin:3px 0px 12px 5px; }
+table.bottomSection td.middleSection div.expandedNews hr { color:#787878; border: 0; background-color:#787878; height: 1px;width: 100%; margin-top: 12px; display:block; }
+table.bottomSection td.middleSection table.newsList { color:#505050; border-collapse:collapse; width:100%; margin: 10px 0px 0px 6px; }
+table.bottomSection td.middleSection table.newsList tr td a { color:#7DB639; text-decoration: none }
+table.bottomSection td.middleSection table.newsList tr td.date span {white-space:nowrap; }
+table.bottomSection td.middleSection table.newsList tr td.date { width: 80px; }
+table.bottomSection td.middleSection table.newsList tr td.separator { width: 6px; padding: 4px 3px }
+table.bottomSection td.middleSection table.newsList tr td { width: 100%; white-space:nowrap; font-size: 12px; padding: 4px 0px }
+table.bottomSection td.middleSection table.newsList tr td.footer a {text-decoration:underline; color: #505050; font-size: 11px; }
+
+table.bottomSection td.rightSection {width:269px; vertical-align:top; }
+table.bottomSection td.rightSection div.courseList { display:block; margin: 0px 6px; height:100%; vertical-align:top; }
+table.bottomSection td.rightSection div.courseList h1 { color:#7DB639; font-size: 16px; margin:8px 0px 4px 0px; }
+table.bottomSection td.rightSection div.courseList h1 a { color:#7DB639; text-decoration:none }
+table.bottomSection td.rightSection div.courseList h1 a:hover { text-decoration:underline }
+table.bottomSection td.rightSection div.courseList table {border-collapse:collapse; table-layout:fixed }
+table.bottomSection td.rightSection div.courseList table tr td{color:#505050; font-size:12px; white-space:nowrap; padding: 4px 0px}
+table.bottomSection td.rightSection div.courseList table tr td a { color:#505050; }
+table.bottomSection td.rightSection div.courseList table tr td a.button { color:#fff; }
+
+table.bottomSection td.rightSection div.weLike { display:block; height:54px; color: #636363; font-size:10px; padding: 0px 0px 0px 140px;}
+table.bottomSection td.rightSection div.weLike h1 { display:block; font-size:10px; margin:0;}
