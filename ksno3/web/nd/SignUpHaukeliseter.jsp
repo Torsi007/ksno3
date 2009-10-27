@@ -62,18 +62,40 @@
             
 </script>
 <script type="text/javascript" src="js/jquery.skinned-select.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#courseSelect div').css("display","none");
+        $('#txtSelectedCourse').html($('#courseSelect select :selected').text());
+        $("#courseSelectActivate a").click(function(e) {
+            e.preventDefault();
+            $('#courseSelect div').css("display","block");
+            $('#txtSelectedCourse').css("display","none");
+        });
+    });
+</script>
 </head>
 <body>
     <f:view>
         <h:form id="signup" onsubmit="return validate()">
             <table style="width:1px;">
                 <tr>
-                    <td required="true" format="email" colspan="2">
-                        <span>Email</span>
-                        <t:inputText binding="#{SignUpWinter_Backing.email}" style="width:100%"/>
+                    <td id="courseSelect" style="height:40px">
+                        <span>Kurs</span>
+                        <div class="my-skinnable-select">
+                            <t:selectOneMenu id="courses" binding="#{SignUpWinter_Backing.coursesSelect}" >
+                                <f:selectItems value="#{SignUpWinter_Backing.coursesSelectItems}"/>
+                            </t:selectOneMenu>
+                        </div>
+                        <span id="txtSelectedCourse"><t:outputText style="display:none" id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/></span>
+                    </td>
+                    <td id="courseSelectActivate" style="padding-top:14px">
+                        <t:htmlTag value="a" styleClass="button">
+                            <f:param name="href" value="../nd/#{Current_Backing.articleUrl}?id=#{headline.id}" />
+                            <h:outputText value="Endre" escape="false"/>
+                        </t:htmlTag>
                     </td>
                 </tr>
-                <tr>
+               <tr>
                     <td required="true">
                         <span>Fornavn</span>
                         <t:inputText binding="#{SignUpWinter_Backing.firstName}"/>
@@ -81,6 +103,12 @@
                     <td required="true">
                         <span>Etternavn</span>
                         <t:inputText binding="#{SignUpWinter_Backing.lastName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td required="true" format="email" colspan="2">
+                        <span>Email</span>
+                        <t:inputText binding="#{SignUpWinter_Backing.email}" style="width:100%"/>
                     </td>
                 </tr>
                 <tr>
@@ -94,17 +122,6 @@
                     <td colspan="2">
                         <span>Kommentar</span>
                         <t:inputTextarea  style="width:100%" rows="3" binding="#{SignUpWinter_Backing.comment}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span>Kurs</span>
-                        <div class="my-skinnable-select">
-                            <t:selectOneMenu id="courses" binding="#{SignUpWinter_Backing.coursesSelect}" >
-                                <f:selectItems value="#{SignUpWinter_Backing.coursesSelectItems}"/>
-                            </t:selectOneMenu>
-                        </div>
-                        <t:outputText style="display:none" id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/>
                     </td>
                 </tr>
                 <tr>

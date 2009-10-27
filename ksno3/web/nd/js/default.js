@@ -1,8 +1,16 @@
+//default.js
+
 var framHeightCheckCount = 0;
 
 $(document).ready(function(){
     setMainMenuItems();
+    if(frameElement == undefined || frameElement.id != "content"){
+        $("body").css("background-position","0px 158px");
+    }else{
+        $(".topMenu").css("display","none");
+    }
     setFrameHeight();
+
 });
 
 
@@ -15,7 +23,7 @@ function setFrameHeight(){
         if(parseInt(this.frameElement.style.height) < parseInt(document.body.scrollHeight)){
             this.frameElement.style.height = document.body.scrollHeight;
         }
-        if(framHeightCheckCount > 8){
+        if(framHeightCheckCount < 8){
             setTimeout("setFrameHeight()",250);
         }
     }catch(err){}

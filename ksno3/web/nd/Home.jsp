@@ -48,7 +48,7 @@
                             <font style="font-size:25px; line-height: 25px;">Vi kj&oslash;rer kitekurs<br/>p&aring; J&aelig;ren og<br/> Haukeliseter</font>
                                 <jsp:include page="Button.jsp" >
                                     <jsp:param name="title" value="Les mer" />
-                                    <jsp:param name="link" value="aboutUs.html"/>
+                                    <jsp:param name="link" value="aboutUs.jsp"/>
                                 </jsp:include>
                         </div>
                     </td>
