@@ -130,7 +130,12 @@ ksnoImgageBorder.prototype.update = function(){
 function validate(formElem){
     var formElement = formElem;
     if(formElement == undefined){
-        formElement = event.srcElement? event.srcElement : event.target;
+        if(window.event == undefined){
+            formElement = document.forms[0];
+        }else{
+            formElement = event.srcElement? event.srcElement : event.target;
+        }
+        
     }
     var validated = validateRequiredElements(formElement, "input");
     if(validated){
