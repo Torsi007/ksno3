@@ -1,4 +1,4 @@
-<jsp:include page="../nd/Heading.jsp" ></jsp:include>
+<jsp:include page="../Heading.jsp" ></jsp:include>
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -67,5 +67,5 @@
             
         </f:view>
     </body>
-<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+<jsp:include page="../Ending.jsp" ></jsp:include>
 

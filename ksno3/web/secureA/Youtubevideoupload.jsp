@@ -1,4 +1,4 @@
-<jsp:include page="../nd/Heading.jsp" ></jsp:include>
+<jsp:include page="../Heading.jsp" ></jsp:include>
 <title>kitesurfing.no - last opp video</title>
 </head>
 <body>
@@ -8,7 +8,7 @@
         <input type="submit" value="go" />
     </form>
 </body>
-<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+<jsp:include page="../Ending.jsp" ></jsp:include>
 
 
 

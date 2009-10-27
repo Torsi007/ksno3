@@ -1,4 +1,4 @@
-<jsp:include page="../nd/Heading.jsp" ></jsp:include>
+<jsp:include page="../Heading.jsp" ></jsp:include>
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -24,7 +24,7 @@
         theme_advanced_resizing : true,
 
         // Example content CSS (should be your site CSS)
-        content_css : "css/content.css",
+        content_css : "../resources/css/articleUpdate.css",
 
         // Drop lists for link/image/media/template dialogs
         external_link_list_url : "lists/link_list.js",
@@ -114,5 +114,5 @@
         </h:form>
     </f:view>
 </body>
-<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+<jsp:include page="../Ending.jsp" ></jsp:include>
 
