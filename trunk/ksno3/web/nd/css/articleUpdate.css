@@ -1,7 +1,0 @@
-body table {border-collapse:collapse; height:100%; width:100% }
-body table td.left {width:100%; vertical-align:top}
-body table td.right {width:296px; padding: 0px 4px; vertical-align:top }
-body table td.right img {border: none; display:block; margin: 0px 0px 4px 0px; cursor:url }
-body table tr td {color:#505050; font-size:12px; padding: 8px; }
-body table tr td h2 {font-size: 14px; font-weight:500; margin: 6px 0px; color:#505050;}
-
