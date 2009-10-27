@@ -1,4 +1,4 @@
-<jsp:include page="../nd/Heading.jsp" ></jsp:include>
+<jsp:include page="../Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
@@ -104,5 +104,5 @@
                 <t:outputText styleClass="errorMsg" binding="#{EventAddParticipant_Backing.errorMsg}"/>
         </f:view>       
     </body>
-<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+<jsp:include page="../Ending.jsp" ></jsp:include>
 
