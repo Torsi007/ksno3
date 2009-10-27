@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class name="Participation" optimistic-lock="version" polymorphism="implicit" table="PARTICIPATION">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <!-- Lasy to false to make SignUpConfirm work properly-->
+    <many-to-one cascade="save-update" class="Person" column="PARTICIPANT_ID" lazy="false" name="participant"/>
+    <many-to-one cascade="save-update" class="Event" column="EVENT_ID" name="event"/>
+    <property column="SHOE_SIZE" name="shoeSize" type="string"/>
+    <property column="HELMET_SIZE" name="helmetSize" type="string"/>
+    <property column="WETSUIT_SIZE" name="wetSuitSize" type="string"/>
+    <property column="COMMENT" name="comment" type="string"/>
+    <property column="COMMENT_KSNO" name="commentKSNO" type="string"/>
+    <property column="PRICE" name="price" type="integer"/>
+    <property column="ON_WAIT_LIST" name="onWaitList" type="boolean"/>
+    <property column="CREATED_DATE" name="createdDate" type="calendar"/>
+  </class>
+</hibernate-mapping>

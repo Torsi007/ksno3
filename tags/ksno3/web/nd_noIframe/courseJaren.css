@@ -1,0 +1,19 @@
+table.middleSection {background-image:url('http://farm3.static.flickr.com/2504/3839830270_cc3ed3c876_o.jpg');}
+table.middleSection td.leftSection {width:356px; padding:0px; vertical-align:top; line-height:24px}
+table.middleSection td.leftSection div {padding:20px 26px 0px 16px; display:block;}
+
+
+table.middleSection td.rightSection {width:584px; vertical-align:bottom;}
+
+table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:auto; table-layout:fixed; border-collapse:collapse; color:white; empty-cells:show}
+
+table.bottomSection td.leftSection {width:356px; vertical-align:top }
+table.bottomSection td.leftSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
+table.bottomSection td.leftSection img {margin: 0px 6px 6px 6px}
+table.bottomSection td.leftSection p {margin: 10px 6px; color:#787878; font-size:11px;}
+
+table.bottomSection td.rightSection {width:584px; vertical-align:top; }
+table.bottomSection td.rightSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
+table.bottomSection td.rightSection p {margin: 10px 6px; color:#787878; font-size:11px;}
+table.bottomSection td.rightSection embed {margin: 10px 6px; }
+

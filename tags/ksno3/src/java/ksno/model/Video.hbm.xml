@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class name="Video" optimistic-lock="version" polymorphism="implicit" table="VIDEO">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <property column="NAME" name="name" type="string"/>
+    <property column="YOUTUBEID" name="youTubeId" type="string"/>
+    <property column="STATE" name="state" type="string"/>
+    <property column="URL" name="url" type="string"/>
+    <property column="DESCRIPTION" name="description" type="string"/>
+    <property column="THUMBNAIL" name="thumbnail" type="string"/>
+    <many-to-one cascade="none" class="Person" column="PERSON_ID" name="owner" not-null="true"/>
+    <many-to-one cascade="none" class="Article" column="ARTICLE_ID" name="article"/>
+    <property column="CREATED_DATE" name="createdDate" type="calendar"/>
+    <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="calendar"/>
+    <property column="DURATION" name="duration" type="string"/>
+    <many-to-one cascade="none" class="Category" column="CATEGORY_ID" name="category" not-null="true" lazy="false"/>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class discriminator-value="P" name="Person" optimistic-lock="version" table="PERSON">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <discriminator column="PERSON_TYPE" type="string"/>
+    <version column="VERSION" name="version"/>
+    <property column="FIRST_NAME" name="firstName" type="string"/>
+    <property column="LAST_NAME" name="lastName" type="string"/>
+    <property column="USER_NAME" name="userName" type="string"/>
+    <property column="USER_PASS" name="passWord" type="string"/>
+    <property column="PHONE" name="phone" type="integer"/>
+    <property column="ALLOW_MAIL" name="allowMail" type="boolean"/>
+    <set cascade="save-update" inverse="true" lazy="true" name="participations" table="PARTICIPATION">
+      <key column="PARTICIPANT_ID"/>
+      <one-to-many class="Participation"/>
+    </set>
+    <set cascade="save-update" inverse="true" lazy="true" name="roles" table="USER_ROLES">
+      <key column="USER_NAME" property-ref="userName"/>
+      <one-to-many class="UserRoles"/>
+    </set>
+    <property column="COMPANY_NAME" name="companyName" type="string"/>
+    <property column="COMPANY_NUMBER" name="companyNumber" type="string"/>
+    <property column="STREET_NAME" name="streetName" type="string"/>
+    <property column="STREET_NUMBER" name="streetNumber" type="string"/>
+    <property column="ZIP_CODE" name="zipCode" type="string"/>
+    <property column="CITY" name="city" type="string"/>
+    <property column="PROFILE_PICTURE" name="profilePicture" type="string"/>
+    <subclass discriminator-value="I" name="Instructor">
+      <property column="ACC_NUMBER" name="accountNumber" type="string"/>
+      <many-to-one cascade="save-update" column="TEXT_ID" class="Text" lazy="false" name="aboutMe"/>
+      <set cascade="save-update" inverse="true" name="events" table="EVENT">
+        <key column="RESPONSIBLE_ID"/>
+        <one-to-many class="Event"/>
+      </set>
+    </subclass>
+  </class>
+</hibernate-mapping>

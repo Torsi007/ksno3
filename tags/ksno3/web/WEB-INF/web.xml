@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
+    <context-param>
+        <description>Used to identify application for picasaWeb</description>
+        <param-name>applicationName</param-name>
+        <param-value>kitesurfingHauge-kitesurfingNo-1</param-value>
+    </context-param>
+    <context-param>
+        <description>User name picasaWeb</description>
+        <param-name>picasaWeb.userName</param-name>
+        <param-value>info@kitesurfing.no</param-value>
+    </context-param>
+    <context-param>
+        <description>Picasa Web password</description>
+        <param-name>picasaWeb.passWord</param-name>
+        <param-value>Sw1tchBlade</param-value>
+    </context-param>
+    <context-param>
+        <param-name>picasaWeb.baseUrl</param-name>
+        <param-value>http://picasaweb.google.com/data/feed/api/user/kitesurfing.no</param-value>
+    </context-param>
+    <context-param>
+        <description>Used in calendar converter to avvoid timezone offsets</description>
+        <param-name>timeZone</param-name>
+        <param-value>GMT+1</param-value>
+    </context-param>
+    <context-param>
+        <description>User name Youtube (maybe it should be kitesurfingNo)</description>
+        <param-name>youtube.userName</param-name>
+        <param-value>kitesurfing.no@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <description>Password</description>
+        <param-name>youtube.passWord</param-name>
+        <param-value>Sw1tchBlade</param-value>
+    </context-param>
+    <context-param>
+        <description>The Developer Key should be provided in every YouTube API request.</description>
+        <param-name>youtube.devKey</param-name>
+        <param-value>AI39si6PqsiS70ppVM_YcZhe3seipUzurCEQ9qCaR3Bzu7fHyCEiCyTlJfa-YtgLJkYkr8pzifUv4Vjg0Ncbb4w4agl4bM8WKw</param-value>
+    </context-param>
+    <context-param>
+        <description>Provides feeds of videos uploaded on kitesurfiingNo user</description>
+        <param-name>youtube.baseUrl</param-name>
+        <param-value>http://gdata.youtube.com/feeds/api/users/kitesurfingNo/uploads</param-value>
+    </context-param>
+    <context-param>
+        <description>Unicode escaping</description>
+        <param-name>com.sun.faces.disableUnicodeEscaping</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <filter>
+        <filter-name>CharsetFilter</filter-name>
+        <filter-class>ksno.util.CharsetFilter</filter-class>
+        <init-param>
+            <param-name>requestEncoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+        <init-param>
+            <param-name>uploadMaxFileSize</param-name>
+            <param-value>20m</param-value>
+        </init-param>
+        <init-param>
+            <param-name>uploadThresholdSize</param-name>
+            <param-value>1m</param-value>
+        </init-param>
+        <init-param>
+            <param-name>uploadRepoitoryPath</param-name>
+            <param-value>/tmp</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharsetFilter</filter-name>
+        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/faces/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>MyFacesExtensionsFilter</filter-name>
+        <url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/Main.jsp</welcome-file>
+    </welcome-file-list>
+    <security-constraint>
+        <display-name>A realm</display-name>
+        <web-resource-collection>
+            <web-resource-name>A realm</web-resource-name>
+	 <!-- Define the context-relative URL(s) to be protected -->
+            <description/>
+            <url-pattern>/faces/secureA/*</url-pattern>
+	 <!-- If you list http methods, only those methods are protected -->
+            <http-method>GET</http-method>
+            <http-method>PUT</http-method>
+            <http-method>POST</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+         <!-- Anyone with one of the listed roles may access this area -->
+            <role-name>authuser</role-name>
+            <role-name>admin</role-name>
+            <role-name>internal</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Default login configuration uses form-based authentication -->
+    <security-constraint>
+        <display-name>D realm</display-name>
+        <web-resource-collection>
+            <web-resource-name>D realm</web-resource-name>
+            <description/>
+            <url-pattern>/faces/secureD/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>internal</role-name>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Example Form-Based Authentication Area</realm-name>
+    </login-config>
+
+    <!-- Security roles referenced by this web application -->
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>internal</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>authuser</role-name>
+    </security-role>
+    <resource-ref>
+        <description>Resource reference to a factory for javax.mail.Session
+            instances that may be used for sending electronic mail
+            messages, preconfigured to connect to the appropriate
+            SMTP server.
+        </description>
+        <res-ref-name>mail/Session</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+    </web-app>
