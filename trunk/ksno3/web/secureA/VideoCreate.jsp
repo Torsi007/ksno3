@@ -1,4 +1,4 @@
-<jsp:include page="../nd/Heading.jsp" ></jsp:include>
+<jsp:include page="../Heading.jsp" ></jsp:include>
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -47,5 +47,5 @@
         </f:view>
         <iframe frameborder="none" style="width:100%; height: 400; border:none" src="VideoMetaCreate.jsp" id="content"></iframe>
     </body>
-<jsp:include page="../nd/Ending.jsp" ></jsp:include>
+<jsp:include page="../Ending.jsp" ></jsp:include>
 
