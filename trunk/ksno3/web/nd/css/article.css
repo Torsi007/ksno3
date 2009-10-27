@@ -2,10 +2,12 @@ body {background-image:url('http://farm4.static.flickr.com/3468/3748385543_3c0f7
 
 table.middleSection {height:74px;}
 table.middleSection font{display:block;}
-table.middleSection td {padding:0px; vertical-align:top;}
-table.middleSection td div {padding:10px 0px 0px 4px; display:block;}
-table.middleSection td div h1 {font-size:20px; margin: 0px; font-weight:normal}
-table.middleSection td div h2 {font-size:11px; line-height: 11px;}
+table.middleSection td {padding:10px 0px 0px 4px; vertical-align:top;}
+table.middleSection td h1 {font-size:20px; margin: 0px; font-weight:normal}
+table.middleSection td h2 {font-size:11px; line-height: 11px;}
+table.middleSection td.leftSection {width:900px;}
+table.middleSection td.rightSection {width:40px; vertical-align:bottom;}
+table.middleSection td.rightSection a img{border: 0 none; margin-bottom: 14px}
 
 table.bottomSection td {color:#505050; font-size:12px; padding: 8px; }
 table.bottomSection td h2 {font-size: 14px; font-weight:500; margin: 6px 0px; color:#505050;}
