@@ -9,6 +9,7 @@
 <script type="text/javascript" src="resources/js/default.js"></script>
 
 </head>
+<jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
 <body>
     <f:view>
         <h:form>

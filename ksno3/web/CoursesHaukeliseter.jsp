@@ -39,6 +39,7 @@
         </script>
         <script type="text/javascript" src="resources/js/jquery.skinned-select.js"></script>
     </head>
+    <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
     <body>
         <f:view>
             <h:form>

@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/signUpConfirmed.css"/>
 <title>kitesurfing.no - påmelding vinterkurs</title>
 </head>
+<jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
 <body class="course">
     <f:view>
         <h:form id="signup" onsubmit="return validate()">

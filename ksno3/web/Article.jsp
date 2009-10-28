@@ -31,6 +31,7 @@
     <meta name="description" content="description " />
     <link rel="image_src" href="<h:outputText value="#{Article_Backing.article.avatarUrl}"/>" />
 </head>
+<jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
 <body>
 
     <h:form>
