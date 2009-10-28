@@ -30,6 +30,7 @@
             });
         </script>
     </head>
+    <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
     <body>
         <f:view>
             <h:form>

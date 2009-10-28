@@ -74,6 +74,7 @@
     });
 </script>
 </head>
+<jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
 <body>
     <f:view>
         <h:form id="signup" onsubmit="return validate()">

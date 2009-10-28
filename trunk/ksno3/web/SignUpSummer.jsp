@@ -11,6 +11,7 @@
 <script type="text/javascript" src="resources/js/default.js"></script>
 
 </head>
+<jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
 <body class="signup">
     <f:view>
         <h:form id="signup" onsubmit="return validate()">
