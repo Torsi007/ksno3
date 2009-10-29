@@ -171,6 +171,7 @@ public class SignUpWinter {
     public String signOn(){
         
         String returnVal = "SignUpConfirmed";
+        getLogService().log(Level.INFO,"Start sign on.. ");
         try{
             Person person = null;
             try{
@@ -265,6 +266,7 @@ public class SignUpWinter {
             errorMsg.setValue("Påmeldingen feilet, vennligst forsøk på nytt. Om det fortsatt ikke fungerer, ta kontakt med oss på email eller telefon (kontakt info nederst på siden)");            
             returnVal = "no";
         }
+        getLogService().log(Level.INFO,"return signon with returnvalue " + returnVal);
         return returnVal;        
 
     }

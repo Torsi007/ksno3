@@ -56,7 +56,7 @@
                     <td class="leftSection" valign="top">
                         <h1>Påmelding</h1>
                         <t:htmlTag value="iframe" >
-                            <f:param name="src" value="../nd/SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.id}" />
+                            <f:param name="src" value="SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.id}" />
                             <f:param name="scrolling" value="no" />
                             <f:param name="frameborder" value="0" />
                             <f:param name="height" value="350" />
