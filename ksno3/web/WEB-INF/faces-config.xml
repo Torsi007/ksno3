@@ -1057,19 +1057,19 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/nd/SignUpSummerForm.jsp</from-view-id>
+        <from-view-id>SignUpSummerForm.jsp</from-view-id>
         <navigation-case>
             <from-action>#{SignUpSummer_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>/nd/signUpSummerConfirmed.jsp</to-view-id>
+            <to-view-id>signUpSummerConfirmed.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/nd/SignUpHaukeliseter.jsp</from-view-id>
+        <from-view-id>SignUpHaukeliseter.jsp</from-view-id>
         <navigation-case>
             <from-action>#{SignUpWinter_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>/nd/signUpWinterConfirmed.jsp</to-view-id>
+            <to-view-id>signUpWinterConfirmed.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
