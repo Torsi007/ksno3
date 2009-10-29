@@ -64,14 +64,14 @@
                                     <t:dataList value="#{CoursesSummer_Backing.courses}" var="course">
                                         <tr>
                                             <td style="width:120px">
-                                                <h:outputLink value="CourseHaukeliseter.jsp">
+                                                <h:outputLink value="SignUpSummer.jsp">
                                                     <f:param name="id" value="#{course.id}"/>
                                                     <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
                                                 </h:outputLink>
                                                     <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
                                             </td>
                                             <td>
-                                                <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
+                                                <h:outputLink value="SignUpSummer.jsp" styleClass="button">
                                                     <f:param name="id" value="#{course.id}"/>
                                                     <h:outputText value="Go"/>
                                                 </h:outputLink>

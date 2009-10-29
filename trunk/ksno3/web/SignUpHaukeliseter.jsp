@@ -9,8 +9,6 @@
 <link rel="stylesheet" type="text/css" href="resources/css/skinned-select.css"/>
 <script type="text/javascript" src="resources/js/default.js"></script>
 <script src="resources/js/logic.js" type="text/javascript"></script>
-
-<script src="resources/js/logic.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         setHiddenFieldsFromRequestParams();
