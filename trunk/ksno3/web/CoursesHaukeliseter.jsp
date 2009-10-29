@@ -104,7 +104,7 @@
                     <tr>
                         <td class="leftSection">
                             <div>
-                            <h1>Hva er kiting og for hvem?"</h1>
+                            <h1>Hva er kiting og for hvem?</h1>
                             <p>Kitesurfing er spennende, morsomt og en sport med mange muligheter. Det finnes garantert noe som tiltaler deg! Med kiten kan du gjøre alt fra å gi deg ut på alt fra rolige, lange skiturer på fjellet til å surfe på sjøen om sommeren.</p>
                             <p>Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle. Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være særlig sterk! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte, ekstremt eller rolig.</p>
                             <p>Å lære kiting er imidlertid både vanskelig og forenet med risiko dersom man prøver å lære på egen hånd. Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for raskere progresjon. Du trenger ingen forkunnskaper for å gå et kurs!</p>
