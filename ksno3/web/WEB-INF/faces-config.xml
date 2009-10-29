@@ -1041,35 +1041,19 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/SignUpSummer.jsp</from-view-id>
+        <from-view-id>/SignUpSummerForm.jsp</from-view-id>
         <navigation-case>
             <from-action>#{SignUpSummer_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>/signUpConfirmed.jsp</to-view-id>
+            <to-view-id>/signUpSummerConfirmed.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/SignUpWinter.jsp</from-view-id>
+        <from-view-id>/SignUpHaukeliseter.jsp</from-view-id>
         <navigation-case>
             <from-action>#{SignUpWinter_Backing.signOn}</from-action>
             <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>/signUpConfirmed.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>SignUpSummerForm.jsp</from-view-id>
-        <navigation-case>
-            <from-action>#{SignUpSummer_Backing.signOn}</from-action>
-            <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>signUpSummerConfirmed.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>SignUpHaukeliseter.jsp</from-view-id>
-        <navigation-case>
-            <from-action>#{SignUpWinter_Backing.signOn}</from-action>
-            <from-outcome>SignUpConfirmed</from-outcome>
-            <to-view-id>signUpWinterConfirmed.jsp</to-view-id>
+            <to-view-id>/signUpWinterConfirmed.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
