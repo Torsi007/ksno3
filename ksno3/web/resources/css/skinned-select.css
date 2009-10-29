@@ -25,7 +25,7 @@
 /* skinned select */
 
 div.skinned-select {
-	background: url('../img/skin.png') no-repeat scroll 0pt 100%;
+	background: url('../img/components/skin.png') no-repeat scroll 0pt 100%;
         background-position: top left;
         margin-top:1px;
         padding:0;
