@@ -28,7 +28,7 @@
                                         <td>Ledige plasser:</td><td class="right" align="right"><h:outputText value="#{CourseHaukeliseter_Backing.course.availableSeats}"/></td><td></td>
                                     </tr>
                                     <tr>
-                                        <td>Pris:</td><td class="right" align="right">1900</td><td>,-</td>
+                                        <td>Pris:</td><td class="right" align="right">1950</td><td>,-</td>
                                     </tr>
                                 </table>
                             </div>
@@ -39,7 +39,7 @@
                                 <h1>Les om tidligere vinterkurs!</h1>
                                 <t:dataList value="#{CoursesWinter_Backing.courseArticles}" var="article">
                                     <t:htmlTag value="a">
-                                        <f:param name="href" value="Article.jsp?id=#{article.id}" />
+                                        <f:param name="href" value="#{Current_Backing.contextPath}/artikkel#{article.prettyPrintId}" />
                                         <h:outputText value="#{article.name}" escape="false"/>
                                     </t:htmlTag>
                                 </t:dataList>

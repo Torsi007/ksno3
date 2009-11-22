@@ -15,6 +15,9 @@
     <lifecycle>
         <phase-listener>ksno.util.KSNOPhaseListener</phase-listener>
     </lifecycle>
+    <lifecycle>
+        <phase-listener>ksno.util.PrettyUrlPhaseListener</phase-listener>
+    </lifecycle>
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
         <managed-bean-class>ksno3.SessionBean1</managed-bean-class>

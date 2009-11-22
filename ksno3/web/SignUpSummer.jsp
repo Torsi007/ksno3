@@ -43,7 +43,7 @@
                             <h1>Les om tidligere kurs!</h1>
                             <t:dataList value="#{CourseSummer_Backing.courseArticles}" var="article">
                                 <t:htmlTag value="a">
-                                    <f:param name="href" value="../nd/Article.jsp?id=#{article.id}" />
+                                    <f:param name="href" value="#{Current_Backing.contextPath}/artikkel#{article.prettyPrintId}" />
                                     <h:outputText value="#{article.name}" escape="false"/>
                                 </t:htmlTag>
                             </t:dataList>

@@ -5,11 +5,12 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 <f:view>
 <title>kitesurfing.no -  <h:outputText value="#{Article_Backing.article.name}"/></title>
-    <meta name="title" content="kitesurfing.no -  <h:outputText value="#{Article_Backing.article.name}"/>" />
-<link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/article.css" />
-<script type="text/javascript" src="resources/js/jquery.js"></script>
-<script type="text/javascript" src="resources/js/default.js"></script>
+<meta name="title" content="kitesurfing.no -  <h:outputText value="#{Article_Backing.article.name}"/>" />
+<meta name="description" content="kitesurfing.no -  <h:outputText value="#{Article_Backing.article.intro}"/>" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/article.css" />
+<script type="text/javascript" src="${request.contextPath}/resources/js/jquery.js"></script>
+<script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -35,20 +36,20 @@
 <body>
 
     <h:form>
-        <div class="topMenu">
+        <div class="topMenu" style="display:none">
             <table>
                 <tr>
-                    <td><a href="Main.jsp?content=Home.jsp"><img src="resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/></a></td>
+                    <td><a href="Main.jsp?content=Home.jsp"><img src="${request.contextPath}/resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/></a></td>
                 </tr>
                 <tr>
                     <td class="main">
                         <table id="mainMenu">
                             <tr>
-                                <td style="width:58px;"><a style="font-weight:bolder" href="Main.jsp?content=Home.jsp">Hjem</a></td>
-                                <td style="width:80px"><a href="Main.jsp?content=Articles.jsp" >Publisert</a></td>
-                                <td style="width:98px"><a href="Main.jsp?content=CourseJaren.jsp"  >Sommerkurs</a></td>
-                                <td style="width:86px"><a href="Main.jsp?content=CoursesHaukeliseter.jsp" >Vinterkurs</a></td>
-                                <td style="width:86px"><a href="Main.jsp?content=aboutUs.jsp" >Om oss</a></td>
+                                <td style="width:58px;"><a style="font-weight:bolder" href="${request.contextPath}/faces/Main.jsp?content=Home.jsp">Hjem</a></td>
+                                <td style="width:80px"><a href="${request.contextPath}/faces/Main.jsp?content=Articles.jsp" >Publisert</a></td>
+                                <td style="width:98px"><a href="${request.contextPath}/faces/Main.jsp?content=CourseJaren.jsp"  >Sommerkurs</a></td>
+                                <td style="width:86px"><a href="${request.contextPath}/faces/Main.jsp?content=CoursesHaukeliseter.jsp" >Vinterkurs</a></td>
+                                <td style="width:86px"><a href="${request.contextPath}/faces/Main.jsp?content=aboutUs.jsp" >Om oss</a></td>
                             </tr>
                         </table>
                     </td>
