@@ -31,6 +31,18 @@ import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
  */
 public class JSFUtil {
 
+    public static String prettyURLHome = "/hjem";
+    public static String prettyURLArticlesAndVideos = "/artikler-og-videoer";
+    public static String prettyURLArticle = "/artikkel";
+    public static String prettyURLCourseSummer = "/kurs/sommer";
+    public static String prettyURLStavanger = "/stavanger";
+    public static String prettyURLCourseWinter = "/kurs/vinter";
+    public static String prettyURLHaukeliseter = "/haukeliseter";
+    public static String prettyURLAboutUs = "/om-oss";
+
+
+
+
     public static String getText(HtmlInputText text){
         if(text.getValue() != null){
             return text.getValue().toString();

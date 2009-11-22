@@ -14,6 +14,7 @@ import ksno.model.Article;
 import ksno.model.BeginnerCourse;
 import ksno.model.Category;
 import ksno.model.Video;
+import ksno.util.JSFUtil;
 
 /**
  * <p>Application scope data bean for your application.  Create properties
@@ -39,6 +40,33 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     }
     // </editor-fold>
 
+    public String getPrettyURLHome(){
+        return JSFUtil.prettyURLHome;
+    }
+
+    public String getPrettyURLArticlesAndVideos(){
+        return JSFUtil.prettyURLArticlesAndVideos;
+    }
+
+    public String getPrettyURLArticle(){
+        return JSFUtil.prettyURLArticle;
+    }
+
+    public String getPrettyURLCourseSummer(){
+        return JSFUtil.prettyURLCourseSummer;
+    }
+
+    public String getPrettyURLCourseWinter(){
+        return JSFUtil.prettyURLCourseWinter;
+    }
+
+    public String getPrettyURLAboutUs(){
+        return JSFUtil.prettyURLAboutUs;
+    }
+
+    public String getContextPath(){
+        return JSFUtil.getRequest().getContextPath();
+    }
     /**
      * <p>Construct a new application data bean instance.</p>
      */

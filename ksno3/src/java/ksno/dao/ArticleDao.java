@@ -14,6 +14,7 @@ import ksno.model.Category;
  */
 public interface ArticleDao {
       public Article getArticle(Long id);
+      public Article getArticle(String prettyPrintId);
       public Long newArticle(Article article);
       public void updateArticle(Article article);
       public void deleteArticle(Article article);      
@@ -22,4 +23,5 @@ public interface ArticleDao {
       public Category getCategory(Long id);
       public List<Category> getCategories();
       public List<Article> getVisibleArticles();
+    
 }

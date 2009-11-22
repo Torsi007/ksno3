@@ -14,6 +14,7 @@ import ksno.model.Category;
  */
 public interface ArticleService {
     public Article getArticle(Long id);
+    public Article getArticle(String prettyPrintId);
     public Long newArticle(Article article);
     public void updateArticle(Article article);
     public void deleteArticle(Article article);

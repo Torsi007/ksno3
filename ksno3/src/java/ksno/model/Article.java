@@ -17,6 +17,7 @@ import java.util.Set;
 public class Article implements Serializable {
     private Long id;
     private int version;
+    private String prettyPrintId;
     private String name;
     private String body;
     private String intro;
@@ -29,6 +30,16 @@ public class Article implements Serializable {
     private Set images = new HashSet();
     private Person author;
     private boolean visible;
+
+    public String getPrettyPrintId() {
+        return prettyPrintId;
+    }
+
+    public void setPrettyPrintId(String prettyPrintId) {
+        this.prettyPrintId = prettyPrintId;
+    }
+
+
     
     public void addImage(Image image){
         if(image == null){

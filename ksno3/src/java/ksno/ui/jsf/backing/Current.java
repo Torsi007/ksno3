@@ -15,6 +15,7 @@ import ksno.model.Video;
 import ksno.service.PersonService;
 import ksno.service.ArticleService;
 import ksno.service.VideoService;
+import ksno.util.JSFUtil;
 
 /**
  *
@@ -26,6 +27,10 @@ public class Current {
     PersonService personService;
     ArticleService articleService;
     VideoService videoService;
+
+    public String getContextPath(){
+        return JSFUtil.getRequest().getContextPath();
+    }
 
     public VideoService getVideoService() {
         return videoService;

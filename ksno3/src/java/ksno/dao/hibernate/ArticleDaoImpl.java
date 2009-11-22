@@ -7,6 +7,8 @@ package ksno.dao.hibernate;
 
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ksno.dao.ArticleDao;
 import ksno.model.Article;
 import ksno.model.Category;
@@ -21,12 +23,32 @@ import org.hibernate.Session;
  */
 public class ArticleDaoImpl implements ArticleDao {
 
+    private Logger getLogService(){
+      return Logger.getLogger(ArticleDaoImpl.class.getName());
+    }
+
     public Article getArticle(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         //session.beginTransaction();
         Article article = (Article)session.get(Article.class,id);
         return article;
     }
+
+    public Article getArticle(String prettyPrintId) {
+        Article toReturn = null;
+        try{
+            Query q = null;
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            q=session.createQuery("from Article a where a.prettyPrintId = :ppid");
+            q.setParameter("ppid",prettyPrintId);
+            toReturn = (Article) q.list().get(0);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Not able to find article with pretty print id " + prettyPrintId + ". Technical error message: " + e.getMessage());
+        }
+        return toReturn;
+    }
+
+
     
     public Long newArticle(Article article){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -129,6 +151,8 @@ public class ArticleDaoImpl implements ArticleDao {
 
         return returnVal;
     }
+
+
 
 
 
