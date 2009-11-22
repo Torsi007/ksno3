@@ -6,10 +6,10 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <title>kitesurfing.no - nyheter</title>
-<link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/articles.css" />
-<script type="text/javascript" src="resources/js/jquery.js"></script>
-<script type="text/javascript" src="resources/js/default.js"></script>
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/articles.css" />
+<script type="text/javascript" src="${request.contextPath}/resources/js/jquery.js"></script>
+<script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         window.top.setStyle("news");
@@ -26,7 +26,7 @@
 <body>
     <f:view>
         <h:form>
-            <div class="topMenu">
+            <div class="topMenu" style="display:none">
                 <table>
                     <tr>
                         <td><a href="Main.jsp?content=Home.jsp"><img src="resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/></a></td>
@@ -70,13 +70,13 @@
                                     <td style="width:400">
                                         <h1>
                                             <t:htmlTag value="a">
-                                                <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                                <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                                 <h:outputText value="#{article.name}"/>
                                             </t:htmlTag>
                                         </h1>
                                         <h:outputText value="#{article.createdDate}"><f:convertDateTime pattern="yyyy-MM-dd"/></h:outputText> | <f:verbatim><h:outputText escape="false" value="#{article.intro}"/></f:verbatim>&nbsp;
                                         <t:htmlTag value="a">
-                                            <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                            <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                             <h:outputText escape="true" value="Les mer ->"/>
                                         </t:htmlTag>
                                     </td>

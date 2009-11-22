@@ -213,7 +213,7 @@
                                         <td class="separator">|</td>
                                         <td>
                                             <t:htmlTag value="a">
-                                                <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                                <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                                 <h:outputText value="#{article.name}"/>
                                             </t:htmlTag>
                                         </td>

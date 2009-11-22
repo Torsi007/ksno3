@@ -80,7 +80,10 @@
     <filter-mapping>
         <filter-name>CharsetFilter</filter-name>
         <url-pattern>/faces/*</url-pattern>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/hjem/*</url-pattern>
+        <url-pattern>/artikler-og-videoer/*</url-pattern>
+        <url-pattern>/kurs/*</url-pattern>
+        <url-pattern>/om-oss/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>MyFacesExtensionsFilter</filter-name>
@@ -99,6 +102,10 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/hjem/*</url-pattern>
+        <url-pattern>/artikler-og-videoer/*</url-pattern>
+        <url-pattern>/kurs/*</url-pattern>
+        <url-pattern>/om-oss/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -178,4 +185,4 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
-    </web-app>
+</web-app>

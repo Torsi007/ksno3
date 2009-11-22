@@ -61,7 +61,7 @@
                                     <h:outputText value="#{headline.category.name}"/>
                                 </t:htmlTag>
                                 <t:htmlTag value="a">
-                                    <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{headline.id}" />
+                                    <f:param name="href" value="#{Current_Backing.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{headline.prettyPrintId}" />
                                     <h:outputText value="#{headline.name}" escape="false"/>
                                 </t:htmlTag>
                             </t:dataList>
@@ -102,7 +102,7 @@
                             <t:dataList value="#{Current_Backing.firstTwoArticles}" var="article">
                                 <t:htmlTag value="h1">
                                     <t:htmlTag value="a">
-                                        <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                        <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                         <h:outputText value="#{article.name}"/>
                                     </t:htmlTag>
                                 </t:htmlTag>
@@ -112,7 +112,7 @@
                                 &nbsp;|&nbsp;
                                 <h:outputText value="#{article.intro}" escape="false"/>
                                 <t:htmlTag value="a">
-                                    <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                    <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}"/>
                                     <h:outputText value="Les mer -&gt;" escape="false"/>
                                 </t:htmlTag>
                                 <hr/>
@@ -129,7 +129,7 @@
                                     <td class="separator">|</td>
                                     <td>
                                         <t:htmlTag value="a">
-                                            <f:param name="href" value="#{Current_Backing.articleUrl}?id=#{article.id}" />
+                                            <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                             <h:outputText value="#{article.name}"/>
                                         </t:htmlTag>
                                     </td>
@@ -226,7 +226,9 @@
                     <td class="rightSection" style="height:1px">
                         <div class="weLike">
                             <h1>We like</h1>
-                            <img src="http://lh5.ggpht.com/_lkZPRU-HBNM/SrULQXemmyI/AAAAAAAAAjA/WLnYaocLse4/s800/Untitled-1.gif" alt="Urge"/>
+                            <a href="http://www.urge.no" target="blank">
+                                <img src="http://lh5.ggpht.com/_lkZPRU-HBNM/SrULQXemmyI/AAAAAAAAAjA/WLnYaocLse4/s800/Untitled-1.gif" alt="Urge"/>
+                            </a>
                         </div>
                     </td>
                 </tr>

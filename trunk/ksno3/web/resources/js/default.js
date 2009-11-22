@@ -6,6 +6,7 @@ $(document).ready(function(){
     setMainMenuItems();
     if(frameElement == undefined || frameElement.id != "content"){
         $("body").css("background-position","0px 158px");
+        $(".topMenu").css("display","block");
     }else{
         $(".topMenu").css("display","none");
     }
