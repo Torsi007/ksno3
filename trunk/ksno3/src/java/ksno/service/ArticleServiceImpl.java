@@ -16,6 +16,7 @@ import ksno.dao.ArticleDao;
 import ksno.model.Article;
 import ksno.model.Category;
 import ksno.util.JSFUtil;
+import ksno.util.KSNOutil;
 
 /**
  *
@@ -41,17 +42,23 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.getArticle(id);
     }
 
+    public Article getArticle(String prettyPrintId) {
+        return articleDao.getArticle(prettyPrintId);
+    }
+
     public Long newArticle(Article article) {
         JSFUtil.clearApplicationCache("articles");
         if(article.getCreatedDate() == null){
             article.setCreatedDate(new Date());
             article.setLastUpdatedDate(article.getCreatedDate());
+            article.setPrettyPrintId(KSNOutil.getPrettyPrintId(article.getCreatedDate(), article.getName()));
         }
         return articleDao.newArticle(article);
     }
 
     public void updateArticle(Article article) {
         JSFUtil.clearApplicationCache("articles");
+        article.setPrettyPrintId(KSNOutil.getPrettyPrintId(article.getCreatedDate(), article.getName()));
         articleDao.updateArticle(article);
     }
     
@@ -112,6 +119,8 @@ public class ArticleServiceImpl implements ArticleService {
     public Category getCategory(Long id) {
         return articleDao.getCategory(id);
     }
+
+
 
 
 }
