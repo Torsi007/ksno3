@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/aboutUs.css" />
 <script type="text/javascript" src="resources/js/default.js"></script>
-
+<meta name="description" content="Kitesurfing.no er en etablert kiteskole som ønsker å tilby en sikker, morsom og spennende opplevelse til deg som ønsker å mestre kitesurfing!" />
 </head>
 <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
 <body>

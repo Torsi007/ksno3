@@ -327,10 +327,6 @@
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
         </managed-property>
-        <managed-property>
-            <property-name>id</property-name>
-            <value>#{param.id}</value>
-        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>CoursesSummer_Backing</managed-bean-name>
@@ -1076,4 +1072,5 @@
         </navigation-case>
     </navigation-rule>
 </faces-config>
+
 

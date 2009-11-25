@@ -5,15 +5,16 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <title>kitesurfing.no</title>
-<link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-<link rel="stylesheet" type="text/css" title="default" href="resources/css/main_default.css" />
-<link rel="stylesheet" type="text/css" title="news" href="resources/css/main_news.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+<link rel="stylesheet" type="text/css" title="default" href="${request.contextPath}/resources/css/main_default.css" />
+<link rel="stylesheet" type="text/css" title="news" href="${request.contextPath}/resources/css/main_news.css" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/main.css" />
 <script src="http://www.google.com/jsapi?key=ABQIAAAAXvZjzH-5KE_GOtuiRIcN6xRWocm2CbSUxy6tnc3IdZkGwKhZRxR9D3Ff24LqcYf7yiqC2PTSUCdCFQ" type="text/javascript"></script>
-<script src="resources/js/main.js" type="text/javascript"></script>
+<script src="${request.contextPath}/resources/js/main.js" type="text/javascript"></script>
 <meta name="google-site-verification" content="-ZwDt6i3xUhafWDy__ad3m49lV0uWnB6mLanDlhAe9w" />
+<meta name="description" content="Lære å kite? Vi holder kitekurs på Jæren og Haukeliseter. kitesurfing.no er en etablert kiteskole som ønsker å tilby en sikker, morsom og spennende opplevelse til deg som ønsker å mestre kitesurfing!" />
 </head>
-<jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
+<jsp:include page="GoogleAnalytics.jsp"></jsp:include>
 <body>
     <f:view>
         <div class="topMenu">
@@ -23,7 +24,7 @@
                         <t:htmlTag value="a">
                             <f:param name="target" value="content" />
                             <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLHome}" />
-                            <img src="resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/>
+                            <img src="${request.contextPath}/resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/>
                         </t:htmlTag>
                     </td>
                     <td class="top">

@@ -6,7 +6,7 @@
 <f:view>
 <title>kitesurfing.no -  <h:outputText value="#{Article_Backing.article.name}"/></title>
 <meta name="title" content="kitesurfing.no -  <h:outputText value="#{Article_Backing.article.name}"/>" />
-<meta name="description" content="kitesurfing.no -  <h:outputText value="#{Article_Backing.article.intro}"/>" />
+<meta name="description" content="kitesurfing.no - <h:outputText value="#{Article_Backing.article.description}"/>" />
 <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
 <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/article.css" />
 <script type="text/javascript" src="${request.contextPath}/resources/js/jquery.js"></script>

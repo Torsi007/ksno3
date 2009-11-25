@@ -73,15 +73,13 @@
                                     <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
                                         <tr>
                                             <td style="width:120px">
-                                                <h:outputLink value="CourseHaukeliseter.jsp">
-                                                    <f:param name="id" value="#{course.id}"/>
+                                                <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}">
                                                     <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
                                                 </h:outputLink>
-                                                    <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
+                                                 <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
                                             </td>
                                             <td>
-                                                <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
-                                                    <f:param name="id" value="#{course.id}"/>
+                                                <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}" styleClass="button">
                                                     <h:outputText value="Go"/>
                                                 </h:outputLink>
                                             </td>
