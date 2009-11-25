@@ -5,9 +5,9 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
         <title>kitesurfing.no - kite kurs på jæren</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/courseJaren.css" />
-        <script type="text/javascript" src="resources/js/default.js"></script>
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/courseJaren.css" />
+        <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 window.top.setStyle("default");
@@ -64,15 +64,13 @@
                                     <t:dataList value="#{CoursesSummer_Backing.courses}" var="course">
                                         <tr>
                                             <td style="width:120px">
-                                                <h:outputLink value="SignUpSummer.jsp">
-                                                    <f:param name="id" value="#{course.id}"/>
+                                                <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseSummer}#{course.prettyPrintId}">
                                                     <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
                                                 </h:outputLink>
-                                                    <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
+                                                 <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
                                             </td>
                                             <td>
-                                                <h:outputLink value="SignUpSummer.jsp" styleClass="button">
-                                                    <f:param name="id" value="#{course.id}"/>
+                                                <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseSummer}#{course.prettyPrintId}" styleClass="button">
                                                     <h:outputText value="Go"/>
                                                 </h:outputLink>
                                             </td>

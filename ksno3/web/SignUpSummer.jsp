@@ -5,10 +5,10 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
 <title>kitesurfing.no - påmelding sommerkurs</title>
-<link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/courseSummer.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/skinned-select.css"/>
-<script type="text/javascript" src="resources/js/default.js"></script>
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/courseSummer.css" />
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/skinned-select.css"/>
+<script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
 
 </head>
 <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
@@ -56,7 +56,7 @@
                     <td class="leftSection" valign="top">
                         <h1>Påmelding</h1>
                         <t:htmlTag value="iframe" >
-                            <f:param name="src" value="SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.id}" />
+                            <f:param name="src" value="#{ApplicationBean1.contextPath}/faces/SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.id}" />
                             <f:param name="scrolling" value="no" />
                             <f:param name="frameborder" value="0" />
                             <f:param name="height" value="350" />

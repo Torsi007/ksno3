@@ -49,7 +49,7 @@
                             <font style="font-size:25px; line-height: 25px;">Vi kj&oslash;rer kitekurs<br/>p&aring; J&aelig;ren og<br/> Haukeliseter</font>
                                 <jsp:include page="Button.jsp" >
                                     <jsp:param name="title" value="Les mer" />
-                                    <jsp:param name="link" value="aboutUs.jsp"/>
+                                    <jsp:param name="link" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLAboutUs}"/>
                                 </jsp:include>
                         </div>
                     </td>
@@ -136,7 +136,12 @@
                                 </tr>
                             </t:dataList>
                             <tr>
-                                <td colspan="3" class="footer" align="right"><a href="Articles.jsp">Alle artikler -&gt;</a></td>
+                                <td colspan="3" class="footer" align="right">
+                                    <t:htmlTag value="a">
+                                        <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}" />
+                                        <h:outputText value="Alle artikler -&gt;" escape="false"/>
+                                    </t:htmlTag>
+                                </td>
                             </tr>
                         </table>
 
@@ -144,7 +149,12 @@
                     <td class="rightSection">
                         <h1>Aktiviteter</h1>
                         <div class="courseList">
-                            <h1><a href="CourseJaren.jsp">Sommerkurs</a></h1>
+                            <h1>
+                                <t:htmlTag value="a">
+                                    <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseSummer}" />
+                                    <h:outputText value="Sommerkurs" escape="false"/>
+                                </t:htmlTag>
+                            </h1>
                             <table id="summerCourseList">
                                 <t:dataList value="#{CoursesSummer_Backing.fiveNextCourses}" var="course">
                                     <tr>
@@ -160,8 +170,7 @@
                                         <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>
                                         <td style="width:106px"><h:outputText value="#{course.name}"/></td>
                                         <td>
-                                            <h:outputLink value="SignUpSummer.jsp" styleClass="button">
-                                                <f:param name="id" value="#{course.id}"/>
+                                            <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseSummer}#{course.prettyPrintId}" styleClass="button">
                                                 <h:outputText value="Go"/>
                                             </h:outputLink>
                                         </td>
@@ -176,7 +185,12 @@
                                     </td>
                                 </tr>
                             </table>
-                            <h1><a href="CoursesHaukeliseter.jsp">Vinterkurs</a></h1>
+                            <h1>
+                                <t:htmlTag value="a">
+                                    <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}" />
+                                    <h:outputText value="Vinterkurs" escape="false"/>
+                                </t:htmlTag>
+                            </h1>
                             <table id="winterCourseList">
                                 <t:dataList value="#{CoursesWinter_Backing.fiveNextCourses}" var="course">
                                     <tr>
@@ -192,8 +206,7 @@
                                         <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>
                                         <td style="width:106px"><h:outputText value="#{course.name}"/></td>
                                         <td>
-                                            <h:outputLink value="CourseHaukeliseter.jsp" styleClass="button">
-                                                <f:param name="id" value="#{course.id}"/>
+                                            <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}" styleClass="button">
                                                 <h:outputText value="Go"/>
                                             </h:outputLink>
                                         </td>

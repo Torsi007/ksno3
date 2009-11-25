@@ -6,9 +6,9 @@
 <html>
     <head>
         <title>kitesurfing.no - kurs vinter</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/courseHaukeliseter.css" />
-        <script type="text/javascript" src="resources/js/default.js"></script>
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/courseHaukeliseter.css" />
+        <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
     </head>
     <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
     <body class="signup">
@@ -52,7 +52,7 @@
                         <td class="leftSection" valign="top">
                             <h1>Påmelding</h1>
                             <t:htmlTag value="iframe" >
-                                <f:param name="src" value="SignUpHaukeliseter.jsp?courseId=#{CourseHaukeliseter_Backing.id}" />
+                                <f:param name="src" value="#{ApplicationBean1.contextPath}/faces/SignUpHaukeliseter.jsp?courseId=#{CourseHaukeliseter_Backing.course.id}" />
                                 <f:param name="scrolling" value="no" />
                                 <f:param name="frameborder" value="0" />
                                 <f:param name="height" value="350" />
@@ -76,7 +76,7 @@
                                 <tr>
                                     <td>
                                         <h2>Påmeldte</h2>
-                                        <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
+                                        <t:dataList value="#{CourseHaukeliseter_Backing.course.participations}" var="participation">
                                             <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
                                                 <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
                                             </t:htmlTag>
@@ -84,7 +84,7 @@
                                     </td>
                                     <td>
                                         <h2>Venteliste</h2>
-                                        <t:dataList value="#{CourseSummer_Backing.course.participations}" var="participation">
+                                        <t:dataList value="#{CourseHaukeliseter_Backing.course.participations}" var="participation">
                                             <t:htmlTag value="span" rendered="#{participation.onWaitList}">
                                                 <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
                                             </t:htmlTag>

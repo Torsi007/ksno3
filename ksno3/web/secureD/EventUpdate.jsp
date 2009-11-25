@@ -158,7 +158,7 @@
                     <td>Lokasjon</td>
                     <td>
                         <t:selectOneMenu value="#{EventModify.location}" >
-                            <f:selectItem itemLabel="Haukeli" itemValue="Haukeli"/>
+                            <f:selectItem itemLabel="Haukeli" itemValue="Haukeliseter"/>
                             <f:selectItem itemLabel="Jæren" itemValue="Jæren"/>
                         </t:selectOneMenu>
                     </td>
