@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sitemap-generator-url="http://www.auditmypc.com/free-sitemap-generator.asp" -->
+<!-- This sitemap was created using the free tool found here: http://www.auditmypc.com/free-sitemap-generator.asp -->
+<!-- Audit My PC also offers free security tools to help keep you safe during internet travels -->
+<urlset 
+		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+		http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+<url>
+    <loc>http://192.168.2.101/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+</url>
+<url>
+    <loc>http://192.168.2.101/hjem</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+</url>
+<url>
+    <loc>http://192.168.2.101/kurs/sommer</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+</url>
+<url>
+    <loc>http://192.168.2.101/kurs/vinter</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+</url>
+<url>
+    <loc>http://192.168.2.101/om-oss</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/11/14/Kitesurfing.no-i-SAS-magasinet</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/11/05/Kitekurs-som-julegave</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/10/30/Artikkel-fra-deltager:-kurs-19-20-September</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/10/23/¡Bienvenidos-a-Cabarete!</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/10/17/Det-nye-Kitesurfing.no</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/10/11/Lær-å%20kite-på-snø-i-vinter!</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/09/30/Artikkel-fra-deltager:-Kurs-29-30-august</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/09/21/Freestyle-og-foto-på-solastranden</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/07/21/Sommerkurs</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/04/02/Artikkel%20fra%20deltager:-Kurs-20-22-Februar</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/03/27/Artikkel%20fra%20deltager:-Kurs-6-8-Mars</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/03/11/Artikkel%20fra%20deltager:-En-våldsam-take-off</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/03/10/Artikkel%20fra%20deltager:-Kurs-20.-22.-Februar</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/02/12/Kitesurfing.no-i-Karmøybladet</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/02/09/Haukelifjell-best-i-Sør-Norge</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2009/01/25/Pudderalarm!</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2008/12/16/Maui-No-Ka-Oi!-Maui-Er-Best!</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2008/12/07/Stemningsrapport-fra-Haukeliseter</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2008/11/30/SurfAndMore</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/artikler-og-videoer/artikkel/2008/11/16/Vinterkurs-2009</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/kurs/vinter/haukeliseter/2010/01/08/</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/kurs/vinter/haukeliseter/2010/01/22/</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/kurs/vinter/haukeliseter/2010/02/05/</loc>
+</url>
+<url>
+    <loc>http://192.168.2.101/kurs/vinter/haukeliseter/2010/03/19/</loc>
+</url>
+</urlset>
