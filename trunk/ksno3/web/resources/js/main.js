@@ -38,7 +38,8 @@ var viewport = {
     }
 };
 
-function openModalVideo(url){
+function openModalVideo(url, flashDivs){
+    fd = flashDivs;
     var id = '#dialog';
 
     //Get the screen height and width
@@ -74,7 +75,8 @@ function openModalVideo(url){
 
 }
 
-function openModalImage(image){
+function openModalImage(image, flashDivs){
+    fd = flashDivs;
     //Get the A tag
     var url = image.attr("src");
     var imgHeight = image.height();
@@ -125,7 +127,49 @@ function openModalImage(image){
 
 }
 
+var fd;
 
+function openModalImageOnUrl(url, height, width, flashDivs){
+    //Get the A tag
+    fd = flashDivs;
+    fd.css("display","none");
+    var url = url;
+    var imgHeight = height;
+    var imgWidth = width;
+    var factor = 1;
+    var val ="<img src='"+ url +"'/>";
+    var id = '#dialog';
+    $(id).html(val);
+
+    //Get the screen height and width
+    var maskHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
+    var maskWidth = Math.max(document.body.scrollWidth, document.body.clientWidth);
+
+    //Set height and width to mask to fill up the whole screen
+    $('#mask').css({
+        'width':maskWidth,
+        'height':maskHeight,
+        'left':'0',
+        'top':'0'
+    });
+    //transition effect
+    $('#mask').fadeIn(1000);
+    $('#mask').fadeTo("slow",0.8);
+
+    //Get the window height and width
+    //var winH = $(window).height();
+    //var winW = $(window).width();
+
+    viewport.init(id, imgWidth, imgHeight );
+    $(id).fadeIn(2000);
+
+
+    $(id).click(function(event){
+        $('#mask, .window').hide();
+    });
+
+
+}
 
 $(document).ready(function(){
     //select all the a tag with name equal to modal
@@ -141,6 +185,11 @@ $(document).ready(function(){
         $("#dialog").html("");
         $(this).hide();
         $('.window').hide();
+        if(fd != undefined){
+            fd.css("display","block");
+        }
+        fd = null;
+        
     });
     var queryParams = $(this).attr("location").search;
     if(queryParams != undefined && queryParams.indexOf("content")> 0){

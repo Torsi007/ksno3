@@ -28,6 +28,7 @@ table.bottomSection td.leftSection div h2 {font-size: 16px; font-weight:500; mar
 table.bottomSection td.rightSection {width:356px; vertical-align:top; }
 table.bottomSection td.rightSection h1 {font-size: 26px; font-weight:500; margin: 10px 6px; color:#505050;}
 table.bottomSection td.rightSection p {margin: 10px 6px; color:#505050; font-size:12px;}
+table.bottomSection td.rightSection a {margin: 10px 6px;}
 table.bottomSection td.rightSection embed {margin: 10px 6px; }
 table.bottomSection td.rightSection table.articleList { color:#505050; border-collapse:collapse; width:100%; margin: 10px 0px 0px 6px; }
 table.bottomSection td.rightSection table.articleList tr td a { color:#7DB639; text-decoration: none }
@@ -40,6 +41,8 @@ table.bottomSection td.rightSection table.videoList td img {vertical-align:top; 
 table.bottomSection td.rightSection table.videoList td h1 {color:#787878; font-size: 14px; margin:3px 0px 12px 0px; }
 table.bottomSection td.rightSection table.videoList td span {color:#303030; font-size: 14px; margin:12px 0px; display:block;}
 table.bottomSection td.rightSection table.videoList td a {color:#7DB639; font-size: 14px; margin:12px 0px; display:block;}
+
+a img {border:0 none}
 
 
 
