@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/home.css" />
 <script type="text/javascript" src="resources/js/default.js"></script>
+<script type="text/javascript" src="resources/js/easySlider.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         window.top.setStyle("default");
@@ -31,7 +32,14 @@
         if($("#winterCourseList tr").size() == 2){
             $("#winterCoursesSetUpLater").css('display','block');
         }
-
+        
+			$("#slider").easySlider({
+				auto: true,
+				continuous: true,
+                                speed: 		1200,
+                                pause:			3000,
+                                controlsShow:		false
+			});
 
     });
 </script>
@@ -236,12 +244,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="rightSection" style="height:1px">
+                    <td class="rightSection" style="height:40px">
                         <div class="weLike">
                             <h1>We like</h1>
-                            <a href="http://www.urge.no" target="blank">
-                                <img src="http://lh5.ggpht.com/_lkZPRU-HBNM/SrULQXemmyI/AAAAAAAAAjA/WLnYaocLse4/s800/Untitled-1.gif" alt="Urge"/>
-                            </a>
+                            <div id="slider">
+                                <ul>
+                                    <li><a href="http://www.urge.no" target="_blank"><img src="http://lh5.ggpht.com/_lkZPRU-HBNM/SrULQXemmyI/AAAAAAAAAjA/WLnYaocLse4/s800/Untitled-1.gif" alt="Urge" /></a></li>
+                                    <li><a href="http://www.bergans.no" target="_blank"><img src="http://farm3.static.flickr.com/2643/4191602466_9f89d4472e_o.gif" alt="Image 2" /></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </td>
                 </tr>

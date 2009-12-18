@@ -13,12 +13,21 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 window.top.setStyle("default");
-                $('a[name=modal]').click(function(e) {
+                $('a[name=modalVid]').click(function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href');
                     //window.parent.$('a[name=modal]').click();
                     window.parent.openModalVideo(url);
                 });
+                $('a[name=modalImg]').click(function(e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    //window.parent.$('a[name=modal]').click();
+                    var flashDivs = $(".flash");
+                    
+                    window.parent.openModalImageOnUrl(url, 100,200, flashDivs);
+                });
+
                 $('#signOnBottom a').click(function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href') + '?id=' +  $('#signOnBottom select').attr('value');
@@ -176,6 +185,7 @@
                             <p>For spørsmål angående overnatting, mat og losji, ring <a href="http://www.haukeliseter.no/" target="_blank">Haukeliseter</a> på tlf 35062777 eller send mail til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a></p>
                             <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ring!</p>
                             <h1>Påmelding</h1>
+                            <f:verbatim rendered="#{CoursesWinter_Backing.haveUpcomingActiveCourses}">
                             <p>Lyst til å bli med? Velg kurs og gå til påmeldingssiden her:</p>
                             <table id="signOnBottom">
                                 <tr>
@@ -193,12 +203,22 @@
                                     </td>
                                 </tr>
                             </table>
+                            </f:verbatim>
+                            <f:verbatim rendered="#{!CoursesWinter_Backing.haveUpcomingActiveCourses}">
+                            <p>Vi har desverre ikke satt opp våre vinterkurs ennå.</p>
+                            </f:verbatim>
                             </div>
                         </td>
                         <td class="rightSection">
-                            <h1>Video</h1>
+                            <h1 >Video</h1>
                             <p>Se v&aring;r promoteringsvideo hvor vi presenterer v&aring;rt vinteropplegg p&aring; Haukeliser.</p>
-                             <object width="350" height="197"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=c9ff23&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=c9ff23&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="350" height="197"></embed></object>
+                            <div class="flash"><object width="340" height="191"  ><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=c9ff23&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=1374480&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=c9ff23&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="340" height="191"></embed></object></div>
+
+                            <h1>Webkamera</h1>
+                            <p>Utsikten fra fjellstua akuratt nå</p>
+                            <a name="modalImg" href="http://haukeliseter.no/share/img/webkamera/haukeliseter.jpg">
+                              <img style="width:340" src="http://haukeliseter.no/share/img/webkamera/haukeliseter.jpg" alt="Klikk på bildet for større versjon" title="Klikk på bildet for større versjon" />
+                            </a>
                             <h1>Les om tidligere vinterkurs</h1>
                             <table class="articleList">
                                 <t:dataList value="#{CoursesWinter_Backing.courseArticles}" var="article">
@@ -233,7 +253,7 @@
                                                 <h:outputText value="#{video.name}" />
                                             </t:htmlTag>
                                             <t:htmlTag value="a">
-                                                <f:param name="name" value="modal" />
+                                                <f:param name="name" value="modalVid" />
                                                 <f:param name="href" value="#{video.url}" />
                                                 <h:outputText value="Vis [#{video.duration}]" />
                                             </t:htmlTag>

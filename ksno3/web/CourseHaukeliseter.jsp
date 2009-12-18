@@ -66,7 +66,7 @@
                             <p>
                                 Mitt navn er <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig på kurset du nå titter på. Vi håper du finner det du trenger av informasjon. Har du noen spørsmål send meg en mail på
                                 <t:htmlTag value="a">
-                                    <f:param name="href" value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" />
+                                    <f:param name="href" value="mailto:#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" />
                                     <h:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" escape="false"/>
                                 </t:htmlTag>
                                 eller ring på <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
