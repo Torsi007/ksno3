@@ -36,13 +36,22 @@ public class CourseHaukeliseter {
     private HtmlSelectOneMenu helmetSize;  
     private HtmlSelectOneMenu coursesSelect;
     private HtmlSelectOneListbox lstBxcoursesSelect;
-    private long id;
+    private Long id;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
 
     private EventService eventService;
     private PersonService personService;
     private ArticleService articleService;
+    private String prettyPrintId;
+
+    public String getPrettyPrintId() {
+        return prettyPrintId;
+    }
+
+    public void setPrettyPrintId(String prettyPrintId) {
+        this.prettyPrintId = prettyPrintId;
+    }
 
 
     public ArticleService getArticleService() {
@@ -119,11 +128,11 @@ public class CourseHaukeliseter {
         this.eventService = eventService;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         getLogService().log(Level.INFO, "Setting course id to " + id);
         this.id = id;
     }
@@ -170,8 +179,15 @@ public class CourseHaukeliseter {
     }
 
     public BeginnerCourse getCourse(){
-        getLogService().log(Level.INFO, "About to get course object for id " + getId());
-        return eventService.getBeginnerCourse(getId());
+        BeginnerCourse returnCourse = null;
+        if(this.getId() != null){
+            getLogService().log(Level.INFO, "About to get course object for id " + getId());
+            returnCourse = eventService.getBeginnerCourse(this.getId());
+        }else{
+            getLogService().log(Level.INFO, "About to get course object for prettyprintid " + this.getPrettyPrintId());
+            returnCourse = eventService.getBeginnerCourse(this.getPrettyPrintId());
+        }
+        return returnCourse;
     }
 
     public List getUpCommingCourses(){

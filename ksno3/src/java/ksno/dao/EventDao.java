@@ -22,7 +22,8 @@ public interface EventDao {
       public List getEvents();
       public List getEvents(Calendar fromDate);
       public Event getEvent(Long id);
-      public BeginnerCourse getBeginnerCourse(Long id);     
+      public BeginnerCourse getBeginnerCourse(Long id);
+      public BeginnerCourse getBeginnerCourse(String prettyPrintId);
       public List getBeginnerCourses();
       public List<BeginnerCourse> getBeginnerCourses(Calendar fromDate);
       public List getBeginnerCourses(Date fromDate, Date toDate, String location);      

@@ -130,7 +130,7 @@ public class EventServiceImpl implements EventService {
         for (BeginnerCourse beginnerCourse : beginnerCoursesFromThisYear) {
             getLogService().log(Level.INFO,"About to get winter courses from this year");
             Date now = new Date();
-            if (beginnerCourse.getLocation().equalsIgnoreCase("haukeli") && beginnerCourse.isOpen() && now.getTime() < beginnerCourse.getStartDate().getTime()) {
+            if (beginnerCourse.getLocation().equalsIgnoreCase("haukeliseter") && beginnerCourse.isOpen() && now.getTime() < beginnerCourse.getStartDate().getTime()) {
                 returnList.add(beginnerCourse);
                 getLogService().log(Level.INFO, "Course had location " + beginnerCourse.getLocation() + " and open = " + beginnerCourse.isOpen() + " hence adding it to the returnlist");
             }
@@ -148,7 +148,7 @@ public class EventServiceImpl implements EventService {
         getLogService().log(Level.INFO,"Found " + beginnerCoursesFromThisYear.size() + " courses from this year");
         for (BeginnerCourse beginnerCourse : beginnerCoursesFromThisYear) {
             getLogService().log(Level.INFO,"About to get winter courses from this year");
-            if (beginnerCourse.getLocation().equalsIgnoreCase("haukeli")) {
+            if (beginnerCourse.getLocation().equalsIgnoreCase("haukeliseter")) {
                 returnList.add(beginnerCourse);
                 getLogService().log(Level.INFO, "Course had location " + beginnerCourse.getLocation() + " hence adding it to the returnlist");
             }
@@ -218,6 +218,10 @@ public class EventServiceImpl implements EventService {
     public BeginnerCourse getBeginnerCourse(Long id) {
         return eventDao.getBeginnerCourse(id);
     }
+
+    public BeginnerCourse getBeginnerCourse(String prettyPrintId) {
+        return eventDao.getBeginnerCourse(prettyPrintId);
+    }
     
     private void clearEventsApplicationCache(){
         Class c = null;
@@ -258,4 +262,6 @@ public class EventServiceImpl implements EventService {
         }
         return returnval;
     }
+
+
 }

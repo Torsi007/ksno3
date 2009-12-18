@@ -15,6 +15,7 @@ import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletRequest;
 import ksno.ui.jsf.backing.Article;
+import ksno.ui.jsf.backing.CourseHaukeliseter;
 import org.hibernate.SessionFactory;
 
 /**
@@ -143,8 +144,22 @@ public class PrettyUrlPhaseListener implements PhaseListener {
     private void handleCourseWinterLookup(String subUrl) {
         if(subUrl != null || !subUrl.isEmpty()){
             if(subUrl.startsWith(JSFUtil.prettyURLHaukeliseter)){
-                //Not handled yet
-                getLogService().log(Level.INFO,"Request url contains "+ JSFUtil.prettyURLArticle +", hence handling it as a pretty print article url. Requested url: " + subUrl);
+                getLogService().log(Level.INFO,"Request url contains "+ JSFUtil.prettyURLHaukeliseter +", hence handling it as a pretty print winter course url. Requested url: " + subUrl);
+                CourseHaukeliseter courseHaukeliseterBean = null;
+                try {
+                    courseHaukeliseterBean = (CourseHaukeliseter) JSFUtil.getBeanValue("#{CourseHaukeliseter_Backing}", CourseHaukeliseter.class);
+                } catch (Exception ex) {
+                    Logger.getLogger(PrettyUrlPhaseListener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String id = subUrl;
+                try {
+                    id = URLDecoder.decode(subUrl, "UTF-8");
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(PrettyUrlPhaseListener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                courseHaukeliseterBean.setPrettyPrintId(id);
+                UIViewRoot view = context.getApplication().getViewHandler().createView(context, "/CourseHaukeliseter.jsp");
+                context.setViewRoot(view);
             }else{
                 UIViewRoot view = context.getApplication().getViewHandler().createView(context, "/CoursesHaukeliseter.jsp");
                 context.setViewRoot(view);

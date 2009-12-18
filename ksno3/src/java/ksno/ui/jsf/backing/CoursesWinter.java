@@ -33,6 +33,11 @@ public class CoursesWinter {
         return coursesSelect;
     }
 
+    public boolean isHaveUpcomingActiveCourses(){
+        SelectItem[] arr = getCoursesSelectItems();
+        return arr != null && arr.length > 0;
+    }
+
     public void setCoursesSelect(HtmlSelectOneMenu coursesSelect) {
         this.coursesSelect = coursesSelect;
     }
