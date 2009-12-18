@@ -8,6 +8,8 @@ package ksno.dao.hibernate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ksno.dao.EventDao;
 import ksno.model.BeginnerCourse;
 import ksno.model.Event;
@@ -20,6 +22,10 @@ import org.hibernate.Session;
  * @author halsnehauge
  */
 public class EventDaoImpl implements EventDao {
+
+    private Logger getLogService(){
+      return Logger.getLogger(EventDaoImpl.class.getName());
+    }
 
     public Long newEvent(Event event) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -85,7 +91,21 @@ public class EventDaoImpl implements EventDao {
         //session.beginTransaction();
         BeginnerCourse course = (BeginnerCourse)session.get(BeginnerCourse.class,id);
         return course;        
-    }    
+    }
+
+    public BeginnerCourse getBeginnerCourse(String prettyPrintId) {
+        BeginnerCourse toReturn = null;
+        try{
+            Query q = null;
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            q=session.createQuery("from Event e where e.prettyPrintId = :ppid");
+            q.setParameter("ppid",prettyPrintId);
+            toReturn = (BeginnerCourse) q.list().get(0);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Not able to find beginnercourse with pretty print id " + prettyPrintId + ". Technical error message: " + e.getMessage());
+        }
+        return toReturn;
+    }
     
     public List getOpenBeginnerCourses() {
         Query q = null;
@@ -172,6 +192,8 @@ public class EventDaoImpl implements EventDao {
 
         return returnVal;
     }
+
+
     
      
     

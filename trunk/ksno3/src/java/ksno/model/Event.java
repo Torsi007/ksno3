@@ -10,6 +10,7 @@ import java.util.Set;
 public class Event implements LabelValuePair {
 
     protected Long id;
+    private String prettyPrintId;
     protected int version;
     protected Date startDate;
     protected Date endDate;
@@ -19,6 +20,16 @@ public class Event implements LabelValuePair {
     private boolean open;
     private Set instructions = new HashSet();
     private Set participations = new HashSet();
+
+    public String getPrettyPrintId() {
+        return prettyPrintId;
+    }
+
+    public void setPrettyPrintId(String prettyPrintId) {
+        this.prettyPrintId = prettyPrintId;
+    }
+
+
 
     // <editor-fold  desc=" Getters and Setters "> 
     public Instructor[] getInstructors(){

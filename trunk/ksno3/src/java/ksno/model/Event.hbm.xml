@@ -7,6 +7,7 @@
     </id>
     <discriminator column="EVENT_TYPE" type="string"/>
     <version column="VERSION" name="version"/>
+    <property column="PRETTYPRINT_ID" name="prettyPrintId" type="string"/>
     <property column="START_DATE" name="startDate" type="date"/>
     <property column="END_DATE" name="endDate" type="date"/>
     <property column="COMMENT" name="comment" type="string"/>

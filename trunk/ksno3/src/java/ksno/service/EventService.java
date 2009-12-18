@@ -20,7 +20,8 @@ public interface EventService {
     public void deleteEvent(Event event); 
     public void updateEvent(Event event);
     public Event getEvent(Long id); 
-    public BeginnerCourse getBeginnerCourse(Long id);    
+    public BeginnerCourse getBeginnerCourse(Long id);
+    public BeginnerCourse getBeginnerCourse(String prettyPrintId);
     public List getOpenUpcommingWinterBeginnerCourses(); 
     public String getAwailableSeatsOnOpenUpcommingWinterBeginnerCourses();
     public List getOpenUpcommingSummerBeginnerCourses();   
