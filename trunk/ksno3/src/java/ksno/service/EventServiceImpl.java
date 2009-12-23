@@ -16,6 +16,7 @@ import ksno.dao.EventDao;
 import ksno.model.BeginnerCourse;
 import ksno.model.Event;
 import ksno.util.JSFUtil;
+import ksno.util.KSNOutil;
 
 /**
  *
@@ -196,6 +197,7 @@ public class EventServiceImpl implements EventService {
     public Long newEvent(Event event) {
         clearEventsApplicationCache();
         clearEventsFromThisYearApplicationCache();
+        event.setPrettyPrintId(event.getLocation() + "/" + KSNOutil.getPrettyPrintId(event.getStartDate()));
         return eventDao.newEvent(event);
     }
     

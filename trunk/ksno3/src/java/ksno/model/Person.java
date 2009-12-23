@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Tor-Erik
  */
-public class Person implements Serializable, LabelValuePair {
+public class Person implements Serializable, LabelValuePair, LabelObjectValuePair {
 
     private int phone;
     private Long id;
@@ -258,6 +258,10 @@ public class Person implements Serializable, LabelValuePair {
         hash = 97 * hash + (this.userName != null ? this.userName.hashCode() : 0);
         hash = 97 * hash + (this.passWord != null ? this.passWord.hashCode() : 0);
         return hash;
+    }
+
+    public Object getObject() {
+        return this;
     }
 
  }

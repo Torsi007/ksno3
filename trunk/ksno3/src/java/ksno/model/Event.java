@@ -18,8 +18,17 @@ public class Event implements LabelValuePair {
     protected String location;
     protected String name;
     private boolean open;
+    private Instructor instructor;
     private Set instructions = new HashSet();
     private Set participations = new HashSet();
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
 
     public String getPrettyPrintId() {
         return prettyPrintId;
@@ -55,7 +64,7 @@ public class Event implements LabelValuePair {
     }
 
     public Instructor getCourseResponsible(){
-        return this.getInstructors()[0];
+        return this.getInstructor();
     }
     
     

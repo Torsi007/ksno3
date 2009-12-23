@@ -5,6 +5,8 @@
 
 package ksno.ui.jsf.converter;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -12,6 +14,7 @@ import javax.faces.convert.ConverterException;
 import ksno.model.Person;
 import ksno.service.PersonService;
 import ksno.service.PersonServiceImpl;
+import ksno.util.JSFUtil;
 
 /**
  *
@@ -19,17 +22,36 @@ import ksno.service.PersonServiceImpl;
  */
 public class PersonConverter implements Converter {
 
-    
-    public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) throws ConverterException {
-        Long id = Long.parseLong(arg2);
-        PersonService personService = new PersonServiceImpl();
-        return personService.getPerson(id);
+    private Logger getLogService(){
+      return Logger.getLogger(CategoryConverter.class.getName());
     }
 
-    public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) throws ConverterException {
-        //Person person = (Person)arg2;
-        //return person.getId().toString();
-        return arg2.toString();
+    private PersonService getPersonService(){
+        PersonService service = null;
+        try {
+            service = (PersonService) JSFUtil.getBeanValue("#{PersonService}", PersonService.class);
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryConverter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return service;
+    }
+
+
+    public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
+        getLogService().log(Level.INFO,"About to convert " + value + " to a Category");
+        //ArticleCategoryDaoImpl dao = new ArticleCategoryDaoImpl();
+        //return dao.getArticleCategory(Long.parseLong(value));
+        return getPersonService().getPerson(Long.parseLong(value));
+    }
+
+    public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
+        if(null == value){
+            getLogService().log(Level.INFO,"Value is null, and null is returned");            
+            return null;
+        }
+        getLogService().log(Level.INFO,"About to convert " + value.toString() + " to a string");
+        Person person = (Person)value;
+        return person.getId().toString();
     }
 
 }

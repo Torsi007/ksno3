@@ -48,6 +48,16 @@ public class KSNOutil {
 
     }
 
+    public static String getPrettyPrintId(Date date){
+        getLogService().log(Level.INFO,"Start");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        String toBeReturned = "/" + cal.get(Calendar.YEAR) + "/" + getWithLeadingZero(cal.get(Calendar.MONTH) + 1)  + "/" + getWithLeadingZero(cal.get(Calendar.DAY_OF_MONTH));
+        getLogService().log(Level.INFO,"Returning string " + toBeReturned);
+        return toBeReturned;
+
+    }
+
     public static String getWithLeadingZero(int number){
         if(number < 10){
             return "0" + number;
