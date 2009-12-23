@@ -5,7 +5,6 @@
 
 package ksno.ui.jsf.backing;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIData;
 import javax.faces.component.html.HtmlSelectManyListbox;
+import javax.faces.component.html.HtmlSelectOneListbox;
 import javax.faces.model.SelectItem;
 import ksno.model.Event;
 import ksno.model.Instruction;
@@ -33,11 +33,29 @@ public class EventUpdate {
 
     private HtmlOutputText errorMsg;
     private HtmlSelectManyListbox slctManyInstructors;
+    private HtmlSelectOneListbox slctInstructor;
     private EventService eventService;
     private PersonService personService;
     private ParticipationService participationService;
     private UIData data;
     private String[] eventInstructors;
+    private Instructor eventInstructor;
+
+    public Instructor getEventInstructor() {
+        return eventInstructor;
+    }
+
+    public void setEventInstructor(Instructor eventInstructor) {
+        this.eventInstructor = eventInstructor;
+    }
+
+    public void setSlctInstructor(HtmlSelectOneListbox slctInstructor) {
+        this.slctInstructor = slctInstructor;
+    }
+
+    public HtmlSelectOneListbox getSlctInstructor() {
+        return slctInstructor;
+    }
 
     public HtmlSelectManyListbox getSlctManyInstructors() {
         return slctManyInstructors;
@@ -60,7 +78,12 @@ public class EventUpdate {
     public SelectItem[] getInstructorSelectItems() {
         List instructors = personService.getInstructors();
         return JSFUtil.toSelectItemArray(instructors);
-    } 
+    }
+
+    public SelectItem[] getInstructorObjectSelectItems() {
+        List instructors = personService.getInstructors();
+        return JSFUtil.toObjectSelectItemArray(instructors);
+    }
     
     public String[] getEventInstructors() {
         Event event = (Event)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
@@ -125,6 +148,10 @@ public class EventUpdate {
             for(int i = 0; i< this.eventInstructors.length; i++){
                 Long instructorId = Long.parseLong(this.eventInstructors[i]);
                 Instructor instructor = personService.getInstructor(instructorId);
+                if(instructor == event.getInstructor()){
+                    errorMsg.setValue("Instruktør: " + instructor.getFirstName() + " kan ikke være både hovedinstruktør og hjelpeinstruktør");
+                    return "no";
+                }
                 Instruction instruction = new Instruction();
                 instruction.setInstructor(instructor);
                 event.addInstruction(instruction);            

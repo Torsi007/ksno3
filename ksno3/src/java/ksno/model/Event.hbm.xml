@@ -23,6 +23,7 @@
       <key column="EVENT_ID"/>
       <one-to-many class="Instruction"/>
     </set>
+    <many-to-one cascade="save-update" class="Instructor" column="INSTRUCTOR_ID" lazy="false" name="instructor"/>    
     <subclass discriminator-value="BC" name="BeginnerCourse">
       <property column="MAX_SIZE" name="maxSize" type="integer"/>
     </subclass>

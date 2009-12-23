@@ -32,13 +32,26 @@ public class BeginnerCourseCreate {
     private HtmlInputText comment;
     private HtmlInputText maxSize;
     private HtmlSelectOneMenu location;
+    private HtmlSelectOneMenu slctOneInstructor;
     private HtmlSelectOneMenu comboResponsible;
     private HtmlSelectBooleanCheckbox open;
     private HtmlOutputText errorMsg;
     private EventService eventService;
     private PersonService personService;
-    private HtmlSelectManyListbox slctManyInstructors;    
-    
+    private HtmlSelectManyListbox slctManyInstructors;
+
+    public HtmlSelectOneMenu getSlctOneInstructor() {
+        return slctOneInstructor;
+    }
+
+    public void setSlctOneInstructor(HtmlSelectOneMenu slctOneInstructor) {
+        this.slctOneInstructor = slctOneInstructor;
+    }
+
+
+
+  
+
     public HtmlSelectManyListbox getSlctManyInstructors() {
         return slctManyInstructors;
     }
@@ -153,10 +166,18 @@ public class BeginnerCourseCreate {
             course.setComment(comment.getValue().toString());                        
             course.setMaxSize(Integer.parseInt(maxSize.getValue().toString()));  
             Object[] selectedInstructors = slctManyInstructors.getSelectedValues();
+            String mainInsId = getSlctOneInstructor().getValue().toString();
+            Long mainInstructorId = Long.parseLong(mainInsId);
+            Instructor mainInstructor = personService.getInstructor(mainInstructorId);
+            course.setInstructor(mainInstructor);
             for(int i = 0; i<selectedInstructors.length; i++){
                 String insId = (String)selectedInstructors[i];
                 Long instructorId = Long.parseLong(insId);
                 Instructor instructor = personService.getInstructor(instructorId);
+                if(instructor.equals(mainInstructor)){
+                    errorMsg.setValue("Instruktør: " + instructor.getFirstName() + " kan ikke være både hovedinstruktør og hjelpeinstruktør");
+                    return "no";
+                }
                 Instruction instruction = new Instruction();
                 instruction.setInstructor(instructor);
                 course.addInstruction(instruction);            

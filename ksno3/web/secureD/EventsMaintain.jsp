@@ -36,10 +36,16 @@
                             <h:outputText value="Navn" />
                         </f:facet> 
                         <h:outputText value="#{item.name}"></h:outputText>
-                    </h:column>    
+                    </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Ansvarlig" />
+                        </f:facet>
+                        <h:outputText value="#{item.instructor.firstName}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Hjelpeinstruktører" />
                         </f:facet> 
                         <h:outputText value="#{item.instructorsCSV}"></h:outputText>
                     </h:column>                      
