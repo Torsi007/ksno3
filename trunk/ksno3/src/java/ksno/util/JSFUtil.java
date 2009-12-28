@@ -140,7 +140,7 @@ public class JSFUtil {
         SelectItem[] selectItems = null;
         if(includeEmpty){
             selectItems = new SelectItem[items.size() + 1];
-            selectItems[0] = new SelectItem("-1","<Please select>");
+            selectItems[0] = new SelectItem(null,"<Please select>");
             for(int i = 1; i< selectItems.length; i++){
                 LabelObjectValuePair kvp = (LabelObjectValuePair)items.get(i - 1);
                 selectItems[i] = new SelectItem(kvp.getObject(),kvp.getLabel());
