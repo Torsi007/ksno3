@@ -61,7 +61,7 @@
                     <td>Hovedinstruktør</td>
                     <td>
                         <t:selectOneMenu  binding="#{BeginnerCourseCreate_Backing.slctOneInstructor}">
-                            <f:selectItems value="#{BeginnerCourseCreate_Backing.instructorSelectItems}"/>
+                            <f:selectItems value="#{BeginnerCourseCreate_Backing.mainInstructorSelectItems}"/>
                         </t:selectOneMenu>
                     </td>
                     <td/>
