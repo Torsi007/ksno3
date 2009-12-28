@@ -154,6 +154,11 @@ public class BeginnerCourseCreate {
     
     public SelectItem[] getInstructorSelectItems() {
         List instructors = personService.getInstructors();
+        return JSFUtil.toSelectItemArray(instructors, true);
+    }
+
+    public SelectItem[] getMainInstructorSelectItems() {
+        List instructors = personService.getInstructors();
         return JSFUtil.toSelectItemArray(instructors);
     }
     
@@ -173,14 +178,16 @@ public class BeginnerCourseCreate {
             for(int i = 0; i<selectedInstructors.length; i++){
                 String insId = (String)selectedInstructors[i];
                 Long instructorId = Long.parseLong(insId);
-                Instructor instructor = personService.getInstructor(instructorId);
-                if(instructor.equals(mainInstructor)){
-                    errorMsg.setValue("Instruktør: " + instructor.getFirstName() + " kan ikke være både hovedinstruktør og hjelpeinstruktør");
-                    return "no";
+                if(instructorId.intValue() != -1){
+                    Instructor instructor = personService.getInstructor(instructorId);
+                    if(instructor.equals(mainInstructor)){
+                        errorMsg.setValue("Instruktør: " + instructor.getFirstName() + " kan ikke være både hovedinstruktør og hjelpeinstruktør");
+                        return "no";
+                    }
+                    Instruction instruction = new Instruction();
+                    instruction.setInstructor(instructor);
+                    course.addInstruction(instruction);
                 }
-                Instruction instruction = new Instruction();
-                instruction.setInstructor(instructor);
-                course.addInstruction(instruction);            
             }            
             course.setLocation(location.getValue().toString());
             boolean op = (Boolean)open.getValue();

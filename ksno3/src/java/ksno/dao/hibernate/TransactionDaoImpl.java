@@ -55,7 +55,7 @@ public class TransactionDaoImpl implements TransactionDao {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        q=session.createQuery("from Transaction a order by a.createdDate desc");
+        q=session.createQuery("from Transaction a order by a.date desc");
         returnVal =  q.list();
         return returnVal;        
     }    

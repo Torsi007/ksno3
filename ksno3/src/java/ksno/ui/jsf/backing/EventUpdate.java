@@ -77,7 +77,7 @@ public class EventUpdate {
 
     public SelectItem[] getInstructorSelectItems() {
         List instructors = personService.getInstructors();
-        return JSFUtil.toSelectItemArray(instructors);
+        return JSFUtil.toSelectItemArray(instructors, true);
     }
 
     public SelectItem[] getInstructorObjectSelectItems() {
@@ -147,14 +147,16 @@ public class EventUpdate {
             event.getInstructions().clear();
             for(int i = 0; i< this.eventInstructors.length; i++){
                 Long instructorId = Long.parseLong(this.eventInstructors[i]);
-                Instructor instructor = personService.getInstructor(instructorId);
-                if(instructor == event.getInstructor()){
-                    errorMsg.setValue("Instruktør: " + instructor.getFirstName() + " kan ikke være både hovedinstruktør og hjelpeinstruktør");
-                    return "no";
+                if(instructorId.intValue() != -1){
+                    Instructor instructor = personService.getInstructor(instructorId);
+                    if(instructor == event.getInstructor()){
+                        errorMsg.setValue("Instruktør: " + instructor.getFirstName() + " kan ikke være både hovedinstruktør og hjelpeinstruktør");
+                        return "no";
+                    }
+                    Instruction instruction = new Instruction();
+                    instruction.setInstructor(instructor);
+                    event.addInstruction(instruction);
                 }
-                Instruction instruction = new Instruction();
-                instruction.setInstructor(instructor);
-                event.addInstruction(instruction);            
             }
             eventService.updateEvent(event);
             JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanEventModify);
