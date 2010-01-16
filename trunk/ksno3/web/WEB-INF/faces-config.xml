@@ -43,6 +43,11 @@
         <converter-class>ksno.ui.jsf.converter.CalendarConverter</converter-class>
     </converter>
     <converter>
+        <description>Convert date and time string - calendar</description>
+        <converter-id>CalendarDateAndTimeConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.CalendarDateAndTimeConverter</converter-class>
+    </converter>
+    <converter>
         <description>Convert string - person</description>
         <converter-id>PersonConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.PersonConverter</converter-class>
@@ -322,6 +327,23 @@
         <managed-property>
             <property-name>eventService</property-name>
             <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>CourseParticipantsMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.CourseParticipantsMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>eventService</property-name>
+            <value>#{EventService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
         </managed-property>
         <managed-property>
             <property-name>personService</property-name>
@@ -697,7 +719,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>eventsMaintain</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>textsMaintain</from-outcome>
@@ -825,6 +847,47 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/secureC/CourseParticipantsMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{CourseParticipantsMaintain_Backing.close}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>addParticipant</from-outcome>
+            <to-view-id>/secureD/EventAddParticipant.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>signUpWinter</from-outcome>
+            <to-view-id>/SignUpWinter.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureC/EventsMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>courseCreate</from-outcome>
+            <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{EventsMaintain_Backing.eventUpdate}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{EventsMaintain_Backing.participantsMaintain}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureC/CourseParticipantsMaintain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/secureD/AdminEconomy.jsp</from-view-id>
         <navigation-case>
             <from-outcome>transactionsMaintain</from-outcome>
@@ -847,11 +910,11 @@
         <navigation-case>
             <from-action>#{BeginnerCourseCreate_Backing.createCourse}</from-action>
             <from-outcome>eventsMaintain</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -894,7 +957,7 @@
         <from-view-id>/secureD/EventUpdate.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>addParticipant</from-outcome>
@@ -907,23 +970,7 @@
         <navigation-case>
             <from-action>#{EventUpdate_Backing.updateEvent}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/secureD/EventsMaintain.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/secureD/EventsMaintain.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>courseCreate</from-outcome>
-            <to-view-id>/secureD/CourseCreate.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{EventsMaintain_Backing.eventUpdate}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+            <to-view-id>/secureC/EventsMaintain.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>

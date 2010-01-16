@@ -16,42 +16,9 @@
     </head>
     <jsp:include page="GoogleAnalytics.jsp"></jsp:include>
     <body>
-        <div class="topMenu">
-            <table>
-                <tr>
-                    <td>
-                        <a href="hjem" target="content">
-                            <img src="resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/>
-                        </a>
-                    </td>
-                    <td class="top">
-                        <a href="faces/secureA/AdminMain.jsp" target="_blank" style="width:40">Log in</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="main">
-                        <table id="mainMenu">
-                            <tr>
-                                <td style="width:58px;">
-                                    <a target="content" href="hjem" style="font-weight:bolder">Hjem</a>
-                                </td>
-                                <td style="width:116px">
-                                    <a target="content" href="artikler-og-videoer">Artikler &amp; video</a>
-                                <td style="width:98px">
-                                    <a target="content" href="kurs/sommer">Sommerkurs</a>
-                                <td style="width:86px">
-                                    <a target="content" href="kurs/vinter">Vinterkurs</a>
-                                </td>
-                                <td style="width:86px">
-                                    <a target="content" href="om-oss">Om oss</a>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td> <div style="position:absolute; z-index:8888; top:112; left:678" id="searchcontrol">&nbsp;</div></td>
-                </tr>
-            </table>
-        </div>
+        <jsp:include page="Menu.jsp" >
+            <jsp:param name="fromMain" value="true"/>
+        </jsp:include>
         <iframe name="content" id="content" src="hjem" style="width:940px" frameborder="0" scrolling="no"></iframe>
         <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->
         <div id="mask"></div>

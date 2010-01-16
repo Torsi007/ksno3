@@ -254,6 +254,9 @@ function App() {
     // Tell the searcher to draw itself and tell it where to attach
     searchControl.draw(document.getElementById("searchcontrol"));
     $(searchControl.input).css("width","100px");
+    var txtSearch = "Søk..."
+    $(searchControl.input).attr("value",txtSearch);
+    $(searchControl.input).focus(function(){if(this.value == txtSearch){this.value = ''};})
     $(searchControl.input).parent().attr("align","right");
     $(".gsc-branding").remove();
     $(".gsc-search-button").attr("value","").attr("title","");
