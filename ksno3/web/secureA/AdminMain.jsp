@@ -9,13 +9,13 @@
     <f:view>
         <h:form enctype="multipart/form-data">
             <h2>Welcom to the page administration</h2>
-            <t:commandLink enabledOnUserRole="admin,internal,authuser" action="articlesMaintain">Administrer artikler</t:commandLink>
+            <t:commandLink enabledOnUserRole="admin,internal,authuser, external" action="articlesMaintain">Administrer artikler</t:commandLink>
             <br/>
             <t:commandLink visibleOnUserRole="admin,internal" action="articleCategories">Administrer kategorier</t:commandLink>
             <br/>
-            <t:commandLink enabledOnUserRole="admin,internal,authuser" action="videosMaintain">Administrer videoer</t:commandLink>
+            <t:commandLink enabledOnUserRole="admin,internal,authuser, external" action="videosMaintain">Administrer videoer</t:commandLink>
             <br/>
-            <t:commandLink visibleOnUserRole="admin,internal"  action="eventsMaintain">Administrer opplegg</t:commandLink>
+            <t:commandLink visibleOnUserRole="admin,internal, external"  action="eventsMaintain">Administrer opplegg</t:commandLink>
             <br/>
             <t:commandLink visibleOnUserRole="admin,internal" action="textsMaintain">Administrer tekster</t:commandLink>
             <br/>
@@ -23,7 +23,7 @@
             <br/>
             <t:commandLink visibleOnUserRole="admin,internal" action="sendMail">Send mail</t:commandLink>
             <br/>
-            <t:commandLink visibleOnUserRole="admin,internal,authuser" action="preferences">Innstillinger</t:commandLink>
+            <t:commandLink visibleOnUserRole="admin,internal,authuser, external" action="preferences">Innstillinger</t:commandLink>
             <br/>
             <t:commandLink visibleOnUserRole="admin,internal" action="instructorProfile">Instruktørprofil</t:commandLink>
         </h:form>

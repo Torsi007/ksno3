@@ -4,7 +4,8 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 <title>Kitesurfing.no - oppdater kurs</title>
 <script src="../resources/js/logic.js" type="text/javascript"></script>
-<link type="text/css" href="../resources/css/trontastic/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="../resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="../resources/css/admin.css" rel="stylesheet" />
 <script type="text/javascript" src="../resources/js/jquery-ui.custom.js"></script>
 <script type="text/javascript">
     $(function() {

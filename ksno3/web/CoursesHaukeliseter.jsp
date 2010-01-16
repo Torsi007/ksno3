@@ -6,10 +6,10 @@
 
 
         <title>kitesurfing.no - kitekurs</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/skinned-select.css"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/coursesHaukeliseter.css" />
-        <script type="text/javascript" src="resources/js/default.js"></script>
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/skinned-select.css"/>
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/coursesHaukeliseter.css" />
+        <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 window.top.setStyle("default");
@@ -52,27 +52,9 @@
     <body>
         <f:view>
             <h:form>
-            <div class="topMenu">
-                <table>
-                    <tr>
-                        <td><a href="Main.jsp?content=Home.jsp"><img src="resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/></a></td>
-                    </tr>
-                    <tr>
-                        <td class="main">
-                            <table id="mainMenu">
-                                <tr>
-                                    <td style="width:58px;"><a href="Main.jsp?content=Home.jsp">Hjem</a></td>
-                                    <td style="width:80px"><a href="Main.jsp?content=Articles.jsp" >Publisert</a></td>
-                                    <td style="width:98px"><a href="Main.jsp?content=CourseJaren.jsp"  >Sommerkurs</a></td>
-                                    <td style="width:86px"><a style="font-weight:bolder" href="Main.jsp?content=CoursesHaukeliseter.jsp" >Vinterkurs</a></td>
-                                    <td style="width:86px"><a href="Main.jsp?content=aboutUs.jsp" >Om oss</a></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
+            <jsp:include page="Menu.jsp" >
+                <jsp:param name="fromMain" value="false"/>
+            </jsp:include>
                 <table class="middleSection">
                     <tr>
                         <td class="leftSection" >

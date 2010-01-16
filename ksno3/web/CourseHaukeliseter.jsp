@@ -72,26 +72,12 @@
                                 eller ring på <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
                             </p>
                             <h1>Deltagere</h1>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <h2>Påmeldte</h2>
-                                        <t:dataList value="#{CourseHaukeliseter_Backing.course.participations}" var="participation">
-                                            <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
-                                                <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
-                                            </t:htmlTag>
-                                        </t:dataList>
-                                    </td>
-                                    <td>
-                                        <h2>Venteliste</h2>
-                                        <t:dataList value="#{CourseHaukeliseter_Backing.course.participations}" var="participation">
-                                            <t:htmlTag value="span" rendered="#{participation.onWaitList}">
-                                                <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
-                                            </t:htmlTag>
-                                        </t:dataList>
-                                    </td>
-                                </tr>
-                            </table>
+                            <t:dataList value="#{CourseHaukeliseter_Backing.course.confirmedParticipations}" var="participation">
+                                <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
+                                    <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
+                                </t:htmlTag>
+                            </t:dataList>
+
 
                         </td>
                     </tr>

@@ -164,7 +164,7 @@
                                 </t:htmlTag>
                             </h1>
                             <table id="summerCourseList">
-                                <t:dataList value="#{CoursesSummer_Backing.fiveNextCourses}" var="course">
+                                <t:dataList value="#{CoursesSummer_Backing.eightNextCourses}" var="course">
                                     <tr>
                                         <td style="width:90px; white-space: nowrap">
                                             <h:outputText value="#{course.startDate}">
@@ -189,7 +189,7 @@
                                 </tr>
                                 <tr style="display:none" id="moreSummerCourses">
                                     <td colspan="4">
-                                        <a href="CourseJaren.jsp">Mer--></a>
+                                        <a href="kurs/vinter">Mer--></a>
                                     </td>
                                 </tr>
                             </table>
@@ -200,7 +200,7 @@
                                 </t:htmlTag>
                             </h1>
                             <table id="winterCourseList">
-                                <t:dataList value="#{CoursesWinter_Backing.fiveNextCourses}" var="course">
+                                <t:dataList value="#{CoursesWinter_Backing.eightNextCourses}" var="course">
                                     <tr>
                                         <td style="width:90px; white-space: nowrap">
                                             <h:outputText value="#{course.startDate}">
@@ -225,7 +225,7 @@
                                 </tr>
                                 <tr style="display:none" id="moreWinterCourses">
                                     <td colspan="4">
-                                        <a href="CoursesHaukeliseter.jsp">Mer--></a>
+                                        <a href="kurs/vinter">Mer--></a>
                                     </td>
                                 </tr>
                             </table>
