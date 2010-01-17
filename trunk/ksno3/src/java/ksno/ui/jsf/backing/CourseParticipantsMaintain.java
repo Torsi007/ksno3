@@ -215,40 +215,6 @@ public class CourseParticipantsMaintain {
 
     }
 
-    public String confirmParticipant() {
-        String returnVal = "sucess";
-        try {
-            Participation participation = (Participation) this.getDataUnconfirmedParticipants().getRowData();
-            participation.setConfirmed(true);
-            participationService.updateParticipation(participation);
-            //Event event = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
-            //eventService.updateEvent(event);
-        } catch (Exception e) {
-            getLogService().log(Level.SEVERE, "Unable to delete participant", e);
-            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
-            returnVal = "no";
-        }
-        errorMsg.setValue("Operasjonen feilet");
-        return returnVal;
-    }
-
-    public String unConfirmParticipant() {
-        String returnVal = "sucess";
-        try {
-            Participation participation = (Participation) this.getDataConfirmedParticipants().getRowData();
-            participation.setConfirmed(false);
-            participationService.updateParticipation(participation);
-            //Event event = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
-            //eventService.updateEvent(event);
-        } catch (Exception e) {
-            getLogService().log(Level.SEVERE, "Unable to delete participant", e);
-            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
-            returnVal = "no";
-        }
-
-        return returnVal;
-    }
-
     public String save(){
 
         String returnVal = "success";
@@ -256,6 +222,7 @@ public class CourseParticipantsMaintain {
             Event event = (Event)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
             eventService.updateEvent(event);
         }catch(Exception e){
+            errorMsg.setRendered(true);
             getLogService().log(Level.SEVERE,"Unable to update event", e);
             returnVal = "no";
         }
@@ -267,6 +234,7 @@ public class CourseParticipantsMaintain {
         try{
             JSFUtil.getSessionMap().remove(JSFUtil.sessionBeanEventModify);
         }catch(Exception e){
+            errorMsg.setRendered(true);
             getLogService().log(Level.SEVERE,"Unable to update event", e);
             returnVal = "no";
         }

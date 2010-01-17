@@ -2,9 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ksno.ui.jsf.backing;
-
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,11 +33,12 @@ import sun.security.util.Password;
  * @author halsnehauge
  */
 public class SignUpWinter {
+
     private HtmlInputText email;
-    private HtmlInputText firstName;    
+    private HtmlInputText firstName;
     private HtmlInputText lastName;
     private HtmlInputText phone;
-    private HtmlSelectOneMenu helmetSize;  
+    private HtmlSelectOneMenu helmetSize;
     private HtmlSelectOneMenu coursesSelect;
     private long courseId;
     private EventService eventService;
@@ -55,8 +54,8 @@ public class SignUpWinter {
 
     public void setTextService(TextService textService) {
         this.textService = textService;
-    }    
-    
+    }
+
     public HtmlInputTextarea getComment() {
         return comment;
     }
@@ -64,11 +63,9 @@ public class SignUpWinter {
     public void setComment(HtmlInputTextarea comment) {
         this.comment = comment;
     }
-    
-    
-        
-    private Logger getLogService(){
-      return Logger.getLogger(BeginnerCourseCreate.class.getName());
+
+    private Logger getLogService() {
+        return Logger.getLogger(BeginnerCourseCreate.class.getName());
     }
 
     public HtmlOutputText getErrorMsg() {
@@ -158,7 +155,7 @@ public class SignUpWinter {
     public void setPhone(HtmlInputText phone) {
         this.phone = phone;
     }
-    
+
     public SelectItem[] getCoursesSelectItems() {
         List events = eventService.getOpenUpcommingWinterBeginnerCourses();
         return JSFUtil.toSelectItemArray(events);
@@ -166,117 +163,119 @@ public class SignUpWinter {
 
     public String getCourseAwailableSeats() {
         return eventService.getAwailableSeatsOnOpenUpcommingWinterBeginnerCourses();
-    }    
-    
-    public String signOn(){
-        
+    }
+
+    public String signOn() {
+
         String returnVal = "SignUpConfirmed";
-        getLogService().log(Level.INFO,"Start sign on.. ");
-        try{
+        getLogService().log(Level.INFO, "Start sign on.. ");
+        try {
             Person person = null;
-            try{
+            try {
                 person = personService.getPerson(email.getValue().toString());
-            }catch (IndexOutOfBoundsException ioobe){
-                getLogService().log(Level.INFO,"Could not find person with username " + email.getValue().toString() + " hence creating a new");
+            } catch (IndexOutOfBoundsException ioobe) {
+                getLogService().log(Level.INFO, "Could not find person with username " + email.getValue().toString() + " hence creating a new");
             }
-            if(person != null){
-                getLogService().log(Level.SEVERE,"Unable to sign on participant");
-                errorMsg.setValue("Brukeren " + person.getFirstName() + " " + person.getLastName() + " er allerede registrert med mail: " + email.getValue().toString() + ". Kitesurfing.no beklager at vår web løsning ikke håndterer dette, vennligst meld deg på via mail eller telefon (se kontakt detaljer nederst på siden).");            
-                return "no";                
-            }else{
+            if (person != null) {
+                getLogService().log(Level.SEVERE, "Unable to sign on participant");
+                errorMsg.setValue("Brukeren " + person.getFirstName() + " " + person.getLastName() + " er allerede registrert med mail: " + email.getValue().toString() + ". Kitesurfing.no beklager at vår web løsning ikke håndterer dette, vennligst meld deg på via mail eller telefon (se kontakt detaljer nederst på siden).");
+                return "no";
+            } else {
                 person = new Person();
             }
             person.setUserName(email.getValue().toString());
-            person.setPassWord(PasswordFactory.getPassword());
+            //person.setPassWord(PasswordFactory.getPassword());
+            person.setPassWord("uks7WxY");
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
-            
-            try{
+
+            try {
                 UserRoles userRole = new UserRoles();
                 userRole.setRole(JSFUtil.roleAuthUser);
                 person.addRole(userRole);
-            }catch (Exception ex1){
-                getLogService().log(Level.WARNING,"Unable to add role " + JSFUtil.roleAuthUser + " to user " + person.getUserName());
+            } catch (Exception ex1) {
+                getLogService().log(Level.WARNING, "Unable to add role " + JSFUtil.roleAuthUser + " to user " + person.getUserName());
             }
             BeginnerCourse course = eventService.getBeginnerCourse(Long.parseLong(coursesSelect.getValue().toString()));
-           
+
             Participation participation = new Participation();
             participation.setEvent(course);
-            boolean wait = (course.getParticipations().size() >= course.getMaxSize())?true:false;
-            participation.setOnWaitList(wait);
+            //boolean wait = (course.getParticipations().size() >= course.getMaxSize())?true:false;
+            boolean wait = false;
+            participation.setOnWaitList(false);
             course.getParticipations().add(participation);
             //event.addParticipation(participation);
             person.addParticipation(participation);
-            if(comment.getValue() != null){
+            if (comment.getValue() != null) {
                 participation.setComment(comment.getValue().toString());
             }
             setWinterValues(participation);
 
             participationService.newParticipation(participation);
-            
-            
+
+
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
-            hm.put("name", person.getFirstName() +  " " + person.getLastName());
+            hm.put("courseId", course.getId().toString());
+            hm.put("name", person.getFirstName() + " " + person.getLastName());
             hm.put("phone", Integer.toString(person.getPhone()));
-            hm.put("email", person.getUserName()); 
-            hm.put("username", person.getUserName());            
+            hm.put("email", person.getUserName());
+            hm.put("username", person.getUserName());
             hm.put("password", person.getPassWord());
-            if(wait){
+            if (wait) {
                 int pos = course.getNumberOfParticipants() - course.getMaxSize();
-                hm.put("position", Integer.toString(pos));   
-                try{
+                hm.put("position", Integer.toString(pos));
+                try {
                     Email mail = textService.getEmail("SignOnWaitHaukeli");
-                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
-                    sendMail.send(); 
-                }catch(Exception e){
-                    getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
-                    participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
-                }               
-                try{
-                    Email mail = textService.getEmail("SignedOnWaitMessageToHaukeli");
-                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
-                    sendMail.send(); 
-                }catch(Exception e){
-                    getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
-                    participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
-            }                 
-            }else{
-                try{
-                    Email mail = textService.getEmail("SignOnConfirmedHaukeli");
-                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
-                    sendMail.send(); 
-                }catch(Exception e){
-                    getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
+                    SendMail sendMail = new SendMail(mail.getTos(hm), mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
+                    sendMail.send();
+                } catch (Exception e) {
+                    getLogService().log(Level.SEVERE, "Participant will be signed on, but mail transport failed", e);
                     participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
                 }
-                try{
+                try {
+                    Email mail = textService.getEmail("SignedOnWaitMessageToHaukeli");
+                    SendMail sendMail = new SendMail(mail.getTos(hm), mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
+                    sendMail.send();
+                } catch (Exception e) {
+                    getLogService().log(Level.SEVERE, "Participant will be signed on, but mail transport failed", e);
+                    participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
+                }
+            } else {
+                try {
+                    Email mail = textService.getEmail("SignOnConfirmedHaukeli");
+                    SendMail sendMail = new SendMail(mail.getTos(hm), mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
+                    sendMail.send();
+                } catch (Exception e) {
+                    getLogService().log(Level.SEVERE, "Participant will be signed on, but mail transport failed", e);
+                    participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
+                }
+                try {
                     Email mail = textService.getEmail("SignedOnMessageToHaukeli");
-                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
-                    sendMail.send(); 
-                }catch(Exception e){
-                    getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
-                    participation.appendCommentKSNO("Info mail til Haukeliseter gikk ikke igjennom");                               
-                }     
+                    SendMail sendMail = new SendMail(mail.getTos(hm), mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
+                    sendMail.send();
+                } catch (Exception e) {
+                    getLogService().log(Level.SEVERE, "Participant will be signed on, but mail transport failed", e);
+                    participation.appendCommentKSNO("Info mail til Haukeliseter gikk ikke igjennom");
+                }
             }
-            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanSignedOnEvent, course.getId());                
-        }catch(Exception e){
-            getLogService().log(Level.SEVERE,"Unable to sign on participant", e);
-            errorMsg.setValue("Påmeldingen feilet, vennligst forsøk på nytt. Om det fortsatt ikke fungerer, ta kontakt med oss på email eller telefon (kontakt info nederst på siden)");            
+            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanSignedOnEvent, course.getId());
+        } catch (Exception e) {
+            getLogService().log(Level.SEVERE, "Unable to sign on participant", e);
+            errorMsg.setValue("Påmeldingen feilet, vennligst forsøk på nytt. Om det fortsatt ikke fungerer, ta kontakt med oss på email eller telefon (kontakt info nederst på siden)");
             returnVal = "no";
         }
-        getLogService().log(Level.INFO,"return signon with returnvalue " + returnVal);
-        return returnVal;        
+        getLogService().log(Level.INFO, "return signon with returnvalue " + returnVal);
+        return returnVal;
 
     }
-    
-    private void setWinterValues(Participation participation){
+
+    private void setWinterValues(Participation participation) {
         participation.setHelmetSize("empty");
     }
-    
-    public String test(){
-     return "jall";
+
+    public String test() {
+        return "jall";
     }
-    
 }

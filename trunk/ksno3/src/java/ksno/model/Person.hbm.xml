@@ -30,7 +30,7 @@
     <property column="PROFILE_PICTURE" name="profilePicture" type="string"/>
     <subclass discriminator-value="I" name="Instructor">
       <property column="ACC_NUMBER" name="accountNumber" type="string"/>
-      <many-to-one cascade="save-update" column="TEXT_ID" class="Text" lazy="false" name="aboutMe"/>
+      <many-to-one cascade="save-update" class="Text" column="TEXT_ID" lazy="false" name="aboutMe"/>
       <set cascade="save-update" inverse="true" name="events" table="EVENT">
         <key column="RESPONSIBLE_ID"/>
         <one-to-many class="Event"/>

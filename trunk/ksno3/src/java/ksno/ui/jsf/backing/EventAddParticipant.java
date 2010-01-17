@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import ksno.model.Event;
 import ksno.model.Participation;
 import ksno.model.Person;
+import ksno.model.UserRoles;
 import ksno.service.EventService;
 import ksno.service.ParticipationService;
 import ksno.service.PersonService;
@@ -179,10 +180,19 @@ public class EventAddParticipant {
 
             person.setUserName(email.getValue().toString());
             person.setFirstName(firstName.getValue().toString());
-            person.setPassWord(PasswordFactory.getPassword());            
+            //person.setPassWord(PasswordFactory.getPassword());
+            person.setPassWord("uks7WxY");
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
-            
+
+            try{
+                UserRoles userRole = new UserRoles();
+                userRole.setRole(JSFUtil.roleAuthUser);
+                person.addRole(userRole);
+            }catch (Exception ex1){
+                getLogService().log(Level.WARNING,"Unable to add role " + JSFUtil.roleAuthUser + " to user " + person.getUserName());
+            }
+
             Event event = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
 
             Participation participation = new Participation();

@@ -79,6 +79,7 @@ public class EventsMaintain {
            eventService.deleteEvent(event);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to delete event", e);
+            errorMsg.setRendered(true);
             errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
             returnVal = "no";
         }       
@@ -86,23 +87,6 @@ public class EventsMaintain {
        return returnVal;
     }   
    
-    public String eventsUpdate(){ 
-        
-       String returnVal = "sucess";
-        try{
-            List articles = (List)getData().getValue();
-            for(int i = 0; i< articles.size(); i++){
-                Event event = (Event)articles.get(i);
-                eventService.updateEvent(event);
-            }
-        }catch(Exception e){
-            getLogService().log(Level.SEVERE,"Unable to update articles", e);
-            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
-            returnVal = "no";
-        }       
-       return returnVal;        
-    }  
-    
     public String eventUpdate(){ 
         
         String returnVal = "success";
@@ -111,11 +95,28 @@ public class EventsMaintain {
             JSFUtil.getSessionMap().put(JSFUtil.sessionBeanEventModify, eventModify);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to select event", e);
+            errorMsg.setRendered(true);
             errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
             returnVal = "no";
         }
        return returnVal;        
       
-    }     
+    }
+
+    public String participantsMaintain(){
+
+        String returnVal = "success";
+        try{
+            Event eventModify = (Event)this.getData().getRowData();
+            JSFUtil.getSessionMap().put(JSFUtil.sessionBeanEventModify, eventModify);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to select event", e);
+            errorMsg.setRendered(true);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
+            returnVal = "no";
+        }
+       return returnVal;
+
+    }
 
 }
