@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Date; 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Event implements LabelValuePair {
 
@@ -90,6 +93,39 @@ public class Event implements LabelValuePair {
     public Set getParticipations() {
         return participations;
     }
+
+    private Logger getLogService() {
+        return Logger.getLogger(this.getClass().getName());
+    }
+
+    public List getConfirmedParticipations() {
+        getLogService().log(Level.INFO, "Start getting confirmed participations");
+        Iterator <Participation> participationIterator = participations.iterator();
+        List<Participation> returnList = new LinkedList<Participation>();
+        while(participationIterator.hasNext()){
+            Participation participation = participationIterator.next();
+            if(participation.isConfirmed()){
+                returnList.add(participation);
+            }
+        }
+        getLogService().log(Level.INFO, "Return " + returnList.size() + " confirmed participations");
+        return returnList;
+    }
+
+    public List getUnConfirmedParticipations() {
+        getLogService().log(Level.INFO, "Start getting unconfirmed participations");
+        Iterator <Participation> participationIterator = participations.iterator();
+        List<Participation> returnList = new LinkedList<Participation>();
+        while(participationIterator.hasNext()){
+            Participation participation = participationIterator.next();
+            if(!participation.isConfirmed()){
+                returnList.add(participation);
+            }
+        }
+        getLogService().log(Level.INFO, "Return " + returnList.size() + " unconfirmed participations");
+        return returnList;
+    }
+
 
     public void setParticipations(Set participations) {
         this.participations = participations;
@@ -237,6 +273,16 @@ public class Event implements LabelValuePair {
         }
         participation.setEvent(this);
         participations.add(participation);
+    }
+
+    public void removeParticipation(Participation participation){
+        if(participation == null){
+            throw new IllegalArgumentException("Participation to be removed is null");
+        }
+        if(participation.getEvent() != null){
+            participation.getEvent().getParticipations().remove(participation);
+        }
+
     }
     
     public void addInstruction(Instruction instruction){

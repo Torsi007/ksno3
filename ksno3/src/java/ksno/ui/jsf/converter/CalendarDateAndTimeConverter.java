@@ -20,13 +20,13 @@ import ksno.util.JSFUtil;
  *
  * @author tor.hauge
  */
-public class CalendarConverter implements Converter {
+public class CalendarDateAndTimeConverter implements Converter {
 
     DateTimeConverter dateTimeConverter; 
     
-    public CalendarConverter(){
+    public CalendarDateAndTimeConverter(){
         dateTimeConverter = new DateTimeConverter();
-        dateTimeConverter.setPattern("yyyy-MM-dd");
+        dateTimeConverter.setPattern("yyyy-MM-dd HH:mm:ss");
         ExternalContext context = JSFUtil.getServletContext();
         String strTimeZone = context.getInitParameter("timeZone");        
         dateTimeConverter.setTimeZone(TimeZone.getTimeZone(strTimeZone));

@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ksno.dao.EventDao;
@@ -56,6 +57,8 @@ public class EventServiceImpl implements EventService {
     public List getEventsFromThisYear(){
         Class c = null;
         int year = Calendar.getInstance().get(Calendar.YEAR);
+        //TODO: To be removed
+        year = year - 1;
         try {
             c = Class.forName("java.util.List");
         } catch (ClassNotFoundException ex) {
@@ -197,7 +200,7 @@ public class EventServiceImpl implements EventService {
     public Long newEvent(Event event) {
         clearEventsApplicationCache();
         clearEventsFromThisYearApplicationCache();
-        event.setPrettyPrintId(event.getLocation() + "/" + KSNOutil.getPrettyPrintId(event.getStartDate()));
+        event.setPrettyPrintId("/" + event.getLocation().toLowerCase() + KSNOutil.getPrettyPrintId(event.getStartDate()));
         return eventDao.newEvent(event);
     }
     

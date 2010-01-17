@@ -163,16 +163,17 @@ public class SendMail {
         try{
             List recipients = (List)getDataRecipients().getValue();
             ArrayList<String> tos = new ArrayList<String>(); 
-            boolean ivMails = Boolean.valueOf(getInduvidualMails().getValue().toString()); 
+            boolean ivMails = Boolean.valueOf(getInduvidualMails().getValue().toString());
+            StringBuffer sb = new StringBuffer("Mail sent successfully to: ");
             if(ivMails){
                 for(int i = 0; i< recipients.size(); i++){
                     Person person = (Person)recipients.get(i);
                     if(person.isUiSendMail()){
                         ksno.util.SendMail sendMail = new ksno.util.SendMail(person.getUserName(), "info@kitesurfing.no", getSubject().getValue().toString() , getBody().getValue().toString());
                         sendMail.send();
-                        confirmMsg.setValue("Mail sent successfully to: " + person.getUserName());            
+                        sb.append(person.getUserName() + ", ");
                     }
-                } 
+                }
             }else{
                 String[] ccs = {"info@kitesurfing.no"};                
                 for(int i = 0; i< recipients.size(); i++){
@@ -185,9 +186,11 @@ public class SendMail {
                 s = tos.toArray(s);
                 ksno.util.SendMail sendMail = new ksno.util.SendMail(s, ccs, getSubject().getValue().toString(), getBody().getValue().toString());             
                 sendMail.send();
-                confirmMsg.setValue("Mail sent successfully to: " + s.toString());                        
+                for(String sElem : s){
+                    sb.append(sElem).append(", ");
+                }
             }
-            
+            confirmMsg.setValue(sb.toString());
 
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create send mail", e);

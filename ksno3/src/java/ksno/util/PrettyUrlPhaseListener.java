@@ -94,7 +94,7 @@ public class PrettyUrlPhaseListener implements PhaseListener {
         if(subUrl != null || !subUrl.isEmpty()){
             if(subUrl.startsWith(JSFUtil.prettyURLArticle)){
                 getLogService().log(Level.INFO,"Request url contains "+ JSFUtil.prettyURLArticle +", hence handling it as a pretty print article url. Requested url: " + subUrl);
-                String[] parts = subUrl.split(JSFUtil.prettyURLArticle);
+                String[] parts = subUrl.split(JSFUtil.prettyURLArticle,2);
                 handleArticleLookups(parts[1]);
             }else{
                 UIViewRoot view = context.getApplication().getViewHandler().createView(context, "/Articles.jsp");

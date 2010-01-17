@@ -18,6 +18,24 @@ public class Participation {
     private String comment;
     private String commentKSNO;    
     boolean onWaitList;
+    boolean confirmed;
+    boolean uIChecked;
+
+    public boolean isuIChecked() {
+        return uIChecked;
+    }
+
+    public void setuIChecked(boolean uIChecked) {
+        this.uIChecked = uIChecked;
+    }
+ 
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
 
     public String getCommentKSNO() {
         return commentKSNO;

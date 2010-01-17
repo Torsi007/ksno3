@@ -111,6 +111,19 @@ public class CoursesSummer {
 
     }
 
+    public List getEightNextCourses(){
+        List<ksno.model.BeginnerCourse> courses = this.getCourses();
+        Iterator <ksno.model.BeginnerCourse> courseIterator = courses.iterator();
+        List<ksno.model.BeginnerCourse> returnList = new LinkedList<ksno.model.BeginnerCourse>();
+        while(courseIterator.hasNext() && returnList.size()<8){
+            ksno.model.BeginnerCourse course = courseIterator.next();
+            returnList.add(course);
+        }
+        return returnList;
+
+
+    }
+
     public boolean isMoreThanFourCourses(){
         return this.getCourses().size() > 4;
     }
