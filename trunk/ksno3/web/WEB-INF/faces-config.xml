@@ -859,7 +859,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>addParticipant</from-outcome>
-            <to-view-id>/secureD/EventAddParticipant.jsp</to-view-id>
+            <to-view-id>/secureC/EventAddParticipant.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>signUpWinter</from-outcome>
@@ -942,15 +942,15 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/secureD/EventAddParticipant.jsp</from-view-id>
+        <from-view-id>/secureC/EventAddParticipant.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
-            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+            <to-view-id>/secureC/CourseParticipantsMaintain.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{EventAddParticipant_Backing.addParticipant}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/secureD/EventUpdate.jsp</to-view-id>
+            <to-view-id>/secureC/CourseParticipantsMaintain.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>

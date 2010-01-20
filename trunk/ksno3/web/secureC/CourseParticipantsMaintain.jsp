@@ -5,30 +5,31 @@
 <title>Kitesurfing.no - oppdater kurs</title>
 <link type="text/css" href="../resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
 <link type="text/css" href="../resources/css/admin.css" rel="stylesheet" />
-<link rel="stylesheet" href="../resources/css/jqueryTableSorter/style.css" type="text/css"
+<link rel="stylesheet" href="../resources/css/jqueryTableSorter/style.css" type="text/css"/>
 <script src="../resources/js/logic.js" type="text/javascript"></script>
 <script src="../resources/js/jquery.tablesorter.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../resources/js/jquery-ui.custom.js"></script>
 <SCRIPT type="text/javascript">
+   
     $(document).ready(function(){
         $("#tabs").tabs();
         $('#tabs').bind('tabsshow', function(event, ui) {
             if(ui.index == 0){
-                initTblUnconfirmedParticipants();
+                //initTblUnconfirmedParticipants();
                 $("#confirm").css("display","inline");
                 $("#unConfirm").css("display","none");
             }
             if(ui.index == 1){
-                initTblConfirmedParticipants();
+                //initTblConfirmedParticipants();
                 $("#confirm").css("display","none");
                 $("#unConfirm").css("display","inline");
             }
         });
-        initTblUnconfirmedParticipants();
-        initTblConfirmedParticipants();
+        //initTblUnconfirmedParticipants();
+        //initTblConfirmedParticipants();
         $("table.tablesorter").attr("border", 0).attr("cellpadding",0).attr("cellspacing",0)
     });
-
+ 
     function initTblUnconfirmedParticipants(){
         $("#tblUnconfirmedParticipants").tablesorter({
             headers: {
@@ -108,6 +109,7 @@
                     <li><a href="#tabs-2">Bekreftet (synlig i påmeldingssider)</a></li>
                 </ul>
                 <div id="tabs-1" >
+                    <div style="width:100%">
                     <t:dataTable styleClass="tablesorter" forceId="true" id="tblUnconfirmedParticipants" value="#{EventModify.unConfirmedParticipations}" binding="#{CourseParticipantsMaintain_Backing.dataUnconfirmedParticipants}" var="unConfirmedParticipation" first="0" width="100%">
                         <h:column >
                             <f:facet name="header">
@@ -154,8 +156,10 @@
                             <h:selectBooleanCheckbox value="#{unConfirmedParticipation.uIChecked}"/>
                         </h:column>
                     </t:dataTable>
+                                </div>
                 </div>
                 <div id="tabs-2">
+                    <div style="width:100%">
                     <t:dataTable styleClass="tablesorter" id="tblConfirmedParticipants" forceId="true" value="#{EventModify.confirmedParticipations}" binding="#{CourseParticipantsMaintain_Backing.dataConfirmedParticipants}" var="confirmedParticipation" first="0" width="100%">
                         <h:column>
                             <f:facet name="header">
@@ -202,6 +206,7 @@
                             <h:selectBooleanCheckbox value="#{confirmedParticipation.uIChecked}"/>
                         </h:column>
                     </t:dataTable>
+                    </div>
                 </div>
             </div>
             <br/>

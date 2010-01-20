@@ -77,7 +77,14 @@
                                     <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
                                 </t:htmlTag>
                             </t:dataList>
-
+                            <t:htmlTag value="span" rendered="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations == 1}">
+                                ---<br/>
+                                <t:outputText value="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations}"/> ubekreftet deltager
+                            </t:htmlTag>
+                            <t:htmlTag value="span" rendered="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations > 1}">
+                                ---<br/>
+                                <t:outputText value="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations}"/> ubekreftede deltagere
+                            </t:htmlTag>
 
                         </td>
                     </tr>
