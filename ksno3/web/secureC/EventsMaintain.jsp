@@ -31,6 +31,9 @@
             },
             widgets: ['zebra']
         });
+
+
+
     });
         
 </script>
@@ -120,7 +123,7 @@
                                 </t:commandLink>
                             </t:htmlTag>
                             <t:htmlTag value="td" visibleOnUserRole="admin, internal">
-                                <t:commandLink  action="#{EventsMaintain_Backing.eventDelete}" title="Slett kurs">
+                                <t:commandLink  action="#{EventsMaintain_Backing.eventDelete}" title="Slett kurs" onclick="return confirm('Er du sikker på du vil slette kurset?'); return false;">
                                     <span class="ui-icon ui-icon-trash"></span>
                                 </t:commandLink>
                             </t:htmlTag>
