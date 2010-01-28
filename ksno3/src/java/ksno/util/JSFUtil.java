@@ -40,6 +40,9 @@ public class JSFUtil {
     public static String prettyURLHaukeliseter = "/haukeliseter";
     public static String prettyURLAboutUs = "/om-oss";
 
+    public static String appCahceTypeOnDutys = "onDutys";
+
+
 
 
 

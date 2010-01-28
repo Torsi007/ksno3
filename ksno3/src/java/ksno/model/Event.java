@@ -126,6 +126,15 @@ public class Event implements LabelValuePair {
         return returnList;
     }
 
+    public int getNumberOfUnConfirmedParticipations(){
+        List list = this.getUnConfirmedParticipations();
+        if(list != null){
+            return list.size();
+        }else{
+            return 0;
+        }
+    }
+
 
     public void setParticipations(Set participations) {
         this.participations = participations;
@@ -283,6 +292,13 @@ public class Event implements LabelValuePair {
             participation.getEvent().getParticipations().remove(participation);
         }
 
+    }
+
+    public void removeParticipations(Set participations){
+        if(participations == null){
+            throw new IllegalArgumentException("Participation to be removed is null");
+        }
+        this.getParticipations().removeAll(participations);
     }
     
     public void addInstruction(Instruction instruction){

@@ -65,7 +65,7 @@ public class EventServiceImpl implements EventService {
             Logger.getLogger(EventServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.eventsFromThisYear}", c);
-        if(returnList != null){
+        if(returnList != null && returnList.size()>0){
             Event event = (Event)returnList.get(0);
             Calendar evStart = Calendar.getInstance();
             evStart.setTime(event.getStartDate());
@@ -102,14 +102,17 @@ public class EventServiceImpl implements EventService {
         List returnList = (List)JSFUtil.getValue("#{ApplicationBean1.beginnerCoursesFromThisYear}", c);
         if(returnList != null){
             getLogService().log(Level.INFO,"Found it in the cache");
-            BeginnerCourse course = (BeginnerCourse)returnList.get(0);
-            Calendar evStart = Calendar.getInstance();
-            evStart.setTime(course.getStartDate());
-            if(evStart.get(Calendar.YEAR)< Calendar.getInstance().get(Calendar.YEAR)){
-                returnList = null;
-                clearEventsApplicationCache();
-                getLogService().log(Level.INFO,"But we have entered a new year since last time we accesses the list, need to clear cache");
+            if(returnList.size()>0){
+                BeginnerCourse course = (BeginnerCourse)returnList.get(0);
+                Calendar evStart = Calendar.getInstance();
+                evStart.setTime(course.getStartDate());
+                if(evStart.get(Calendar.YEAR)< Calendar.getInstance().get(Calendar.YEAR)){
+                    returnList = null;
+                    clearEventsApplicationCache();
+                    getLogService().log(Level.INFO,"But we have entered a new year since last time we accesses the list, need to clear cache");
+                }
             }
+
 
         }
         if(returnList == null){
