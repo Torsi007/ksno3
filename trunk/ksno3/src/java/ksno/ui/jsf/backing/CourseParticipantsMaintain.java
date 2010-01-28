@@ -5,6 +5,7 @@
 package ksno.ui.jsf.backing;
 
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Level;
@@ -156,12 +157,15 @@ public class CourseParticipantsMaintain {
         try {
             Event event = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
             Iterator iterParticipations = event.getParticipations().iterator();
+            HashSet<Participation> participationToRemove  = new HashSet<Participation>();
             while (iterParticipations.hasNext()) {
                 Participation particiption = (Participation) iterParticipations.next();
                 if(particiption.isuIChecked()){
-                    event.removeParticipation(particiption);
+                    //event.removeParticipation(particiption);
+                    participationToRemove.add(particiption);
                 }
             }
+            event.removeParticipations(participationToRemove);
             eventService.updateEvent(event);
         } catch (Exception e) {
             getLogService().log(Level.SEVERE, "Unable to unconfirm participations", e);

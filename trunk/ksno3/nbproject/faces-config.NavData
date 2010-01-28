@@ -5,15 +5,16 @@
         <Node id="resources/js/tiny_mce/plugins/searchreplace/searchreplace.htm" x="900" y="1050" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/table/cell.htm" x="1150" y="600" zoom="true"/>
         <Node id="resources/js/tiny_mce/themes/advanced/charmap.htm" x="650" y="450" zoom="true"/>
-        <Node id="secureD/EventsMaintain.jsp" x="650" y="300" zoom="true"/>
         <Node id="secureA/ArticleImageList.jsp" x="1150" y="300" zoom="true"/>
+        <Node id="secureC/EventsMaintain.jsp" x="3400" y="150" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/emotions/emotions.htm" x="1650" y="1050" zoom="true"/>
-        <Node id="secureD/ArticleCategoriesMaintain.jsp" x="1400" y="1050" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/inlinepopups/template.htm" x="900" y="1350" zoom="true"/>
         <Node id="secureD/AdminEconomy.jsp" x="2900" y="150" zoom="true"/>
+        <Node id="secureD/ArticleCategoriesMaintain.jsp" x="1400" y="1050" zoom="true"/>
         <Node id="resources/js/tiny_mce/themes/advanced/source_editor.htm" x="400" y="900" zoom="true"/>
         <Node id="about_us.jsp" x="150" y="1350" zoom="true"/>
         <Node id="courses_winter.jsp" x="400" y="1650" zoom="true"/>
+        <Node id="Menu.jsp" x="3150" y="300" zoom="true"/>
         <Node id="secureA/VideoUpdate.jsp" x="650" y="900" zoom="true"/>
         <Node id="secureA/Youtubevideoupload.jsp" x="150" y="1800" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/cite.htm" x="150" y="1500" zoom="true"/>
@@ -22,65 +23,67 @@
         <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/abbr.htm" x="150" y="1200" zoom="true"/>
         <Node id="secureD/EventUpdate.jsp" x="1400" y="1200" zoom="true"/>
         <Node id="Current.jsp" x="650" y="1500" zoom="true"/>
-        <Node id="resources/js/tiny_mce/plugins/table/table.htm" x="1150" y="900" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/table/row.htm" x="400" y="300" zoom="true"/>
+        <Node id="resources/js/tiny_mce/plugins/table/table.htm" x="1150" y="900" zoom="true"/>
         <Node id="Heading.jsp" x="2150" y="600" zoom="true"/>
-        <Node id="resources/js/tiny_mce/themes/advanced/link.htm" x="650" y="1050" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/preview/preview.html" x="400" y="600" zoom="true"/>
+        <Node id="resources/js/tiny_mce/themes/advanced/link.htm" x="650" y="1050" zoom="true"/>
         <Node id="resources/js/tiny_mce/themes/advanced/anchor.htm" x="1900" y="750" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/paste/pastetext.htm" x="400" y="1050" zoom="true"/>
         <Node id="secureD/EventAddParticipant.jsp" x="1150" y="1200" zoom="true"/>
         <Node id="secureD/TransactionCreate.jsp" x="900" y="900" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/paste/blank.htm" x="650" y="1650" zoom="true"/>
         <Node id="Ending.jsp" x="1900" y="900" zoom="true"/>
-        <Node id="signUpWinterConfirmed.jsp" x="1257" y="1503" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/advimage/image.jsp" x="2150" y="150" zoom="true"/>
+        <Node id="signUpWinterConfirmed.jsp" x="1257" y="1503" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/fullpage/fullpage.htm" x="1150" y="450" zoom="true"/>
-        <Node id="secureA/AdminMain.jsp" x="2650" y="450" zoom="true"/>
         <Node id="secureA/VideosMaintain.jsp" x="900" y="450" zoom="true"/>
+        <Node id="secureA/AdminMain.jsp" x="2650" y="450" zoom="true"/>
         <Node id="secureD/EmailCreate.jsp" x="2150" y="450" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/style/props.htm" x="400" y="1800" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/preview/example.html" x="2400" y="150" zoom="true"/>
-        <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/ins.htm" x="900" y="300" zoom="true"/>
         <Node id="secureA/ArticleImagesUpdate.jsp" x="1150" y="1050" zoom="true"/>
+        <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/ins.htm" x="900" y="300" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/safari/blank.htm" x="1400" y="450" zoom="true"/>
         <Node id="Article.jsp" x="1400" y="750" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/advhr/rule.htm" x="400" y="450" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/fullscreen/fullscreen.htm" x="150" y="1650" zoom="true"/>
-        <Node id="resources/js/tiny_mce/plugins/template/blank.htm" x="2150" y="750" zoom="true"/>
-        <Node id="aboutUs.jsp" x="150" y="150" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/acronym.htm" x="1650" y="150" zoom="true"/>
+        <Node id="aboutUs.jsp" x="150" y="150" zoom="true"/>
+        <Node id="resources/js/tiny_mce/plugins/template/blank.htm" x="2150" y="750" zoom="true"/>
         <Node id="secureD/Invoice.jsp" x="400" y="150" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/table/merge_cells.htm" x="1400" y="150" zoom="true"/>
         <Node id="secureD/TextCreate.jsp" x="150" y="750" zoom="true"/>
-        <Node id="secureA/VideoCreate.jsp" x="1150" y="1350" zoom="true"/>
-        <Node id="signUpSummerConfirmed.jsp" x="1900" y="600" zoom="true"/>
         <Node id="Articles.jsp" x="2400" y="300" zoom="true"/>
+        <Node id="signUpSummerConfirmed.jsp" x="1900" y="600" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/paste/pasteword.htm" x="900" y="150" zoom="true"/>
         <Node id="courses_west.jsp" x="2400" y="600" zoom="true"/>
+        <Node id="secureA/VideoCreate.jsp" x="1150" y="1350" zoom="true"/>
         <Node id="secureD/TextUpdate.jsp" x="2900" y="300" zoom="true"/>
         <Node id="secureD/EmailUpdate.jsp" x="150" y="900" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/advimage/image.htm" x="1650" y="900" zoom="true"/>
-        <Node id="Button.jsp" x="650" y="150" zoom="true"/>
+        <Node id="secureC/EventAddParticipant.jsp" x="650" y="300" zoom="true"/>
         <Node id="secureD/TextsMaintain.jsp" x="2650" y="150" zoom="true"/>
+        <Node id="Button.jsp" x="650" y="150" zoom="true"/>
+        <Node id="secureC/CourseParticipantsMaintain.jsp" x="1400" y="600" zoom="true"/>
         <Node id="Main.jsp" x="400" y="750" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/del.htm" x="400" y="1350" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/template/template.htm" x="1650" y="750" zoom="true"/>
-        <Node id="secureD/TransactionsMaintain.jsp" x="650" y="600" zoom="true"/>
         <Node id="CoursesHaukeliseter.jsp" x="150" y="1950" zoom="true"/>
+        <Node id="secureD/TransactionsMaintain.jsp" x="650" y="600" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/advlink/link.htm" x="1650" y="300" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/example/dialog.htm" x="1400" y="300" zoom="true"/>
         <Node id="resources/js/tiny_mce/themes/advanced/about.htm" x="650" y="1200" zoom="true"/>
-        <Node id="SignUpSummerForm.jsp" x="1150" y="750" zoom="true"/>
         <Node id="secureA/ArticleUpdate.jsp" x="900" y="600" zoom="true"/>
+        <Node id="SignUpSummerForm.jsp" x="1150" y="750" zoom="true"/>
         <Node id="secureD/SendMail.jsp" x="1900" y="450" zoom="true"/>
         <Node id="secureD/TransactionUpdate.jsp" x="2400" y="450" zoom="true"/>
         <Node id="Index.jsp" x="1150" y="150" zoom="true"/>
         <Node id="secureA/ArticleMasterUpdate.jsp" x="900" y="750" zoom="true"/>
         <Node id="GoogleAnalytics.jsp" x="650" y="1350" zoom="true"/>
         <Node id="secureA/VideoMetaCreate.jsp" x="1650" y="450" zoom="true"/>
-        <Node id="SignUpWinter.jsp" x="1400" y="900" zoom="true"/>
         <Node id="secureA/Preferences.jsp" x="1900" y="300" zoom="true"/>
+        <Node id="SignUpWinter.jsp" x="1400" y="900" zoom="true"/>
         <Node id="CourseHaukeliseter.jsp" x="1900" y="150" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/media/media.htm" x="1650" y="600" zoom="true"/>
         <Node id="SignUpSummer.jsp" x="150" y="450" zoom="true"/>
@@ -88,10 +91,10 @@
         <Node id="secureA/ArticlesMaintain.jsp" x="3150" y="150" zoom="true"/>
         <Node id="CourseJaren.jsp" x="2150" y="300" zoom="true"/>
         <Node id="resources/js/tiny_mce/plugins/xhtmlxtras/attributes.htm" x="400" y="1500" zoom="true"/>
-        <Node id="resources/js/tiny_mce/themes/advanced/color_picker.htm" x="400" y="1200" zoom="true"/>
         <Node id="resources/js/example.html" x="150" y="600" zoom="true"/>
-        <Node id="secureA/ArticleCreate.jsp" x="650" y="750" zoom="true"/>
+        <Node id="resources/js/tiny_mce/themes/advanced/color_picker.htm" x="400" y="1200" zoom="true"/>
         <Node id="Home.jsp" x="150" y="300" zoom="true"/>
+        <Node id="secureA/ArticleCreate.jsp" x="650" y="750" zoom="true"/>
         <Node id="SignUpHaukeliseter.jsp" x="900" y="1500" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
