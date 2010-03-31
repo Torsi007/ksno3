@@ -16,6 +16,7 @@ import ksno.model.Email;
 import ksno.model.Participation;
 import ksno.model.Person;
 import ksno.model.Text;
+import ksno.model.UserRoles;
 import ksno.service.ArticleService;
 import ksno.service.EventService;
 import ksno.service.ParticipationService;
@@ -26,6 +27,7 @@ import ksno.util.SendMail;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
+import org.apache.myfaces.component.html.ext.HtmlSelectBooleanCheckbox;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneListbox;
 /**
@@ -46,10 +48,19 @@ public class SignUpSummer {
     private PersonService personService;
     private TextService textService;  
     private ArticleService articleService;
+    private HtmlSelectBooleanCheckbox thirdDay;
 
     private ParticipationService participationService;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
+
+    public HtmlSelectBooleanCheckbox getThirdDay() {
+        return thirdDay;
+    }
+
+    public void setThirdDay(HtmlSelectBooleanCheckbox thirdDay) {
+        this.thirdDay = thirdDay;
+    }
 
 
     public ArticleService getArticleService() {
@@ -234,13 +245,24 @@ public class SignUpSummer {
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
+            person.setPassWord("uks7WxY");
+
+            try {
+                UserRoles userRole = new UserRoles();
+                userRole.setRole(JSFUtil.roleAuthUser);
+                person.addRole(userRole);
+            } catch (Exception ex1) {
+                getLogService().log(Level.WARNING, "Unable to add role " + JSFUtil.roleAuthUser + " to user " + person.getUserName());
+            }
 
             BeginnerCourse course = eventService.getBeginnerCourse(Long.parseLong(coursesSelect.getValue().toString()));
 
             Participation participation = new Participation();
             participation.setEvent(course);
             boolean wait = (course.getParticipations().size() >= course.getMaxSize())?true:false;
-            participation.setOnWaitList(wait);            
+            participation.setOnWaitList(wait); 
+            boolean td = (Boolean)getThirdDay().getValue();
+            participation.setThirdDay(td);
             course.getParticipations().add(participation);
             //event.addParticipation(participation);
             person.addParticipation(participation);
@@ -255,6 +277,12 @@ public class SignUpSummer {
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
             hm.put("name", person.getFirstName() +  " " + person.getLastName());
+            hm.put("courseId", course.getId().toString());
+            hm.put("phone", Integer.toString(person.getPhone()));
+            hm.put("email", person.getUserName());
+            hm.put("username", person.getUserName());
+            hm.put("password", person.getPassWord());
+
             if(wait){
                 int pos = course.getNumberOfParticipants() - course.getMaxSize();
                 hm.put("position", Integer.toString(pos));   

@@ -16,6 +16,7 @@
     <property column="COMMENT_KSNO" name="commentKSNO" type="string"/>
     <property column="PRICE" name="price" type="integer"/>
     <property column="ON_WAIT_LIST" name="onWaitList" type="boolean"/>
+    <property column="THIRD_DAY" name="thirdDay" type="boolean"/>
     <property column="CONFIRMED" name="confirmed" type="boolean"/>
     <property column="CREATED_DATE" name="createdDate" type="calendar"/>
   </class>

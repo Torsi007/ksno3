@@ -42,7 +42,7 @@ public class CourseSummer {
     private HtmlSelectOneMenu helmetSize;  
     private HtmlSelectOneMenu coursesSelect;
     private HtmlSelectOneListbox lstBxcoursesSelect;
-    private long id;
+    private Long id;
     private EventService eventService;
     private PersonService personService;
     private TextService textService;  
@@ -51,6 +51,15 @@ public class CourseSummer {
     private ParticipationService participationService;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
+    private String prettyPrintId;
+
+    public String getPrettyPrintId() {
+        return prettyPrintId;
+    }
+
+    public void setPrettyPrintId(String prettyPrintId) {
+        this.prettyPrintId = prettyPrintId;
+    }
 
 
     public ArticleService getArticleService() {
@@ -116,7 +125,7 @@ public class CourseSummer {
     public List<ksno.model.Article> getCourseArticles(){
         getLogService().log(Level.INFO, "Start getCourseArticles()");
         Category category = new Category();
-        category.setName("Vinterkurs");
+        category.setName("Sommerkurs");
         List<ksno.model.Article> returnList = getArticleService().getArticlesByCategory(category);
         getLogService().log(Level.INFO, "Found a list of " + returnList.size() + " articles.");
         while(returnList.size() > 5){
@@ -145,11 +154,11 @@ public class CourseSummer {
         this.eventService = eventService;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         getLogService().log(Level.INFO, "Setting course id to " + id);
         this.id = id;
     }
@@ -208,8 +217,15 @@ public class CourseSummer {
     }
 
     public BeginnerCourse getCourse(){
-        getLogService().log(Level.INFO, "About to get course object for id " + getId());
-        return eventService.getBeginnerCourse(getId());
+        BeginnerCourse returnCourse = null;
+        if(this.getId() != null){
+            getLogService().log(Level.INFO, "About to get course object for id " + getId());
+            returnCourse = eventService.getBeginnerCourse(this.getId());
+        }else{
+            getLogService().log(Level.INFO, "About to get course object for prettyprintid " + this.getPrettyPrintId());
+            returnCourse = eventService.getBeginnerCourse(this.getPrettyPrintId());
+        }
+        return returnCourse;
     }
 
     public List getUpCommingCourses(){

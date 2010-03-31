@@ -20,6 +20,15 @@ public class Participation {
     boolean onWaitList;
     boolean confirmed;
     boolean uIChecked;
+    boolean thirdDay;
+
+    public boolean isThirdDay() {
+        return thirdDay;
+    }
+
+    public void setThirdDay(boolean thirdDay) {
+        this.thirdDay = thirdDay;
+    }
 
     public boolean isuIChecked() {
         return uIChecked;
@@ -153,9 +162,6 @@ public class Participation {
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
         }
-        if (this.createdDate != other.createdDate && (this.createdDate == null || !this.createdDate.equals(other.createdDate))) {
-            return false;
-        }
         return true;
     }
 
@@ -163,7 +169,6 @@ public class Participation {
     public int hashCode() {
         int hash = 7;
         hash = 41 * hash + (this.id != null ? this.id.hashCode() : 0);
-        hash = 41 * hash + (this.createdDate != null ? this.createdDate.hashCode() : 0);
         return hash;
     }
 

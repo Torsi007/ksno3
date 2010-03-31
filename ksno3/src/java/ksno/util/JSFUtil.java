@@ -35,7 +35,7 @@ public class JSFUtil {
     public static String prettyURLArticlesAndVideos = "/artikler-og-videoer";
     public static String prettyURLArticle = "/artikkel";
     public static String prettyURLCourseSummer = "/kurs/sommer";
-    public static String prettyURLStavanger = "/stavanger";
+    public static String prettyURLStavanger = "/jæren";
     public static String prettyURLCourseWinter = "/kurs/vinter";
     public static String prettyURLHaukeliseter = "/haukeliseter";
     public static String prettyURLAboutUs = "/om-oss";
