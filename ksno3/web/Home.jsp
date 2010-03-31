@@ -168,11 +168,11 @@
                                     <tr>
                                         <td style="width:90px; white-space: nowrap">
                                             <h:outputText value="#{course.startDate}">
-                                                <f:convertDateTime dateStyle="short" pattern="dd.MM"/>
+                                                <f:converter converterId="DateConverterPtrnddDotMM"/>
                                             </h:outputText>
                                             -
                                             <h:outputText value="#{course.endDate}">
-                                                <f:convertDateTime dateStyle="short" pattern="dd.MM.yy"/>
+                                                <f:converter converterId="DateConverterPtrnddDotMMDotyy"/>
                                             </h:outputText>
                                         </td>
                                         <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>
@@ -204,11 +204,11 @@
                                     <tr>
                                         <td style="width:90px; white-space: nowrap">
                                             <h:outputText value="#{course.startDate}">
-                                                <f:convertDateTime dateStyle="short" pattern="dd.MM"/>
+                                                <f:converter converterId="DateConverterPtrnddDotMM"/>
                                             </h:outputText>
                                             -
                                             <h:outputText value="#{course.endDate}">
-                                                <f:convertDateTime dateStyle="short" pattern="dd.MM.yy"/>
+                                                <f:converter converterId="DateConverterPtrnddDotMMDotyy"/>
                                             </h:outputText>
                                         </td>
                                         <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>

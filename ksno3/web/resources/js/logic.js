@@ -127,33 +127,47 @@ ksnoImgageBorder.prototype.update = function(){
 	}
 }
 
+var doValidate = true;
+
+function disableValidate(){
+    if(doValidate){
+       doValidate = false;
+    }
+}
+
 function validate(formElem){
-    var formElement = formElem;
-    if(formElement == undefined){
-        if(window.event == undefined){
-            formElement = document.forms[0];
-        }else{
-            formElement = event.srcElement? event.srcElement : event.target;
+    if(doValidate){
+        var formElement = formElem;
+        if(formElement == undefined){
+            if(window.event == undefined){
+                formElement = document.forms[0];
+            }else{
+                formElement = event.srcElement? event.srcElement : event.target;
+            }
+
         }
-        
-    }
-    var validated = validateRequiredElements(formElement, "input");
-    if(validated){
-      validated = validateRequiredElements(formElement, "select");
-    }
-    if(validated){
-      validated = validateRequiredElements(formElement, "textarea");
-    }
-    if(!validated){
-        alert("De merkede elementene er obligatoriske.");
-        return  validated;
-    }
+        var validated = validateRequiredElements(formElement, "input");
+        if(validated){
+          validated = validateRequiredElements(formElement, "select");
+        }
+        if(validated){
+          validated = validateRequiredElements(formElement, "textarea");
+        }
+        if(!validated){
+            alert("De merkede elementene er obligatoriske.");
+            return  validated;
+        }
 
-    validated = validateFormatFields(formElement);
+        validated = validateFormatFields(formElement);
 
 
 
-    return validated;
+        return validated;
+
+    }else{
+        return true;
+    }
+
 }
 
 function validateFormatFields(form){

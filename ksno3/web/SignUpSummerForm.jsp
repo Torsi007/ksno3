@@ -62,12 +62,40 @@
             
         </script>
         <script type="text/javascript" src="resources/js/jquery.skinned-select.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#courseSelect div').css("display","none");
+                $('#txtSelectedCourse').html($('#courseSelect select :selected').text());
+                $("#courseSelectActivate a").click(function(e) {
+                    e.preventDefault();
+                    $('#courseSelect div').css("display","block");
+                    $('#txtSelectedCourse').css("display","none");
+                });
+            });
+        </script>
     </head>
     <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
     <body>
         <f:view>
             <h:form id="signup" onsubmit="return validate()">
                 <table style="width:1px;">
+                    <tr>
+                        <td id="courseSelect" style="height:40px">
+                            <span>Kurs</span>
+                            <div class="my-skinnable-select">
+                                <t:selectOneMenu id="courses" binding="#{SignUpSummer_Backing.coursesSelect}" >
+                                    <f:selectItems value="#{SignUpSummer_Backing.coursesSelectItems}"/>
+                                </t:selectOneMenu>
+                            </div>
+                            <span id="txtSelectedCourse"><t:outputText style="display:none" id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/></span>
+                        </td>
+                        <td id="courseSelectActivate" style="padding-top:14px">
+                            <t:htmlTag value="a" styleClass="button">
+                                <f:param name="href" value="../nd/dummy.html" />
+                                <h:outputText value="Endre" escape="false"/>
+                            </t:htmlTag>
+                        </td>
+                    </tr>
                     <tr>		
                         <td required="true" format="email" colspan="2">
                             <span>Email</span>
@@ -88,7 +116,15 @@
                         <td required="true" format="phone">
                             <span>Telefon</span>
                             <t:inputText binding="#{SignUpSummer_Backing.phone}"/>
-                        </td>	
+                        </td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span>Ved leie av neopren / hjelm vennligst angi følgende størrelser:</span>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
                             <span>Hjelm størrelse</span>
                             <div class="my-skinnable-select">
@@ -104,8 +140,6 @@
                                 </t:selectOneMenu>
                             </div>
                         </td>	
-                    </tr>
-                    <tr>
                         <td required="true">
                             <span>Våtdrakt størrelse</span>
                             <div class="my-skinnable-select">
@@ -119,7 +153,9 @@
                                     <f:selectItem itemLabel="XS" itemValue="XS"/>
                                 </t:selectOneMenu>
                             </div>
-                        </td>	
+                        </td>
+                    </tr>
+                    <tr>
                         <td required="true">
                             <span>Sko størrelse</span>
                             <div class="my-skinnable-select">
@@ -139,24 +175,19 @@
                                 </t:selectOneMenu>
                             </div>
                         </td>	
-                    </tr>			
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="#thirdDay" class="fakecheck" id="test">Er interessert i å delta 3. dag (ikke bindende)</a>
+                            <t:selectBooleanCheckbox id="thirdDay" forceId="true" style="display:none" binding="#{SignUpSummer_Backing.thirdDay}"/>
+                        </td>
+                    </tr>
                      <tr>		
                         <td colspan="2">
                             <span>Kommentar</span>
                             <t:inputTextarea  style="width:100%" rows="3" binding="#{SignUpSummer_Backing.comment}"/>
                         </td>	
                     </tr>                  
-                    <tr>		
-                        <td colspan="2">
-                            <span>Kurs</span>
-                            <div class="my-skinnable-select">
-                            <t:selectOneMenu id="courses" binding="#{SignUpSummer_Backing.coursesSelect}" >
-                                <f:selectItems value="#{SignUpSummer_Backing.coursesSelectItems}"/>
-                            </t:selectOneMenu>
-                            </div>
-                            <t:outputText style="display:none" id="courseFreeSeats" value="#{SignUpWinter_Backing.courseAwailableSeats}"/>
-                        </td>	
-                    </tr>
                     <tr>		
                         <td required="true" colspan="2">
                             <span  id="awailSeatsInfo"/>

@@ -54,14 +54,14 @@
                     </f:facet>
                     <div style="display:none" id="courseId"><h:outputText value="#{item.id}"/></div>
                     <h:inputHidden value="#{item.id}"/>
-                    <h:outputText value="#{item.startDate}"><f:convertDateTime pattern="yyyy-MM-dd"/>
+                    <h:outputText value="#{item.startDate}"><f:converter converterId="DateConverter"/>
                     </h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Slutt dato" />
                     </f:facet>
-                    <h:outputText value="#{item.endDate}"><f:convertDateTime pattern="yyyy-MM-dd"/>
+                    <h:outputText value="#{item.endDate}"><f:converter converterId="DateConverter"/>
                     </h:outputText>
                 </h:column>
                 <h:column>

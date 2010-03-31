@@ -28,3 +28,8 @@ a.button {background-image:url('http://farm4.static.flickr.com/3442/3907841308_5
 input {height:18px; width:150px; border:1px solid #787878; margin: 0px 4px 2px 0px; color: #303030; font-size:11px }
 textarea {width:150px; border:1px solid #787878; margin: 0px 4px 2px 0px; color: #303030; font-size:11px }
 select {height:18px; width:150px; border:1px solid #787878; margin: 0px; color: #303030; font-size:11px }
+
+/* fake checkbox */
+.fakecheck {text-decoration: none; background: url(../img/components/checkbox.gif) no-repeat; height: 16px; width: 100%; display: block; float: left; padding: 1px 0px 0px 18px; }
+.fakecheck:hover { text-decoration: underline;}
+.fakechecked {	background-position: left -25px;}

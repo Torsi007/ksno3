@@ -20,16 +20,22 @@
             <h1>Oppdater kurs</h1>
             <table>
                 <tr>
+                    <td>Name</td>
+                    <td required="true">
+                        <t:inputText id="it_name" value="#{EventModify.name}"/>
+                    </td>
+                </tr>
+                <tr>
                     <td>Start Dato</td>
                     <td required="true">
                         <t:inputText forceId="true" id="dp_StartDate" value="#{EventModify.startDate}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            <f:converter converterId="DateConverter"/>
                         </t:inputText>
                     </td>
                     <td>Slutt Dato</td>
                     <td required="true">
                         <t:inputText forceId="true" id="dp_EndDate" value="#{EventModify.endDate}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            <f:converter converterId="DateConverter"/>
                         </t:inputText>
                     </td>
                 </tr>

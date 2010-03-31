@@ -48,9 +48,34 @@
         <converter-class>ksno.ui.jsf.converter.CalendarDateAndTimeConverter</converter-class>
     </converter>
     <converter>
+        <description>Convert date string neglecting timezone offsets</description>
+        <converter-id>DateConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.DateConverter</converter-class>
+    </converter>
+    <converter>
+        <description>Convert date string neglecting timezone offsets</description>
+        <converter-id>DateConverterPtrnddMMM</converter-id>
+        <converter-class>ksno.ui.jsf.converter.DateConverterPtrnddMMM</converter-class>
+    </converter>
+    <converter>
+        <description>Convert date string neglecting timezone offsets</description>
+        <converter-id>DateConverterPtrnddDotMM</converter-id>
+        <converter-class>ksno.ui.jsf.converter.DateConverterPtrnddDotMM</converter-class>
+    </converter>
+    <converter>
+        <description>Convert date string neglecting timezone offsets</description>
+        <converter-id>DateConverterPtrnddDotMMDotyy</converter-id>
+        <converter-class>ksno.ui.jsf.converter.DateConverterPtrnddDotMMDotyy</converter-class>
+    </converter>
+    <converter>
         <description>Convert string - person</description>
         <converter-id>PersonConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.PersonConverter</converter-class>
+    </converter>
+    <converter>
+        <description>Convert string - event</description>
+        <converter-id>EventConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.EventConverter</converter-class>
     </converter>
     <converter>
         <description>Convert string - category</description>
@@ -72,12 +97,12 @@
         <managed-bean-name>EventDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.EventDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>   
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>ImageDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ImageDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>   
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>ParticipationDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.ParticipationDaoImpl</managed-bean-class>
@@ -87,12 +112,12 @@
         <managed-bean-name>PersonDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>      
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>TextDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.TextDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean> 
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>TransactionDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.TransactionDaoImpl</managed-bean-class>
@@ -120,13 +145,13 @@
         <managed-property>
             <property-name>articleDao</property-name>
             <value>#{ArticleDao}</value>
-        </managed-property>        
-    </managed-bean> 
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>DocumentService</managed-bean-name>
         <managed-bean-class>ksno.service.DocumentServiceImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
-    </managed-bean>    
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>EventService</managed-bean-name>
         <managed-bean-class>ksno.service.EventServiceImpl</managed-bean-class>
@@ -134,8 +159,8 @@
         <managed-property>
             <property-name>eventDao</property-name>
             <value>#{EventDao}</value>
-        </managed-property>        
-    </managed-bean>   
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>ImageService</managed-bean-name>
         <managed-bean-class>ksno.service.ImageServiceImpl</managed-bean-class>
@@ -143,8 +168,8 @@
         <managed-property>
             <property-name>imageDao</property-name>
             <value>#{ImageDao}</value>
-        </managed-property>        
-    </managed-bean>       
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>ParticipationService</managed-bean-name>
         <managed-bean-class>ksno.service.ParticipationServiceImpl</managed-bean-class>
@@ -152,8 +177,8 @@
         <managed-property>
             <property-name>participationDao</property-name>
             <value>#{ParticipationDao}</value>
-        </managed-property>        
-    </managed-bean>    
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>PersonService</managed-bean-name>
         <managed-bean-class>ksno.service.PersonServiceImpl</managed-bean-class>
@@ -161,8 +186,8 @@
         <managed-property>
             <property-name>personDao</property-name>
             <value>#{PersonDao}</value>
-        </managed-property>        
-    </managed-bean>    
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>TextService</managed-bean-name>
         <managed-bean-class>ksno.service.TextServiceImpl</managed-bean-class>
@@ -170,8 +195,8 @@
         <managed-property>
             <property-name>textDao</property-name>
             <value>#{TextDao}</value>
-        </managed-property>        
-    </managed-bean>   
+        </managed-property>
+    </managed-bean>
    <managed-bean>
         <managed-bean-name>TransactionService</managed-bean-name>
         <managed-bean-class>ksno.service.TransactionServiceImpl</managed-bean-class>
@@ -179,7 +204,7 @@
         <managed-property>
             <property-name>transactionDao</property-name>
             <value>#{TransactionDao}</value>
-        </managed-property>        
+        </managed-property>
     </managed-bean>
    <managed-bean>
         <managed-bean-name>VideoService</managed-bean-name>
@@ -211,7 +236,7 @@
         <managed-property>
             <property-name>id</property-name>
             <value>#{param.id}</value>
-        </managed-property>        
+        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>ArticleCategoryMaintain_Backing</managed-bean-name>
@@ -1119,5 +1144,6 @@
         </navigation-case>
     </navigation-rule>
 </faces-config>
+
 
 
