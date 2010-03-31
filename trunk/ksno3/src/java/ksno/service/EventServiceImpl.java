@@ -220,6 +220,7 @@ public class EventServiceImpl implements EventService {
     public void updateEvent(Event event) {
         clearEventsApplicationCache();
         clearEventsFromThisYearApplicationCache();
+        event.setPrettyPrintId("/" + event.getLocation().toLowerCase() + KSNOutil.getPrettyPrintId(event.getStartDate()));
         eventDao.updateEvent(event);
     }
 

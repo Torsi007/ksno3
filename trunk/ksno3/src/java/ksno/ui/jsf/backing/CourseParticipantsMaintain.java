@@ -4,13 +4,16 @@
  */
 package ksno.ui.jsf.backing;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIData;
+import javax.faces.model.SelectItem;
 import ksno.model.Event;
 import ksno.model.Participation;
 import ksno.model.Person;
@@ -19,6 +22,7 @@ import ksno.service.ParticipationService;
 import ksno.service.PersonService;
 import ksno.util.JSFUtil;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -32,8 +36,18 @@ public class CourseParticipantsMaintain {
     private EventService eventService;
     private PersonService personService;
     private ParticipationService participationService;
+    private HtmlSelectOneMenu eventSelect;
+
 
 // <editor-fold defaultstate="collapsed" desc="Getters and setters">
+    public HtmlSelectOneMenu getEventSelect() {
+        return eventSelect;
+    }
+
+    public void setEventSelect(HtmlSelectOneMenu eventSelect) {
+        this.eventSelect = eventSelect;
+    }
+
     private Logger getLogService() {
         return Logger.getLogger(this.getClass().getName());
     }
@@ -86,6 +100,24 @@ public class CourseParticipantsMaintain {
         this.errorMsg = errorMsg;
     }
 // </editor-fold>
+
+    public SelectItem[] getEventSelectItems(){
+        List events = eventService.getEvents();
+        Event eventToModify = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+        SelectItem[] arr = JSFUtil.toSelectItemArray(events, true);
+        List<SelectItem> result = new ArrayList<SelectItem>();
+        for(SelectItem item : arr){
+            if(Long.parseLong(item.getValue().toString()) != eventToModify.getId()){
+                result.add(item);
+            }
+        }
+        SelectItem[] arr2 = new SelectItem[result.size()];
+        for(int i = 0; i<arr2.length; i++){
+            arr2[i] = result.get(i);
+        }
+
+        return arr2;
+    }
 
     public String unConfirmedParticipantDelete() {
         String returnVal = "sucess";
@@ -169,6 +201,43 @@ public class CourseParticipantsMaintain {
             eventService.updateEvent(event);
         } catch (Exception e) {
             getLogService().log(Level.SEVERE, "Unable to unconfirm participations", e);
+            errorMsg.setRendered(true);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
+            returnVal = "no";
+        }
+        return returnVal;
+    }
+
+    public String moveParticipantsToCourse(){
+        getLogService().log(Level.INFO, "Start moveParticipantsToCourse");
+        String returnVal = "sucess";
+        try {
+            Event event = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+            Iterator iterParticipations = event.getParticipations().iterator();
+            HashSet<Participation> participations  = new HashSet<Participation>();
+            getLogService().log(Level.INFO, "Found the following particpants to move from event " + event.getStartDate().toString() + ":");
+            while (iterParticipations.hasNext()) {
+                Participation particiption = (Participation) iterParticipations.next();
+                if(particiption.isuIChecked()){
+                    participations.add(particiption);
+                    getLogService().log(Level.INFO, particiption.getParticipant().getFirstName() + " " + particiption.getParticipant().getLastName());
+                }
+            }
+            Event moveToEvent = getEventService().getEvent(Long.parseLong(getEventSelect().getValue().toString()));
+            if(moveToEvent != null){
+                getLogService().log(Level.INFO, "To event " + moveToEvent.getStartDate().toString() + ":");
+                moveToEvent.addParticipations(participations);
+                eventService.updateEvent(moveToEvent);
+            }else{
+                getLogService().log(Level.WARNING, "Unable to move participants, seems like the event to move participants to is not selected");
+                errorMsg.setRendered(true);
+                errorMsg.setValue("Operasjonen feilet, det ser ut til at du ikke har valgt kurs for flytting av deltagere");
+                returnVal = "no";
+            }
+            getEventSelect().setValue(null);
+
+        } catch (Exception e) {
+            getLogService().log(Level.SEVERE, "Unable to move participations", e);
             errorMsg.setRendered(true);
             errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
             returnVal = "no";

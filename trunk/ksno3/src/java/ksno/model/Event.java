@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Event implements LabelValuePair {
+public class Event implements LabelValuePair, LabelObjectValuePair {
 
     protected Long id;
     private String prettyPrintId;
@@ -23,7 +23,7 @@ public class Event implements LabelValuePair {
     private boolean open;
     private Instructor instructor;
     private Set instructions = new HashSet();
-    private Set participations = new HashSet();
+    private Set<Participation> participations = new HashSet<Participation>();
 
     public Instructor getInstructor() {
         return instructor;
@@ -90,7 +90,7 @@ public class Event implements LabelValuePair {
         this.instructions = instructions;
     }    
     
-    public Set getParticipations() {
+    public Set<Participation> getParticipations() {
         return participations;
     }
 
@@ -136,7 +136,7 @@ public class Event implements LabelValuePair {
     }
 
 
-    public void setParticipations(Set participations) {
+    public void setParticipations(Set<Participation> participations) {
         this.participations = participations;
     }     
     
@@ -274,31 +274,64 @@ public class Event implements LabelValuePair {
    // </editor-fold>    
      
     public void addParticipation(Participation participation){
+        getLogService().log(Level.INFO, "Start method  addParticipation.");
         if(participation == null){
             throw new IllegalArgumentException("Participation to be added is null");
         }
         if(participation.getEvent() != null){
             participation.getEvent().getParticipations().remove(participation);
         }
-        participation.setEvent(this);
-        participations.add(participation);
+        if(this.containParticipation(participation)){
+            getLogService().log(Level.WARNING, "Ended addPartipation, not able to add participant: " + participation.getParticipant().getFirstName() + " " + participation.getParticipant().getLastName() + " because the person was already participating");
+        }else{
+            participation.setEvent(this);
+            if(participations.add(participation)){
+                getLogService().log(Level.INFO, "Ended addPartipation, added participant: " + participation.getParticipant().getFirstName() + " " + participation.getParticipant().getLastName());
+            }else{
+                getLogService().log(Level.WARNING, "Ended addPartipation, not able to add participant: " + participation.getParticipant().getFirstName() + " " + participation.getParticipant().getLastName() + " because the person was already participating");
+            }
+
+        }
+    }
+
+    public void addParticipations(Set<Participation> participations){
+        getLogService().log(Level.INFO, "About to add " + participations.size() + " participations to event: " + this.getStartDate());
+        for (Participation participation : participations){
+            this.addParticipation(participation);
+        }
     }
 
     public void removeParticipation(Participation participation){
         if(participation == null){
             throw new IllegalArgumentException("Participation to be removed is null");
         }
+        boolean replace = false;
+        HashSet<Participation> replaceHS = new HashSet<Participation>();
         if(participation.getEvent() != null){
-            participation.getEvent().getParticipations().remove(participation);
+            if(!getParticipations().remove(participation)){
+                for(Participation p : getParticipations()){
+                    if(p.equals(participation)){
+                        replace=true;
+                    }else{
+                        replaceHS.add(p);
+                    }
+                }
+                if(replace){
+                    getParticipations().clear();
+                    getParticipations().addAll(replaceHS);
+                }
+            }
+            
         }
-
     }
 
-    public void removeParticipations(Set participations){
+    public void removeParticipations(Set<Participation> participations){
         if(participations == null){
             throw new IllegalArgumentException("Participation to be removed is null");
         }
-        this.getParticipations().removeAll(participations);
+        for(Participation part : participations){
+            removeParticipation(part);
+        }
     }
     
     public void addInstruction(Instruction instruction){
@@ -324,6 +357,24 @@ public class Event implements LabelValuePair {
 
     public String getValue() {
         return Long.toString(id);
+    }
+
+    public Object getObject() {
+        return this;
+    }
+
+    private boolean containParticipation(Participation participation) {
+        Person participant = participation.getParticipant();
+        boolean returnVal = false;
+        if(participant != null){
+            for(Participation prt : this.participations){
+                if(participant.equals(prt.getParticipant())){
+                    returnVal = true;
+                    break;
+                }
+            }
+        }
+        return returnVal;
     }
 
 }

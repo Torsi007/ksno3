@@ -17,6 +17,9 @@ import ksno.model.Video;
 import ksno.service.ArticleService;
 import ksno.service.EventService;
 import ksno.service.VideoService;
+import ksno.util.JSFUtil;
+import javax.faces.model.SelectItem;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -26,6 +29,28 @@ public class CoursesSummer {
     private EventService eventService;
     private ArticleService articleService;
     private VideoService videoService;
+    private HtmlSelectOneMenu coursesSelect;
+
+    public HtmlSelectOneMenu getCoursesSelect() {
+        return coursesSelect;
+    }
+
+
+    public void setCoursesSelect(HtmlSelectOneMenu coursesSelect) {
+        this.coursesSelect = coursesSelect;
+    }
+
+
+
+    public boolean isHaveUpcomingActiveCourses(){
+        SelectItem[] arr = getCoursesSelectItems();
+        return arr != null && arr.length > 0;
+    }
+
+    public SelectItem[] getCoursesSelectItems() {
+        List events = eventService.getOpenUpcommingSummerBeginnerCourses();
+        return JSFUtil.toSelectItemArray(events);
+    }
 
     public VideoService getVideoService() {
         return videoService;

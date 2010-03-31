@@ -20,11 +20,11 @@ import ksno.util.JSFUtil;
  *
  * @author tor.hauge
  */
-public class CalendarConverter implements Converter {
+public class DateConverter implements Converter {
 
     DateTimeConverter dateTimeConverter; 
     
-    public CalendarConverter(){
+    public DateConverter(){
         dateTimeConverter = new DateTimeConverter();
         dateTimeConverter.setPattern("yyyy-MM-dd");
         ExternalContext context = JSFUtil.getServletContext();
@@ -34,21 +34,31 @@ public class CalendarConverter implements Converter {
     
     public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
         Date date = (Date)dateTimeConverter.getAsObject(context, component, value);
+
         Calendar calendar = null;
         if(date != null){
             calendar = Calendar.getInstance();
             calendar.setTimeInMillis(date.getTime());
             calendar.add(Calendar.HOUR, 12);
+            date.setTime(calendar.getTimeInMillis());
         }
-        return calendar;
+        return date;
+
+       
     }
 
     public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
         if(null == value){
             return null;
         }
-        Calendar calendar = (Calendar)value;
-        Date d = new Date(calendar.getTimeInMillis());
+        Date d = (Date)value;
+        Calendar calendar = null;
+        if(d != null){
+            calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(d.getTime());
+            calendar.add(Calendar.HOUR, 12);
+            d.setTime(calendar.getTimeInMillis());
+        }
         return dateTimeConverter.getAsString(context, component, d);
     }
 

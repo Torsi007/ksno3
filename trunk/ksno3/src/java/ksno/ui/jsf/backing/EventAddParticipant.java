@@ -21,6 +21,7 @@ import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 import ksno.security.PasswordFactory;
+import org.apache.myfaces.component.html.ext.HtmlSelectBooleanCheckbox;
 
 /**
  *
@@ -41,7 +42,16 @@ public class EventAddParticipant {
     private ParticipationService participationService;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
-    
+    private HtmlSelectBooleanCheckbox thirdDay;
+
+    public HtmlSelectBooleanCheckbox getThirdDay() {
+        return thirdDay;
+    }
+
+    public void setThirdDay(HtmlSelectBooleanCheckbox thirdDay) {
+        this.thirdDay = thirdDay;
+    }
+
     private Logger getLogService(){
       return Logger.getLogger(BeginnerCourseCreate.class.getName());
     }    
@@ -158,6 +168,11 @@ public class EventAddParticipant {
         this.wetSuitSize = wetSuitSize;
     }
 
+    public boolean isSummerEvent(){
+        Event event = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+        return !event.getLocation().equalsIgnoreCase("Haukeliseter");
+    }
+
     
             
     public String addParticipant(){
@@ -197,15 +212,20 @@ public class EventAddParticipant {
 
             Participation participation = new Participation();
             participation.setEvent(event);
-            participation.setWetSuitSize(wetSuitSize.getValue().toString());
-            participation.setHelmetSize(helmetSize.getValue().toString());
-            participation.setShoeSize(shoeSize.getValue().toString());
+            if(isSummerEvent()){
+                participation.setWetSuitSize(wetSuitSize.getValue().toString());
+                participation.setHelmetSize(helmetSize.getValue().toString());
+                participation.setShoeSize(shoeSize.getValue().toString());
+                boolean td = (Boolean)getThirdDay().getValue();
+                participation.setThirdDay(td);
+            }
             event.getParticipations().add(participation);
             person.addParticipation(participation);
             if(comment.getValue() != null){
                 participation.setComment(comment.getValue().toString());
             }
             eventService.updateEvent(event);
+            personService.newPerson(person);
 
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to add participant", e);

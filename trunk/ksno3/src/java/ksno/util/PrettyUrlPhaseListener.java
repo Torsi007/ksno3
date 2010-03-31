@@ -16,6 +16,7 @@ import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletRequest;
 import ksno.ui.jsf.backing.Article;
 import ksno.ui.jsf.backing.CourseHaukeliseter;
+import ksno.ui.jsf.backing.CourseSummer;
 import org.hibernate.SessionFactory;
 
 /**
@@ -128,9 +129,23 @@ public class PrettyUrlPhaseListener implements PhaseListener {
 
     private void handleCourseSummerLookup(String subUrl) {
         if(subUrl != null || !subUrl.isEmpty()){
-            if(subUrl.startsWith(JSFUtil.prettyURLStavanger)){
-                //Not handled yet
-                getLogService().log(Level.INFO,"Request url contains "+ JSFUtil.prettyURLArticle +", hence handling it as a pretty print article url. Requested url: " + subUrl);
+            String id = subUrl;
+            try {
+                id = URLDecoder.decode(subUrl, "UTF-8");
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(PrettyUrlPhaseListener.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(id.startsWith(JSFUtil.prettyURLStavanger)){
+                getLogService().log(Level.INFO,"Request url contains "+ JSFUtil.prettyURLStavanger +", hence handling it as a pretty print summer course url. Requested url: " + id);
+                CourseSummer courseSummerBean = null;
+                try {
+                    courseSummerBean = (CourseSummer) JSFUtil.getBeanValue("#{CourseSummer_Backing}", CourseSummer.class);
+                } catch (Exception ex) {
+                    Logger.getLogger(PrettyUrlPhaseListener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                courseSummerBean.setPrettyPrintId(id);
+                UIViewRoot view = context.getApplication().getViewHandler().createView(context, "/SignUpSummer.jsp");
+                context.setViewRoot(view);
             }else{
                 UIViewRoot view = context.getApplication().getViewHandler().createView(context, "/CourseJaren.jsp");
                 context.setViewRoot(view);

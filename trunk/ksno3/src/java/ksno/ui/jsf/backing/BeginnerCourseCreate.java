@@ -31,6 +31,7 @@ public class BeginnerCourseCreate {
     private HtmlInputText endDate;    
     private HtmlInputText comment;
     private HtmlInputText maxSize;
+    private HtmlInputText name;
     private HtmlSelectOneMenu location;
     private HtmlSelectOneMenu slctOneInstructor;
     private HtmlSelectOneMenu comboResponsible;
@@ -39,6 +40,15 @@ public class BeginnerCourseCreate {
     private EventService eventService;
     private PersonService personService;
     private HtmlSelectManyListbox slctManyInstructors;
+
+    public HtmlInputText getName() {
+        return name;
+    }
+
+    public void setName(HtmlInputText name) {
+        this.name = name;
+    }
+
 
     public HtmlSelectOneMenu getSlctOneInstructor() {
         return slctOneInstructor;
@@ -167,7 +177,8 @@ public class BeginnerCourseCreate {
         try{
             BeginnerCourse course = new BeginnerCourse();
             course.setStartDate((Date)startDate.getValue());
-            course.setEndDate((Date)endDate.getValue());            
+            course.setEndDate((Date)endDate.getValue());
+            course.setName(name.getValue().toString());
             course.setComment(comment.getValue().toString());                        
             course.setMaxSize(Integer.parseInt(maxSize.getValue().toString()));  
             Object[] selectedInstructors = slctManyInstructors.getSelectedValues();
@@ -194,7 +205,7 @@ public class BeginnerCourseCreate {
             course.setOpen(op);
             eventService.newEvent(course);
         }catch(Exception e){
-            getLogService().log(Level.SEVERE,"Unable to create article", e);
+            getLogService().log(Level.SEVERE,"Unable to create course", e);
             errorMsg.setValue("Kurset ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());            
             returnVal = "no";
         }
