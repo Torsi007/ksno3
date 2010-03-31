@@ -21,10 +21,16 @@
             <p>Du er i ferd med å opprette et nytt kurs</p>
             <table>
                 <tr>
+                    <td>Name</td>
+                    <td required="true">
+                        <t:inputText id="it_namr" binding="#{BeginnerCourseCreate_Backing.name}" value="Nybegynnerkurs"/>
+                    </td>
+                </tr>
+                <tr>
                     <td>Start Dato</td>
                     <td required="true">
                         <t:inputText id="dp_StartDate" forceId="true" binding="#{BeginnerCourseCreate_Backing.startDate}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            <f:converter converterId="DateConverter"/>
                         </t:inputText>
                     </td>
                 </tr>
@@ -32,7 +38,7 @@
                     <td>Slutt Dato</td>
                     <td required="true">
                         <t:inputText id="dp_EndDate" forceId="true" binding="#{BeginnerCourseCreate_Backing.endDate}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            <f:converter converterId="DateConverter"/>
                         </t:inputText>
                     </td>
                 </tr>

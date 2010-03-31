@@ -11,6 +11,16 @@ $(document).ready(function(){
         $(".topMenu").css("display","none");
     }
     setFrameHeight();
+    // check for what is/isn't already checked and match it on the fake ones
+    $("input:checkbox").each( function() {
+            (this.checked) ? $("#fake"+this.id).addClass('fakechecked') : $("#fake"+this.id).removeClass('fakechecked');
+    });
+    // function to 'check' the fake ones and their matching checkboxes
+    $(".fakecheck").click(function(){
+            ($(this).hasClass('fakechecked')) ? $(this).removeClass('fakechecked') : $(this).addClass('fakechecked');
+            $(this.hash).trigger("click");
+            return false;
+    });    
 
 });
 

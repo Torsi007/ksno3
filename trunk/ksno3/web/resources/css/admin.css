@@ -16,12 +16,18 @@
  }
 
  body {font-size:11px; font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;}
- table td {font-size:11px; font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;}
+ table td {font-size:11px; font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; padding: 0px 2px}
+ table td input {width:100%; height:19px; font-size:10px}
+ table td select {width:100%; height:19px; font-size:10px}
+ table td textarea {width:100%; font-size:10px}
  table.tablesorter td {padding:0px 1px !important}
  table.tablesorter td input {width:100%}
 
+
  table.iconContainer { border-collapse:collapse; width:1px; margin: 0px; background-color:transparent}
  table.iconContainer td {background-color:transparent!important}
+
+
 
 
 

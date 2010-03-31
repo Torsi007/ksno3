@@ -65,7 +65,7 @@
                                         <tr>
                                             <td style="width:120px">
                                                 <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}">
-                                                    <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
+                                                    <h:outputText value="#{course.startDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText>
                                                 </h:outputLink>
                                                  <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
                                             </td>

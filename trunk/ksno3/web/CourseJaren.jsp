@@ -6,6 +6,7 @@
 
         <title>kitesurfing.no - kite kurs på jæren</title>
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/skinned-select.css"/>
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/courseJaren.css" />
         <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
         <script type="text/javascript">
@@ -29,6 +30,7 @@
                 });
             });
         </script>
+        <script type="text/javascript" src="resources/js/jquery.skinned-select.js"></script>
     </head>
     <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>
     <body>
@@ -65,7 +67,7 @@
                                         <tr>
                                             <td style="width:120px">
                                                 <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseSummer}#{course.prettyPrintId}">
-                                                    <h:outputText value="#{course.startDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:convertDateTime pattern="dd MMM"/></h:outputText>
+                                                    <h:outputText value="#{course.startDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText>
                                                 </h:outputLink>
                                                  <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
                                             </td>
@@ -94,7 +96,8 @@
                         <td class="leftSection">
                             <div>
                                 <h1>Hvem kan delta</h1>
-                                <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Med kiten kan du gi deg ut på alt fra rolige, lange skiturer på fjellet, til å kite i store bølger med et surfebrett. Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være stark! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte ? ekstremt eller rolig. Men å lære kiting er både vanskelig og forenet med stor risiko dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
+                                <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Mulighetene er mange! Kanskje er du den litt forsiktige typen som ønsker å bruke kiten til naturopplevelser i form av rolige lange skiturer på fjellet. Om du er litt tøffere foretrekker du kanskje heller en freestyle økter med stor fart og ekstreme hopp, eller hva med å kite for å ri store bølger med et surfebrett? Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være sterk! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte ekstremt eller rolig.</p>
+                                <p>Å lære kiting er imidlertid både vanskelig og risikabelt dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
                                 <h1>Kurstilbudene</h1>
                                 <h2>2 dagers kurs</h2>
                                 <p>Kurset har som mål å gjøre deg til en selvstendig kiter, slik at du kan klare deg alene på sjøen/fjellet med ditt eget utstyr. Kursene er praktisk lagt opp med mye drageflyging og moro, men det legges allikevel stor vekt på sikkerhet. Dersom vindforholdene tillater det, håper vi å kunne få alle opp på brettene i løpet av kurset.</p>
@@ -116,6 +119,7 @@
                                 <ul type="square">
                                     <li>1 Person : 1900 NOK</li>
                                 </ul>
+                                <p>Det er mulig å melde seg på en 3dje dag, mandagen. Du SKAL ha all nødvendig ballast etter et 2 dagers nybegynnerkurs! Men erfaring viser at mange får stort utbytte av en ekstra dag for finpussing av ferdighetene man har tilegnet seg. Høres dette interessant ut? Husk å sjekke av i påmeldingsskjemaet, det gjør det enklere for oss å planlegge opplegget. Bindene påmelding til mandagen (og betaling) avtales med instruktøren i løpet av helgen dersom det ser ut til å bli bra forhold! Prisen er 800,-/person inkludert utstyr. Minimum 2 deltakere.</p>
                                 <h2>Neopren</h2>
                                 <ul type="square">
                                     <li>Våtdrakt/sko: 200 NOK</li>
@@ -147,6 +151,29 @@
                                     <li>Transportmiddel til/fra stranda</li>
                                 </ul>
                                 <p>Om du er medlem av en organisasjon som gir deg rett til rabatt, må du fremvise medlemskort eller lignende identifikasjon ved fremmøte.</p>
+                                <h1>Påmelding</h1>
+                                <f:verbatim rendered="#{CoursesSummer_Backing.haveUpcomingActiveCourses}">
+                                <p>Lyst til å bli med? Velg kurs og gå til påmeldingssiden her:</p>
+                                <table id="signOnBottom">
+                                    <tr>
+                                        <td>
+                                            <div class="my-skinnable-select">
+                                                <t:selectOneMenu id="courses" binding="#{CoursesSummer_Backing.coursesSelect}" >
+                                                    <f:selectItems value="#{CoursesSummer_Backing.coursesSelectItems}"/>
+                                                </t:selectOneMenu>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h:outputLink value="SignUpSummer.jsp" styleClass="button">
+                                                <h:outputText value="Velg"/>
+                                            </h:outputLink>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </f:verbatim>
+                                <f:verbatim rendered="#{!CoursesSummer_Backing.haveUpcomingActiveCourses}">
+                                <p>Vi har desverre ikke satt opp våre sommerkurs ennå.</p>
+                                </f:verbatim>
                                 <h1>Spørsmål?</h1>
                                 <p>Har du noen spørsmål så send mail til <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> eller ring oss.</p>
                                 <p>Vi kan sette opp ettermiddager med kurs om det er nok interesse. Det er og mulig å booke andre datoer for kurs til vennegjenger eller bedrifter som har spesielle ønsker. Send oss en mail eller ring.</p>

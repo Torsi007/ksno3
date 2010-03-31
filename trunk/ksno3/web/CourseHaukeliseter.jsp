@@ -39,7 +39,7 @@
                                 <h1>Les om tidligere vinterkurs!</h1>
                                 <t:dataList value="#{CoursesWinter_Backing.courseArticles}" var="article">
                                     <t:htmlTag value="a">
-                                        <f:param name="href" value="#{Current_Backing.contextPath}/artikkel#{article.prettyPrintId}" />
+                                        <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                         <h:outputText value="#{article.name}" escape="false"/>
                                     </t:htmlTag>
                                 </t:dataList>
