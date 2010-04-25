@@ -12,8 +12,8 @@
     <property column="URL" name="url" type="string"/>
     <property column="DESCRIPTION" name="description" type="string"/>
     <property column="THUMBNAIL" name="thumbnail" type="string"/>
-    <many-to-one cascade="none" class="Person" column="PERSON_ID" name="owner" not-null="true"/>
-    <many-to-one cascade="none" class="Article" column="ARTICLE_ID" name="article"/>
+    <many-to-one cascade="none" class="Person" column="PERSON_ID" name="owner" not-null="true" lazy="false"/>
+    <many-to-one cascade="none" class="Article" column="ARTICLE_ID" name="article" lazy="false"/>
     <property column="CREATED_DATE" name="createdDate" type="calendar"/>
     <property column="LAST_UPDATED_DATE" name="lastUpdatedDate" type="calendar"/>
     <property column="DURATION" name="duration" type="string"/>
