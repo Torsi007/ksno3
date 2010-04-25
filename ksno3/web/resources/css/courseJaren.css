@@ -21,9 +21,10 @@ table.bottomSection td.leftSection div a.button {display:inline; margin-left: 6p
 table.bottomSection td.leftSection div.skinned-select {padding: 0px; }
 table.bottomSection td.leftSection div table {margin: 0px; border-collapse:collapse }
 table.bottomSection td.leftSection div table td{padding: 0px;}
-table.bottomSection td.leftSection div a {color:#787878;}
+table.bottomSection td.leftSection div a {color:#787878; display:block}
 table.bottomSection td.leftSection div h1 {font-size: 18px; font-weight:500; margin: 10px 0px; color:#7DB639;}
 table.bottomSection td.leftSection div h2 {font-size: 16px; font-weight:500; margin: 10px 0px; color:#7DB639;}
+table.bottomSection td.leftSection div h2 a{font-size: 16px; font-weight:500; margin: 10px 0px; color:#7DB639;}
 
 
 table.bottomSection td.rightSection {width:356px; vertical-align:top; }
