@@ -6,6 +6,7 @@
     String coursesWinterUrl = "kurs/vinter";
     String aboutUsUrl = "om-oss";
     String searchVisible = "display:block;";
+    String cssVisibleStyle="";
     if(request.getParameter("fromMain").equalsIgnoreCase("false")){
         hrefTarget = "";
         homeUrl = request.getContextPath() + "/faces/Main.jsp?content=Home.jsp";
@@ -14,10 +15,11 @@
         coursesWinterUrl = request.getContextPath() + "/faces/Main.jsp?content=CoursesHaukeliseter.jsp";
         aboutUsUrl = request.getContextPath() + "/faces/Main.jsp?content=aboutUs.jsp";
         searchVisible = "";
+        cssVisibleStyle="style='display:none'";
     }
 %>
 
-<div class="topMenu">
+<div class="topMenu" <%= cssVisibleStyle %>>
     <table>
         <tr>
             <td>

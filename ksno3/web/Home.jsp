@@ -10,7 +10,10 @@
 <script type="text/javascript" src="resources/js/easySlider.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        window.top.setStyle("default");
+        if(window.top.setStyle){
+            window.top.setStyle("default");
+        }
+
         $('a[name=modal]').click(function(e) {
             e.preventDefault();
             var url = $(this).attr('href');

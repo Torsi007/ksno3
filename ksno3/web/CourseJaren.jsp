@@ -11,12 +11,20 @@
         <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                window.top.setStyle("default");
+                if(window.top.setStyle){
+                    window.top.setStyle("default");
+                }
                 $('a[name=modal]').click(function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href');
                     //window.parent.$('a[name=modal]').click();
                     window.parent.openModalVideo(url);
+                });
+
+                $('#signOnBottom a').click(function(e) {
+                    e.preventDefault();
+                    var url = $(this).attr('href') + '?id=' +  $('#signOnBottom select').attr('value');
+                    window.location = url;
                 });
 
                 var year = "2000";
@@ -36,7 +44,7 @@
     <body>
         <f:view>
             <h:form>
-            <div class="topMenu">
+            <div class="topMenu" style="display:none">
                 <table>
                     <tr>
                         <td><a href="Main.jsp?content=Home.jsp"><img src="resources/img/logos/logo.jpg" alt="kitesurfing.no logo"/></a></td>

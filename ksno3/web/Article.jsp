@@ -14,7 +14,10 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        window.top.setStyle("news");
+        if(window.top.setStyle){
+            window.top.setStyle("news");
+        }
+
         $(".bottomSection img").click(function(e) {
             window.parent.openModalImage($(this));
         });
