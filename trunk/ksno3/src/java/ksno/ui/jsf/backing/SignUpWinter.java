@@ -184,8 +184,8 @@ public class SignUpWinter {
                 person = new Person();
             }
             person.setUserName(email.getValue().toString());
-            //person.setPassWord(PasswordFactory.getPassword());
-            person.setPassWord("uks7WxY");
+            person.setPassWord(PasswordFactory.getPassword());
+            //person.setPassWord("uks7WxY");
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
@@ -223,6 +223,9 @@ public class SignUpWinter {
             hm.put("email", person.getUserName());
             hm.put("username", person.getUserName());
             hm.put("password", person.getPassWord());
+            hm.put("instructor", course.getInstructor().getFirstName());
+            hm.put("instructorPhone", Integer.toString(course.getInstructor().getPhone()));
+
             if (wait) {
                 int pos = course.getNumberOfParticipants() - course.getMaxSize();
                 hm.put("position", Integer.toString(pos));
