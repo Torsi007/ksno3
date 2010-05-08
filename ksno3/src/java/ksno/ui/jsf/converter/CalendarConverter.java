@@ -47,7 +47,8 @@ public class CalendarConverter implements Converter {
         if(null == value){
             return null;
         }
-        Calendar calendar = (Calendar)value;
+        Calendar tcalendar = (Calendar)value;
+        Calendar calendar = (Calendar)tcalendar.clone();
         Date d = new Date(calendar.getTimeInMillis());
         return dateTimeConverter.getAsString(context, component, d);
     }

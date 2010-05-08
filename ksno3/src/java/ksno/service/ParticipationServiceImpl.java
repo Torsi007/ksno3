@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 import ksno.dao.ParticipationDao;
 import ksno.model.Participation;
+import ksno.util.JSFUtil;
 
 /**
  *
@@ -33,6 +34,8 @@ public class ParticipationServiceImpl implements ParticipationService {
         if(participation.getCreatedDate() == null){
             participation.setCreatedDate(Calendar.getInstance());
         }
+        JSFUtil.clearApplicationCache("eventsFromThisYear");
+        JSFUtil.clearApplicationCache("beginnerCoursesFromThisYear");
         return participationDao.newParticipation(participation);
     }
 

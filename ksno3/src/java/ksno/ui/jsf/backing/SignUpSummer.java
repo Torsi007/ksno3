@@ -17,6 +17,7 @@ import ksno.model.Participation;
 import ksno.model.Person;
 import ksno.model.Text;
 import ksno.model.UserRoles;
+import ksno.security.PasswordFactory;
 import ksno.service.ArticleService;
 import ksno.service.EventService;
 import ksno.service.ParticipationService;
@@ -245,8 +246,8 @@ public class SignUpSummer {
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
-            person.setPassWord("uks7WxY");
-
+            //person.setPassWord("uks7WxY");
+            person.setPassWord(PasswordFactory.getPassword());
             try {
                 UserRoles userRole = new UserRoles();
                 userRole.setRole(JSFUtil.roleAuthUser);
@@ -282,6 +283,8 @@ public class SignUpSummer {
             hm.put("email", person.getUserName());
             hm.put("username", person.getUserName());
             hm.put("password", person.getPassWord());
+            hm.put("instructor", course.getInstructor().getFirstName());
+            hm.put("instructorPhone", Integer.toString(course.getInstructor().getPhone()));
 
             if(wait){
                 int pos = course.getNumberOfParticipants() - course.getMaxSize();

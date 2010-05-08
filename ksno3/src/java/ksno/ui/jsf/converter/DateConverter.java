@@ -5,6 +5,7 @@
 
 package ksno.ui.jsf.converter;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -51,7 +52,8 @@ public class DateConverter implements Converter {
         if(null == value){
             return null;
         }
-        Date d = (Date)value;
+        Date td = (Date)value;
+        Date d = (Date)td.clone();
         Calendar calendar = null;
         if(d != null){
             calendar = Calendar.getInstance();
@@ -59,7 +61,8 @@ public class DateConverter implements Converter {
             calendar.add(Calendar.HOUR, 12);
             d.setTime(calendar.getTimeInMillis());
         }
-        return dateTimeConverter.getAsString(context, component, d);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(d);
     }
 
 }
