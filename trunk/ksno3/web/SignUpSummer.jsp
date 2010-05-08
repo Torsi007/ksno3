@@ -43,7 +43,7 @@
                             <h1>Les om tidligere kurs!</h1>
                             <t:dataList value="#{CourseSummer_Backing.courseArticles}" var="article">
                                 <t:htmlTag value="a">
-                                    <f:param name="href" value="#{Current_Backing.contextPath}/artikkel#{article.prettyPrintId}" />
+                                    <f:param name="href" value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLArticlesAndVideos}#{ApplicationBean1.prettyURLArticle}#{article.prettyPrintId}" />
                                     <h:outputText value="#{article.name}" escape="false"/>
                                 </t:htmlTag>
                             </t:dataList>
@@ -56,7 +56,7 @@
                     <td class="leftSection" valign="top">
                         <h1>Påmelding</h1>
                         <t:htmlTag value="iframe" >
-                            <f:param name="src" value="#{ApplicationBean1.contextPath}/faces/SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.id}" />
+                            <f:param name="src" value="#{ApplicationBean1.contextPath}/faces/SignUpSummerForm.jsp?courseId=#{CourseSummer_Backing.course.id}" />
                             <f:param name="scrolling" value="no" />
                             <f:param name="frameborder" value="0" />
                             <f:param name="height" value="350" />

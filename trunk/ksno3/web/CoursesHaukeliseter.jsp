@@ -12,7 +12,10 @@
         <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                window.top.setStyle("default");
+                if(window.top.setStyle){
+                    window.top.setStyle("default");
+                }
+
                 $('a[name=modalVid]').click(function(e) {
                     e.preventDefault();
                     var url = $(this).attr('href');

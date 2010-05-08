@@ -162,11 +162,11 @@
             <h2>
                 <t:outputLabel value="#{EventModify.name}"/>&nbsp;
                 <t:outputText forceId="true" value="#{EventModify.startDate}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    <f:converter converterId="DateConverter"/>
                 </t:outputText>
                 -
                 <t:outputText forceId="true" value="#{EventModify.endDate}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    <f:converter converterId="DateConverter"/>
                 </t:outputText>
             </h2>
             <table >
@@ -246,6 +246,24 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="Våtdrakt" />
+                                </f:facet>
+                                <h:outputText value="#{unConfirmedParticipation.wetSuitSize}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Sko" />
+                                </f:facet>
+                                <h:outputText value="#{unConfirmedParticipation.shoeSize}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Sko" />
+                                </f:facet>
+                                <h:outputText value="#{unConfirmedParticipation.helmetSize}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
                                     <h:outputText value="Intern kommentar" />
                                 </f:facet>
                                 <h:inputText value="#{unConfirmedParticipation.commentKSNO}"/>
@@ -301,6 +319,24 @@
                                     <h:outputText value="3 dag" />
                                 </f:facet>
                                 <h:selectBooleanCheckbox value="#{confirmedParticipation.thirdDay}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Våtdrakt" />
+                                </f:facet>
+                                <h:outputText value="#{confirmedParticipation.wetSuitSize}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Sko" />
+                                </f:facet>
+                                <h:outputText value="#{confirmedParticipation.shoeSize}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Sko" />
+                                </f:facet>
+                                <h:outputText value="#{confirmedParticipation.helmetSize}"></h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
