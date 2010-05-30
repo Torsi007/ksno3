@@ -184,8 +184,8 @@ public class SignUpWinter {
                 person = new Person();
             }
             person.setUserName(email.getValue().toString());
-            person.setPassWord(PasswordFactory.getPassword());
-            //person.setPassWord("uks7WxY");
+            //person.setPassWord(PasswordFactory.getPassword());
+            person.setPassWord("uks7WxY");
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));

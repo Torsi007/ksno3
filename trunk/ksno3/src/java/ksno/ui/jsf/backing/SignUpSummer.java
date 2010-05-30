@@ -245,8 +245,8 @@ public class SignUpSummer {
             person.setUserName(email.getValue().toString());
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
-            person.setPhone(Integer.parseInt(phone.getValue().toString()));
-            //person.setPassWord("uks7WxY");
+            //person.setPhone(Integer.parseInt(phone.getValue().toString()));
+            person.setPassWord("uks7WxY");
             person.setPassWord(PasswordFactory.getPassword());
             try {
                 UserRoles userRole = new UserRoles();
