@@ -54,15 +54,7 @@ public class DateConverter implements Converter {
         }
         Date td = (Date)value;
         Date d = (Date)td.clone();
-        Calendar calendar = null;
-        if(d != null){
-            calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(d.getTime());
-            calendar.add(Calendar.HOUR, 12);
-            d.setTime(calendar.getTimeInMillis());
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(d);
+        return ksno.util.DateConverter.getAsString(d);
     }
 
 }

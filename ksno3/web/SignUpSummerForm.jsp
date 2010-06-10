@@ -121,26 +121,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <span>Ved leie av neopren / hjelm vennligst angi følgende størrelser:</span>
+                            <span>Ved leie av neopren vennligst angi følgende størrelser:</span>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span>Hjelm størrelse</span>
-                            <div class="my-skinnable-select">
-                                <t:selectOneMenu required="true" binding="#{SignUpSummer_Backing.helmetSize}" >
-                                    <f:selectItem itemLabel="--" itemValue="empty"/>
-                                    <f:selectItem itemLabel="Tar med selv!" itemValue="Tar med selv"/>
-                                    <f:selectItem itemLabel="XXL" itemValue="XXL"/>
-                                    <f:selectItem itemLabel="XL" itemValue="XL"/>
-                                    <f:selectItem itemLabel="L" itemValue="L"/>
-                                    <f:selectItem itemLabel="M" itemValue="M"/>
-                                    <f:selectItem itemLabel="S" itemValue="S"/>
-                                    <f:selectItem itemLabel="XS" itemValue="XS"/>
-                                </t:selectOneMenu>
-                            </div>
-                        </td>	
-                        <td required="true">
                             <span>Våtdrakt størrelse</span>
                             <div class="my-skinnable-select">
                                 <t:selectOneMenu  required="true" binding="#{SignUpSummer_Backing.wetSuitSize}" >
@@ -154,9 +139,7 @@
                                 </t:selectOneMenu>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td required="true">
+                        <td>
                             <span>Sko størrelse</span>
                             <div class="my-skinnable-select">
                                 <t:selectOneMenu  required="true" binding="#{SignUpSummer_Backing.shoeSize}" >

@@ -12,6 +12,7 @@ table.middleSection td.middleSection {width:256px;}
 table.middleSection td.rightSection {width:347px; line-height:18px;}
 table.middleSection td.rightSection div {margin: 60px 10px 0px 10px}
 table.middleSection td.rightSection div h1 {margin-top: 0px; font-size:18px; font-weight:normal; display:block;}
+table.middleSection td.rightSection div a {font-weight:normal; display:block; color:white; text-align:right}
 
 table.bottomSection {background-color:white; width:940px; margin: 0 auto; display:block; height:auto; table-layout:fixed; border-collapse:collapse; color:#505050; empty-cells:show}
 table.bottomSection td.leftSection {width:584px; vertical-align:top }

@@ -216,7 +216,7 @@ public class SignUpWinter {
 
 
             HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
+            hm.put("course", ksno.util.DateConverter.getAsString(course.getStartDate()) + " - " + ksno.util.DateConverter.getAsString(course.getEndDate()));
             hm.put("courseId", course.getId().toString());
             hm.put("name", person.getFirstName() + " " + person.getLastName());
             hm.put("phone", Integer.toString(person.getPhone()));

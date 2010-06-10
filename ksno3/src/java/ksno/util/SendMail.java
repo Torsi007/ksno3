@@ -62,7 +62,7 @@ public class SendMail {
     public void send(){
         Authenticator auth = new SMTPAuthenticator(); 
         Session session = Session.getInstance(getProps(), auth);
-	Message simpleMessage = new MimeMessage(session);
+	MimeMessage simpleMessage = new MimeMessage(session);
 		
         InternetAddress fromAddress = getFromAdress();
         InternetAddress[] toAddresses = getToAdresses();
@@ -74,13 +74,13 @@ public class SendMail {
             if(ccAddresses != null){
                 simpleMessage.setRecipients(RecipientType.CC, ccAddresses);
             }
-            simpleMessage.setSubject(this.subject);                
-            simpleMessage.setText(this.text);
+            simpleMessage.setSubject(this.subject, "utf-8");
+            simpleMessage.setText(this.text, "utf-8");
             Transport.send(simpleMessage);			
         } catch (MessagingException e) {
             // TODO Auto-generated catch block
               e.printStackTrace();
-        }		
+        } 
     }
         
     private class SMTPAuthenticator extends javax.mail.Authenticator
