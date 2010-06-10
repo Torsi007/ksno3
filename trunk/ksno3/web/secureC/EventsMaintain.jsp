@@ -25,9 +25,9 @@
         $("table.tablesorter").attr("border", 0).attr("cellpadding",0).attr("cellspacing",0);
         $("#dt1").tablesorter({
             headers: {
-                9: { sorter: false },
                 10: { sorter: false },
-                11: { sorter: false }
+                11: { sorter: false },
+                12: { sorter: false }
             },
             widgets: ['zebra']
         });
@@ -63,6 +63,12 @@
                     </f:facet>
                     <h:outputText value="#{item.endDate}"><f:converter converterId="DateConverter"/>
                     </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <h:outputText value="#{item.id}"></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">

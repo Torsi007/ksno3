@@ -247,7 +247,7 @@ public class SignUpSummer {
             person.setLastName(lastName.getValue().toString());
             //person.setPhone(Integer.parseInt(phone.getValue().toString()));
             person.setPassWord("uks7WxY");
-            person.setPassWord(PasswordFactory.getPassword());
+            //person.setPassWord(PasswordFactory.getPassword());
             try {
                 UserRoles userRole = new UserRoles();
                 userRole.setRole(JSFUtil.roleAuthUser);
@@ -276,7 +276,7 @@ public class SignUpSummer {
             participationService.newParticipation(participation);
             
             HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put("course", course.getStartDate().toString() + " - " + course.getEndDate().toString());
+            hm.put("course", ksno.util.DateConverter.getAsString(course.getStartDate()) + " - " + ksno.util.DateConverter.getAsString(course.getEndDate()));
             hm.put("name", person.getFirstName() +  " " + person.getLastName());
             hm.put("courseId", course.getId().toString());
             hm.put("phone", Integer.toString(person.getPhone()));
@@ -300,9 +300,18 @@ public class SignUpSummer {
                  
             }else{
                 try{
-                    Email mail = textService.getEmail("SignOnConfirmedSummer");
-                    SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
-                    sendMail.send(); 
+                    if(!"empty".equalsIgnoreCase(participation.getWetSuitSize()) || !"empty".equalsIgnoreCase(participation.getShoeSize())){
+                        Email mail = textService.getEmail("SignOnConfirmedSummerAndNeoprenRental");
+                        hm.put("wetsuitsize", participation.getWetSuitSize());
+                        hm.put("shoesize", participation.getShoeSize());
+                        SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
+                        sendMail.send();
+                    }else{
+                        Email mail = textService.getEmail("SignOnConfirmedSummer");
+                        SendMail sendMail = new SendMail(mail.getTos(hm),mail.getCCs(hm), mail.getSubject(hm), mail.getBody(hm));
+                        sendMail.send();
+                    }
+
                 }catch(Exception e){
                     getLogService().log(Level.SEVERE,"Participant will be signed on, but mail transport failed", e);
                     participation.appendCommentKSNO("Bekreftelses mail gikk ikke igjennom.");
@@ -324,7 +333,7 @@ public class SignUpSummer {
     
 
     private void setSummerValues(Participation participation){
-        participation.setHelmetSize(helmetSize.getValue().toString());
+        //participation.setHelmetSize(helmetSize.getValue().toString());
         participation.setShoeSize(shoeSize.getValue().toString());
         participation.setWetSuitSize(wetSuitSize.getValue().toString());    
     }    

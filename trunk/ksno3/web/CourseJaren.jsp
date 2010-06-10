@@ -36,6 +36,15 @@
                     year = currYear;
 
                 });
+
+                $(".aboutCourse a").click(function(event){
+                    $(".aboutCourse").each(function (i) {
+                        $(this).css("display","block");
+                    });
+                     $(this).parent().css("display","none");
+                     event.preventDefault();
+                   });
+
             });
         </script>
         <script type="text/javascript" src="resources/js/jquery.skinned-select.js"></script>
@@ -91,10 +100,16 @@
                         </td>
                         <td class="middleSection"></td>
                         <td class="rightSection">
-                            <div>
+                            <div class="aboutCourse">
                                 <h1>Hva er et nybegynnerkurs?</h1>
                                 Målet vårt er at du som deltager skal sitte igjen med erfaring og kunnskap nok til å kunne gå ut å kite på egenhånd på snø eller vann etter et nybegynnerkurs.
                                 Vi lærer deg de grunnleggende tingene, som sikkerhet, vurdering av spots, vær og vind, launching, landing og kraft kontroll. I løpet av et kurs tilstreber vi å gi alle one-on-one assistanse i de mer avanserte øvelsene.
+                                <a href="blank" >Hva er "fra snø til vann" kurs</a>
+                            </div>
+                            <div style="display:none" class="aboutCourse">
+                                <h1>Hva er et "fra snø til vann" kurs</h1>
+                                Etter mange forespørsler har vi lansert et videregående kurs, perfekt for deg som har vært på vinterkurs og ønsker å prøve deg på vann. Kurset passer også deg som gått kurs på vann tidligere, men som trenger litt repitisjon og hjelp til å komme videre. Hovedmålet vårt er å få deg opp på brettet! Klarer vi det, jobber vi videre med å ta høyde, jibbing og kanskje til og med hopping.
+                                <a href="blank" >Hva er et nybegynnerkurs</a>
                             </div>
                         </td>
                     </tr>
@@ -103,10 +118,9 @@
                     <tr>
                         <td class="leftSection">
                             <div>
-                                <h1>Hva er et "fra snø til vann" kurs</h1>
-                                <p>Vi har i år begynt med et nytt kurskoncept; fra snø til vann. Grunnen er at mange av våre deltakere fra vinteren har fortalt at de ønsker et skreddersydd opplegg for å komme raskt i gang på vann. Vi lanserer derfor nå et videregående kurs, perfekt for deg som har vært på vinterkurs og ønsker å prøve deg på vann. Kurset passer også perfekt for deg som gått kurs på vann tidligere, men gjerne trenger mer tid og hjelp for å få det til. Vi lærer deg alle de ting som er forskjellig fra snøkiting, (repeterer litt om det trengs,) og fokuserer på det å komme seg opp på brettet. Det sistnevnte er vanskeligere enn mange tror og det er en stor fordel å ha med seg instruktør med seg de første dagene!</p>
                                 <h1>Hvem kan delta</h1>
-                                <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Mulighetene er mange! Kanskje er du den litt forsiktige typen som ønsker å bruke kiten til naturopplevelser i form av rolige lange skiturer på fjellet. Om du er litt tøffere foretrekker du kanskje heller en freestyle økter med stor fart og ekstreme hopp, eller hva med å kite for å ri store bølger med et surfebrett? Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være sterk! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte ekstremt eller rolig.</p>
+                                <p>Kitesurfing er spennende og morsomt, og kombinerer elementer fra flere ulike vann- og snøsporter. Dette gjør det til en sport med mange muligheter, og det finnes garantert noe som tiltaler deg! Mulighetene er mange! Kanskje er du den litt forsiktige typen som ønsker å bruke kiten til naturopplevelser i form av rolige lange skiturer på fjellet. Om du er litt tøffere foretrekker du kanskje heller en freestyle økt med stor fart og ekstreme hopp, eller hva med å kite for å ri store bølger med et surfebrett?</p>
+                                <p>Til tross for at kitesurfing kan være en ekstremsport er det også en sport som er mulig å utøve av nesten alle! Det spiller faktisk ingen rolle om du er 10, 20 eller 65 år og du trenger ikke å være sterk! Det er en riktig familieaktivitet, der alle kan utøve sporten på sin måte ekstremt eller rolig.</p>
                                 <p>Å lære kiting er imidlertid både vanskelig og risikabelt dersom man prøver å lære på egen hånd! Av den grunn bør alle som har lyst til å begynne ta et kurs! Først og fremst med tanke på sikkerhet, men også for  raskere progresjon. Er du under 16 år, må du ha med godkjennelse fra foreldre for å kunne delta.</p>
                                 <h1>Kurstilbudene</h1>
                                 <p>Vi tilbyr følgende kurs</p>
@@ -117,13 +131,13 @@
                                 <p>Kurset har som mål å gjøre deg til en selvstendig kiter, slik at du kan klare deg alene på sjøen/fjellet med ditt eget utstyr. Kursene er praktisk lagt opp med mye drageflyging og moro, men det legges allikevel stor vekt på sikkerhet. Dersom vindforholdene tillater det, håper vi å kunne få alle opp på brettene i løpet av kurset.</p>
                                 <p>Hovedtema på kurset vil være:</p>
                                 <ul type="square">
-                                    <li>Forståelse av kitens flyområde og kraftsone</li>
-                                    <li>Linedisiplin</li>
-                                    <li>Sikkerhet</li>
-                                    <li>Rigging/nedrigging</li>
-                                    <li>"Launching" og landing av kiten</li>
                                     <li>Navigering av kite</li>
+                                    <li>Forståelse av kitens flyområde og kraftsone</li>
+                                    <li>Sikkerhet</li>
+                                    <li>"Launching" og landing av kiten</li>
+                                    <li>Rigging/nedrigging</li>
                                     <li>Kiteboarding på egenhånd</li>
+                                    <li>Vurdering av forhold og kitespot</li>
                                     <li>Valg av utstyr</li>
                                 </ul>
                                 <h2><a name="snøtilvann">"Fra snø til vann"</a></h2>
@@ -131,13 +145,13 @@
                                 <p>Hovedtema på kurset vil være:</p>
                                 <ul type="square">
                                     <li>Vannstart - å komme seg opp på brettet</li>
+                                    <li>Bodydraging for å få tak i mistet brett</li>
                                     <li>Hvordan holde høyde mot vinden</li>
+                                    <li>"Launching" og landing av kiten på stranda</li>
                                     <li>Sikkerhet ved kiting på vann</li>
+                                    <li>Repetisjon av grunnleggende ting for de som trenger det</li>
                                     <li>Jibbing - teknikker for å snu på vann</li>
                                     <li>Hoppteknikk - for de som kommer så langt</li>
-                                    <li>Bodydraging for å få tak i mistet brett</li>
-                                    <li>Repetisjon av grunnleggende ting for de som trenger det</li>
-                                    <li>"Launching" og landing av kiten på stranda</li>
                                     <li>Vurdering av forhold og kitespo</li>
                                     <li>Litt om utstyr for vannkiting</li>
                                 </ul>
@@ -149,6 +163,7 @@
                                     <li>Opplevelse - å styre en kite og føle på kreftene</li>
                                     <li>Samarbeid - vi jobber i par og må stole på hverandre</li>
                                     <li>Sikkerhet</li>
+                                    <li>Forsøke seg på brett</li>
                                 </ul>
                                 <h1>Lokasjon</h1>
                                 <p>Kursene vil normalt sett holdes på en av strendene på Nord Jæren. Eksakt hvilken strand som benyttes vil avhenge av vindretning, og vil derfor variere fra gang til gang. Aktuelle strender er: Solastranden - Orrestranden - Hellestø - Brusand.</p>
@@ -157,7 +172,7 @@
                                 <ul type="square">
                                     <li>1 Person : 1900 NOK</li>
                                 </ul>
-                                <p>Det er mulig å melde seg på en 3dje dag, mandagen. Du SKAL ha all nødvendig ballast etter et 2 dagers nybegynnerkurs! Men erfaring viser at mange får stort utbytte av en ekstra dag for finpussing av ferdighetene man har tilegnet seg. Høres dette interessant ut? Husk å sjekke av i påmeldingsskjemaet, det gjør det enklere for oss å planlegge opplegget. Bindene påmelding til mandagen (og betaling) avtales med instruktøren i løpet av helgen dersom det ser ut til å bli bra forhold! Prisen er 800,-/person inkludert utstyr. Minimum 2 deltakere.</p>
+                                <p>Det er mulig å melde seg på en 3dje dag, mandagen. Du skal ha all nødvendig ballast etter et 2 dagers nybegynnerkurs! Men erfaring viser at mange får stort utbytte av en ekstra dag for finpussing av ferdighetene man har tilegnet seg. Høres dette interessant ut? Husk å sjekke av i påmeldingsskjemaet, det gjør det enklere for oss å planlegge opplegget. Bindene påmelding til mandagen (og betaling) avtales med instruktøren i løpet av helgen dersom det ser ut til å bli bra forhold! Prisen er 800,-/person inkludert utstyr. Minimum 2 deltakere.</p>
                                 <h2>Neopren</h2>
                                 <ul type="square">
                                     <li>Våtdrakt/sko: 250 NOK</li>
@@ -167,9 +182,9 @@
                                 <h2>Rabatter</h2>
                                 <p>Grupperabatt - hver 6 mann er gratis!:</p>
                                 <p>Klarer du å samle en gjeng på 6 mann betaler dere altså for 5 deltagere. Det samme påløper for 12. og 18. mann...</p>
-                                <p>Vi gir også gode priser til studenter, vernepliktige og medlemmer i de kiteklubbene vi samarbeider med.<br>Kontakt oss for avtale!</p>
                                 <h1>Vindgaranti</h1>
-                                <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene.</p>
+                                <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene. Vindgarantien er gyldig på nybegynnerkursene og «fra snø til vann» kursene.</p>
+                                <p>Da vi trenger litt mer vind for «fra snø til vann» kursene (5-6m/s), for å virkelig komme oss opp på brettet, må vi være mer kritiske med valg av kursdager. Av den grunn kan det være at vi ser allerede på forhånd at kurset må flytte til annet dato. Vi ber dere å ha forståelse for dette, vi gjør vårt beste for å gi dere beste mulige forhold for å lære.</p>                                
                                 <h1>Praktisk</h1>
                                 <p>Vi stiller med:</p>
                                 <ul type="square">
@@ -188,7 +203,6 @@
                                     <li>Niste for hele dagen</li>
                                     <li>Transportmiddel til/fra stranda</li>
                                 </ul>
-                                <p>Om du er medlem av en organisasjon som gir deg rett til rabatt, må du fremvise medlemskort eller lignende identifikasjon ved fremmøte.</p>
                                 <h1>Påmelding</h1>
                                 <f:verbatim rendered="#{CoursesSummer_Backing.haveUpcomingActiveCourses}">
                                 <p>Lyst til å bli med? Velg kurs og gå til påmeldingssiden her:</p>
