@@ -32,7 +32,7 @@
                                     <td>Pris:</td><td class="right" align="right">1900</td><td>,-</td>
                                 </tr>
                                 <tr>
-                                    <td>Neoprenleie:</td><td class="right" align="right">200</td><td>,-</td>
+                                    <td>Neoprenleie:</td><td class="right" align="right">250</td><td>,-</td>
                                 </tr>
                             </table>
                         </div>
