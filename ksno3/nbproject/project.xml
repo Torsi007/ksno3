@@ -54,11 +54,17 @@
                 </library>
                 <library>
                     <file>${file.reference.gdata-photos-meta-2.0.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.gdata-photos-1.0.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library>
+                    <file>${file.reference.gdata-photos-meta-1.0.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
                     <file>${file.reference.gdata-photos-2.0.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
                     <file>${file.reference.tomahawk12-1.1.7.jar}</file>
