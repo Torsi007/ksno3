@@ -9,8 +9,6 @@
         <link rel="stylesheet" type="text/css" href="resources/css/skinned-select.css"/>
         <script type="text/javascript" src="resources/js/default.js"></script>
         <script src="resources/js/logic.js" type="text/javascript"></script>
-
-        <script src="resources/js/logic.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 setHiddenFieldsFromRequestParams();
@@ -118,6 +116,18 @@
                             <t:inputText binding="#{SignUpSummer_Backing.phone}"/>
                         </td>
                         <td/>
+                    </tr>
+                    <tr>
+                        <td required="true" colspan="2">
+                            <span>Gate og gatenummer</span>
+                            <t:inputText binding="#{SignUpSummer_Backing.streetNameAndNumber}" style="width:100%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td required="true" colspan="2">
+                            <span>Postnummer og sted</span>
+                            <t:inputText binding="#{SignUpSummer_Backing.zipCodeAndCity}" style="width:100%"/>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">

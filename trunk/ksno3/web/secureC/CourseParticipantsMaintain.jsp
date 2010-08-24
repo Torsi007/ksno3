@@ -258,9 +258,9 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Sko" />
+                                    <h:outputText value="Adresse" />
                                 </f:facet>
-                                <h:outputText value="#{unConfirmedParticipation.helmetSize}"></h:outputText>
+                                <h:outputText value="#{unConfirmedParticipation.participant.streetName} , #{unConfirmedParticipation.participant.city}"></h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -334,9 +334,9 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Sko" />
+                                    <h:outputText value="Adresse" />
                                 </f:facet>
-                                <h:outputText value="#{confirmedParticipation.helmetSize}"></h:outputText>
+                                <h:outputText value="#{confirmedParticipation.participant.streetName} , #{confirmedParticipation.participant.city}"></h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
