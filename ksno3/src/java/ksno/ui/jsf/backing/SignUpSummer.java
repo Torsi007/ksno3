@@ -40,6 +40,8 @@ public class SignUpSummer {
     private HtmlInputText firstName;    
     private HtmlInputText lastName;
     private HtmlInputText phone;
+    private HtmlInputText streetNameAndNumber;
+    private HtmlInputText zipCodeAndCity;
     private HtmlSelectOneMenu wetSuitSize;    
     private HtmlSelectOneMenu shoeSize;        
     private HtmlSelectOneMenu helmetSize;  
@@ -54,6 +56,23 @@ public class SignUpSummer {
     private ParticipationService participationService;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
+
+
+    public HtmlInputText getStreetNameAndNumber() {
+        return streetNameAndNumber;
+    }
+
+    public void setStreetNameAndNumber(HtmlInputText streetNameAndNumber) {
+        this.streetNameAndNumber = streetNameAndNumber;
+    }
+
+    public HtmlInputText getZipCodeAndCity() {
+        return zipCodeAndCity;
+    }
+
+    public void setZipCodeAndCity(HtmlInputText zipCodeAndCity) {
+        this.zipCodeAndCity = zipCodeAndCity;
+    }
 
     public HtmlSelectBooleanCheckbox getThirdDay() {
         return thirdDay;
@@ -245,9 +264,11 @@ public class SignUpSummer {
             person.setUserName(email.getValue().toString());
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
-            //person.setPhone(Integer.parseInt(phone.getValue().toString()));
+            person.setPhone(Integer.parseInt(phone.getValue().toString()));
             person.setPassWord("uks7WxY");
             //person.setPassWord(PasswordFactory.getPassword());
+            person.setStreetName(getStreetNameAndNumber().getValue().toString());
+            person.setCity(getZipCodeAndCity().getValue().toString());
             try {
                 UserRoles userRole = new UserRoles();
                 userRole.setRole(JSFUtil.roleAuthUser);

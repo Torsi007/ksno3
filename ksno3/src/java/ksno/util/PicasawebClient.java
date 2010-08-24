@@ -86,9 +86,9 @@ import javax.faces.context.ExternalContext;
     }
 
     PhotoEntry myPhoto = new PhotoEntry();
-    //myPhoto.setTitle(new PlainTextConstruct("Puppies FTW"));
-    //myPhoto.setDescription(new PlainTextConstruct("Puppies are the greatest."));
-    //myPhoto.setClient("kitesurfingHauge-kitesurfingNo-1");
+    myPhoto.setTitle(new PlainTextConstruct("Kitesurfing.no Picture"));
+    myPhoto.setDescription(new PlainTextConstruct("Picture uploaded by kitesurfing.no."));
+    myPhoto.setClient("kitesurfingHauge-kitesurfingNo-1");
     MediaStreamSource myMedia = new MediaStreamSource(stream, "image/jpeg");
       
     myPhoto.setMediaSource(myMedia);
