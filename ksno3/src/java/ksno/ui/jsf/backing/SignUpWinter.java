@@ -26,6 +26,7 @@ import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
+import org.apache.myfaces.component.html.ext.HtmlSelectBooleanCheckbox;
 import sun.security.util.Password;
 
 /**
@@ -40,6 +41,9 @@ public class SignUpWinter {
     private HtmlInputText phone;
     private HtmlSelectOneMenu helmetSize;
     private HtmlSelectOneMenu coursesSelect;
+    private HtmlSelectOneMenu accommodation;
+    private HtmlSelectOneMenu dntMemberType;
+    private HtmlSelectBooleanCheckbox addBreakFast;
     private long courseId;
     private EventService eventService;
     private PersonService personService;
@@ -47,6 +51,30 @@ public class SignUpWinter {
     private ParticipationService participationService;
     private HtmlOutputText errorMsg;
     private HtmlInputTextarea comment;
+
+    public HtmlSelectOneMenu getDntMemberType() {
+        return dntMemberType;
+    }
+
+    public void setDntMemberType(HtmlSelectOneMenu dntMemberType) {
+        this.dntMemberType = dntMemberType;
+    }
+
+    public HtmlSelectOneMenu getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(HtmlSelectOneMenu accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    public HtmlSelectBooleanCheckbox getAddBreakFast() {
+        return addBreakFast;
+    }
+
+    public void setAddBreakFast(HtmlSelectBooleanCheckbox addBreakFast) {
+        this.addBreakFast = addBreakFast;
+    }
 
     public TextService getTextService() {
         return textService;
@@ -179,13 +207,15 @@ public class SignUpWinter {
             if (person != null) {
                 getLogService().log(Level.SEVERE, "Unable to sign on participant");
                 errorMsg.setValue("Brukeren " + person.getFirstName() + " " + person.getLastName() + " er allerede registrert med mail: " + email.getValue().toString() + ". Kitesurfing.no beklager at vår web løsning ikke håndterer dette, vennligst meld deg på via mail eller telefon (se kontakt detaljer nederst på siden).");
-                return "no";
             } else {
                 person = new Person();
+                person.setUserName(email.getValue().toString());
+                //person.setPassWord(PasswordFactory.getPassword());
+                person.setPassWord("uks7WxY");
             }
-            person.setUserName(email.getValue().toString());
-            //person.setPassWord(PasswordFactory.getPassword());
-            person.setPassWord("uks7WxY");
+
+
+
             person.setFirstName(firstName.getValue().toString());
             person.setLastName(lastName.getValue().toString());
             person.setPhone(Integer.parseInt(phone.getValue().toString()));
@@ -214,6 +244,9 @@ public class SignUpWinter {
 
             participationService.newParticipation(participation);
 
+            //values for mail
+
+            String breakfast = Boolean.parseBoolean(addBreakFast.getValue().toString())?"Ja":"Nei";
 
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("course", ksno.util.DateConverter.getAsString(course.getStartDate()) + " - " + ksno.util.DateConverter.getAsString(course.getEndDate()));
@@ -225,6 +258,9 @@ public class SignUpWinter {
             hm.put("password", person.getPassWord());
             hm.put("instructor", course.getInstructor().getFirstName());
             hm.put("instructorPhone", Integer.toString(course.getInstructor().getPhone()));
+            hm.put("package", accommodation.getValue().toString());
+            hm.put("breakfast", breakfast);
+            hm.put("DNTmember", dntMemberType.getValue().toString());
 
             if (wait) {
                 int pos = course.getNumberOfParticipants() - course.getMaxSize();

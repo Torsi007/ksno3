@@ -2,7 +2,7 @@
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
+<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 <title>kitesurfing.no - påmelding vinterkurs</title>
 <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/signUpHaukeliseter.css" />
@@ -29,9 +29,9 @@
             }
         }
         //coursesChangeHandler();
-             
+
     }
-            
+
     function coursesChangeHandler(){
         var domElemSelect = document.getElementById("signup:courses");
         var selectedValue = domElemSelect.options[domElemSelect.selectedIndex].value;
@@ -48,16 +48,16 @@
                     }else{
                         document.getElementById("awailSeatsInfo").innerHTML  = "Dette kurset er fullt. Om du ønsker kan du sette deg på reservelisten (fortsett påmeldingen), vi vil da kontakte deg om noen skulle melde seg av. Et annet alternativ er å velge et annet kurs.";
                     }
-                            
+
                     break;
                 }
             }
-                    
+
         }
-                
+
     }
-                                   
-            
+
+
 </script>
 <script type="text/javascript" src="resources/js/jquery.skinned-select.js"></script>
 <script type="text/javascript">
@@ -115,7 +115,32 @@
                         <span>Telefon</span>
                         <t:inputText binding="#{SignUpWinter_Backing.phone}"/>
                     </td>
-                    <td/>
+                    <td>
+                        <span>DNT nedlem</span>
+                        <div class="my-skinnable-select" title="DNT medlemskap gir rabatter på kurspakkene">
+                            <t:selectOneMenu  required="true" binding="#{SignUpWinter_Backing.dntMemberType}" >
+                                <f:selectItem itemLabel="Ikke medlem" itemValue="Ikke medlem"/>
+                                <f:selectItem itemLabel="Medlem, under 26" itemValue="Medlem, under 26"/>
+                                <f:selectItem itemLabel="Medlem, voksen" itemValue="Medlem, voksen"/>
+                            </t:selectOneMenu>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td required="true" >
+                        <span>Kost og losji</span>
+                        <div class="my-skinnable-select">
+                            <t:selectOneMenu  required="true" binding="#{SignUpWinter_Backing.accommodation}" >
+                                <f:selectItem itemLabel="Ordner overnatting selv" itemValue="Ingen overnatting"/>
+                                <f:selectItem itemLabel="Middag og losji på stabbur" itemValue="Middag og losji på stabbur"/>
+                                <f:selectItem itemLabel="Fullpensjon og fjellrom" itemValue="Fullpensjon og fjellrom"/>
+                            </t:selectOneMenu>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#addBreakFast" class="fakecheck" id="test" title="Frokost er kun inkludert i fullpensjonspakken, men kan bestilles separat.">Ønsker frokost</a>
+                        <t:selectBooleanCheckbox id="addBreakFast" forceId="true" style="display:none" binding="#{SignUpWinter_Backing.addBreakFast}"/>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
