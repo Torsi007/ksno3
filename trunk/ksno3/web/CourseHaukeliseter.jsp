@@ -20,15 +20,21 @@
                             <div>
                                 <h1><h:outputText value="#{CourseHaukeliseter_Backing.course.name}"/></h1>
                                 <h2><h:outputText value="#{CourseHaukeliseter_Backing.course.startDate} - #{CourseHaukeliseter_Backing.course.endDate}"/></h2>
-                                <table>
-                                    <tr>
-                                        <td>Antall plasser:</td><td class="right" align="right"><h:outputText value="#{CourseHaukeliseter_Backing.course.maxSize}"/></td><td></td>
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr class="heading " >
+                                        <td rowspan="2" style="width:120px;" ></td><td colspan="2" >DNT medlem</td><td rowspan="2" style="width:60px">Ikke DNT medlem</td>
                                     </tr>
-                                    <tr>
-                                        <td>Ledige plasser:</td><td class="right" align="right"><h:outputText value="#{CourseHaukeliseter_Backing.course.availableSeats}"/></td><td></td>
+                                    <tr class="heading ">
+                                        <td style="width:60px" >Under 26</td><td  style="width:60px">Voksen</td>
                                     </tr>
-                                    <tr>
-                                        <td>Pris:</td><td class="right" align="right">1950</td><td>,-</td>
+                                    <tr style="height:24px;" >
+                                        <td style="text-align:left" >Kun kurs</td><td >2050,-</td><td >2050,-</td><td >2050,-</td>
+                                    </tr>
+                                    <tr style="height:24px">
+                                        <td style="width:120px;text-align:left">Kurs, middag og losji på stabbur</td><td > 2660,-</td><td>2835,-</td><td>3035,-</td>
+                                    </tr>
+                                    <tr style="height:24px">
+                                        <td style="width:120px; text-align:left">Kurs, fullpensjon og fjellrom</td><td >3685,-</td><td>3685,-</td><td>3885,-</td>
                                     </tr>
                                 </table>
                             </div>
@@ -59,34 +65,28 @@
                             </t:htmlTag>
                         </td>
                         <td class="rightSection">
-                            <h1>Hei</h1>
+                            <h1>Informasjon om påmelding og kurs</h1>
                             <t:htmlTag value="img" >
                                 <f:param name="src" value="#{CourseHaukeliseter_Backing.course.courseResponsible.profilePicture}" />
                             </t:htmlTag>
                             <p>
-                                Mitt navn er <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig på kurset du nå titter på. Vi håper du finner det du trenger av informasjon. Har du noen spørsmål send meg en mail på
+                                Hei! Mitt navn er <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.firstName}"/> og jeg er kursanvarlig på kurset du nå titter på.
+                            </p>
+                            <p>
+                                Kurspåmelding og overnatting administreres av Haukeliseter Fjellstue. For å melde deg på et kurs kan du ringe resepsjonen på Haukeliseter (tlf 35062777), sende en forespørsel til <a href="mailto:info@haukeliseter.no">info@haukeliseter.no</a> eller bruke skjemaet til venstre.
+                            </p>
+                            <p>
+                                Vær oppmerksom på at kurset kan være fullbooket! For mer info om ledige plasser, rom og forskjellige boalternativ, ring resepsjonen!
+                            </p>
+                            <p>
+                                Vi håper du finner det du trenger av informasjon. Har du noen spørsmål send meg en mail på
                                 <t:htmlTag value="a">
                                     <f:param name="href" value="mailto:#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" />
                                     <h:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.userName}" escape="false"/>
                                 </t:htmlTag>
                                 eller ring på <t:outputText value="#{CourseHaukeliseter_Backing.course.courseResponsible.phone}"/>
                             </p>
-                            <h1>Deltagere</h1>
-                            <t:dataList value="#{CourseHaukeliseter_Backing.course.confirmedParticipations}" var="participation">
-                                <t:htmlTag value="span" rendered="#{!participation.onWaitList}">
-                                    <t:outputText value="#{participation.participant.firstName} #{participation.participant.lastName}"/>
-                                </t:htmlTag>
-                            </t:dataList>
-                            <t:htmlTag value="span" rendered="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations == 1}">
-                                ---<br/>
-                                <t:outputText value="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations}"/> ubekreftet deltager
-                            </t:htmlTag>
-                            <t:htmlTag value="span" rendered="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations > 1}">
-                                ---<br/>
-                                <t:outputText value="#{CourseHaukeliseter_Backing.course.numberOfUnConfirmedParticipations}"/> ubekreftede deltagere
-                            </t:htmlTag>
-
-                        </td>
+                         </td>
                     </tr>
                 </table>
             </h:form>

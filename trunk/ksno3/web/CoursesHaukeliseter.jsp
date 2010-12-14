@@ -9,9 +9,16 @@
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/skinned-select.css"/>
         <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/coursesHaukeliseter.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/jquery.jscrollpane.css" />
         <script type="text/javascript" src="${request.contextPath}/resources/js/default.js"></script>
+        <script type="text/javascript" src="${request.contextPath}/resources/js/jquery.mousewheel.js"></script>
+        <script type="text/javascript" src="${request.contextPath}/resources/js/jquery.jscrollpane.js"></script>
+
         <script type="text/javascript">
+
             $(document).ready(function(){
+
+                $('#coursesContainer').jScrollPane();
                 if(window.top.setStyle){
                     window.top.setStyle("default");
                 }
@@ -27,7 +34,7 @@
                     var url = $(this).attr('href');
                     //window.parent.$('a[name=modal]').click();
                     var flashDivs = $(".flash");
-                    
+
                     window.parent.openModalImageOnUrl(url, 100,200, flashDivs);
                 });
 
@@ -63,23 +70,26 @@
                         <td class="leftSection" >
                             <div>
                                 <h1>Nybegynnerkurs</h1>
-                                <table class="courseList">
-                                    <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
-                                        <tr>
-                                            <td style="width:120px">
-                                                <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}">
-                                                    <h:outputText value="#{course.startDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText>
-                                                </h:outputLink>
-                                                 <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
-                                            </td>
-                                            <td>
-                                                <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}" styleClass="button">
-                                                    <h:outputText value="Go"/>
-                                                </h:outputLink>
-                                            </td>
-                                        </tr>
-                                    </t:dataList>
-                                </table>
+                                <div style="height:200px; width:280px; overflow:auto" id="coursesContainer" class="scroll-pane">
+                                    <table class="courseList">
+                                        <t:dataList value="#{CoursesWinter_Backing.courses}" var="course">
+                                            <tr>
+                                                <td style="width:140px">
+                                                    <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}">
+                                                        <h:outputText value="#{course.startDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText> - <h:outputText value="#{course.endDate}"><f:converter converterId="DateConverterPtrnddMMM"/></h:outputText><h:outputText value="#{course.maxSize <= course.numberOfParticipants ? ' - Fullt' : ''}"/>
+                                                    </h:outputLink>
+                                                     <h:inputHidden value="#{course.startDate}"><f:convertDateTime pattern="yyyy"/></h:inputHidden>
+                                                </td>
+                                                <td>
+                                                    <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}" styleClass="button" rendered="#{course.maxSize <= course.numberOfParticipants ? 'false' : 'true'}">
+                                                        <h:outputText value="Go"/>
+                                                    </h:outputLink>
+                                                </td>
+                                            </tr>
+                                        </t:dataList>
+  						  <tr><td colspan="2">&nbsp;</td></tr>
+                                    </table>
+                                </div>
                             </div>
                         </td>
                         <td class="middleSection"></td>
@@ -120,25 +130,25 @@
                             <h2>2 dagers kurs</h2>
                             <p>Kun kurs</p>
                             <ul type="square">
-                                <li>1 Person : 1950 kr</li>
+                                <li>1 Person : 2050 kr</li>
                             </ul>
                             <h2>Pakkepris med kost og losji</h2>
                             <p>Prisen varierer beroende på hva du ønsker for losji og mat. Vi har valgt å lage to forskjellige priseksempel for å tilgodese alle lommebøker.
                                 <br/>
                                 Et rimelig alternativ, med losji på stabbur, for deg som vil ha enkel losji og som trenger penger til kiteutstyr. Inkludert er del i stabbursrom to netter med tilgang til kjøkken, treretterts middag og villmarkspa lørdags kveld, samt kitekurs og lån av utstyr hele helgen.
                                 <br/>
-                                "Fullpensjon og fjellrom" er for de som vil ha litt mer luksus. Da er det inkludert treretters middag lørdags kveld samt frokost og niste for to dager. Boendet er i fjellrom, to netter, med dusj, toalett og oppredde senger. Kitekurs og lån av utstyr hele helgen er selvfølgelig og inkludert. 
+                                "Fullpensjon og fjellrom" er for de som vil ha litt mer luksus. Da er det inkludert treretters middag lørdags kveld samt frokost og niste for to dager. Boendet er i fjellrom, to netter, med dusj, toalett og oppredde senger. Kitekurs og lån av utstyr hele helgen er selvfølgelig og inkludert.
                             </p>
                             <h2>Kitekurs, middag og losji på stabbur</h2>
                             <ul type="square">
-                                <li>DNT medlem, under 26 : 2515 kr</li>
-                                <li>DNT medlem, voksen : 2690 kr</li>
-                                <li>Ikke medlem : 2890 kr</li>
+                                <li>DNT medlem, under 26 : 2660 kr</li>
+                                <li>DNT medlem, voksen : 2835 kr</li>
+                                <li>Ikke medlem : 3035 kr</li>
                             </ul>
                             <h2>Kitekurs "Fullpensjon og Fjellrom"</h2>
                             <ul type="square">
-                                <li>DNT medlem, voksen : 3500 kr</li>
-                                <li>Ikke medlem : 3700 kr</li>
+                                <li>DNT medlem, voksen : 3685 kr</li>
+                                <li>Ikke medlem : 3885 kr</li>
                             </ul>
                             <h1>Vindgaranti</h1>
                             <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene.

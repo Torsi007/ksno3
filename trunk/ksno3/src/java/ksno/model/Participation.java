@@ -16,7 +16,7 @@ public class Participation {
     private int price;   
     private Calendar createdDate;
     private String comment;
-    private String commentKSNO;    
+    private String commentKSNO;
     boolean onWaitList;
     boolean confirmed;
     boolean uIChecked;

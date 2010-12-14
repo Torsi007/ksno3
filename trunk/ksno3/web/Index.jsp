@@ -16,6 +16,7 @@
     </head>
     <jsp:include page="GoogleAnalytics.jsp"></jsp:include>
     <body>
+        <div id="ping" style="display:none">Request success</div>
         <div class="topMenu">
             <table>
                 <tr>

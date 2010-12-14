@@ -20,7 +20,7 @@
                 var domElemForm = this.parent.document.getElementById("uploadYouTubeForm");
                 var val = domElemYouTubeUploadURL.value;
                 if(val != undefined && val != ""){
-                    domElemForm.action = val + "?nexturl=http://www.kitesurfing.no/ksno3/faces/secureA/VideoCreate.jsp";
+                    domElemForm.action = val + "?nexturl=http://www.kitesurfing.no/faces/secureA/VideoCreate.jsp";
                     this.parent.document.getElementById("youtubeToken").value = domElemYouTubeUploadToken.value;
                     domElemForm.submit();
                 }

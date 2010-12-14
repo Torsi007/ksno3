@@ -33,3 +33,10 @@ select {height:18px; width:150px; border:1px solid #787878; margin: 0px; color: 
 .fakecheck {text-decoration: none; background: url(../img/components/checkbox.gif) no-repeat; height: 16px; width: 100%; display: block; float: left; padding: 1px 0px 0px 18px; }
 .fakecheck:hover { text-decoration: underline;}
 .fakechecked {	background-position: left -25px;}
+
+.opacity50 {
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}

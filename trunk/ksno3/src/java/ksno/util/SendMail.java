@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.component.html.HtmlMessage;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
