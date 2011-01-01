@@ -211,8 +211,8 @@
 
                             <h1>Webkamera</h1>
                             <p>Utsikten fra fjellstua akuratt nå</p>
-                            <a name="modalImg" href="http://haukeliseter.no/share/img/webkamera/haukeliseter.jpg">
-                              <img style="width:340" src="http://haukeliseter.no/share/img/webkamera/haukeliseter.jpg" alt="Klikk på bildet for større versjon" title="Klikk på bildet for større versjon" />
+                            <a name="modalImg" href="http://www.ormerod.no/wp-content/uploads/2010/01/haukeli1.jpg">
+                              <img style="width:340" src="http://www.ormerod.no/wp-content/uploads/2010/01/haukeli1.jpg" alt="Klikk på bildet for større versjon" title="Klikk på bildet for større versjon" />
                             </a>
                             <h1>Les om tidligere vinterkurs</h1>
                             <table class="articleList">
