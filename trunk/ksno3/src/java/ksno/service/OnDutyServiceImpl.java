@@ -23,6 +23,14 @@ public class OnDutyServiceImpl implements OnDutyService {
 
    private OnDutyDao onDutyDao;
 
+    public OnDutyDao getOnDutyDao() {
+        return onDutyDao;
+    }
+
+    public void setOnDutyDao(OnDutyDao onDutyDao) {
+        this.onDutyDao = onDutyDao;
+    }
+
     private Logger getLogService() {
         return Logger.getLogger(this.getClass().getName());
     }
@@ -62,7 +70,22 @@ public class OnDutyServiceImpl implements OnDutyService {
     }
 
     public OnDuty getCurrentlyOnDuty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<OnDuty> list = getOnDutys();
+        Calendar now = Calendar.getInstance();
+        OnDuty returnOnDuty = null;
+        int length = list.size();
+        for(int i=0; i< length; i++){
+            OnDuty onDuty = list.get(i);
+            returnOnDuty = onDuty;
+            if(i < length - 1){
+                OnDuty nextOnDuty = list.get(i+1);
+                if(now.after(onDuty.getFromDate()) && now.before(nextOnDuty.getFromDate())){
+                    returnOnDuty = onDuty;
+                    break;
+                }
+            }
+        }
+        return returnOnDuty;
     }
 
     public List<OnDuty> getUpcomingOnDutys() {

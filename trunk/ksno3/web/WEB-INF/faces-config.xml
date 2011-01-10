@@ -82,6 +82,11 @@
         <converter-id>CategoryConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.CategoryConverter</converter-class>
     </converter>
+    <converter>
+        <description>Convert string - workcategory</description>
+        <converter-id>WorkCategoryConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.WorkCategoryConverter</converter-class>
+    </converter>
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleCategoryDao</managed-bean-name>
@@ -109,6 +114,11 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
    <managed-bean>
+        <managed-bean-name>OnDutyDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.OnDutyDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+   <managed-bean>
         <managed-bean-name>PersonDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.PersonDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
@@ -126,6 +136,16 @@
    <managed-bean>
         <managed-bean-name>VideoDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.VideoDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>WorkCategoryDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.WorkCategoryDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>WorkTaskDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.WorkTaskDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
    <!-- ******** Service *************************************************** -->
@@ -171,6 +191,15 @@
         </managed-property>
     </managed-bean>
    <managed-bean>
+        <managed-bean-name>OnDutyService</managed-bean-name>
+        <managed-bean-class>ksno.service.OnDutyServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>onDutyDao</property-name>
+            <value>#{OnDutyDao}</value>
+        </managed-property>
+    </managed-bean>
+   <managed-bean>
         <managed-bean-name>ParticipationService</managed-bean-name>
         <managed-bean-class>ksno.service.ParticipationServiceImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
@@ -213,6 +242,24 @@
         <managed-property>
             <property-name>videoDao</property-name>
             <value>#{VideoDao}</value>
+        </managed-property>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>WorkCategoryService</managed-bean-name>
+        <managed-bean-class>ksno.service.WorkCategoryServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>workCategoryDao</property-name>
+            <value>#{WorkCategoryDao}</value>
+        </managed-property>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>WorkTaskService</managed-bean-name>
+        <managed-bean-class>ksno.service.WorkTaskServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>workTaskDao</property-name>
+            <value>#{WorkTaskDao}</value>
         </managed-property>
     </managed-bean>
    <!-- ******** UI ******************************************************* -->
@@ -531,6 +578,19 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
+        <managed-bean-name>OnDutysMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.OnDutysMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>onDutyService</property-name>
+            <value>#{OnDutyService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
         <managed-bean-name>Preferences_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.Preferences</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -731,6 +791,28 @@
             <value>#{param.status}</value>
         </managed-property>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>WorkCategorysMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.WorkCategorysMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>workCategoryService</property-name>
+            <value>#{WorkCategoryService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>WorkTasksMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.WorkTasksMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>workTaskService</property-name>
+            <value>#{WorkTaskService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>workCategoryService</property-name>
+            <value>#{WorkCategoryService}</value>
+        </managed-property>
+    </managed-bean>
     <!-- ******** Navigation ******************************************************* -->
     <navigation-rule>
         <from-view-id>/secureA/AdminMain.jsp</from-view-id>
@@ -769,6 +851,18 @@
         <navigation-case>
             <from-outcome>instructorProfile</from-outcome>
             <to-view-id>/secureD/Instructor.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>onDutysMaintain</from-outcome>
+            <to-view-id>/secureD/OnDutysMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>workCategorysMaintain</from-outcome>
+            <to-view-id>/secureD/WorkCategorysMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>workTasksMaintain</from-outcome>
+            <to-view-id>/secureD/WorkTasksMaintain.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -1007,6 +1101,13 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>Cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/OnDutysMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>

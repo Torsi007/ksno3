@@ -30,5 +30,7 @@
     <mapping class="" file="" jar="" package="" resource="ksno/model/Category.hbm.xml"/>
     <mapping resource="ksno/model/Video.hbm.xml"/>
     <mapping resource="ksno/model/OnDuty.hbm.xml"/>
+    <mapping resource="ksno/model/WorkCategory.hbm.xml"/>
+    <mapping resource="ksno/model/WorkTask.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -41,6 +41,7 @@ public class JSFUtil {
     public static String prettyURLAboutUs = "/om-oss";
 
     public static String appCahceTypeOnDutys = "onDutys";
+    public static String appCahceWorkCategories = "workCategorys";
 
 
 
@@ -214,7 +215,8 @@ public class JSFUtil {
     public static final String sessionBeanTextModify = "TextModify";
     public static final String sessionBeanArticleModify = "ArticleModify";
     public static final String sessionBeanArticleCategoryModify = "ArticleCategoryModify";
-    public static final String sessionBeanEventModify = "EventModify";    
+    public static final String sessionBeanEventModify = "EventModify";
+    public static final String sessionBeanWorkCategoryModify = "WorkCategoryModify";
     public static final String sessionBeanSignedOnEvent = "SignedOnEvent";    
     public static final String sessionBeanParticipationModify = "ParticipationModify";
     public static final String sessionBeanTransactionModify = "TransactionModify";    

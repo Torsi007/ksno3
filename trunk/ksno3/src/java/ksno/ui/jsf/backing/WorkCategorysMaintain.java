@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIData;
-import ksno.model.Category;
-import ksno.service.ArticleCategoryService;
+import ksno.model.WorkCategory;
+import ksno.service.WorkCategoryService;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 
@@ -18,8 +18,8 @@ import org.apache.myfaces.component.html.ext.HtmlOutputText;
  *
  * @author tor.hauge
  */
-public class ArticleCategoryMaintain {
-    ArticleCategoryService articleCategoryService;
+public class WorkCategorysMaintain {
+    WorkCategoryService workCategoryService;
     private HtmlInputText name;
     private HtmlInputText description;
     private HtmlInputText newName;
@@ -69,12 +69,12 @@ public class ArticleCategoryMaintain {
         this.description = description;
     }
 
-    public ArticleCategoryService getArticleCategoryService() {
-        return articleCategoryService;
+    public WorkCategoryService getWorkCategoryService() {
+        return workCategoryService;
     }
 
-    public void setArticleCategoryService(ArticleCategoryService articleCategoryService) {
-        this.articleCategoryService = articleCategoryService;
+    public void setWorkCategoryService(WorkCategoryService articleCategoryService) {
+        this.workCategoryService = articleCategoryService;
     }
 
     public HtmlOutputText getErrorMsg() {
@@ -90,15 +90,15 @@ public class ArticleCategoryMaintain {
     }   
     // </editor-fold>
     
-    public List getArticleCategorys(){
-        return articleCategoryService.getArticleCategorys();
+    public List getWorkCategorys(){
+        return workCategoryService.getWorkCategorys();
     }
 
-   public String articleCategoryDelete(){
+   public String WorkCategoryDelete(){
        String returnVal = "sucess";
         try{
-           Category category = (Category)this.getData().getRowData();
-           articleCategoryService.deleteArticleCategory(category);
+           WorkCategory category = (WorkCategory)this.getData().getRowData();
+           workCategoryService.deleteWorkCategory(category);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to delete article", e);
             errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
@@ -108,13 +108,13 @@ public class ArticleCategoryMaintain {
        return returnVal;
     }
 
-    public String articleCategoryCreate(){
+    public String WorkCategoryCreate(){
         String returnVal = "success";
         try{
-            Category category = new Category();
+            WorkCategory category = new WorkCategory();
             category.setName(getNewName().getValue().toString());
             category.setDescription(getNewDescription().getValue().toString());
-            articleCategoryService.newArticleCategory(category);
+            workCategoryService.newWorkCategory(category);
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to create article", e);
             errorMsg.setValue("Artikkelen ble ikke lagret, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
@@ -123,13 +123,13 @@ public class ArticleCategoryMaintain {
         return returnVal;
     }
 
-   public String articleCategorysUpdate(){
+   public String WorkCategorysUpdate(){
        String returnVal = "sucess";
         try{
             List articleCategorys = (List)getData().getValue();
             for(int i = 0; i< articleCategorys.size(); i++){
-                Category category = (Category)articleCategorys.get(i);
-                articleCategoryService.updateArticleCategory(category);
+                WorkCategory category = (WorkCategory)articleCategorys.get(i);
+                workCategoryService.updateWorkCategory(category);
             }
         }catch(Exception e){
             getLogService().log(Level.SEVERE,"Unable to update articles", e);

@@ -16,6 +16,7 @@
     </head>
     <jsp:include page="GoogleAnalytics.jsp"></jsp:include>
     <body>
+    <f:view>
         <div id="ping" style="display:none">Request success</div>
         <div class="topMenu">
             <table>
@@ -66,8 +67,9 @@
 
         <div class="footer">
             <p>Copyright &copy; 2008 Kitesurfing.no</p>
-            <p>Call: 47753527 Mail: info@kitesurfing.no</p>
+            <p>Call: <h:outputText value="#{OnDutysMaintain_Backing.currenltyOnDuty.phone}"/> Mail: info@kitesurfing.no</p>
         </div>
+</f:view>  
     </body>
 </html>
 
