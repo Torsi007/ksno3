@@ -215,9 +215,9 @@
                                             </h:outputText>
                                         </td>
                                         <td style="width:8px;"><span style="display:block; margin:0 2;">|</span></td>
-                                        <td style="width:106px"><h:outputText value="#{course.name}"/></td>
+                                        <td style="width:106px"><h:outputText value="#{course.maxSize <= course.numberOfParticipants ? ' - Fullt' : course.name}"/></td>
                                         <td>
-                                            <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}" styleClass="button">
+                                            <h:outputLink value="#{ApplicationBean1.contextPath}#{ApplicationBean1.prettyURLCourseWinter}#{course.prettyPrintId}" styleClass="button" rendered="#{course.maxSize <= course.numberOfParticipants ? 'false' : 'true'}">
                                                 <h:outputText value="Go"/>
                                             </h:outputLink>
                                         </td>

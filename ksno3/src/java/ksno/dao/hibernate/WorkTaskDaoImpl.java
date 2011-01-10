@@ -6,48 +6,50 @@
 package ksno.dao.hibernate;
 
 import java.util.List;
-import ksno.dao.OnDutyDao;
-import ksno.model.OnDuty;
+import ksno.dao.WorkTaskDao;
+import ksno.model.WorkTask;
+
 import ksno.util.HibernateUtil;
-import org.hibernate.Session;
 import org.hibernate.Query;
+import org.hibernate.Session;
+
 /**
  *
- * @author HalsneHauge
+ * @author tor.hauge
  */
-public class OnDutyDaoImpl implements OnDutyDao {
+public class WorkTaskDaoImpl implements WorkTaskDao {
 
-    public Long newOnDuty(OnDuty onDuty) {
+    public WorkTask getWorkTask(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Long l = (Long)session.save(onDuty);
+        WorkTask task = (WorkTask)session.get(WorkTask.class,id);
+        return task;
+    }
+
+    public Long newWorkTask(WorkTask task) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Long l = (Long)session.save(task);
         return l;
     }
 
-    public OnDuty getOnDuty(Long id) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        OnDuty onDuty = (OnDuty)session.get(OnDuty.class,id);
-        return onDuty;
-    }
-
-    public void updateOnDuty(OnDuty onDuty) {
+    public void updateWorkTask(WorkTask task) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         try{
-            session.saveOrUpdate(onDuty);
+            session.saveOrUpdate(task);
         }catch(Exception e){
-            session.merge(onDuty);
+            session.merge(task);
         }
     }
 
-    public void deleteOnDuty(OnDuty onDuty) {
+    public void deleteWorkTask(WorkTask task) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.delete(onDuty);
+        session.delete(task);
     }
 
-    public List<OnDuty> getOnDutys() {
+    public List<WorkTask> getWorkTasks() {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        q=session.createQuery("from OnDuty a order by a.fromDate asc");
+        q=session.createQuery("from WorkTask c order by c.name desc");
         returnVal =  q.list();
         return returnVal;
     }

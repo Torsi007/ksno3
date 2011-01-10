@@ -26,6 +26,12 @@
             <t:commandLink visibleOnUserRole="admin,internal,authuser, external" action="preferences">Innstillinger</t:commandLink>
             <br/>
             <t:commandLink visibleOnUserRole="admin,internal" action="instructorProfile">Instruktørprofil</t:commandLink>
+            <br/>
+            <t:commandLink visibleOnUserRole="admin,internal" action="onDutysMaintain">Administrer vakter</t:commandLink>
+            <br/>
+            <t:commandLink visibleOnUserRole="admin,internal" action="workCategorysMaintain">Administrer arbeidskategorier</t:commandLink>
+            <br/>
+            <t:commandLink visibleOnUserRole="admin,internal" action="workTasksMaintain">Administrer arbeidsoppgaver</t:commandLink>
         </h:form>
     </f:view>
 

@@ -5,6 +5,7 @@
 
 package ksno.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import ksno.util.KSNOutil;
@@ -13,7 +14,7 @@ import ksno.util.KSNOutil;
  *
  * @author tor.hauge
  */
-public class Text {
+public class Text implements Serializable {
     private Long id;
     private int version;
     private String name;

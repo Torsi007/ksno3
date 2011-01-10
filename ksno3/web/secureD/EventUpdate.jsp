@@ -21,19 +21,19 @@
             <table>
                 <tr>
                     <td>Name</td>
-                    <td required="true">
-                        <t:inputText id="it_name" value="#{EventModify.name}"/>
+                    <td required="true" colspan="3">
+                        <t:inputText id="it_name" value="#{EventModify.name}" style="width:506px"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Start Dato</td>
-                    <td required="true">
+                    <td required="true" style="width:200px">
                         <t:inputText forceId="true" id="dp_StartDate" value="#{EventModify.startDate}">
                             <f:converter converterId="DateConverter"/>
                         </t:inputText>
                     </td>
                     <td>Slutt Dato</td>
-                    <td required="true">
+                    <td required="true" style="width:200px">
                         <t:inputText forceId="true" id="dp_EndDate" value="#{EventModify.endDate}">
                             <f:converter converterId="DateConverter"/>
                         </t:inputText>
@@ -63,8 +63,8 @@
                         </t:selectOneMenu>
                     </td>
                     <td>Hjelpeinstruktører</td>
-                    <td>
-                        <h:selectManyListbox id="slct_Instructors" size="3"  value="#{EventUpdate_Backing.eventInstructors}" binding="#{EventUpdate_Backing.slctManyInstructors}">
+                    <td rowspan="2">
+                        <h:selectManyListbox id="slct_Instructors" size="3"  value="#{EventUpdate_Backing.eventInstructors}" binding="#{EventUpdate_Backing.slctManyInstructors}" style="height:46px">
                             <f:selectItems value="#{EventUpdate_Backing.instructorSelectItems}"/>
                         </h:selectManyListbox>
                     </td>
@@ -77,7 +77,7 @@
                             <f:selectItem itemLabel="Jæren" itemValue="Jæren"/>
                         </t:selectOneMenu>
                     </td>
-                    <td colsapn="2"/>
+                    <td/>
                 </tr>
             </table>
             <b>Deltagere</b><br/>

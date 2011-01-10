@@ -1,5 +1,8 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 <html>
     <head>
         <title>kitesurfing.no</title>
@@ -16,6 +19,7 @@
     </head>
     <jsp:include page="GoogleAnalytics.jsp"></jsp:include>
     <body>
+    <f:view>
         <jsp:include page="Menu.jsp" >
             <jsp:param name="fromMain" value="true"/>
         </jsp:include>
@@ -32,8 +36,9 @@
 
         <div class="footer">
             <p>Copyright &copy; 2008 Kitesurfing.no</p>
-            <p>Call: 47753527 Mail: info@kitesurfing.no</p>
+            <p>Call: <h:outputText value="#{OnDutysMaintain_Backing.currenltyOnDuty.phone}"/> Mail: info@kitesurfing.no</p>
         </div>
+</f:view>
     </body>
 </html>
 

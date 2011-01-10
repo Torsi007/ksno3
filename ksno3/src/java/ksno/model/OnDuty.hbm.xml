@@ -6,7 +6,7 @@
       <generator class="increment"/>
     </id>
     <version column="VERSION" name="version"/>
-    <property column="FROM_DATE" name="fromDate" type="date"/>
+    <property column="FROM_DATE" name="fromDate" type="calendar"/>
     <property column="COMMENT" name="comment" type="string"/>
     <many-to-one cascade="none" class="Instructor" column="INSTRUCTOR_ID" lazy="false" name="instructor" not-null="true"/>
   </class>

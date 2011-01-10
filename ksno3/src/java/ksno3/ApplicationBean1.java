@@ -14,6 +14,7 @@ import ksno.model.Article;
 import ksno.model.BeginnerCourse;
 import ksno.model.Category;
 import ksno.model.Video;
+import ksno.model.WorkCategory;
 import ksno.util.JSFUtil;
 
 /**
@@ -141,6 +142,25 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     private List<BeginnerCourse> beginnerCoursesFromThisYear;
     private List<Article> articles;
     private List<Video> videos;
+    private List onDutys;
+
+    private List<WorkCategory> workCategorys;
+
+    public List<WorkCategory> getWorkCategorys() {
+        return workCategorys;
+    }
+
+    public void setWorkCategorys(List<WorkCategory> workCategorys) {
+        this.workCategorys = workCategorys;
+    }
+
+    public List getOnDutys() {
+        return onDutys;
+    }
+
+    public void setOnDutys(List onDutys) {
+        this.onDutys = onDutys;
+    }
 
     public List<Video> getVideos() {
         return videos;
@@ -158,8 +178,6 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     public void setBeginnerCoursesFromThisYear(List<BeginnerCourse> beginnerCoursesFromThisYear) {
         this.beginnerCoursesFromThisYear = beginnerCoursesFromThisYear;
     }
-
-    
 
     public List<Category> getArticleCategorys() {
         return articleCategorys;

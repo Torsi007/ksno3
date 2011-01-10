@@ -6,48 +6,50 @@
 package ksno.dao.hibernate;
 
 import java.util.List;
-import ksno.dao.OnDutyDao;
-import ksno.model.OnDuty;
+import ksno.dao.WorkCategoryDao;
+import ksno.model.WorkCategory;
+
 import ksno.util.HibernateUtil;
-import org.hibernate.Session;
 import org.hibernate.Query;
+import org.hibernate.Session;
+
 /**
  *
- * @author HalsneHauge
+ * @author tor.hauge
  */
-public class OnDutyDaoImpl implements OnDutyDao {
+public class WorkCategoryDaoImpl implements WorkCategoryDao {
 
-    public Long newOnDuty(OnDuty onDuty) {
+    public WorkCategory getWorkCategory(Long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Long l = (Long)session.save(onDuty);
+        WorkCategory category = (WorkCategory)session.get(WorkCategory.class,id);
+        return category;
+    }
+
+    public Long newWorkCategory(WorkCategory category) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Long l = (Long)session.save(category);
         return l;
     }
 
-    public OnDuty getOnDuty(Long id) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        OnDuty onDuty = (OnDuty)session.get(OnDuty.class,id);
-        return onDuty;
-    }
-
-    public void updateOnDuty(OnDuty onDuty) {
+    public void updateWorkCategory(WorkCategory category) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         try{
-            session.saveOrUpdate(onDuty);
+            session.saveOrUpdate(category);
         }catch(Exception e){
-            session.merge(onDuty);
+            session.merge(category);
         }
     }
 
-    public void deleteOnDuty(OnDuty onDuty) {
+    public void deleteWorkCategory(WorkCategory category) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.delete(onDuty);
+        session.delete(category);
     }
 
-    public List<OnDuty> getOnDutys() {
+    public List<WorkCategory> getWorkCategorys() {
         Query q = null;
         List returnVal = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        q=session.createQuery("from OnDuty a order by a.fromDate asc");
+        q=session.createQuery("from WorkCategory c order by c.name desc");
         returnVal =  q.list();
         return returnVal;
     }
