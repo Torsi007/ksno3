@@ -161,7 +161,7 @@ public class WorkTasksMaintain {
     public String WorkTaskCreate(){
         String returnVal = "success";
         try{
-            WorkCategory category = (WorkCategory)getSlctOneWorkCategory().getValue();
+            WorkCategory category = (WorkCategory)JSFUtil.getSessionMap().get(JSFUtil.sessionBeanWorkCategoryModify);
             WorkTask task = new WorkTask();
             if(getNewName().getValue() == null || getNewName().getValue().toString().length() == 0){
                 throw new Exception("Name is mandatory");
@@ -174,7 +174,8 @@ public class WorkTasksMaintain {
                 }
                 task.setDescription(getNewDescription().getValue().toString());
                 task.setWorkCategory(category);
-                workTaskService.newWorkTask(task);
+                category.getTasks().add(task);
+                getWorkCategoryService().updateWorkCategory(category);
             }else{
                 throw new Exception("Start date is mandatory");
             }
@@ -187,11 +188,10 @@ public class WorkTasksMaintain {
     }
 
 
-    public String Filter(){
+    public String SetCategory(){
         WorkCategory category = (WorkCategory)getSlctOneWorkCategory().getValue();
         JSFUtil.getSessionMap().put(JSFUtil.sessionBeanWorkCategoryModify, category);
         return "success";
-
     }
 
    public String WorkTasksUpdate(){
@@ -208,7 +208,22 @@ public class WorkTasksMaintain {
             returnVal = "no";
         }
        return returnVal;
-    }   
+    }
+
+   public String WorkTaskEnd(){
+       String returnVal = "sucess";
+        try{
+           WorkTask task = (WorkTask)this.getData().getRowData();
+           task.setEndDate(Calendar.getInstance());
+           workTaskService.updateWorkTask(task);
+        }catch(Exception e){
+            getLogService().log(Level.SEVERE,"Unable to delete article", e);
+            errorMsg.setValue("Operasjonen feilet, forsøk på nytt. Detaljert feilmelding: " + e.getMessage());
+            returnVal = "no";
+        }
+
+       return returnVal;
+    }
    
 
 }

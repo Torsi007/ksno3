@@ -29,9 +29,11 @@
             <br/>
             <t:commandLink visibleOnUserRole="admin,internal" action="onDutysMaintain">Administrer vakter</t:commandLink>
             <br/>
-            <t:commandLink visibleOnUserRole="admin,internal" action="workCategorysMaintain">Administrer arbeidskategorier</t:commandLink>
+            <t:commandLink visibleOnUserRole="admin,internal" action="workHoursMaintain">Registrer timer</t:commandLink>
             <br/>
-            <t:commandLink visibleOnUserRole="admin,internal" action="workTasksMaintain">Administrer arbeidsoppgaver</t:commandLink>
+            <t:commandLink visibleOnUserRole="admin,internal" action="experienceLevelsMaintain">Administrer ferdighetsnivåer</t:commandLink>
+            <br/>
+            <t:commandLink visibleOnUserRole="admin,internal,authuser, external" action="participationAddInfo">Legg til deltagerinfo</t:commandLink>
         </h:form>
     </f:view>
 

@@ -48,7 +48,7 @@
             <t:outputText styleClass="errorMsg" binding="#{WorkCategorysMaintain_Backing.errorMsg}"/>
         </h:form>
         <h:form>
-            <h:commandButton immediate="true" value="Avbryt" action="cancel" />
+            <h:commandButton immediate="true" value="Avslutt" action="cancel" />
         </h:form>
     </f:view>
 </body>

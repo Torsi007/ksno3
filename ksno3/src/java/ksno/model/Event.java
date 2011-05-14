@@ -1,5 +1,7 @@
 package ksno.model;
 
+import com.mysql.jdbc.Util;
+import java.util.Collections;
 import java.util.Date; 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -8,8 +10,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ksno.util.ParticipationGroupComparator;
 
 public class Event implements LabelValuePair, LabelObjectValuePair {
+
+
 
     protected Long id;
     private String prettyPrintId;
@@ -124,6 +129,22 @@ public class Event implements LabelValuePair, LabelObjectValuePair {
         getLogService().log(Level.INFO, "Return " + returnList.size() + " unconfirmed participations");
         return returnList;
     }
+
+    public List getCourseSetUpList() {
+        getLogService().log(Level.INFO, "Start getting confirmed participations");
+        Iterator <Participation> participationIterator = participations.iterator();
+        List<Participation> returnList = new LinkedList<Participation>();
+        while(participationIterator.hasNext()){
+            Participation participation = participationIterator.next();
+            if(participation.isConfirmed()){
+                returnList.add(participation);
+            }
+        }
+        getLogService().log(Level.INFO, "Return " + returnList.size() + " confirmed participations");
+        Collections.sort(returnList, new ParticipationGroupComparator());
+        return returnList;
+    }
+
 
     public int getNumberOfUnConfirmedParticipations(){
         List list = this.getUnConfirmedParticipations();
@@ -269,7 +290,12 @@ public class Event implements LabelValuePair, LabelObjectValuePair {
         hash = 71 * hash + (this.name != null ? this.name.hashCode() : 0);
         hash = 71 * hash + (this.open ? 1 : 0);
         return hash;
-    }   
+    }
+
+    @Override
+    public String toString() {
+        return ksno.util.DateConverter.getAsString(this.getStartDate()) + " - " + ksno.util.DateConverter.getAsString(this.getEndDate());
+    }
    // </editor-fold>    
      
     public void addParticipation(Participation participation){

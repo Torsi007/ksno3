@@ -238,25 +238,13 @@
                                 </f:facet>
                                 <h:outputText value="#{unConfirmedParticipation.comment}"></h:outputText>
                             </h:column>
-                            <h:column>
+                            <h:column rendered="#{EventModify.location == 'Jæren'}">
                                 <f:facet name="header">
                                     <h:outputText value="3 dag" />
                                 </f:facet>
                                 <h:selectBooleanCheckbox value="#{unConfirmedParticipation.thirdDay}"/>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Våtdrakt" />
-                                </f:facet>
-                                <h:outputText value="#{unConfirmedParticipation.wetSuitSize}"></h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Sko" />
-                                </f:facet>
-                                <h:outputText value="#{unConfirmedParticipation.shoeSize}"></h:outputText>
-                            </h:column>
-                            <h:column>
+                            <h:column rendered="#{EventModify.location == 'Jæren'}">
                                 <f:facet name="header">
                                     <h:outputText value="Adresse" />
                                 </f:facet>
@@ -280,7 +268,7 @@
                 <div id="tabs-2">
                     <div style="width:100%">
                         <t:dataTable styleClass="tablesorter" id="tblConfirmedParticipants" forceId="true" value="#{EventModify.confirmedParticipations}" binding="#{CourseParticipantsMaintain_Backing.dataConfirmedParticipants}" var="confirmedParticipation" first="0" width="100%">
-                            <h:column>
+                            <h:column >
                                 <f:facet name="header">
                                     <h:outputText value="Navn" />
                                 </f:facet>
@@ -310,29 +298,56 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="Vekt" />
+                                </f:facet>
+                                <h:outputText value="#{confirmedParticipation.weight}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Trapes" />
+                                </f:facet>
+                                <h:outputText value="#{confirmedParticipation.harnessSize}"></h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ønsket partner" />
+                                </f:facet>
+                                <h:outputText value="#{confirmedParticipation.partner}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
                                     <h:outputText value="Kommentar fra bruker" />
                                 </f:facet>
                                 <h:outputText value="#{confirmedParticipation.comment}"></h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="Par" />
+                                </f:facet>
+                                <t:selectOneMenu value="#{confirmedParticipation.workGroup}" style="width:120px">
+                                    <f:selectItems value="#{CourseParticipantsMaintain_Backing.workGroupSelectItems}"/>
+                                </t:selectOneMenu>
+                            </h:column>
+                            <h:column rendered="#{EventModify.location == 'Jæren'}">
+                                <f:facet name="header">
                                     <h:outputText value="3 dag" />
                                 </f:facet>
                                 <h:selectBooleanCheckbox value="#{confirmedParticipation.thirdDay}"/>
                             </h:column>
-                            <h:column>
+                            <h:column rendered="#{EventModify.location == 'Jæren'}">
                                 <f:facet name="header">
                                     <h:outputText value="Våtdrakt" />
                                 </f:facet>
                                 <h:outputText value="#{confirmedParticipation.wetSuitSize}"></h:outputText>
                             </h:column>
-                            <h:column>
+                            <h:column rendered="#{EventModify.location == 'Jæren'}">
                                 <f:facet name="header">
                                     <h:outputText value="Sko" />
                                 </f:facet>
                                 <h:outputText value="#{confirmedParticipation.shoeSize}"></h:outputText>
                             </h:column>
-                            <h:column>
+                            <h:column rendered="#{EventModify.location == 'Jæren'}">
                                 <f:facet name="header">
                                     <h:outputText value="Adresse" />
                                 </f:facet>
@@ -344,7 +359,7 @@
                                 </f:facet>
                                 <h:inputText value="#{confirmedParticipation.commentKSNO}"/>
                             </h:column>
-                            <h:column >
+                            <h:column>
                                 <f:facet name="header">
                                     <f:verbatim escape="false">&nbsp;</f:verbatim>
                                 </f:facet>
@@ -361,6 +376,7 @@
             <h:commandLink styleClass="fg-button ui-state-default ui-corner-all" value="Legg til deltager" action="addParticipant"/>
             <h:commandLink styleClass="fg-button ui-state-default ui-corner-all" value="Lagre" action="#{CourseParticipantsMaintain_Backing.save}"/>
             <h:commandLink styleClass="fg-button ui-state-default ui-corner-all" value="Slett" action="#{CourseParticipantsMaintain_Backing.deleteParticipants}"/>
+            <h:commandLink styleClass="fg-button ui-state-default ui-corner-all" value="Print" action="print" />
             <h:commandLink styleClass="fg-button ui-state-default ui-corner-all" value="Avslutt" action="#{CourseParticipantsMaintain_Backing.close}" />
             <t:selectOneMenu id="moveToEvent" forceId="true" binding="#{CourseParticipantsMaintain_Backing.eventSelect}">
                 <f:selectItems value="#{CourseParticipantsMaintain_Backing.eventSelectItems}"/>

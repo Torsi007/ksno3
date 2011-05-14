@@ -73,9 +73,19 @@
         <converter-class>ksno.ui.jsf.converter.PersonConverter</converter-class>
     </converter>
     <converter>
+        <description>Convert string - participation</description>
+        <converter-id>ParticipationConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.ParticipationConverter</converter-class>
+    </converter>
+    <converter>
         <description>Convert string - event</description>
         <converter-id>EventConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.EventConverter</converter-class>
+    </converter>
+    <converter>
+        <description>Convert string - experience level</description>
+        <converter-id>ExperienceLevelConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.ExperienceLevelConverter</converter-class>
     </converter>
     <converter>
         <description>Convert string - category</description>
@@ -87,6 +97,12 @@
         <converter-id>WorkCategoryConverter</converter-id>
         <converter-class>ksno.ui.jsf.converter.WorkCategoryConverter</converter-class>
     </converter>
+    <converter>
+        <description>Convert string - workTask</description>
+        <converter-id>WorkTaskConverter</converter-id>
+        <converter-class>ksno.ui.jsf.converter.WorkTaskConverter</converter-class>
+    </converter>
+
    <!-- ******** DAO ****************************************************** -->
    <managed-bean>
         <managed-bean-name>ArticleCategoryDao</managed-bean-name>
@@ -101,6 +117,11 @@
    <managed-bean>
         <managed-bean-name>EventDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.EventDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>ExperienceLevelDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.ExperienceLevelDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
    <managed-bean>
@@ -144,6 +165,11 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
    <managed-bean>
+        <managed-bean-name>WorkHoursDao</managed-bean-name>
+        <managed-bean-class>ksno.dao.hibernate.WorkHoursDaoImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+   <managed-bean>
         <managed-bean-name>WorkTaskDao</managed-bean-name>
         <managed-bean-class>ksno.dao.hibernate.WorkTaskDaoImpl</managed-bean-class>
         <managed-bean-scope>none</managed-bean-scope>
@@ -179,6 +205,15 @@
         <managed-property>
             <property-name>eventDao</property-name>
             <value>#{EventDao}</value>
+        </managed-property>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>ExperienceLevelService</managed-bean-name>
+        <managed-bean-class>ksno.service.ExperienceLevelServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>experienceLevelDao</property-name>
+            <value>#{ExperienceLevelDao}</value>
         </managed-property>
     </managed-bean>
    <managed-bean>
@@ -251,6 +286,15 @@
         <managed-property>
             <property-name>workCategoryDao</property-name>
             <value>#{WorkCategoryDao}</value>
+        </managed-property>
+    </managed-bean>
+   <managed-bean>
+        <managed-bean-name>WorkHoursService</managed-bean-name>
+        <managed-bean-class>ksno.service.WorkHoursServiceImpl</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>workHoursDao</property-name>
+            <value>#{WorkHoursDao}</value>
         </managed-property>
     </managed-bean>
    <managed-bean>
@@ -560,6 +604,15 @@
         </managed-property>
     </managed-bean>
     <managed-bean>
+        <managed-bean-name>ExperienceLevelsMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ExperienceLevelsMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>experienceLevelService</property-name>
+            <value>#{ExperienceLevelService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
         <managed-bean-name>Instructor_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.InstructorModify</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -588,6 +641,23 @@
         <managed-property>
             <property-name>personService</property-name>
             <value>#{PersonService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ParticipationAddInfo_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.ParticipationAddInfo</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>participationService</property-name>
+            <value>#{ParticipationService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>experienceLevelService</property-name>
+            <value>#{ExperienceLevelService}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -801,6 +871,27 @@
         </managed-property>
     </managed-bean>
     <managed-bean>
+        <managed-bean-name>WorkHoursMaintain_Backing</managed-bean-name>
+        <managed-bean-class>ksno.ui.jsf.backing.WorkHoursMaintain</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>workHoursService</property-name>
+            <value>#{WorkHoursService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>workTaskService</property-name>
+            <value>#{WorkTaskService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>workCategoryService</property-name>
+            <value>#{WorkCategoryService}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>personService</property-name>
+            <value>#{PersonService}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
         <managed-bean-name>WorkTasksMaintain_Backing</managed-bean-name>
         <managed-bean-class>ksno.ui.jsf.backing.WorkTasksMaintain</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -857,12 +948,16 @@
             <to-view-id>/secureD/OnDutysMaintain.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>workCategorysMaintain</from-outcome>
-            <to-view-id>/secureD/WorkCategorysMaintain.jsp</to-view-id>
+            <from-outcome>workHoursMaintain</from-outcome>
+            <to-view-id>/secureD/WorkHoursMaintain.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>workTasksMaintain</from-outcome>
-            <to-view-id>/secureD/WorkTasksMaintain.jsp</to-view-id>
+            <from-outcome>experienceLevelsMaintain</from-outcome>
+            <to-view-id>/secureD/ExperienceLevelsMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>participationAddInfo</from-outcome>
+            <to-view-id>/secureA/ParticipationAddInfo.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -952,6 +1047,18 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/secureA/ParticipationAddInfo.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{ParticipationAddInfo_Backing.store}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/secureA/Preferences.jsp</from-view-id>
         <navigation-case>
             <from-outcome>cancel</from-outcome>
@@ -983,6 +1090,10 @@
         <navigation-case>
             <from-outcome>signUpWinter</from-outcome>
             <to-view-id>/SignUpWinter.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>print</from-outcome>
+            <to-view-id>/secureC/CourseSetUp.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -1203,11 +1314,6 @@
             <to-view-id>/secureD/TransactionUpdate.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{TransactionsMaintain_Backing.invoice}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/secureD/Invoice.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
         </navigation-case>
@@ -1242,6 +1348,35 @@
         <navigation-case>
             <from-outcome>cancel</from-outcome>
             <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/WorkCategorysMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/WorkHoursMaintain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/WorkHoursMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>workCategorysMaintain</from-outcome>
+            <to-view-id>/secureD/WorkCategorysMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>workTasksMaintain</from-outcome>
+            <to-view-id>/secureD/WorkTasksMaintain.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureA/AdminMain.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/secureD/WorkTasksMaintain.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cancel</from-outcome>
+            <to-view-id>/secureD/WorkHoursMaintain.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

@@ -1,14 +1,47 @@
 <jsp:include page="../Heading.jsp" ></jsp:include>
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>      
+<%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
+<link type="text/css" href="${request.contextPath}/resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="${request.contextPath}/resources/css/admin.css" rel="stylesheet" />
+
+<script src="${request.contextPath}/resources/js/jquery.dataTables.js" type="text/javascript"></script>
+<script type="text/javascript" src="${request.contextPath}/resources/js/jquery-ui.custom.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="${request.contextPath}/resources/js/ZeroClipboard.js"></script>
+<script type="text/javascript" charset="utf-8" src="${request.contextPath}/resources/js/TableTools.js"></script>
+
+
 
 <title>kitesurfing.no - vedlikehold transaksjoner</title>
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#dtTransactions").attr("border", 0).attr("cellpadding",0).attr("cellspacing",0);
+                oTable = $('#dtTransactions').dataTable({
+                "bJQueryUI": true,
+                "bPaginate": false,
+                "oSearch": {"sSearch": "2009-"},
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 5 ] }
+                ],
+                "sDom": 'T<"clear">lfrtip',
+                "oTableTools": {
+			"sSwfPath": "${request.contextPath}/resources/utils/copy_cvs_xls_pdf.swf"
+		}
+
+        });
+    });
+
+
     function toStartPage(){
         var currentLocation = window.location.href;
         var rootLocation = currentLocation.substring(0,currentLocation.indexOf("/faces/"));
         window.location = rootLocation;
+    }
+
+    function openInvoice(url){
+        var s = url.replace(/\/s\d{3}/,"");
+        window.open(s);
     }
         
 </script>
@@ -16,7 +49,13 @@
 <body>
     <f:view>
         <h:form>
-            <h:dataTable id="dt1" value="#{TransactionsMaintain_Backing.transactions}" binding="#{TransactionsMaintain_Backing.data}" var="item" first="0" width="100%">
+            <t:dataTable id="dtTransactions" styleClass="display" forceId="true"  value="#{TransactionsMaintain_Backing.transactions}" binding="#{TransactionsMaintain_Backing.data}" var="item" first="0" width="100%">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Id" />
+                    </f:facet>
+                    <t:outputText value="#{item.id}"></t:outputText>
+                </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Transaksjons Dato" />
@@ -48,26 +87,31 @@
                     <h:outputText value="#{item.comment}"></h:outputText>
                 </h:column>
                 <h:column>
-                    <h:outputLink type="external" rendered="#{item.image.url != Empty}"  value="#{item.image.url}">
-                        <h:outputText value="image"/>
-                    </h:outputLink>
+                    <f:facet name="header">
+                        <f:verbatim escape="false">&nbsp;</f:verbatim>
+                    </f:facet>
+                    <t:htmlTag value="table" styleClass="iconContainer">
+                        <t:htmlTag value="tr">
+                            <t:htmlTag value="td" rendered="#{item.image.url != Empty}">
+                                <t:commandLink  title="Invoice" onclick='openInvoice("#{item.image.name}"); return false;'>
+                                    <span class="ui-icon ui-icon-document"></span>
+                                </t:commandLink>
+                            </t:htmlTag>
+                            <t:htmlTag value="td">
+                                <t:commandLink action="#{TransactionsMaintain_Backing.selectEditTransaction}" title="Endre">
+                                    <span class="ui-icon ui-icon-circle-arrow-e"></span>
+                                </t:commandLink>
+                            </t:htmlTag>
+                            <t:htmlTag value="td">
+                                <t:commandLink  action="#{TransactionsMaintain_Backing.transactionDelete}" title="Slett" onclick="return confirm('Er du sikker på du vil slette transaksjonen?'); return false;">
+                                    <span class="ui-icon ui-icon-trash"></span>
+                                </t:commandLink>
+                            </t:htmlTag>
+                        </t:htmlTag>
+                    </t:htmlTag>
                 </h:column>
-                <h:column>
-                    <h:commandLink action="#{TransactionsMaintain_Backing.invoice}">
-                        <h:outputText value="Faktura"/>
-                    </h:commandLink>
-                </h:column>
-                <h:column>
-                    <h:commandLink action="#{TransactionsMaintain_Backing.selectEditTransaction}">
-                        <h:outputText value="Endre"/>
-                    </h:commandLink>
-                </h:column>
-                <h:column>
-                    <h:commandLink action="#{TransactionsMaintain_Backing.transactionDelete}">
-                        <h:outputText value="Slett"/>
-                    </h:commandLink>
-                </h:column>
-            </h:dataTable>
+
+            </t:dataTable>
             <h:commandButton value="Ny transaksjon" action="transactionCreate"/>
             <t:outputText styleClass="errorMsg" binding="#{TransactionsMaintain_Backing.errorMsg}"/>
         </h:form>

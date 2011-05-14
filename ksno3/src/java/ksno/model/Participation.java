@@ -1,10 +1,11 @@
 package ksno.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 
 
-public class Participation {
+public class Participation implements LabelObjectValuePair, LabelValuePair, Serializable {
 
     private Long id;
     private int version;
@@ -13,6 +14,7 @@ public class Participation {
     private String shoeSize;
     private String helmetSize;
     private String wetSuitSize;
+    private String harnessSize;
     private int price;   
     private Calendar createdDate;
     private String comment;
@@ -21,6 +23,62 @@ public class Participation {
     boolean confirmed;
     boolean uIChecked;
     boolean thirdDay;
+    private String weight;
+    private String partner;
+    private ExperienceLevel level;
+    private Instructor instructor;
+    private String workGroup;
+
+    public String getWorkGroup() {
+        return workGroup;
+    }
+
+    public void setWorkGroup(String workGroup) {
+        this.workGroup = workGroup;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    public ExperienceLevel getLevel() {
+        return level;
+    }
+
+
+    public String getHarnessSize() {
+        return harnessSize;
+    }
+
+    public void setHarnessSize(String harnessSize) {
+        this.harnessSize = harnessSize;
+    }
+
+
+    public void setLevel(ExperienceLevel level) {
+        this.level = level;
+    }
+
+    public String getPartner() {
+        return partner;
+    }
+
+    public void setPartner(String partner) {
+        this.partner = partner;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
 
     public boolean isThirdDay() {
         return thirdDay;
@@ -171,6 +229,19 @@ public class Participation {
         hash = 41 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
+
+    public String getLabel() {
+        return this.getParticipant().getFirstName() + " " + this.getParticipant().getLastName();
+    }
+
+    public Object getObject() {
+        return this;
+    }
+
+    public String getValue() {
+        return this.getId().toString();
+    }
+
 
 
 

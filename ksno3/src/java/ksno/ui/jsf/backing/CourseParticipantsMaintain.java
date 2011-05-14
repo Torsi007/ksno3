@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 import javax.faces.component.UIData;
 import javax.faces.model.SelectItem;
 import ksno.model.Event;
+import ksno.model.Instruction;
+import ksno.model.Instructor;
 import ksno.model.Participation;
 import ksno.model.Person;
 import ksno.service.EventService;
@@ -37,6 +39,9 @@ public class CourseParticipantsMaintain {
     private PersonService personService;
     private ParticipationService participationService;
     private HtmlSelectOneMenu eventSelect;
+    private SelectItem[] eventInstructors;
+    private SelectItem[] eventSelectItems;
+    private SelectItem[] workGroupSelectItems;
 
 
 // <editor-fold defaultstate="collapsed" desc="Getters and setters">
@@ -101,22 +106,62 @@ public class CourseParticipantsMaintain {
     }
 // </editor-fold>
 
-    public SelectItem[] getEventSelectItems(){
-        List events = eventService.getEvents();
-        Event eventToModify = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
-        SelectItem[] arr = JSFUtil.toSelectItemArray(events, true);
-        List<SelectItem> result = new ArrayList<SelectItem>();
-        for(SelectItem item : arr){
-            if(Long.parseLong(item.getValue().toString()) != eventToModify.getId()){
-                result.add(item);
+    public SelectItem[] getWorkGroupSelectItems() {
+        if (workGroupSelectItems == null || workGroupSelectItems.length == 0) {
+            workGroupSelectItems = new SelectItem[getEventInstructors().length * 4];
+            int i = 0;
+            for (int j = 0; j < getEventInstructors().length; j++) {
+                SelectItem item = getEventInstructors()[j];
+                i = j * 4;
+                int index = i;
+                int print = 1;
+                workGroupSelectItems[index] = new SelectItem(item.getLabel() + " " + print, item.getLabel() + " " + print);
+                index++;
+                print++;
+                workGroupSelectItems[index] = new SelectItem(item.getLabel() + " " + print, item.getLabel() + " " + print);
+                index++;
+                print++;
+                workGroupSelectItems[index] = new SelectItem(item.getLabel() + " " + print, item.getLabel() + " " + print);
+                index++;
+                print++;
+                workGroupSelectItems[index] = new SelectItem(item.getLabel() + " " + print, item.getLabel() + " " + print);
             }
         }
-        SelectItem[] arr2 = new SelectItem[result.size()];
-        for(int i = 0; i<arr2.length; i++){
-            arr2[i] = result.get(i);
-        }
+        return workGroupSelectItems;
+    }
 
-        return arr2;
+
+    public SelectItem[] getEventInstructors(){
+        if(eventInstructors == null || eventInstructors.length == 0){
+            Event eventToModify = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+            eventInstructors = new SelectItem[eventToModify.getInstructors().length + 1];
+            for(int i = 0; i< eventToModify.getInstructors().length; i++ ){
+                Instructor instructor = eventToModify.getInstructors()[i];
+                eventInstructors[i] = new SelectItem(instructor,instructor.getLabel());
+            }
+            eventInstructors[eventToModify.getInstructors().length] = new SelectItem(eventToModify.getInstructor(),eventToModify.getInstructor().getLabel());
+        }
+        return eventInstructors;
+    }
+
+    public SelectItem[] getEventSelectItems(){
+        if(eventSelectItems == null || eventSelectItems.length == 0){
+            List events = eventService.getEvents();
+            Event eventToModify = (Event) JSFUtil.getSessionMap().get(JSFUtil.sessionBeanEventModify);
+            SelectItem[] arr = JSFUtil.toSelectItemArray(events, true);
+            List<SelectItem> result = new ArrayList<SelectItem>();
+            for(SelectItem item : arr){
+                if(Long.parseLong(item.getValue().toString()) != eventToModify.getId()){
+                    result.add(item);
+                }
+            }
+            SelectItem[] arr2 = new SelectItem[result.size()];
+            for(int i = 0; i<arr2.length; i++){
+                arr2[i] = result.get(i);
+            }
+            eventSelectItems = arr2;
+        }
+        return eventSelectItems;
     }
 
     public String unConfirmedParticipantDelete() {

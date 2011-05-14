@@ -10,9 +10,32 @@
 <script type="text/javascript" src="${request.contextPath}/resources/js/jquery-ui.custom.js"></script>
 <title>kitesurfing.no - administrer oppgaver</title>
 <script type="text/javascript">
+     $(document).ready(function(){
+        if($('#filterActive:checked').val() == "true"){
+            $('#tblTasks tr').each(function(index) {
+                if($(this).find('td:nth-child(3)').find('input').length > 0){
+                    var inputValue = $(this).find('td:nth-child(3)').find('input').val();
+                    if(inputValue != undefined && inputValue != ''){
+                        var dateArray = inputValue.split("-");
+                        if(dateArray.length == 3){
+                            var taskEndDate = new Date(dateArray[0],dateArray[1] - 1,dateArray[2]);
+                            var now = new Date();
+                            if(now > taskEndDate){
+                                $(this).css("display","none");
+                            }
+                        }
+                    }
+                }
+            });
+         }
+     });
+
     $(function() {
 	$("#newStartDate").datepicker({ dateFormat: 'yyyy-mm-dd', onSelect: function(dateText, inst) {if(this.value.length > 11){this.value = this.value.substr(4,14)}}});
 	$("#newEndDate").datepicker({ dateFormat: 'yyyy-mm-dd', onSelect: function(dateText, inst) {if(this.value.length > 11){this.value = this.value.substr(4,14)}}});
+        $(".cal").datepicker({ dateFormat: 'yyyy-mm-dd', onSelect: function(dateText, inst) {if(this.value.length > 11){this.value = this.value.substr(4,14)}}});
+
+
     });
 </script>
 </head>
@@ -20,48 +43,68 @@
     <f:view>
         <h:form>
             <H1>Administrer oppgaver</H1>
-            <t:selectOneMenu id="slct_WorkCat" forceId="true" binding="#{WorkTasksMaintain_Backing.slctOneWorkCategory}" converter="WorkCategoryConverter" >
-                <f:selectItems value="#{WorkTasksMaintain_Backing.workCategorySelectItems}"/>
-            </t:selectOneMenu>
-            <h:commandLink action="#{WorkTasksMaintain_Backing.Filter}">
-                <h:outputText value="Velg"/>
-            </h:commandLink>
+            <table>
+                <tr>
+                    <td>
+                        Velg kategori
+                    </td>
+                    <td style="width:100px">
+                        <t:selectOneMenu id="slct_WorkCat" forceId="true" binding="#{WorkTasksMaintain_Backing.slctOneWorkCategory}" converter="WorkCategoryConverter" >
+                            <f:selectItems value="#{WorkTasksMaintain_Backing.workCategorySelectItems}"/>
+                        </t:selectOneMenu>
+                    </td>
+                    <td>
+                        Vis kun aktive
+                    </td>
+                    <td style="width:18px">
+                        <t:selectBooleanCheckbox forceId="true" id="filterActive" />
+                    </td>
+                    <td>
+                        <t:commandButton id="selectCategory" forceId="true" action="#{WorkTasksMaintain_Backing.SetCategory}" value="Vis"/>
+                    </td>
+                </tr>
+            </table>
             <hr/>
-            <h:dataTable id="dt1" value="#{WorkTasksMaintain_Backing.workTasks}" binding="#{WorkTasksMaintain_Backing.data}" var="item" first="0" width="10">
-                <h:column>
+            <t:dataTable id="tblTasks" forceId="true" value="#{WorkCategoryModify.tasks}" binding="#{WorkTasksMaintain_Backing.data}" var="item" first="0" width="10">
+                <t:column>
                     <f:facet name="header">
                         <h:outputText value="Kategori" />
                     </f:facet>
                     <h:inputText value="#{item.name}" style="width:200px"></h:inputText>
-                </h:column>
-                <h:column>
+                </t:column>
+                <t:column>
                     <f:facet name="header">
                         <h:outputText value="Startet" />
                     </f:facet>
-                    <h:inputText value="#{item.startDate}" style="width:100px">
+                    <h:inputText value="#{item.startDate}" style="width:100px" styleClass="cal">
                         <f:converter converterId="CalendarConverter"/>
                     </h:inputText>
-                </h:column>
-                <h:column>
+                </t:column>
+                <t:column>
                     <f:facet name="header">
                         <h:outputText value="Avsluttet" />
                     </f:facet>
-                    <h:inputText value="#{item.endDate}" style="width:100px">
+                    <h:inputText value="#{item.endDate}" style="width:100px" styleClass="cal">
                         <f:converter converterId="CalendarConverter"/>
                     </h:inputText>
-                </h:column>
-                <h:column>
+                </t:column>
+                <t:column>
                     <f:facet name="header">
                         <h:outputText value="Beskrivelse" />
                     </f:facet>
                     <h:inputText value="#{item.description}" style="width:300px"></h:inputText>
-                </h:column>
-                <h:column>
+                </t:column>
+               <t:column>
+                    <h:commandLink action="#{WorkTasksMaintain_Backing.WorkTaskEnd}">
+                        <h:outputText value="Avslutt"/>
+                    </h:commandLink>
+                </t:column>
+                <t:column>
                     <h:commandLink action="#{WorkTasksMaintain_Backing.WorkTaskDelete}">
                         <h:outputText value="Slett"/>
                     </h:commandLink>
-                </h:column>
-            </h:dataTable>
+                </t:column>
+            </t:dataTable>
             <hr/>
             <table>
                 <tr>
@@ -90,7 +133,7 @@
             <t:outputText styleClass="errorMsg" binding="#{WorkTasksMaintain_Backing.errorMsg}"/>
         </h:form>
         <h:form>
-            <h:commandButton immediate="true" value="Avbryt" action="cancel" />
+            <h:commandButton immediate="true" value="Avslutt" action="cancel" />
         </h:form>
     </f:view>
 </body>

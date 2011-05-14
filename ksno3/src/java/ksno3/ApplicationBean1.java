@@ -13,6 +13,7 @@ import javax.faces.FacesException;
 import ksno.model.Article;
 import ksno.model.BeginnerCourse;
 import ksno.model.Category;
+import ksno.model.ExperienceLevel;
 import ksno.model.Video;
 import ksno.model.WorkCategory;
 import ksno.util.JSFUtil;
@@ -143,6 +144,15 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     private List<Article> articles;
     private List<Video> videos;
     private List onDutys;
+    private List<ExperienceLevel> experienceLevels;
+
+    public List<ExperienceLevel> getExperienceLevels() {
+        return experienceLevels;
+    }
+
+    public void setExperienceLevels(List<ExperienceLevel> experienceLevels) {
+        this.experienceLevels = experienceLevels;
+    }
 
     private List<WorkCategory> workCategorys;
 

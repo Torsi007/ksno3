@@ -37,17 +37,17 @@ public class WorkTaskServiceImpl implements WorkTaskService {
     }
 
     public Long newWorkTask(WorkTask task) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceWorkCategories);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheWorkCategories);
         return workTaskDao.newWorkTask(task);
     }
 
     public void updateWorkTask(WorkTask task) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceWorkCategories);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheWorkCategories);
         workTaskDao.updateWorkTask(task);
     }
     
     public void deleteWorkTask(WorkTask task) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceWorkCategories);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheWorkCategories);
         workTaskDao.deleteWorkTask(task);
     }
     

@@ -18,12 +18,14 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import ksno.model.LabelObjectValuePair;
 import ksno.model.LabelValuePair;
 import org.apache.myfaces.component.html.ext.HtmlOutputText;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.apache.myfaces.component.html.ext.HtmlInputText;
 import org.apache.myfaces.component.html.ext.HtmlInputTextarea;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
 
 /**
  *
@@ -40,12 +42,17 @@ public class JSFUtil {
     public static String prettyURLHaukeliseter = "/haukeliseter";
     public static String prettyURLAboutUs = "/om-oss";
 
-    public static String appCahceTypeOnDutys = "onDutys";
-    public static String appCahceWorkCategories = "workCategorys";
+    public static String appCacheTypeOnDutys = "onDutys";
+    public static String appCacheWorkCategories = "workCategorys";
+    public static String appCacheExperienceLevels = "experienceLevels";
 
-
-
-
+    public static String getText(HtmlSelectOneMenu text){
+        if(text.getValue() != null){
+            return text.getValue().toString();
+        }else{
+            return "";
+        }
+    }
 
     public static String getText(HtmlInputText text){
         if(text.getValue() != null){
@@ -109,6 +116,7 @@ public class JSFUtil {
         return (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
+
     public static Map<String,Object> getSessionMap() {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
     }
@@ -118,20 +126,22 @@ public class JSFUtil {
     }
     
     public static SelectItem[] toSelectItemArray(List items, boolean includeEmpty) {
-        SelectItem[] selectItems = null;
-        if(includeEmpty){
-            selectItems = new SelectItem[items.size() + 1];
-            selectItems[0] = new SelectItem("-1","<Please select>");
-            for(int i = 1; i< selectItems.length; i++){
-                LabelValuePair kvp = (LabelValuePair)items.get(i - 1);
-                selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+        SelectItem[] selectItems = new SelectItem[0];
+        if(items != null){
+            if(includeEmpty){
+                selectItems = new SelectItem[items.size() + 1];
+                selectItems[0] = new SelectItem("-1","<Please select>");
+                for(int i = 1; i< selectItems.length; i++){
+                    LabelValuePair kvp = (LabelValuePair)items.get(i - 1);
+                    selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+                }
+            }else{
+                selectItems = new SelectItem[items.size()];
+                for(int i = 0; i< selectItems.length; i++){
+                    LabelValuePair kvp = (LabelValuePair)items.get(i);
+                    selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
+                }
             }
-        }else{
-            selectItems = new SelectItem[items.size()];
-            for(int i = 0; i< selectItems.length; i++){
-                LabelValuePair kvp = (LabelValuePair)items.get(i);
-                selectItems[i] = new SelectItem(kvp.getValue(),kvp.getLabel());
-            }        
         }
         return selectItems;        
     }
