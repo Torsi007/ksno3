@@ -40,18 +40,18 @@ public class OnDutyServiceImpl implements OnDutyService {
     }
 
     public Long newOnDuty(OnDuty onDuty) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceTypeOnDutys);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheTypeOnDutys);
         return onDutyDao.newOnDuty(onDuty);
     }
 
     public void updateOnDuty(OnDuty onDuty) {
         onDutyDao.updateOnDuty(onDuty);
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceTypeOnDutys);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheTypeOnDutys);
     }
 
     public void deleteOnDuty(OnDuty onDuty) {
        onDutyDao.deleteOnDuty(onDuty);
-       JSFUtil.clearApplicationCache(JSFUtil.appCahceTypeOnDutys);
+       JSFUtil.clearApplicationCache(JSFUtil.appCacheTypeOnDutys);
     }
 
     public List<OnDuty> getOnDutys() {
@@ -61,10 +61,10 @@ public class OnDutyServiceImpl implements OnDutyService {
         } catch (ClassNotFoundException ex) {
             getLogService().log(Level.SEVERE, null, ex);
         }
-        List<OnDuty> returnList = (List)JSFUtil.getValue("#{ApplicationBean1." + JSFUtil.appCahceTypeOnDutys + "}", c);
+        List<OnDuty> returnList = (List)JSFUtil.getValue("#{ApplicationBean1." + JSFUtil.appCacheTypeOnDutys + "}", c);
         if(returnList == null){
             returnList = onDutyDao.getOnDutys();
-            JSFUtil.setValue("#{ApplicationBean1." + JSFUtil.appCahceTypeOnDutys + "}", returnList, c);
+            JSFUtil.setValue("#{ApplicationBean1." + JSFUtil.appCacheTypeOnDutys + "}", returnList, c);
         }
         return returnList;
     }

@@ -5,6 +5,10 @@
 
 package ksno.util;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  *
  * @author Tor-Erik Halsne Hauge
@@ -18,5 +22,14 @@ public class Util {
         String minutes = (min < 0)?"0"+min:""+min;
         return minutes + ":" + seconds;
     }
+
+    public static List getAsList(Set set) {
+        List<Object> list = null;
+        if(set != null){
+            list = new ArrayList<Object>(set);
+        }
+        return list;
+    }
+
 
 }

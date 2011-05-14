@@ -32,5 +32,7 @@
     <mapping resource="ksno/model/OnDuty.hbm.xml"/>
     <mapping resource="ksno/model/WorkCategory.hbm.xml"/>
     <mapping resource="ksno/model/WorkTask.hbm.xml"/>
+    <mapping resource="ksno/model/WorkHours.hbm.xml"/>
+    <mapping resource="ksno/model/ExperienceLevel.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

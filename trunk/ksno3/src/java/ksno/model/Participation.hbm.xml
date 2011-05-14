@@ -9,6 +9,7 @@
     <!-- Lasy to false to make SignUpConfirm work properly-->
     <many-to-one cascade="save-update" class="Person" column="PARTICIPANT_ID" lazy="false" name="participant"/>
     <many-to-one cascade="save-update" class="Event" column="EVENT_ID" name="event"/>
+    <many-to-one cascade="save-update" class="Instructor" column="INSTRUCTOR_ID" name="instructor"/>
     <property column="SHOE_SIZE" name="shoeSize" type="string"/>
     <property column="HELMET_SIZE" name="helmetSize" type="string"/>
     <property column="WETSUIT_SIZE" name="wetSuitSize" type="string"/>
@@ -19,5 +20,10 @@
     <property column="THIRD_DAY" name="thirdDay" type="boolean"/>
     <property column="CONFIRMED" name="confirmed" type="boolean"/>
     <property column="CREATED_DATE" name="createdDate" type="calendar"/>
+    <property column="WEIGHT" name="weight" type="string"/>
+    <property column="HARNESS_SIZE" name="harnessSize" type="string"/>
+    <property column="PARTNER" name="partner" type="string"/>
+    <property column="WORK_GROUP" name="workGroup" type="string"/>
+    <many-to-one cascade="save-update" class="ExperienceLevel" column="EXPERIENCE_LEVEL_ID" name="level"/>
   </class>
 </hibernate-mapping>

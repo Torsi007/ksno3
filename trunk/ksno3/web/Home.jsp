@@ -35,7 +35,7 @@
         if($("#winterCourseList tr").size() == 2){
             $("#winterCoursesSetUpLater").css('display','block');
         }
-        
+
 			$("#slider").easySlider({
 				auto: true,
 				continuous: true,
@@ -252,8 +252,9 @@
                             <h1>We like</h1>
                             <div id="slider">
                                 <ul>
-                                    <li><a href="http://www.urge.no" target="_blank"><img src="http://lh5.ggpht.com/_lkZPRU-HBNM/SrULQXemmyI/AAAAAAAAAjA/WLnYaocLse4/s800/Untitled-1.gif" alt="Urge" /></a></li>
-                                    <li><a href="http://www.bergans.no" target="_blank"><img src="http://farm3.static.flickr.com/2643/4191602466_9f89d4472e_o.gif" alt="Image 2" /></a></li>
+                                    <li><a href="http://www.haukeliseter.no" target="_blank"><img src="http://farm6.static.flickr.com/5107/5620735755_378214539f_m_d.jpg" alt="Haukeliseter fjellstue" /></a></li>
+                                    <li><a href="http://www.splitboard.no" target="_blank"><img src="http://farm6.static.flickr.com/5024/5621317644_ed1ab0caea_m_d.jpg" alt="Snoweb" /></a></li>
+                                    <li><a href="http://www.bergans.no" target="_blank"><img src="http://farm3.static.flickr.com/2643/4191602466_9f89d4472e_o.gif" alt="Bergans" /></a></li>
                                 </ul>
                             </div>
                         </div>

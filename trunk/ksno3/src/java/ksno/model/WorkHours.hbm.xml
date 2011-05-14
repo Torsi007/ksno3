@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ksno.model">
+  <class name="WorkHours" optimistic-lock="version" table="WORK_HOURS">
+    <id column="ID" name="id">
+      <generator class="increment"/>
+    </id>
+    <version column="VERSION" name="version"/>
+    <property column="DESCRIPTION" name="description" type="string"/>
+    <property column="DATE" name="workDate" type="calendar"/>
+    <property column="HOURS" name="hours" type="integer"/>
+    <many-to-one cascade="save-update" class="WorkTask" column="WORK_TASK_ID" name="workTask"/>
+    <many-to-one cascade="save-update" class="Instructor" column="INSTRUCTOR_ID" name="instructor"/>
+  </class>
+</hibernate-mapping>

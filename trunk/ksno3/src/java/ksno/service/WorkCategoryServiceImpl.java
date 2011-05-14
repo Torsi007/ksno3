@@ -37,17 +37,17 @@ public class WorkCategoryServiceImpl implements WorkCategoryService {
     }
 
     public Long newWorkCategory(WorkCategory category) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceWorkCategories);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheWorkCategories);
         return workCategoryDao.newWorkCategory(category);
     }
 
     public void updateWorkCategory(WorkCategory category) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceWorkCategories);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheWorkCategories);
         workCategoryDao.updateWorkCategory(category);
     }
     
     public void deleteWorkCategory(WorkCategory category) {
-        JSFUtil.clearApplicationCache(JSFUtil.appCahceWorkCategories);
+        JSFUtil.clearApplicationCache(JSFUtil.appCacheWorkCategories);
         workCategoryDao.deleteWorkCategory(category);
     }
     
@@ -58,10 +58,10 @@ public class WorkCategoryServiceImpl implements WorkCategoryService {
         } catch (ClassNotFoundException ex) {
             getLogService().log(Level.SEVERE, null, ex);
         }
-        List<WorkCategory> returnList = (List)JSFUtil.getValue("#{ApplicationBean1." + JSFUtil.appCahceWorkCategories + "}", c);
+        List<WorkCategory> returnList = (List)JSFUtil.getValue("#{ApplicationBean1." + JSFUtil.appCacheWorkCategories + "}", c);
         if(returnList == null){
             returnList = workCategoryDao.getWorkCategorys();
-            JSFUtil.setValue("#{ApplicationBean1." + JSFUtil.appCahceWorkCategories + "}", returnList, c);
+            JSFUtil.setValue("#{ApplicationBean1." + JSFUtil.appCacheWorkCategories + "}", returnList, c);
         }
         return returnList;
     }

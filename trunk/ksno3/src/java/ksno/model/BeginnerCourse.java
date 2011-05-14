@@ -1,7 +1,10 @@
 package ksno.model;
 // #[regen=yes,id=DCE.6D2EE5E4-0D10-EEBA-52E0-C05885F5E3E1]
 // </editor-fold> 
-public class BeginnerCourse extends Event {
+
+import java.io.Serializable;
+
+public class BeginnerCourse extends Event implements Serializable {
 
 
 
