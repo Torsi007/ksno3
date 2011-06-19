@@ -5,8 +5,8 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
 <title>kitesurfing.no opprett artikkel</title>
-<script src="../resources/js/logic.js" type="text/javascript"></script>
-<script src="../resources/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+<script src="${request.contextPath}/resources/js/logic.js" type="text/javascript"></script>
+<script src="${request.contextPath}/resources/js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
 <script type="text/javascript">
     tinyMCE.init({
         // General options
