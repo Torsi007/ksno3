@@ -21,6 +21,7 @@
         $(".bottomSection img").click(function(e) {
             window.parent.openModalImage($(this));
         });
+
         $('#facebook').click(function(e) {
             e.preventDefault();
             u=location.href;
@@ -60,6 +61,11 @@
                         <h:outputText rendered="#{Article_Backing.article.body != null}" escape="false" value="#{Article_Backing.article.body}"/>
                         <h:outputText rendered="#{Article_Backing.article.body == null}" escape="false" value="#{Article_Backing.article.intro}"/>
                     </f:verbatim>
+                    <span>Bildeserie</span>
+                    <hr>
+                    <t:dataList value="#{Article_Backing.article.images}" var="img">
+                        <t:graphicImage url="#{img.name}" height="80" style="cursor:hand"/>
+                    </t:dataList>
                 </td>
             </tr>
         </table>

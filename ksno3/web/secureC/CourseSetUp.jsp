@@ -4,7 +4,7 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 <title>Kitesurfing.no - sett opp kurs</title>
 
-<link type="text/css" href="../resources/css/admin.css" rel="stylesheet" />
+<link type="text/css" href="${request.contextPath}/resources/css/admin.css" rel="stylesheet" />
 
 
 

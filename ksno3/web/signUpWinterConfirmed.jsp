@@ -3,7 +3,7 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
-<link rel="stylesheet" type="text/css" href="resources/css/signUpConfirmed.css"/>
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/signUpConfirmed.css"/>
 <title>kitesurfing.no - påmelding vinterkurs</title>
 </head>
 <jsp:include page="GoogleAnalytics.jsp" ></jsp:include>

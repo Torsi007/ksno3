@@ -3,11 +3,11 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 <title>Kitesurfing.no - oppdater kurs</title>
-<link type="text/css" href="../resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
-<link type="text/css" href="../resources/css/admin.css" rel="stylesheet" />
-<link rel="stylesheet" href="../resources/css/jqueryTableSorter/style.css" type="text/css"/>
-<script src="../resources/js/jquery.tablesorter.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="../resources/js/jquery-ui.custom.js"></script>
+<link type="text/css" href="${request.contextPath}/resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="${request.contextPath}/resources/css/admin.css" rel="stylesheet" />
+<link rel="stylesheet" href="${request.contextPath}/resources/css/jqueryTableSorter/style.css" type="text/css"/>
+<script src="${request.contextPath}/resources/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="${request.contextPath}/resources/js/jquery-ui.custom.js"></script>
 <SCRIPT type="text/javascript">
    
     $(document).ready(function(){
