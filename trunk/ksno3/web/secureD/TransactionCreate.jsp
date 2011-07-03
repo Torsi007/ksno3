@@ -4,7 +4,7 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
 <title>kitesurfing.no - opprett transaksjon</title>
-<script src="../resources/js/logic.js" type="text/javascript"></script>
+<script src="${request.contextPath}/resources/js/logic.js" type="text/javascript"></script>
 <script type="text/javascript">
         
     function validate_local(){

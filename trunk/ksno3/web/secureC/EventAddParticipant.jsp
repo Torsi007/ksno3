@@ -3,10 +3,10 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
-        <link type="text/css" href="../resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
-        <link type="text/css" href="../resources/css/admin.css" rel="stylesheet" />
-        <script type="text/javascript" src="../resources/js/jquery-ui.custom.js"></script>
-        <script src="../resources/js/logic.js" type="text/javascript"></script>
+        <link type="text/css" href="${request.contextPath}/resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
+        <link type="text/css" href="${request.contextPath}/resources/css/admin.css" rel="stylesheet" />
+        <script type="text/javascript" src="${request.contextPath}/resources/js/jquery-ui.custom.js"></script>
+        <script src="${request.contextPath}/resources/js/logic.js" type="text/javascript"></script>
         <title>Kitesurfing.no - legg til kursdeltager</title>
     </head>
     <body>

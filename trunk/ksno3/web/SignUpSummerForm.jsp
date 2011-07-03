@@ -4,9 +4,9 @@
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
         <title>kitesurfing.no - påmelding sommerkurs</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/signUpSummerForm.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/skinned-select.css"/>
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/signUpSummerForm.css" />
+        <link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/skinned-select.css"/>
         <script type="text/javascript" src="resources/js/default.js"></script>
         <script src="resources/js/logic.js" type="text/javascript"></script>
         <script type="text/javascript">

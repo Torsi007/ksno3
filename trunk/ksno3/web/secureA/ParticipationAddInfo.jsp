@@ -8,8 +8,8 @@
 <link type="text/css" href="${request.contextPath}/resources/css/admin.css" rel="stylesheet" />
 <link rel="stylesheet" href="${request.contextPath}/resources/css/jqueryTableSorter/style.css" type="text/css"/>
 
-<script src="../resources/js/logic.js" type="text/javascript"></script>
-<script type="text/javascript" src="../resources/js/jquery.js"></script>
+<script src="${request.contextPath}/resources/js/logic.js" type="text/javascript"></script>
+<script type="text/javascript" src="${request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         /*$("input[type=submit]").click(function(event){

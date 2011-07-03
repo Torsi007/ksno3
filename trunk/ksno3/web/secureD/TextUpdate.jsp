@@ -4,7 +4,7 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>   
 
 <title>kitesurfing.no - oppdater text</title>
-<script src="../resources/js/logic.js" type="text/javascript"></script>
+<script src="${request.contextPath}/resources/js/logic.js" type="text/javascript"></script>
 </head>
 <body class="yui-skin-sam">
     <f:view>

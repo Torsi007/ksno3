@@ -5,7 +5,7 @@
 
 
 <title>kitesurfing.no - opprett tekst</title>
-<script src="../resources/js/logic.js" type="text/javascript"></script>
+<script src="${request.contextPath}/resources/js/logic.js" type="text/javascript"></script>
 </head>
 <body>
     <f:view>
