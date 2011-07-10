@@ -52,6 +52,9 @@
 <body>
     <f:view>
         <h:form>
+            <jsp:include page="Menu.jsp" >
+                <jsp:param name="fromMain" value="false"/>
+            </jsp:include>
             <table class="middleSection">
                 <tr>
                     <td class="leftSection" >

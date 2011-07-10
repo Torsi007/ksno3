@@ -123,23 +123,15 @@ function openModalImage(image, flashDivs){
     $(id).click(function(event){
         $('#mask, .window').hide();
     });
-
-
 }
 
-var fd;
-
-function openModalImageOnUrl(url, height, width, flashDivs){
-    //Get the A tag
+function openModalElement(domElem, flashDivs){
     fd = flashDivs;
-    fd.css("display","none");
-    var url = url;
-    var imgHeight = height;
-    var imgWidth = width;
-    var factor = 1;
-    var val ="<img src='"+ url +"'/>";
+    //Get the A tag
+    var imgHeight = domElem.height();
+    var imgWidth = domElem.width();
     var id = '#dialog';
-    $(id).html(val);
+    $(id).add(domElem);
 
     //Get the screen height and width
     var maskHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
@@ -168,8 +160,11 @@ function openModalImageOnUrl(url, height, width, flashDivs){
         $('#mask, .window').hide();
     });
 
-
 }
+
+
+var fd;
+
 
 $(document).ready(function(){
     //select all the a tag with name equal to modal
@@ -189,6 +184,9 @@ $(document).ready(function(){
             fd.css("display","block");
         }
         fd = null;
+
+        $('#translateMenu').hide();
+
         
     });
     var queryParams = $(this).attr("location").search;
@@ -220,12 +218,41 @@ $(document).ready(function(){
         var w = Math.max(((windW - contW )/2), 0) + contW - compW;
         $('#searchcontrol').css('left',w);
     });
-
-
-
-
-
 });
+
+
+
+function openTranslateMenu(){
+    var id = '#translateMenu';
+    var menuElement  = $(id);
+
+    //Get the screen height and width
+    var maskHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
+    var maskWidth = Math.max(document.body.scrollWidth, document.body.clientWidth);
+
+    //Set height and width to mask to fill up the whole screen
+    $('#mask').css({
+        'width':maskWidth,
+        'height':maskHeight,
+        'left':'0',
+        'top':'0'
+    });
+    //transition effect
+    $('#mask').fadeIn(1000);
+    $('#mask').fadeTo("slow",0.8);
+
+
+    viewport.init(id, 200, 300);
+    menuElement.fadeIn(2000);
+
+    menuElement.find("select").change(function() {
+        menuElement.hide();
+        $('#mask').hide();
+        $('#content').attr('src', $('#content').attr('src'));
+    });
+
+}
+
 
 google.load("search", "1", {
     "nocss" : true
