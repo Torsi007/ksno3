@@ -79,16 +79,18 @@ function openModalImage(image, flashDivs){
     fd = flashDivs;
     //Get the A tag
     var url = image.attr("src");
+
     var imgHeight = image.height();
     var imgWidth = image.width();
+
     var factor = 1;
     try{
         if(url != undefined && url.indexOf("s288") > 0){
             url = url.replace(/s288/,"s800");
-            factor = 800/288;
+            factor = 800/Math.max(imgHeight, imgWidth);
         }else if(url != undefined && url.indexOf("s400") > 0){
             url = url.replace(/s400/,"s800");
-            factor = 800/400;
+            factor = 800/Math.max(imgHeight, imgWidth);
         }
     }catch(err){}
     imgHeight = Math.round(imgHeight * factor);
@@ -218,7 +220,20 @@ $(document).ready(function(){
         var w = Math.max(((windW - contW )/2), 0) + contW - compW;
         $('#searchcontrol').css('left',w);
     });
+
+    positionSearcBox();
 });
+
+    function positionSearcBox(){
+        var divSearchWrapper = $("#searchcontrol");
+        if(divSearchWrapper.length > 0){
+            if($.browser.mozilla){
+                divSearchWrapper.css("top","92px");
+            }
+        }
+    }
+
+
 
 
 
