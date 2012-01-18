@@ -9,12 +9,12 @@ table.middleSection td.leftSection {width:900px;}
 table.middleSection td.rightSection {width:40px; vertical-align:bottom;}
 table.middleSection td.rightSection a img{border: 0 none; margin-bottom: 14px}
 
-table.bottomSection td {color:#505050; font-size:12px; padding: 8px; }
+table.bottomSection td {color:#505050; font-size:12px; padding: 8px;}
 table.bottomSection td h2 {font-size: 14px; font-weight:500; margin: 6px 0px; color:#505050;}
 table.bottomSection td a img {border: none}
 table.bottomSection td a {color: #505050}
 
-table.bottomSection table {border-collapse:collapse; height:100%; width:100% }
+table.bottomSection table {border-collapse:collapse;  width:100% }
 table.bottomSection table td.left {width:100%; vertical-align:top }
 table.bottomSection table td.right {width:296px; padding: 0px 4px; vertical-align:top }
 table.bottomSection table td.right img {border: 1px solid black; display:block; margin: 0px 0px 4px 0px; cursor:url}

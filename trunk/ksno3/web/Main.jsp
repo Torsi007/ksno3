@@ -36,7 +36,7 @@
 
         <div class="footer">
             <p>Copyright &copy; 2008 Kitesurfing.no</p>
-            <p>Call: <h:outputText value="#{OnDutysMaintain_Backing.currenltyOnDuty.phone}"/> Mail: info@kitesurfing.no</p>
+            <p>Call: <h:outputText value="#{OnDutysMaintain_Backing.currenltyOnDuty.phone}"/> (<h:outputText value="#{OnDutysMaintain_Backing.currenltyOnDuty.firstName}"/>) Mail: info@kitesurfing.no</p>
         </div>
 </f:view>
     </body>

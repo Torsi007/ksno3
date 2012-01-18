@@ -7,6 +7,7 @@
     String aboutUsUrl = "om-oss";
     String searchVisible = "display:block;";
     String cssVisibleStyle="";
+    String transLateToolBarVisibleStyle = "";
     if(request.getParameter("fromMain").equalsIgnoreCase("false")){
         hrefTarget = "";
         homeUrl = request.getContextPath() + "/faces/Main.jsp?content=Home.jsp";
@@ -16,9 +17,31 @@
         aboutUsUrl = request.getContextPath() + "/faces/Main.jsp?content=aboutUs.jsp";
         searchVisible = "";
         cssVisibleStyle="style='display:none'";
+        transLateToolBarVisibleStyle = "iframe.goog-te-banner-frame {display:none}";
     }
 %>
+<style>
+    <%= transLateToolBarVisibleStyle %>
+    div.translateMenu {
+        position:absolute;
+        z-index:9999;
+        display:none;
+        background-color:white;
+        padding: 8px;
+        color: #505050;
+        font-size:12px;
+    }
 
+    div.translateMenu h3 {
+        font-size:12px;
+        font-weight:bold;
+        margin: 10px 6px 0px 6px;
+    }
+
+    div.translateMenu p {
+        margin: 0px 6px 0px 6px;
+    }
+</style>
 <div class="topMenu" <%= cssVisibleStyle %>>
     <table>
         <tr>
@@ -59,13 +82,13 @@
                 <div style="<%= searchVisible %> position:absolute; z-index:8888; top:112; left:678" id="searchcontrol">&nbsp;</div></td>
         </tr>
     </table>
-    <div id="translateMenu" style="position:absolute; z-index:9999; display:none; background-color:white">
-        <h3>Hi</h3>
-        <p>
-            We regret that our page is not available in English. However, you can try to translate our site to choose English in the drop down menu below. We can not guarantee perfect language, and layout of the site will possibly be impaired, but you will hopefully understand the most important. Need more details, please do not hesitate to contact us by mail or phone info@kitesurfing.no
+    <div id="translateMenu" class="translateMenu">
+        <h3 class="nottranslate">Hi</h3>
+        <p class="nottranslate">
+            We regret that our page is not available in English. However, you can try to translate our site by selecting English in the drop down menu below. We can not guarantee perfect language, and layout of the site will possibly be impaired, but you will hopefully understand the essestials. Need more details, please do not hesitate to contact us by mail <a href="mailto:info@kitesurfing.no">info@kitesurfing.no</a> or phone.
         </p>
-        <h3>Hola</h3>
-        <p>
+        <h3 class="nottranslate">Hola</h3>
+        <p class="nottranslate">
             Lamentamos que nuestro sitio está disponible en alemán. Sin embargo, usted puede tratar de traducir nuestro sitio web y elegir Inglés en el menú desplegable a continuación. No podemos garantizar el lenguaje perfecto, y el diseño del sitio, posiblemente se verá afectado, pero se espera que entender la más importante. ¿Necesita más información, por favor no dude en contactar con nosotros por correo info@kitesurfing.no
         </p>
         <div id="google_translate_element" class="google_translate_element" ></div>
@@ -79,7 +102,7 @@
 
             }
             </script>
-            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>'
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         </div>
     </div>
 </div>
