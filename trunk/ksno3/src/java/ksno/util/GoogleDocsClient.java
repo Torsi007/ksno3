@@ -1,10 +1,11 @@
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
+
  */
 
 package ksno.util;
-
+/*
 import com.google.gdata.data.PlainTextConstruct;
 import com.google.gdata.client.docs.*;
 import com.google.gdata.data.MediaContent;
@@ -17,12 +18,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.net.*;
 import java.io.*;
+ * */
 
-/**
- *
- * @author tor.hauge
- */
+
 public class GoogleDocsClient {
+
+    /*
   private final String baseUrl;
   private final DocsService service;
 
@@ -64,4 +65,6 @@ public class GoogleDocsClient {
       DocumentListEntry uploaded = service.insert(new URL("http://docs.google.com/feeds/documents/private/full" + folderEntry.getResourceId()), newDocument);
       return uploaded.getLinks().get(0).getHref();
   }
+     */
 }
+
