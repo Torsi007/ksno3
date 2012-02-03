@@ -5,12 +5,25 @@
 
 package ksno.util;
 
+import com.google.gdata.data.PlainTextConstruct;
+import com.google.gdata.client.docs.*;
+import com.google.gdata.data.MediaContent;
+import com.google.gdata.data.acl.*;
+import com.google.gdata.data.docs.*;
+import com.google.gdata.data.extensions.*;
+import com.google.gdata.util.*;
+import javax.faces.context.ExternalContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.net.*;
+import java.io.*;
+
 /**
  *
  * @author tor.hauge
  */
 public class GoogleDocsClient {
-/*  private final String baseUrl;
+  private final String baseUrl;
   private final DocsService service;
 
 
@@ -28,29 +41,27 @@ public class GoogleDocsClient {
       }         
   }
 
-  
+
   private Logger getLogService(){
       return Logger.getLogger(this.getClass().getName());
   }
 
-  
-  public String uploadDocument(InputStream stream, String userName) throws MalformedURLException, IOException, ServiceException, Exception{
-    getLogService().log(Level.INFO, "start");
-    String url = null;
-    String id = "";
-    DocumentEntry newDocument = new DocumentEntry();
-    MediaStreamSource myMedia = new MediaStreamSource(stream, "application/pdf");    
-    newDocument.setMediaSource(myMedia);
+  public DocumentListEntry createFolder(String title) throws IOException, ServiceException{
+    DocumentListEntry newEntry = new FolderEntry();
+    newEntry.setTitle(new PlainTextConstruct(title));
+    return service.insert(new URL("http://docs.google.com/feeds/documents/private/full"), newEntry);
+
+  }
 
 
-  // Set the title for the new document. For this example we just use the
-  // filename of the uploaded file.
-  newDocument.setTitle(new PlainTextConstruct("Test"));
-
-  DocumentListEntry uploaded = service.insert(new URL("http://docs.google.com/feeds/documents/private/full"), newDocument);
-  
-return uploaded.getLinks().get(0).getHref();
-          
-  }*/
-
+  public String uploadFile(String filepath, String title)    throws IOException, ServiceException  {
+      DocumentListEntry folderEntry = createFolder("Bilag");
+      File file = new File(filepath);
+      String mimeType = DocumentListEntry.MediaType.fromFileName(file.getName()).getMimeType();
+      DocumentListEntry newDocument = new DocumentListEntry();
+      newDocument.setFile(file,mimeType);
+      newDocument.setTitle(new PlainTextConstruct(title));
+      DocumentListEntry uploaded = service.insert(new URL("http://docs.google.com/feeds/documents/private/full" + folderEntry.getResourceId()), newDocument);
+      return uploaded.getLinks().get(0).getHref();
+  }
 }
