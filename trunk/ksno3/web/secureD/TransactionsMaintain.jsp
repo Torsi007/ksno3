@@ -4,7 +4,7 @@
 <%@taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 <link type="text/css" href="${request.contextPath}/resources/css/jquery-ui-theme/jquery-ui.custom.css" rel="stylesheet" />
 <link type="text/css" href="${request.contextPath}/resources/css/admin.css" rel="stylesheet" />
-
+<script src="${request.contextPath}/resources/js/jquery.cookie.js" type="text/javascript"></script>
 <script src="${request.contextPath}/resources/js/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript" src="${request.contextPath}/resources/js/jquery-ui.custom.js"></script>
 
@@ -15,23 +15,32 @@
 
 <title>kitesurfing.no - vedlikehold transaksjoner</title>
 <script type="text/javascript">
+        var oTable;
     $(document).ready(function(){
+        var searchTerm = ($.cookie("transactFilter") == null || $.cookie("transactFilter") == undefined)?"2012-":$.cookie("transactFilter");
         $("#dtTransactions").attr("border", 0).attr("cellpadding",0).attr("cellspacing",0);
                 oTable = $('#dtTransactions').dataTable({
                 "bJQueryUI": true,
                 "bPaginate": false,
-                "oSearch": {"sSearch": "2009-"},
+                "oSearch": {"sSearch": searchTerm},
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [ 5 ] }
                 ],
                 "sDom": 'T<"clear">lfrtip',
                 "oTableTools": {
 			"sSwfPath": "${request.contextPath}/resources/utils/copy_cvs_xls_pdf.swf"
-		}
+		},
+                "fnDrawCallback": function() {storeSearchTerm();}
 
         });
     });
 
+    function storeSearchTerm(){
+        try{
+            $.cookie("transactFilter", $("#dtTransactions_filter > input").val());
+        }catch(err){
+        }
+    }
 
     function toStartPage(){
         var currentLocation = window.location.href;
