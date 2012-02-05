@@ -49,8 +49,7 @@
     }
 
     function openInvoice(url){
-        var s = url.replace(/\/s\d{3}/,"");
-        window.open(s);
+        window.open(url);
     }
         
 </script>
