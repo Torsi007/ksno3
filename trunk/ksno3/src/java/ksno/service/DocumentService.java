@@ -12,5 +12,5 @@ import java.io.InputStream;
  * @author tor.hauge
  */
 public interface DocumentService {
-    public String uploadDocument(InputStream stream, String userName) throws Exception;
+    public String uploadDocument(String path, String userName) throws Exception;
 }
