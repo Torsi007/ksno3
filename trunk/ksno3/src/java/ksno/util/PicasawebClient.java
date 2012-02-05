@@ -107,7 +107,9 @@ import javax.faces.context.ExternalContext;
     }    
     url = returnedPhoto.getMediaThumbnails().get(1).getUrl();
     returnImageMap.put(ImageMeta.sizeMIN , url);
-    if(returnedPhoto.getWidth() > 800){
+    if(returnedPhoto.getWidth() > 1200){
+        returnImageMap.put(ImageMeta.sizeMAX , url.replaceFirst("/s144/", "/s1200/"));
+    }else if(returnedPhoto.getWidth() > 800){
         returnImageMap.put(ImageMeta.sizeMAX , url.replaceFirst("/s144/", "/s800/"));
     }else if(returnedPhoto.getWidth() > 400){
         returnImageMap.put(ImageMeta.sizeMAX , url.replaceFirst("/s144/", "/s400/"));
