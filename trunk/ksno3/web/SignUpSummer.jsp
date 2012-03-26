@@ -29,7 +29,7 @@
                                     <td>Ledige plasser:</td><td class="right" align="right"><h:outputText value="#{CourseSummer_Backing.course.availableSeats}"/></td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>Pris:</td><td class="right" align="right">1900</td><td>,-</td>
+                                    <td>Pris:</td><td class="right" align="right">2200</td><td>,-</td>
                                 </tr>
                                 <tr>
                                     <td>Neoprenleie:</td><td class="right" align="right">250</td><td>,-</td>
