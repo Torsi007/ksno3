@@ -152,7 +152,7 @@
                                 <h1>Pris</h1>
                                 <h2>Nybegynnerkurs</h2>
                                 <ul type="square" >
-                                    <li>1 Person : 1900 NOK</li>
+                                    <li>1 Person : 2200 NOK</li>
                                 </ul>
                                 <p>Det er mulig å melde seg på en 3dje dag, mandagen. Du skal ha all nødvendig ballast etter et 2 dagers nybegynnerkurs! Men erfaring viser at mange får stort utbytte av en ekstra dag for finpussing av ferdighetene man har tilegnet seg. Høres dette interessant ut? Husk å sjekke av i påmeldingsskjemaet, det gjør det enklere for oss å planlegge opplegget. Bindene påmelding til mandagen (og betaling) avtales med instruktøren i løpet av helgen dersom det ser ut til å bli bra forhold! Prisen er 800,-/person inkludert utstyr. Minimum 2 deltakere.</p>
                                 <h2>Neopren</h2>
