@@ -161,9 +161,6 @@
                                 </ul>
                                 <h2>Teambuilding / Spesialer</h2>
                                 <p>Teambuilding / Spesialer koster fra 5000 NOK avhengig av tidsramme og innhold.</p>
-                                <h2>Rabatter</h2>
-                                <p>Grupperabatt - hver 6 mann er gratis!:</p>
-                                <p>Klarer du å samle en gjeng på 6 mann betaler dere altså for 5 deltagere. Det samme påløper for 12. og 18. mann...</p>
                                 <h1>Vindgaranti</h1>
                                 <p>Vi i Kitesurfing.no er opptatt av at kursdeltakerne skal være fornøyde og føle at de får valuta for pengene. Dersom værgudene skulle være vanskelige og det blir vanskelig å gjennomføre kurset på en tilfredstillende måte, er vi fleksible nok til å tilby dere plass på et annet kurs gratis! Vi regner med å kunne gjennomføre kurset dersom det er minimum 4 timer med nok vind for å fly kitene. Vindgarantien er gyldig på nybegynnerkursene og «fra snø til vann» kursene.</p>
                                 <p>Da vi trenger litt mer vind for «fra snø til vann» kursene (5-6m/s), for å virkelig komme oss opp på brettet, må vi være mer kritiske med valg av kursdager. Av den grunn kan det være at vi ser allerede på forhånd at kurset må flytte til annet dato. Vi ber dere å ha forståelse for dette, vi gjør vårt beste for å gi dere beste mulige forhold for å lære.</p>                                
