@@ -17,7 +17,7 @@
     <context-param>
         <description>Picasa Web password</description>
         <param-name>picasaWeb.passWord</param-name>
-        <param-value>Sw1tchBlade</param-value>
+        <param-value>airushDNA12</param-value>
     </context-param>
     <context-param>
         <param-name>picasaWeb.baseUrl</param-name>
